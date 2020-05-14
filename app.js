@@ -8,6 +8,13 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+// add for auth
+const session = require("express-session");
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const User = require("./models/User.model"); 
+const flash = require("connect-flash");
 
 
 mongoose
@@ -31,28 +38,71 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-      
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+//following config code **needs to be placed before the passport.initialize() function.
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+ 
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
 
+app.use(flash());
+passport.use(new LocalStrategy({passReqToCallback: true}, (req, username, password, next) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      // incorrect username
+      return next(null, false, { message: "Wrong credentials" });
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      // incorrect password
+      return next(null, false, { message: "Wrong credentials" });
+    }
+ 
+    return next(null, user);
+  });
+}));
+///
 
-const index = require('./routes/index');
-app.use('/', index);
+//configure the express-session, initialize passport and passport session
+// below is the old code I wrote in lab
+// app.use(session({
+//   secret: "our-passport-local-strategy-app",
+//   resave: true,
+//   saveUninitialized: true
+// }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes middleware goes here
+//'api/auth' + the route defined in "router.post('/login',...)" is the full path to api endpoint
+app.use('/api/auth', require('./routes/auth.routes'))
 
 
 module.exports = app;
