@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 
 import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
+import Login from './components/Login';
+
 
 class App extends Component {
   state = {
@@ -26,7 +28,19 @@ class App extends Component {
         <Route
           exact
           path='/signup'
-          render={(props) => <Signup  setUser={this.setUser} history={props.history} />} //{...props}
+          render={(props) => <Signup  
+            setUser={this.setUser} 
+            history={props.history} 
+            />} //{...props}
+        />
+
+        <Route
+          exact
+          path='/login'
+          render={(props) => <Login  
+            setUser={this.setUser} 
+            history={props.history} 
+            />} //{...props}
         />
        
       </div>
