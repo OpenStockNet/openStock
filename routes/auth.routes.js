@@ -57,7 +57,7 @@ router.post("/signup", (req, res, next) => {
     // });
     return User.create({ username: username, password: hashPass }).then(
         dbUser => {
-
+          //after sign up, the user is automatically logged-in
           req.login(dbUser, err => {
             if (err) {
               return res
