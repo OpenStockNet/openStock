@@ -6,25 +6,12 @@ import Navbar from "./components/Navbar";
 import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-//import { deleteApp } from './services/app'
 
 
 class App extends Component {
   state = {
     user: this.props.user
   }
-
-// componentDidMount() {
-//   const app = {
-//     _id: '5ebe949be156be2c649b9421',
-//     name: 'Brave'
-//   }
-//   deleteApp(app._id) //return a promise
-//   .then((app) => {
-//     console.log(app)
-//   })
-// }
-  
 
   //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {

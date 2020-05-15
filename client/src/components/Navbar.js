@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../services/auth"
-import { category } from "../services/category"
 
 const Navbar = () => {
   //window.location redirects user back to homepage and reload the page
