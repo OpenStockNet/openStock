@@ -1,11 +1,21 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-class ProductDetail extends React.Component {
+class ProductDetail extends Component {
+  state = {};
+
   render() {
-    return <h2>{this.props.name}</h2>;
+    const detail = this.props.alternatives.map((alternative) => {
+      return (
+        <div>
+          <h2>{this.props.name}</h2>
+          <h3>Description</h3>
+          <p>{this.props.description}</p>
+        </div>
+      );
+    });
+    return <div>{alternatives}</div>;
   }
 }
 
-ReactDOM.render(<ProductDetail name="Product name dummy" />);
-
-export default Navbar;
+export default ProductDetail;
