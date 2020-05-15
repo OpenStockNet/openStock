@@ -8,14 +8,11 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 import Categories from "./components/Categories";
+import Alternatives from "./components/Alternatives";
 
 class App extends Component {
   state = {
     user: this.props.user,
-  };
-
-  state = {
-    category: "hello",
   };
 
   //user parameter comes from handleSUbmit() where I call the function
@@ -29,23 +26,19 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <Categories name={this.state.category} />
-        <img src="https://via.placeholder.com/150" />
+        <Categories />
+        <Alternatives />
 
         <Route
           exact
           path="/signup"
-          render={(props) => (
-            <Signup setUser={this.setUser} history={props.history} />
-          )} //{...props}
+          render={(props) => <Signup setUser={this.setUser} history={props.history} />} //{...props}
         />
 
         <Route
           exact
           path="/login"
-          render={(props) => (
-            <Login setUser={this.setUser} history={props.history} />
-          )} //{...props}
+          render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
         />
       </div>
     );
