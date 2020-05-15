@@ -105,6 +105,6 @@ app.use(passport.session());
 //'/api/auth' used in React 'services auth.js'; './routes/auth.routes' is file name in Express 
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/categories', require('./routes/category.routes'))
-
+app.use('/api/apps', require('./routes/app.routes'))
 
 module.exports = app;

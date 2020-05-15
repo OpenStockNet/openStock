@@ -3,7 +3,9 @@ const Schema   = mongoose.Schema;
 
 const appSchema = new Schema({
   name: String,
-  description: String
+  description: String,
+  rate: Number,
+  //owner:
 }, {
   timestamps: true
 });

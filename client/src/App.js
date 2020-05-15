@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-
+//import { fetchAllApps } from './services/app'
 
 
 class App extends Component {
@@ -14,6 +14,12 @@ class App extends Component {
     user: this.props.user
   }
 
+// componentDidMount() {
+//   fetchAllApps() //return a promise
+//   .then((apps) => {
+//     console.log(apps)
+//   })
+// }
   
 
   //user parameter comes from handleSUbmit() where I call the function
