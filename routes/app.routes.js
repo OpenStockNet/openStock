@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const App = require("../models/App.model");
-//const Category = require("../models/Category.model");
-//const User = require("../models/User.model");
-//const ensureLogin = require('connect-ensure-login');
 
+// fetch all apps
 router.get('/', (req, res) => {
-    
     App.find()
     .then(apps => {
         res.status(200).json(apps);
@@ -14,11 +11,12 @@ router.get('/', (req, res) => {
     .catch(err => {
         res.json(err);
     })
-
 });
 
-//add a new app
-//const "app" is sent by createApp in frontend app.js as a request
+//add an app
+//const "app" is sent by createApp() in frontend app.js as a request
+//client sends http request to url '/api/apps'
+//server endpoint the matching url receives this http request 
 router.post('/', (req, res) => {
     const app = req.body
     App.create(app)
@@ -29,4 +27,20 @@ router.post('/', (req, res) => {
        res.json(err);
    })
 })
+
+//server endpoint to delete an app
+router.delete('/:id', (req, res) => {
+   
+    App.findByIdAndDelete(req.params.id)
+      .then(app => {
+        res.json({ message: 'App is deleted.' });  
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
+
+
+  
 module.exports = router;
+

@@ -25,4 +25,19 @@ const createApp = (app) => {
         });
 }
 
-export { fetchAllApps, createApp };
+//delete app
+//messageObj is the { message: 'App is deleted.' } return in res.json
+const deleteApp = (appId) => {
+    return axios
+      .delete(`/api/apps/${appId}`)
+      .then(response => {
+          const messageObj = response.data;
+          return messageObj
+      })
+      .catch(err => {
+          return err.response.data
+      })
+}
+  
+
+export { fetchAllApps, createApp, deleteApp };

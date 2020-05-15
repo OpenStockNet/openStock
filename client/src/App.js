@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-//import { createApp } from './services/app'
+//import { deleteApp } from './services/app'
 
 
 class App extends Component {
@@ -16,9 +16,10 @@ class App extends Component {
 
 // componentDidMount() {
 //   const app = {
+//     _id: '5ebe949be156be2c649b9421',
 //     name: 'Brave'
 //   }
-//   createApp(app) //return a promise
+//   deleteApp(app._id) //return a promise
 //   .then((app) => {
 //     console.log(app)
 //   })
