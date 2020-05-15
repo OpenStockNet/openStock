@@ -48,6 +48,9 @@ const dummyApps = [
   },
 ];
 
+import Categories from "./components/Categories";
+import Alternatives from "./components/Alternatives";
+
 class App extends Component {
   state = {
     user: this.props.user,
@@ -67,6 +70,8 @@ class App extends Component {
         <Navbar />
         <HomePage alternatives={this.state.alternatives} />
         {/* <ProductDetail alternatives={this.state.alternatives} /> */}
+        <Categories />
+        <Alternatives />
 
         <Route
           exact

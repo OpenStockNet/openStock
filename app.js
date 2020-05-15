@@ -102,7 +102,9 @@ app.use(passport.session());
 
 // Routes middleware goes here
 //'api/auth' + the route defined in "router.post('/login',...)" is the full path to api endpoint
+//'/api/auth' used in React 'services auth.js'; './routes/auth.routes' is file name in Express 
 app.use('/api/auth', require('./routes/auth.routes'))
-
+app.use('/api/categories', require('./routes/category.routes'))
+app.use('/api/apps', require('./routes/app.routes'))
 
 module.exports = app;
