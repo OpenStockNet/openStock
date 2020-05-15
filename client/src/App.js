@@ -8,10 +8,13 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 
 
+
 class App extends Component {
   state = {
     user: this.props.user
   }
+
+  
 
   //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {
