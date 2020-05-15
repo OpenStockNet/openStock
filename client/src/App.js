@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-//import { fetchAllApps } from './services/app'
+//import { createApp } from './services/app'
 
 
 class App extends Component {
@@ -15,9 +15,12 @@ class App extends Component {
   }
 
 // componentDidMount() {
-//   fetchAllApps() //return a promise
-//   .then((apps) => {
-//     console.log(apps)
+//   const app = {
+//     name: 'Brave'
+//   }
+//   createApp(app) //return a promise
+//   .then((app) => {
+//     console.log(app)
 //   })
 // }
   
