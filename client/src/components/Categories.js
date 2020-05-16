@@ -2,17 +2,6 @@ import React, { Component } from "react";
 import Category from "./Category";
 
 class Categories extends Component {
-  state = {
-    user: this.props.user,
-  };
-
-  //user parameter comes from handleSUbmit() where I call the function
-  setUser = (user) => {
-    this.setState({
-      user: user,
-    });
-  };
-
   render() {
     return (
       <div className="catNav">

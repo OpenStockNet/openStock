@@ -1,60 +1,18 @@
 import React, { Fragment, Component } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-
-import { Route, Redirect } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage";
-/* import ProductDetail from "./components/ProductDetail.js";
- */
-const dummyApps = [
-  {
-    _id: 1,
-    name: "AppName 1",
-    category: "Browser",
-    description: "This is a description that will be longer for sure 1.",
-  },
-  {
-    _id: 2,
-    name: "AppName 2",
-    category: "Search Engine",
-    description: "This is a description that will be longer for sure 2.",
-  },
-  {
-    _id: 3,
-    name: "AppName 3",
-    category: "Messenger",
-    description: "This is a description that will be longer for sure 3.",
-  },
-  {
-    _id: 4,
-    name: "AppName 4",
-    category: "E-Mail Provider",
-    description: "This is a description that will be longer for sure 4.",
-  },
-  {
-    _id: 5,
-    name: "AppName 5",
-    category: "Online Streaming",
-    description: "This is a description that will be longer for sure 5.",
-  },
-  {
-    _id: 6,
-    name: "AppName 6",
-    category: "Navigation",
-    description: "This is a description that will be longer for sure 6.",
-  },
-];
-
-import Categories from "./components/Categories";
-import Alternatives from "./components/Alternatives";
+import AlternativesPage from "./components/AlternativesPage";
+import AppDetail from "./components/AppDetail";
 
 class App extends Component {
   state = {
     user: this.props.user,
-    alternatives: dummyApps,
+    /* appsData: dummyApps, */
   };
 
   //user parameter comes from handleSUbmit() where I call the function
@@ -68,22 +26,23 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <HomePage alternatives={this.state.alternatives} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/alternatives" component={AlternativesPage} />
+          <Route exact path="/:category/:name" component={AppDetail} />
+          <Route
+            exact
+            path="/signup"
+            render={(props) => <Signup setUser={this.setUser} history={props.history} />} //{...props}
+          />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
+          />
+        </Switch>
+        {/* <HomePage alternatives={this.state.alternatives} /> */}
         {/* <ProductDetail alternatives={this.state.alternatives} /> */}
-        <Categories />
-        <Alternatives />
-
-        <Route
-          exact
-          path="/signup"
-          render={(props) => <Signup setUser={this.setUser} history={props.history} />} //{...props}
-        />
-
-        <Route
-          exact
-          path="/login"
-          render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
-        />
       </div>
     );
   }

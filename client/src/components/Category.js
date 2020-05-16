@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Category extends Component {
   state = {};
 
   render() {
     return (
-      <div>
+      <Link>
         <img src={this.props.icon} />
-        <a>{this.props.cat}</a>
-      </div>
+        <p style={{ display: "inline-block" }}>{this.props.cat}</p>
+      </Link>
     );
   }
 }

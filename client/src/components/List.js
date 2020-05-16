@@ -1,6 +1,39 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-class List extends Component {
+const List = (props) => {
+  return (
+    <div>
+      {props.apps.map((app) => {
+        return (
+          <div key={app._id}>
+            <Link to={`/${app.category}/${app.name}`}>{app.name}</Link>
+            <p>{app.category}</p>
+          </div>
+        );
+      })}
+      <h1>Hola</h1>
+    </div>
+  );
+};
+
+/* class List extends Component {
+  render() {
+    const data = this.props.apps.map((app) => {
+      return (
+        <div key={this.app._id}>
+          <Link to={`/${app.name}`}>{app.name}</Link>
+          <p>{app.category}</p>
+        </div>
+      );
+    });
+    return <div>{data}</div>;
+  }
+} */
+
+export default List;
+
+/* class List extends Component {
   state = {};
 
   render() {
@@ -16,4 +49,4 @@ class List extends Component {
   }
 }
 
-export default List;
+export default List; */

@@ -1,23 +1,21 @@
-import dummyData from "./dummyData.json";
-
 import React, { Component } from "react";
 import Categories from "./Categories";
 import Alternatives from "./Alternatives";
-import List from "./List";
+/* import List from "./List"; */
 
-class HomePage extends Component {
+class AlternativesPage extends Component {
   render() {
     return (
       <div>
-        <h2>Find the right software for you and protect your privacy</h2>
-        <Categories />
+        <h2>Find the alternative to the mainstream app for you</h2>
+        <Alternatives />
 
         {/* {this.props.alternatives.length === 0 && <h4>No alternatives here</h4>} */}
 
-        <List apps={dummyData} />
+        {/* <List alternatives={this.props.alternatives} /> */}
       </div>
     );
   }
 }
 
-export default HomePage;
+export default AlternativesPage;
