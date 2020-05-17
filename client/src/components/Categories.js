@@ -1,18 +1,19 @@
+import dummyCategories from "./dummyCategories.json";
+
 import React, { Component } from "react";
-import Category from "./Category";
+import { Link } from "react-router-dom";
 
 class Categories extends Component {
   render() {
-    return (
-      <div className="catNav">
-        <Category cat="Browser" icon="https://via.placeholder.com/40" />
-        <Category cat="Search Engine" icon="https://via.placeholder.com/40" />
-        <Category cat="Messenger" icon="https://via.placeholder.com/40" />
-        <Category cat="E-mail Provider" icon="https://via.placeholder.com/40" />
-        <Category cat="Online Streaming" icon="https://via.placeholder.com/40" />
-        <Category cat="Map Navigation" icon="https://via.placeholder.com/40" />
-      </div>
-    );
+    const appCategories = dummyCategories.map((cat) => {
+      return (
+        <Link key={cat._id}>
+          <img src={cat.icon} />
+          <p style={{ display: "inline-block" }}>{cat.name}</p>
+        </Link>
+      );
+    });
+    return <div>{appCategories}</div>;
   }
 }
 

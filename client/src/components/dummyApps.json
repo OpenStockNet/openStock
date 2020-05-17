@@ -1,36 +1,42 @@
 [
   {
     "_id": 1,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 1",
     "category": "Browser",
     "description": "This is a description that will be longer for sure 1."
   },
   {
     "_id": 2,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 2",
     "category": "Search Engine",
     "description": "This is a description that will be longer for sure 2."
   },
   {
     "_id": 3,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 3",
     "category": "Messenger",
     "description": "This is a description that will be longer for sure 3."
   },
   {
     "_id": 4,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 4",
     "category": "E-Mail Provider",
     "description": "This is a description that will be longer for sure 4."
   },
   {
     "_id": 5,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 5",
     "category": "Online Streaming",
     "description": "This is a description that will be longer for sure 5."
   },
   {
     "_id": 6,
+    "icon": "https://via.placeholder.com/40",
     "name": "AppName 6",
     "category": "Navigation",
     "description": "This is a description that will be longer for sure 6."

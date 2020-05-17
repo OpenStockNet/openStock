@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "name": "Browser",
+    "icon": "https://via.placeholder.com/40"
+  },
+  {
+    "_id": 2,
+    "name": "Search Engine",
+    "icon": "https://via.placeholder.com/40"
+  },
+  {
+    "_id": 3,
+    "name": "Messenger",
+    "icon": "https://via.placeholder.com/40"
+  },
+  {
+    "_id": 4,
+    "name": "E-Mail Provider",
+    "icon": "https://via.placeholder.com/40"
+  },
+  {
+    "_id": 5,
+    "name": "Online Streaming",
+    "icon": "https://via.placeholder.com/40"
+  },
+  {
+    "_id": 6,
+    "name": "Navigation",
+    "icon": "https://via.placeholder.com/40"
+  }
+]
