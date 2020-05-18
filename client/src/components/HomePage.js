@@ -8,12 +8,7 @@ import Categories from "./Categories";
 import List from "./List";
 
 class HomePage extends Component {
-  // state = {
-  //   category: dummyCategories,
-  //   appsList: dummyApps,
-  //   appsFiltered: dummyApps,
-  // };
-
+  
   state = {
     categories: [],
     appsList: [],
@@ -36,11 +31,6 @@ class HomePage extends Component {
     })
   }
 
-  // setCategory = (category) => {
-  //   this.setState({
-  //     category: category,
-  //   });
-  // };
 
   setApps = (newApps) => {
     this.setState({

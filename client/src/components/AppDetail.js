@@ -25,13 +25,7 @@ class AppDetail extends Component {
   }
 
   render() {
-    // const appName = this.props.match.params.name;
-    // console.log(appName);
-    // const appInfo = dummyApps.find((app) => {
-    //   return app.name === appName;
-    // });
-    // console.log(appInfo);
-
+   
     return (
       <div>
         <h2>{this.state.app.name}</h2>
