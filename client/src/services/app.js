@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// each of function is API call
+//pairing with server>routes/app.routes
+
 const fetchAllApps = () => {
   return axios
     .get('/api/apps')
@@ -12,10 +15,17 @@ const fetchAllApps = () => {
     });
 }
 
+
 //post 2nd parameter will be sent as the body in http request
-const createApp = (app) => {
-    return axios
-        .post('/api/apps', app)
+//sending out { name, description } as a body in HTTP request to '/api/apps'
+const createApp = (name, description) => {
+  // const app = {
+  //   name: name,
+  //   description: description
+  // }
+  const app = { name, description }
+  return axios 
+        .post('/api/apps', app )
         .then(response => {
             const createdApp = response.data
             return createdApp;

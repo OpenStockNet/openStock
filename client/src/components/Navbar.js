@@ -17,9 +17,12 @@ const Navbar = () => {
         {/* <Link to="/alternatives">Alternatives to</Link> */}
       </div>
       <div>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">SignUp</Link>
+        <Link to="/login">Log in</Link>
+        <Link to="/signup">Sign Up</Link>
         <button onClick={handleLogOut}>Logout</button>
+      </div>
+      <div>
+        <Link to="/apps/new">create an app</Link>
       </div>
     </nav>
   );

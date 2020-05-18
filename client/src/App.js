@@ -8,6 +8,8 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import AlternativesPage from "./components/AlternativesPage";
 import AppDetail from "./components/AppDetail";
+import NewApp from "./components/NewApp";
+
 
 class App extends Component {
   state = {
@@ -39,6 +41,11 @@ class App extends Component {
             exact
             path="/login"
             render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
+          />
+          <Route
+            exact
+            path="/apps/new"
+            render={(props) => <NewApp history={props.history} />} //{...props}
           />
         </Switch>
       </div>
