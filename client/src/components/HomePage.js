@@ -15,7 +15,7 @@ class HomePage extends Component {
   // };
 
   state = {
-    category: [],
+    categories: [],
     appsList: [],
     appsFiltered: [],
   }
@@ -24,7 +24,7 @@ class HomePage extends Component {
     fetchAllCategories()
     .then ((categories) => {
       this.setState({ 
-        category: categories
+        categories: categories
       })
     });
     fetchAllApps()
@@ -52,7 +52,7 @@ class HomePage extends Component {
     return (
       <div>
         <h2>Find the right software for you and protect your privacy</h2>
-        <Categories setApps={this.setApps} appsList={this.state.appsList} category={this.state.category} />
+        <Categories setApps={this.setApps} appsList={this.state.appsList} category={this.state.categories} />
         <List appsFiltered={this.state.appsFiltered} />
       </div>
     );
