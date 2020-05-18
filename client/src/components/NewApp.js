@@ -41,7 +41,6 @@ class NewApp extends Component {
           if (responseData.message) {
             alert(responseData.message)
           } else {
-            
             this.props.history.push('/');
           }
         });
