@@ -9,8 +9,8 @@ const signup = (username, password) => {
       const user = response.data
       return user;
     })
-    .catch(err => {
-      return err.response.data;
+    .catch(error => {
+      throw new Error(error.response.data);
     });
 }
 
@@ -21,8 +21,8 @@ const login = (username, password) => {
       const loggedInUser = response.data
       return loggedInUser;
     })
-    .catch(err => {
-      return err.response.data;
+    .catch(error => {
+      throw new Error(error.response.data);
     });
 };
 
@@ -32,8 +32,8 @@ const logout = () => {
     .then(response => {
       return response.data;
     })
-    .catch(err => {
-      return err.response.data;
+    .catch(error => {
+      throw new Error(error.response.data);
     });
 };
 
