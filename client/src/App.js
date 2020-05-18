@@ -31,7 +31,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
-          <Route exact path="/:category/:name" component={AppDetail} />
           <Route
             exact
             path="/signup"
@@ -47,6 +46,7 @@ class App extends Component {
             path="/apps/new"
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
+          <Route exact path="/:category/:name" component={AppDetail} />
         </Switch>
       </div>
     );
