@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { createApp } from '../services/app';
+import { fetchAllCategories } from '../services/category'
 
 class NewApp extends Component {
     state = {
         name:"",
         description: "",
-        //category:""
+        category:"",
+        categories: [],
+    }
+
+    //we want to display the all categories as soon as component is rendered,
+    //we pass categories from API call fetchAllCategorie, and set it into state.
+    componentDidMount() {
+      fetchAllCategories()
+      .then ((categories) => {
+        this.setState({ 
+          categories: categories
+        })
+      });
     }
 
     handleChange = (event) => {
@@ -21,20 +34,27 @@ class NewApp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-    
-        const { name, description } = this.state;
+
+        const { name, description, category } = this.state;
         //responseData is data we got from services/app.js http requests
-        createApp(name, description).then(responseData => {
+        createApp(name, description, category).then(responseData => {
           if (responseData.message) {
             alert(responseData.message)
           } else {
+            
             this.props.history.push('/');
           }
         });
       };
-
+    
+    //everytime we setState, react renders this component, so categorylist is updated
     render() {
-        return (
+        const categoryOptions = this.state.categories.map((category) => {
+          return (
+           <option value={category._id}>{category.name}</option>
+          )
+        })
+      return (
           <div>
             <h2>create an app</h2>
             <form onSubmit={this.handleSubmit}>
@@ -57,6 +77,18 @@ class NewApp extends Component {
                   onChange={this.handleChange}
                   id='description'
                 />
+              </div>
+              <div>
+                <label>Choose a category:</label>
+                <select 
+                  value={this.state.category} 
+                  name="category" 
+                  onChange={this.handleChange}
+                  id="category">
+                  
+                  {categoryOptions}
+                  
+                </select> 
               </div>
               <button type='submit'>create</button>
             </form>
