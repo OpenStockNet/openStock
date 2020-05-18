@@ -11,7 +11,7 @@ const fetchAllApps = () => {
       return apps;
     })
     .catch(err => {
-      return err.response.data;
+      throw new Error(err.response.data);
     });
 }
 
@@ -30,8 +30,8 @@ const createApp = (name, description, category) => {
             const createdApp = response.data
             return createdApp;
          })
-        .catch(err => {
-            return err.response.data;
+        .catch(error => {
+          throw new Error(error.response.data);
         });
 }
 
@@ -44,8 +44,8 @@ const deleteApp = (appId) => {
           const messageObj = response.data;
           return messageObj
       })
-      .catch(err => {
-          return err.response.data
+      .catch(error => {
+        throw new Error(error.response.data);
       })
 }
   

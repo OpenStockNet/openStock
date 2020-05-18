@@ -10,8 +10,8 @@ const fetchAllCategories = () => {
       const categories = response.data
       return categories;
     })
-    .catch(err => {
-      return err.response.data;
+    .catch(error => {
+      throw new Error(error.response.data);
     });
 }
 
