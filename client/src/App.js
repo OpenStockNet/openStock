@@ -8,6 +8,8 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import AlternativesPage from "./components/AlternativesPage";
 import AppDetail from "./components/AppDetail";
+import NewApp from "./components/NewApp";
+
 
 class App extends Component {
   state = {
@@ -29,7 +31,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
-          <Route exact path="/:category/:name" component={AppDetail} />
           <Route
             exact
             path="/signup"
@@ -40,6 +41,12 @@ class App extends Component {
             path="/login"
             render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
           />
+          <Route
+            exact
+            path="/apps/new"
+            render={(props) => <NewApp history={props.history} />} //{...props}
+          />
+          <Route exact path="/:category/:name" component={AppDetail} />
         </Switch>
       </div>
     );
