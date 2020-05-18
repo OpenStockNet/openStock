@@ -46,7 +46,7 @@ class App extends Component {
             path="/apps/new"
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
-          <Route exact path="/:category/:name" component={AppDetail} />
+          <Route exact path="/apps/:id" component={AppDetail} />
         </Switch>
       </div>
     );

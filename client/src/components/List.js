@@ -8,8 +8,9 @@ class List extends Component {
     const apps = this.props.appsFiltered.map((app) => {
       return (
         <div key={app._id}>
-          <Link to={`/${app.category}/${app.name}`}>{app.name}</Link>
-          <p>{app.category}</p>
+          <Link to={`/apps/${app._id}`}>{app.name}</Link>
+          {/* this is currently displaying category ID because of the model design, display cat name later */}
+          {/* <p>{app.category}</p> */} 
         </div>
       );
     });
