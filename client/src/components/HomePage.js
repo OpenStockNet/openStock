@@ -3,18 +3,33 @@ import dummyCategories from "./dummyCategories.json";
 
 import React, { Component } from "react";
 import Categories from "./Categories";
-import Alternatives from "./Alternatives";
 import List from "./List";
 
 class HomePage extends Component {
-  state = {};
+  state = {
+    category: dummyCategories,
+    appsList: dummyApps,
+    appsFiltered: dummyApps,
+  };
+
+  setCategory = (category) => {
+    this.setState({
+      category: category,
+    });
+  };
+
+  setApps = (newApps) => {
+    this.setState({
+      appsFiltered: newApps,
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Find the right software for you and protect your privacy</h2>
-        <Categories />
-
-        <List />
+        <Categories setApps={this.setApps} appsList={this.state.appsList} category={this.state.category} />
+        <List appsFiltered={this.state.appsFiltered} />
       </div>
     );
   }

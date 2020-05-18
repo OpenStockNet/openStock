@@ -1,16 +1,18 @@
-import dummyCategories from "./dummyCategories.json";
-
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class Categories extends Component {
+  handleCategory = (category) => {
+    const newAppList = this.props.appsList.filter((app) => app.category === category);
+    this.props.setApps(newAppList);
+  };
+
   render() {
-    const appCategories = dummyCategories.map((cat) => {
+    const appCategories = this.props.category.map((cat) => {
       return (
-        <Link key={cat._id}>
+        <button key={cat._id} onClick={() => this.handleCategory(cat.name)}>
           <img src={cat.icon} />
           <p style={{ display: "inline-block" }}>{cat.name}</p>
-        </Link>
+        </button>
       );
     });
     return <div>{appCategories}</div>;

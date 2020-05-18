@@ -12,7 +12,6 @@ import AppDetail from "./components/AppDetail";
 class App extends Component {
   state = {
     user: this.props.user,
-    /* appsData: dummyApps, */
   };
 
   //user parameter comes from handleSUbmit() where I call the function
@@ -26,9 +25,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/alternatives" component={AlternativesPage} />
+          {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
           <Route exact path="/:category/:name" component={AppDetail} />
           <Route
             exact
@@ -41,32 +41,9 @@ class App extends Component {
             render={(props) => <Login setUser={this.setUser} history={props.history} />} //{...props}
           />
         </Switch>
-        {/* <HomePage alternatives={this.state.alternatives} /> */}
-        {/* <ProductDetail alternatives={this.state.alternatives} /> */}
       </div>
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Navbar />
-
-//       {/* <Route exact path="/" component={} />
-//       <Route exact path="/browse" component={} />
-//       <Route exact path="/alternatives" component={} /> */}
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
