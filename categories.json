@@ -1,31 +1,43 @@
 [
   {
-    "_id": 1,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a3388"
+    },
     "name": "Browser",
     "icon": "/images/categories/iconBrowser.svg"
   },
   {
-    "_id": 2,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a3389"
+    },
     "name": "Search Engine",
     "icon": "/images/categories/iconSearchEngine.svg"
   },
   {
-    "_id": 3,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a338a"
+    },
     "name": "Messenger",
     "icon": "/images/categories/iconMessenger.svg"
   },
   {
-    "_id": 4,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a338b"
+    },
     "name": "E-Mail Provider",
     "icon": "/images/categories/iconEMail.svg"
   },
   {
-    "_id": 5,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a338c"
+    },
     "name": "Online Streaming",
     "icon": "/images/categories/iconOnlineStreaming.svg"
   },
   {
-    "_id": 6,
+    "_id": {
+      "$oid": "5ec3f4b4acf2b8e9dd1a338d"
+    },
     "name": "Navigation",
     "icon": "/images/categories/iconNavigation.svg"
   }
