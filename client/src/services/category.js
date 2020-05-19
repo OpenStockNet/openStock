@@ -5,7 +5,7 @@ import axios from 'axios';
 // .get() returns a promise
 const fetchAllCategories = () => {
   return axios
-    .get('/api/categories')
+    .get(`${process.env.REACT_APP_API_URL}/api/categories`)
     .then(response => {
       const categories = response.data
       return categories;

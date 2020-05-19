@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const fetchAllApps = () => {
   return axios
-    .get('/api/apps')
+    .get(`${process.env.REACT_APP_API_URL}/api/apps`)
     .then(response => {
       const apps = response.data
       return apps;
@@ -25,7 +25,7 @@ const createApp = (name, description, category) => {
   // }
   const app = { name, description, category }
   return axios 
-        .post('/api/apps', app )
+        .post(`${process.env.REACT_APP_API_URL}/api/apps`, app )
         .then(response => {
             const createdApp = response.data
             return createdApp;
@@ -39,7 +39,7 @@ const createApp = (name, description, category) => {
 //messageObj is the { message: 'App is deleted.' } return in res.json
 const deleteApp = (appId) => {
     return axios
-      .delete(`/api/apps/${appId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
       .then(response => {
           const messageObj = response.data;
           return messageObj
