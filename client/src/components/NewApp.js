@@ -15,7 +15,8 @@ class NewApp extends Component {
     componentDidMount() {
       fetchAllCategories()
       .then ((categories) => {
-        this.setState({ 
+        this.setState({
+          category: categories[0]._id,
           categories: categories
         })
       });
