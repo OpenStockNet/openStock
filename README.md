@@ -62,11 +62,6 @@ MONGODB_URI=mongodb://localhost/openstock
 0. Open new terminal window and go to openStock repo folder
 1. `git checkout master`
 2. `git pull`
-3. `git checkout -b new-heroku-branch`
-3. `cd client`
-4. `npm run build`
-5. `git add -f build`
-6. `git commit -m 'frontend build'`
-7. `git push -f heroku new-heroku-branch:master`
+3. `git push heroku master`
 
 Before you make new code changes, start again with step 1 from the "Make Code Changes" section above.
