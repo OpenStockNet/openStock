@@ -45,7 +45,7 @@ class Signup extends Component {
             <h2>Signup</h2>
             <form onSubmit={this.handleSubmit}>
               <div>
-                <label htmlFor='username'>User name: </label>
+                <label htmlFor='username'>User name </label>
                 <input
                   type='text'
                   name='username'
@@ -55,7 +55,7 @@ class Signup extends Component {
                 />
               </div>
               <div>
-                <label htmlFor='password'>Password: </label>
+                <label htmlFor='password'>Password </label>
                 <input
                   type='password'
                   name='password'
@@ -64,7 +64,7 @@ class Signup extends Component {
                   id='password'
                 />
               </div>
-              <button type='submit'>Signup</button>
+              <button type='submit'>Sign up</button>
             </form>
           </div>
         );

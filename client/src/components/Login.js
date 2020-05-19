@@ -42,7 +42,7 @@ class Login extends Component {
             <h2>Log in</h2>
             <form onSubmit={this.handleSubmit}>
               <div>
-                <label htmlFor='username'>User name: </label>
+                <label htmlFor='username'>User name </label>
                 <input
                   type='text'
                   name='username'
@@ -52,7 +52,7 @@ class Login extends Component {
                 />
               </div>
               <div>
-                <label htmlFor='password'>Password: </label>
+                <label htmlFor='password'>Password </label>
                 <input
                   type='password'
                   name='password'
