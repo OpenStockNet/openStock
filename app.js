@@ -18,7 +18,7 @@ const flash = require("connect-flash");
 
 
 mongoose
-  .connect('mongodb://localhost/openstock', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -45,8 +45,7 @@ app.use(require('node-sass-middleware')({
 }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
@@ -106,5 +105,11 @@ app.use(passport.session());
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/categories', require('./routes/category.routes'))
 app.use('/api/apps', require('./routes/app.routes'))
+
+//add production index.html (for deployment)
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;
