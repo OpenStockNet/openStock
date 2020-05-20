@@ -4,6 +4,7 @@ const Category = require("./Category.model");
 
 const appSchema = new Schema(
   {
+    logo: String,
     name: String,
     description: String,
     category: {

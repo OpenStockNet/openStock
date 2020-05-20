@@ -10,7 +10,7 @@ class Categories extends Component {
     const appCategories = this.props.category.map((cat) => {
       return (
         <button key={cat._id} onClick={() => this.handleCategory(cat._id)}>
-          <img src={cat.icon} />
+          <img src="../images/categories/iconBrowser.svg" />
           <p style={{ display: "inline-block" }}>{cat.name}</p>
         </button>
       );
