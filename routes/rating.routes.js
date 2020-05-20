@@ -32,4 +32,24 @@ router.get('/average/:appId', (req, res) => {
     }) 
 });
 
+//add endpoint router.post to accept HTTP request from rating.js
+//this endpoint passes value data to DB: Rating.create() does it
+//make sure object key matches DB schema key
+router.post('/', (req, res) => {
+    const appRating = req.body.value;
+    const appId = req.body.app;
+    console.log(req.body)
+    Rating.create({
+        value: appRating, 
+        app: appId
+    })
+    //addedRating is reuslt of create method = "value: appRating, app:appId"
+    .then(addedRating => {
+        res.status(200).json(addedRating);
+    })
+   .catch(err => {
+       res.json(err);
+   })
+})
+
 module.exports = router;

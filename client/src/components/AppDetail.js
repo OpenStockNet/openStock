@@ -1,6 +1,6 @@
 import dummyApps from "./dummyApps.json";
 import { fetchAllApps } from '../services/app'
-import { getAverageRating } from '../services/rating'
+import { getAverageRating, rateApp } from '../services/rating'
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
@@ -10,7 +10,7 @@ import List from "./List";
 class AppDetail extends Component {
   state = {
     app: {},
-    rating: 0,
+    avrRating: 0,
   };
 
   componentDidMount() {
@@ -30,19 +30,40 @@ class AppDetail extends Component {
       console.log("Log the app object:", this.state.app);
       console.log("Log the app category name:", this.state.app.category.name);
     });
-
     //here pass param appId to API call in rating.js
     //calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
     .then((averageRating) => {
       this.setState({
-        rating: averageRating
+        avrRating: averageRating
       })
     })
   }
   
+  //.value is value attribute on button elem
+  submitRating = (event) => {
+    const ratingValue = event.target.value
+    const ratingAppId = this.props.match.params.id;
+    rateApp(ratingValue, ratingAppId) 
+  }
 
   render() {
+      const ratingBtns =  
+        (
+          <div>
+           
+           <button
+           name="name"
+           value={1}
+           onClick={this.submitRating}
+           >
+             1 star
+           </button>
+          
+          </div>
+        )
+      
+
     return (
       <div>
         <div>
@@ -63,7 +84,9 @@ class AppDetail extends Component {
           <p></p>
         </div>
         <h3>Rating</h3>
-        <p>{this.state.rating}</p>
+        <p>{this.state.avrRating}</p> 
+        <h3>Rate this app</h3>
+        <div>{ratingBtns}</div>
       </div>
     );
   }
