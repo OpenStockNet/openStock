@@ -6,7 +6,6 @@ class List extends Component {
 
   render() {
     const apps = this.props.appsFiltered.map((app) => {
-      console.log(app);
       return (
         <div key={app._id}>
           <Link to={`/apps/${app._id}`}>
