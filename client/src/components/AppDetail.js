@@ -49,50 +49,42 @@ class AppDetail extends Component {
   }
 
   render() {
-      const ratingBtns =  
-        (
-          <div>
-           
-           <button
-           name="name"
-           value={1}
-           onClick={this.submitRating}
-           >
-             &#x272d;  
-           </button>
-           <button
-           name="name"
-           value={2}
-           onClick={this.submitRating}
-           >
-            &#x272d; &#x272d;  
-           </button>
-           <button
-           name="name"
-           value={3}
-           onClick={this.submitRating}
-           >
-              &#x272d; &#x272d;  &#x272d;   
-           </button>
-           
-           <button
-           name="name"
-           value={4}
-           onClick={this.submitRating}
-           >
-              &#x272d; &#x272d;  &#x272d;  &#x272d;
-           </button>
-           <button
-           name="name"
-           value={5}
-           onClick={this.submitRating}
-           >
-              &#x272d; &#x272d;  &#x272d;  &#x272d;  &#x272d;
-           </button>
-          
-          </div>
-        )
+    const ratingBtns = (
+      <div>
+        
+        <button
+          value={1}
+          onClick={this.submitRating}
+        >
+          &#x272d;  
+        </button>
+        <button
+          value={2}
+          onClick={this.submitRating}
+        >
+          &#x272d; &#x272d;  
+        </button>
+        <button
+          value={3}
+          onClick={this.submitRating}
+        >
+          &#x272d; &#x272d; &#x272d;   
+        </button>
+        <button
+          value={4}
+          onClick={this.submitRating}
+        >
+          &#x272d; &#x272d; &#x272d; &#x272d;
+        </button>
+        <button
+          value={5}
+          onClick={this.submitRating}
+        >
+          &#x272d; &#x272d; &#x272d; &#x272d; &#x272d;
+        </button>
       
+      </div>
+    );
 
     return (
       <div>
