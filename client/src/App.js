@@ -46,6 +46,7 @@ class App extends Component {
             path="/apps/new"
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
+          {/* React router takes what comes after /apps/ and then take it into our param object */}
           <Route exact path="/apps/:id" component={AppDetail} />
         </Switch>
       </div>

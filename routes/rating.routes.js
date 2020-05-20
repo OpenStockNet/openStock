@@ -6,9 +6,8 @@ const Rating = require("../models/Rating.model");
 //add up value and divided by number of Ratings
 //goal: calcuate average rating of an app
 
-//pairing with clien>services/rating.js
+//get url shall pair with clien>services/rating.js!!!
 
-// fetch all apps server endpoint
 // find() is mongoose method; req.query._id is Express 
 // check the server endpoints with insomnia
 // result of find() is array of ratings
@@ -19,7 +18,7 @@ router.get('/average/:appId', (req, res) => {
     .then(ratings => {
         const sum = ratings.reduce((acc, curRating) =>{
             return (acc + curRating.value)
-        })
+        }, 0)
         // let sum = 0;
         // for (let i = 0; i < ratings.length; i ++) {
         //     sum = sum + ratings[i].value

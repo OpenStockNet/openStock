@@ -1,6 +1,6 @@
 import dummyApps from "./dummyApps.json";
-import { fetchAllCategories } from "../services/category";
-import { fetchAllApps } from "../services/app";
+import { fetchAllApps } from '../services/app'
+import { getAverageRating } from '../services/rating'
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
@@ -10,16 +10,19 @@ import List from "./List";
 class AppDetail extends Component {
   state = {
     app: {},
+    rating: 0,
   };
 
   componentDidMount() {
     //instead of fetching all apps, would be better fetch only one app
     //if have time,create an endpoint for it
-
-    fetchAllApps().then((apps) => {
+    const appId = this.props.match.params.id;
+    
+    fetchAllApps()
+    .then((apps) => {
       const app = apps.find((app) => {
-        return app._id === this.props.match.params.id;
-      });
+        return app._id === appId;
+      })
 
       this.setState({
         app: app,
@@ -27,7 +30,17 @@ class AppDetail extends Component {
       console.log("Log the app object:", this.state.app);
       console.log("Log the app category name:", this.state.app.category.name);
     });
+
+    //here pass param appId to API call in rating.js
+    //calls function getAverageRating() with appId param from rating.js
+    getAverageRating(appId)
+    .then((averageRating) => {
+      this.setState({
+        rating: averageRating
+      })
+    })
   }
+  
 
   render() {
     return (
@@ -49,6 +62,8 @@ class AppDetail extends Component {
           <p>{this.state.app.device}</p>
           <p></p>
         </div>
+        <h3>Rating</h3>
+        <p>{this.state.rating}</p>
       </div>
     );
   }
