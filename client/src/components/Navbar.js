@@ -12,17 +12,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div>
-        <Link to="/">Home</Link>
+      <div id="logoHome">
+        <Link to="/">
+          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" />
+        </Link>
         {/* <Link to="/alternatives">Alternatives to</Link> */}
       </div>
       <div>
+        <Link to="/apps/new">create an app</Link>
         <Link to="/login">Log in</Link>
         <Link to="/signup">Sign Up</Link>
         <button onClick={handleLogOut}>Logout</button>
-      </div>
-      <div>
-        <Link to="/apps/new">create an app</Link>
       </div>
     </nav>
   );

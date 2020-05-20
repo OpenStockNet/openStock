@@ -37,11 +37,11 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <main className="">
         <h2>Find the right software for you and protect your privacy</h2>
         <Categories setApps={this.setApps} appsList={this.state.appsList} category={this.state.categories} />
         <List appsFiltered={this.state.appsFiltered} />
-      </div>
+      </main>
     );
   }
 }

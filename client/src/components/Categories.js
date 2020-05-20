@@ -9,13 +9,13 @@ class Categories extends Component {
   render() {
     const appCategories = this.props.category.map((cat) => {
       return (
-        <button key={cat._id} onClick={() => this.handleCategory(cat._id)}>
+        <button key={cat._id} onClick={() => this.handleCategory(cat._id)} className="btnCategories">
           <img src={cat.icon} />
           <p style={{ display: "inline-block" }}>{cat.name}</p>
         </button>
       );
     });
-    return <div>{appCategories}</div>;
+    return <section id="catContainer">{appCategories}</section>;
   }
 }
 

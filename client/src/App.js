@@ -10,7 +10,6 @@ import AlternativesPage from "./components/AlternativesPage";
 import AppDetail from "./components/AppDetail";
 import NewApp from "./components/NewApp";
 
-
 class App extends Component {
   state = {
     user: this.props.user,
@@ -26,8 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
-
+        <header>
+          <Navbar />
+        </header>
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
