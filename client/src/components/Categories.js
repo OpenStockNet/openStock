@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Categories extends Component {
   handleCategory = (category) => {
-    const newAppList = this.props.appsList.filter((app) => app.category === category);
+    const newAppList = this.props.appsList.filter((app) => app.category._id === category);
     this.props.setApps(newAppList);
   };
 

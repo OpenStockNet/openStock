@@ -6,11 +6,18 @@ class List extends Component {
 
   render() {
     const apps = this.props.appsFiltered.map((app) => {
+      console.log(app);
       return (
         <div key={app._id}>
-          <Link to={`/apps/${app._id}`}>{app.name}</Link>
-          {/* this is currently displaying category ID because of the model design, display cat name later */}
-          {/* <p>{app.category}</p> */} 
+          <Link to={`/apps/${app._id}`}>
+            <img src={app.logo} />
+          </Link>
+          <div>
+            <Link to={`/apps/${app._id}`}>
+              <h2>{app.name}</h2>
+            </Link>
+            <p>{app.category.name}</p>
+          </div>
         </div>
       );
     });
