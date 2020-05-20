@@ -44,6 +44,7 @@ class AppDetail extends Component {
   submitRating = (event) => {
     const ratingValue = event.target.value
     const ratingAppId = this.props.match.params.id;
+    
     rateApp(ratingValue, ratingAppId) 
   }
 
@@ -57,7 +58,36 @@ class AppDetail extends Component {
            value={1}
            onClick={this.submitRating}
            >
-             1 star
+             &#x272d;  
+           </button>
+           <button
+           name="name"
+           value={2}
+           onClick={this.submitRating}
+           >
+            &#x272d; &#x272d;  
+           </button>
+           <button
+           name="name"
+           value={3}
+           onClick={this.submitRating}
+           >
+              &#x272d; &#x272d;  &#x272d;   
+           </button>
+           
+           <button
+           name="name"
+           value={4}
+           onClick={this.submitRating}
+           >
+              &#x272d; &#x272d;  &#x272d;  &#x272d;
+           </button>
+           <button
+           name="name"
+           value={5}
+           onClick={this.submitRating}
+           >
+              &#x272d; &#x272d;  &#x272d;  &#x272d;  &#x272d;
            </button>
           
           </div>
@@ -85,6 +115,7 @@ class AppDetail extends Component {
         </div>
         <h3>Rating</h3>
         <p>{this.state.avrRating}</p> 
+        <img class="star" src="../iconfinder_full.png" width="30px" />
         <h3>Rate this app</h3>
         <div>{ratingBtns}</div>
       </div>
