@@ -119,7 +119,7 @@ class AppDetail extends Component {
 
         <h3>Rating</h3>
         <p>
-          {this.state.avrRating}
+          {this.state.avrRating || 'Not yet rated'}
           <img className="star" src="../iconfinder_full.png" width="20px" />
         </p>
         <div>{this.props.user ? ratingBtns : null}</div>

@@ -24,7 +24,7 @@ router.get('/average/:appId', (req, res) => {
         // for (let i = 0; i < ratings.length; i ++) {
         //     sum = sum + ratings[i].value
         // }
-        const averageRating = (sum / ratings.length).toFixed(1)
+        const averageRating = Number.parseInt((sum / ratings.length).toFixed(1));
             
         res.status(200).json(averageRating);
     })
