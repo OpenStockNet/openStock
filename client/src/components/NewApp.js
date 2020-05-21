@@ -62,9 +62,9 @@ class NewApp extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { name, description, category, device, website } = this.state;
+        const { name, description, category, device, website, logo } = this.state;
         //responseData is data we got from services/app.js http requests
-        createApp(name, description, category, device, website)
+        createApp(name, description, category, device, website, logo)
         .then((app) => {
           this.props.history.push(`/apps/${app._id}`);
         })
@@ -101,6 +101,16 @@ class NewApp extends Component {
                   name='website'
                   id='website'
                   value={this.state.website}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor='logo'>Logo </label>
+                <input
+                  type='text'
+                  name='logo'
+                  id='logo'
+                  value={this.state.logo}
                   onChange={this.handleChange}
                 />
               </div>
