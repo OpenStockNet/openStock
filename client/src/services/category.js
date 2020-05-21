@@ -11,7 +11,7 @@ const fetchAllCategories = () => {
       return categories;
     })
     .catch(error => {
-      throw new Error(error.response.data);
+      throw error.response.data;
     });
 }
 

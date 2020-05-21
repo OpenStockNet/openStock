@@ -19,7 +19,8 @@ class AppDetail extends Component {
 
     const appId = this.props.match.params.id;
 
-    fetchAllApps().then((apps) => {
+    fetchAllApps()
+    .then((apps) => {
       const app = apps.find((app) => {
         return app._id === appId;
       });
@@ -27,14 +28,21 @@ class AppDetail extends Component {
       this.setState({
         app: app,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
 
     //here pass param appId to API call in rating.js
     //calls function getAverageRating() with appId param from rating.js
-    getAverageRating(appId).then((averageRating) => {
+    getAverageRating(appId)
+    .then((averageRating) => {
       this.setState({
         avrRating: averageRating,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
   }
 
@@ -51,7 +59,13 @@ class AppDetail extends Component {
     const ratingValue = event.target.value;
     const ratingAppId = this.props.match.params.id;
 
-    rateApp(ratingValue, ratingAppId);
+    rateApp(ratingValue, ratingAppId)
+    .then(() => {
+      alert(`Thank you for rating ${this.state.app.name}.`);
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
   };
 
   render() {

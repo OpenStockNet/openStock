@@ -21,17 +21,25 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    fetchAllCategories().then((categories) => {
+    fetchAllCategories()
+    .then((categories) => {
       this.setState({
         categories: categories,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
 
-    fetchAllApps().then((apps) => {
+    fetchAllApps()
+    .then((apps) => {
       this.setState({
         appsList: apps,
         appsFiltered: apps,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
   }
 

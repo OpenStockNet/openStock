@@ -20,6 +20,9 @@ class NewApp extends Component {
           category: categories[0]._id,
           categories: categories
         })
+      })
+      .catch((error) => {
+        alert(error.message);
       });
     }
 
@@ -60,13 +63,13 @@ class NewApp extends Component {
 
         const { name, description, category, device } = this.state;
         //responseData is data we got from services/app.js http requests
-        createApp(name, description, category, device).then(responseData => {
-          if (responseData.message) {
-            alert(responseData.message)
-          } else {
-            this.props.history.push('/');
-          }
-        });
+        createApp(name, description, category, device)
+        .then(() => {
+          this.props.history.push('/');
+        })
+        .catch((error) => {
+          alert(error.message);
+        });;
       };
     
     //everytime we setState, react renders this component, so categorylist is updated
