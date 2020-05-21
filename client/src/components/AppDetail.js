@@ -96,7 +96,7 @@ class AppDetail extends Component {
           <h5>Available devices:</h5>
           {this.state.app.device &&
             this.state.app.device.map((device) => (
-              <ul>
+              <ul key={device}>
                 <li>{device}</li>
               </ul>
             ))}
@@ -105,7 +105,7 @@ class AppDetail extends Component {
         <h3>Rating</h3>
         <p>
           {this.state.avrRating}
-          <img class="star" src="../iconfinder_full.png" width="20px" />
+          <img className="star" src="../iconfinder_full.png" width="20px" />
         </p>
         <div>{this.props.user ? ratingBtns : null}</div>
       </div>

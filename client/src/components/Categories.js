@@ -4,6 +4,7 @@ class Categories extends Component {
   handleCategory = (category) => {
     const newAppList = this.props.appsList.filter((app) => app.category._id === category);
     this.props.setApps(newAppList);
+    this.props.setQuery("");
   };
 
   render() {
