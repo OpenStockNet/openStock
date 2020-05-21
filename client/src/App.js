@@ -28,6 +28,7 @@ class App extends Component {
         <header>
           <Navbar />
         </header>
+        
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
