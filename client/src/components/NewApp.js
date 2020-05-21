@@ -64,8 +64,8 @@ class NewApp extends Component {
         const { name, description, category, device } = this.state;
         //responseData is data we got from services/app.js http requests
         createApp(name, description, category, device)
-        .then(() => {
-          this.props.history.push('/');
+        .then((app) => {
+          this.props.history.push(`/apps/${app._id}`);
         })
         .catch((error) => {
           alert(error.message);
