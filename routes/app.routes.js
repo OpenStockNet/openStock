@@ -11,6 +11,7 @@ const ensureLogin = require('connect-ensure-login');
 // fetch all apps
 router.get("/", (req, res) => {
   App.find()
+    .sort({ recommended: 'descending', name: 'ascending' })
     .populate("category")
     .then((apps) => {
       res.status(200).json(apps);
@@ -27,7 +28,6 @@ router.get("/", (req, res) => {
 //this is server endpoint receiving http request from browser services/app.js
 //App.create(app) a Moongoose method saves app into data base
 router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
-  console.log('hellooooooooo')
   const app = req.body;
   App.create(app)
     .then((createdApp) => {

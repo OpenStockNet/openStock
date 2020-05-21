@@ -13,7 +13,7 @@ const appSchema = new Schema(
     },
     website: String,
     device: [String],
-    rate: Number,
+    recommended: Boolean,
   },
   {
     timestamps: true,

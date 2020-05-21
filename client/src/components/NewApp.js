@@ -5,9 +5,11 @@ import { fetchAllCategories } from '../services/category'
 class NewApp extends Component {
     state = {
         name:"",
+        website: "",
         description: "",
         category:"",
         categories: [],
+        device:[],
     }
 
     //we want to display the all categories as soon as component is rendered,
@@ -19,6 +21,9 @@ class NewApp extends Component {
           category: categories[0]._id,
           categories: categories
         })
+      })
+      .catch((error) => {
+        alert(error.message);
       });
     }
 
@@ -29,22 +34,43 @@ class NewApp extends Component {
         
         //ES6 syntax: name can be username or password, value change accordingly
         this.setState({
-            [name]: value
+          [name]: value
         });
+    }
+
+    handleCheckbox = (event) => {
+      const name = event.target.name 
+      const id = event.target.id
+      const checked = event.target.checked
+
+      const deviceCopy = this.state.device.map(device => device);
+
+      if (checked) {
+        deviceCopy.push(id);
+      } else {
+        const index = deviceCopy.indexOf(id);
+        if (index > -1) {
+          deviceCopy.splice(index, 1);
+        }
+      }
+
+      this.setState({
+        [name]: deviceCopy
+      })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { name, description, category } = this.state;
+        const { name, description, category, device, website, logo } = this.state;
         //responseData is data we got from services/app.js http requests
-        createApp(name, description, category).then(responseData => {
-          if (responseData.message) {
-            alert(responseData.message)
-          } else {
-            this.props.history.push('/');
-          }
-        });
+        createApp(name, description, category, device, website, logo)
+        .then((app) => {
+          this.props.history.push(`/apps/${app._id}`);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });;
       };
     
     //everytime we setState, react renders this component, so categorylist is updated
@@ -56,10 +82,10 @@ class NewApp extends Component {
         })
       return (
           <div>
-            <h2>create an app</h2>
+            <h2>Suggest an app</h2>
             <form onSubmit={this.handleSubmit}>
               <div>
-                <label htmlFor='name'>App name: </label>
+                <label htmlFor='name'>App name </label>
                 <input
                   type='text'
                   name='name'
@@ -69,9 +95,28 @@ class NewApp extends Component {
                 />
               </div>
               <div>
-                <label htmlFor='description'>Description: </label>
+                <label htmlFor='website'>Official website </label>
                 <input
-                  type='description'
+                  type='text'
+                  name='website'
+                  id='website'
+                  value={this.state.website}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor='logo'>Logo </label>
+                <input
+                  type='text'
+                  name='logo'
+                  id='logo'
+                  value={this.state.logo}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor='description'>Description </label>
+                <textarea
                   name='description'
                   value={this.state.description}
                   onChange={this.handleChange}
@@ -79,7 +124,7 @@ class NewApp extends Component {
                 />
               </div>
               <div>
-                <label>Choose a category:</label>
+                <label htmlFor='category'>Category</label>
                 <select 
                   value={this.state.category} 
                   name="category" 
@@ -89,6 +134,47 @@ class NewApp extends Component {
                   {categoryOptions}
                   
                 </select> 
+              </div>
+              <p>Available on</p>
+              <div>
+                <input
+                  id="Desktop"    
+                  name="device"            
+                  type="checkbox"
+                  checked={this.state.device.includes("Desktop")}
+                  onChange={this.handleCheckbox} 
+                />
+                <label htmlFor='Desktop'>Desktop</label>
+              </div>
+              <div>
+                <input
+                  id="Android"    
+                  name="device"            
+                  type="checkbox"
+                  checked={this.state.device.includes("Android")}
+                  onChange={this.handleCheckbox} 
+                />
+                <label htmlFor='Android'>Android</label>
+              </div>
+              <div>
+                <input
+                  id="iOS"    
+                  name="device"            
+                  type="checkbox"
+                  checked={this.state.device.includes("iOS")}
+                  onChange={this.handleCheckbox} 
+                />
+                <label htmlFor='iOS'>iOS</label>
+              </div>
+              <div>
+                <input
+                  id="Browser"    
+                  name="device"            
+                  type="checkbox"
+                  checked={this.state.device.includes("Browser")}
+                  onChange={this.handleCheckbox} 
+                />
+                <label htmlFor='Browser'>Browser</label>
               </div>
               <button type='submit'>create</button>
             </form>

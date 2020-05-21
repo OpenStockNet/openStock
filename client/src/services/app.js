@@ -10,20 +10,20 @@ const fetchAllApps = () => {
       const apps = response.data
       return apps;
     })
-    .catch(err => {
-      throw new Error(err.response.data);
+    .catch(error => {
+      throw error.response.data;
     });
 }
 
 
 //post 2nd parameter will be sent as the body in http request
 //sending out { name, description, cateogry } as a body in HTTP request to '/api/apps'
-const createApp = (name, description, category) => {
+const createApp = (name, description, category, device, website, logo) => {
   // const app = {
   //   name: name,
   //   description: description
   // }
-  const app = { name, description, category }
+  const app = { name, description, category, device, website, logo }
   return axios 
         .post(`${process.env.REACT_APP_API_URL}/api/apps`, app )
         .then(response => {
@@ -31,7 +31,7 @@ const createApp = (name, description, category) => {
             return createdApp;
          })
         .catch(error => {
-          throw new Error(error.response.data);
+          throw error.response.data;
         });
 }
 
@@ -45,7 +45,7 @@ const deleteApp = (appId) => {
           return messageObj
       })
       .catch(error => {
-        throw new Error(error.response.data);
+        throw error.response.data;
       })
 }
   

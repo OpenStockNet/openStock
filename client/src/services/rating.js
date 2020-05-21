@@ -11,8 +11,8 @@ const getAverageRating = (appId) => {
       const averageRating = response.data
       return averageRating;
     })
-    .catch(err => {
-      throw new Error(err.response.data);
+    .catch(error => {
+      throw error.response.data;
     });
 }
 
@@ -26,8 +26,8 @@ const rateApp = (value, app) => {
         const rating = response.data
         return rating;
       })
-      .catch(err => {
-        throw new Error(err.response.data);
+      .catch(error => {
+        throw error.response.data;
       });
   }
   

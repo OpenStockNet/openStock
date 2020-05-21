@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage";
-import AlternativesPage from "./components/AlternativesPage";
+
 import AppDetail from "./components/AppDetail";
 import NewApp from "./components/NewApp";
 
@@ -18,7 +18,7 @@ class App extends Component {
   //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {
     this.setState({
-      user: user
+      user: user,
     });
   };
 
@@ -26,11 +26,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Navbar
-            user={this.state.user}
-          />
+          <Navbar user={this.state.user} />
         </header>
-        
+
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
@@ -50,9 +48,9 @@ class App extends Component {
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
           {/* React router takes what comes after /apps/ and then take it into our param object */}
-          <Route 
-            exact 
-            path="/apps/:id" 
+          <Route
+            exact
+            path="/apps/:id"
             render={(props) => <AppDetail user={this.state.user} match={props.match} />} //{...props}
           />
         </Switch>
