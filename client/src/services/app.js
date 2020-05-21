@@ -18,12 +18,12 @@ const fetchAllApps = () => {
 
 //post 2nd parameter will be sent as the body in http request
 //sending out { name, description, cateogry } as a body in HTTP request to '/api/apps'
-const createApp = (name, description, category, device) => {
+const createApp = (name, description, category, device, website) => {
   // const app = {
   //   name: name,
   //   description: description
   // }
-  const app = { name, description, category, device }
+  const app = { name, description, category, device, website }
   return axios 
         .post(`${process.env.REACT_APP_API_URL}/api/apps`, app )
         .then(response => {
