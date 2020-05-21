@@ -9,26 +9,19 @@ import axios from 'axios';
 
 import Footer from "./components/Footer";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App/>
-    <Footer />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
 
 // get logged in user and pass it as a prop
-// axios.get('/api/auth/loggedin')
-//   .then(response => {
-//     const user = response.data;
-//     ReactDOM.render(
-//       <BrowserRouter>
-//         <App user={user} />
-//         <Footer />
-//       </BrowserRouter>,
-//       document.getElementById('root')
-//     );
-//   });
+axios.get('/api/auth/loggedin')
+  .then(response => {
+    const user = response.data;
+    ReactDOM.render(
+      <BrowserRouter>
+        <App user={user} />
+        <Footer />
+      </BrowserRouter>,
+      document.getElementById('root')
+    );
+  });
 
 
 serviceWorker.unregister();

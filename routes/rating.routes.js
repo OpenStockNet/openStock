@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Rating = require("../models/Rating.model");
+const ensureLogin = require('connect-ensure-login');
 
 //find all Ratings that has the specific app id
 //add up value and divided by number of Ratings
@@ -35,7 +36,7 @@ router.get('/average/:appId', (req, res) => {
 //add endpoint router.post to accept HTTP request from rating.js
 //this endpoint passes value data to DB: Rating.create() does it
 //make sure object key matches DB schema key
-router.post('/', (req, res) => {
+router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     const appRating = req.body.value;
     const appId = req.body.app;
     console.log(req.body)

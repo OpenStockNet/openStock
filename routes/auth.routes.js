@@ -8,14 +8,12 @@ const bcryptSalt = 10;
 // Add passport
 const passport = require("passport");
 
-const ensureLogin = require('connect-ensure-login');
 
 // signup
 // remove below because the page is in express
 // router.get("/signup", (req, res, next) => {
 //   res.render("auth/signup");
 // });
-
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -58,6 +56,7 @@ router.post("/signup", (req, res, next) => {
     return User.create({ username: username, password: hashPass }).then(
         dbUser => {
           //after sign up, the user is automatically logged-in
+          //remove the req.login if don't want log in right after sign up
           req.login(dbUser, err => {
             if (err) {
               return res
@@ -118,14 +117,9 @@ router.get('/loggedin', (req, res) => {
     res.json(req.user);
   });
 
-// protected page
-//with React, it returns res.json(req.user)
-// router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
-//   res.render('auth/private', { user: req.user });
-// });
-
 
 module.exports = router;
 
+//for protected route:
 //with React, we add a axios.get() loggedin in index.js where rendering <BrowserRouter>
 //we make the ReactDom inside the axios.get(). we need to wait for user loggin first
