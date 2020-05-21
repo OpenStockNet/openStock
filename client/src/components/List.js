@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { fetchAllApps } from "../services/app";
+import appIconPlaceholder from "../app-icon-placeholder.svg";
 
 class List extends Component {
   componentDidUpdate(prevprops) {
@@ -22,7 +22,7 @@ class List extends Component {
       return (
         <div key={app._id} className="appCard">
           <Link to={`/apps/${app._id}`}>
-            <img src={app.logo} />
+            <img src={app.logo || appIconPlaceholder} />
           </Link>
           <div>
             <Link to={`/apps/${app._id}`}>
