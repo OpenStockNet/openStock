@@ -50,6 +50,7 @@ nav {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  z-index: 999;
 }
 
 nav div#logoHome img {
@@ -68,10 +69,19 @@ main {
   margin: 0 auto;
 }
 
+a {
+  color: #edf2f4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: wavy;
+  color: #16db86;
+}
+
 /* CATEGORIES */
 
 #catContainer {
-  margin: 48px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -108,6 +118,7 @@ button.btnCategories p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 48px 0;
 }
 
 .appCard {
@@ -131,4 +142,5 @@ button.btnCategories p {
 
 .appCard a img {
   height: 64px;
+  max-width: 88px;
 }
