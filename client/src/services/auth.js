@@ -37,4 +37,16 @@ const logout = () => {
     });
 };
 
-export { signup, login, logout };
+const fetchLogInUser = () => {
+  return axios
+    .get(`${process.env.REACT_APP_API_URL}/api/auth/loggedin`)
+    .then(response => {
+      const user = response.data;
+      return user;
+    })
+    .catch(error => {
+      throw new Error(error.response.data);
+    });
+}
+
+export { signup, login, logout, fetchLogInUser };

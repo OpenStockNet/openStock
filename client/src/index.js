@@ -4,16 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-// import axios
-import axios from 'axios';
+import { fetchLogInUser } from './services/auth';
 
 import Footer from "./components/Footer";
 
 
 // get logged in user and pass it as a prop
-axios.get('/api/auth/loggedin')
-  .then(response => {
-    const user = response.data;
+fetchLogInUser()
+  .then(user => {
     ReactDOM.render(
       <BrowserRouter>
         <App user={user} />

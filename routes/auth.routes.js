@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 // Add passport
 const passport = require("passport");
+const ensureLogin = require('connect-ensure-login');
 
 
 // signup
