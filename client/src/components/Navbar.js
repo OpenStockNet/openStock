@@ -2,13 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../services/auth";
 
-const Navbar = () => {
+const Navbar = (props) => {
   //window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
     logout().then(() => {
       window.location = "/";
     });
   };
+
+  const loggedInContent = (
+    <div>
+      <span>Hello {props.user.username}</span>
+      <Link to="/apps/new">Suggest an app</Link>
+      <button onClick={handleLogOut}>Log out</button>
+    </div>
+  )
+
+  const loggedOutContent = (
+    <div>
+      <Link to="/login">Log in</Link>
+      <Link to="/signup">Sign up</Link>
+    </div>
+  )
 
   return (
     <nav className="navbar">
@@ -18,12 +33,7 @@ const Navbar = () => {
         </Link>
         {/* <Link to="/alternatives">Alternatives to</Link> */}
       </div>
-      <div>
-        <Link to="/apps/new">create an app</Link>
-        <Link to="/login">Log in</Link>
-        <Link to="/signup">Sign Up</Link>
-        <button onClick={handleLogOut}>Logout</button>
-      </div>
+      {props.user ? loggedInContent : loggedOutContent}
     </nav>
   );
 };

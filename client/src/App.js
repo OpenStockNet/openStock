@@ -18,7 +18,7 @@ class App extends Component {
   //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {
     this.setState({
-      user: user,
+      user: user
     });
   };
 
@@ -26,7 +26,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Navbar />
+          <Navbar
+            user={this.state.user}
+          />
         </header>
         
         <Switch>
@@ -48,7 +50,11 @@ class App extends Component {
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
           {/* React router takes what comes after /apps/ and then take it into our param object */}
-          <Route exact path="/apps/:id" component={AppDetail} />
+          <Route 
+            exact 
+            path="/apps/:id" 
+            render={(props) => <AppDetail user={this.state.user} match={props.match} />} //{...props}
+          />
         </Switch>
       </div>
     );
