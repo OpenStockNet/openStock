@@ -111,7 +111,7 @@ button.btnCategories p {
 }
 
 .appCard {
-  padding: 24px;
+  padding: 24px 16px;
   margin: 8px;
   display: flex;
   flex-direction: row;
@@ -119,16 +119,17 @@ button.btnCategories p {
   width: 30%;
   text-align: left;
   background-color: #2b2d42;
-  background-color: #2b2d42;
   box-shadow: 0px 1px 4px #1a1829;
   box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.6);
 }
 
 .appCard a {
   width: 96px;
-  margin-right: 8px;
+  margin-right: 16px;
 }
 
 .appCard a img {
   height: 64px;
+  display: block;
+  margin: 0 auto;
 }
