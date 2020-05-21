@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const App = require("../models/App.model");
+//connect-ensure-login is node pacakges installed from npm
+const ensureLogin = require('connect-ensure-login');
+
 
 // each of them is server endpoint
 //pairing with clien>services/app.js
@@ -23,7 +26,8 @@ router.get("/", (req, res) => {
 //server endpoint the matching url receives this http request
 //this is server endpoint receiving http request from browser services/app.js
 //App.create(app) a Moongoose method saves app into data base
-router.post("/", (req, res) => {
+router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
+  console.log('hellooooooooo')
   const app = req.body;
   App.create(app)
     .then((createdApp) => {
@@ -33,6 +37,13 @@ router.post("/", (req, res) => {
       res.json(err);
     });
 });
+
+// protected page
+// with React, it returns res.json(req.user)
+//router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render('auth/private', { user: req.user });
+// });
+
 
 //delete an app
 router.delete("/:id", (req, res) => {

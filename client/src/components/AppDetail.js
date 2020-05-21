@@ -9,7 +9,7 @@ import List from "./List";
 
 class AppDetail extends Component {
   state = {
-    app: null,
+    app: {},
     avrRating: 0,
   };
 
@@ -46,9 +46,18 @@ class AppDetail extends Component {
     rateApp(ratingValue, ratingAppId);
   };
 
+  //.value is value attribute on button elem
+  submitRating = (event) => {
+    const ratingValue = event.target.value;
+    const ratingAppId = this.props.match.params.id;
+
+    rateApp(ratingValue, ratingAppId);
+  };
+
   render() {
     const ratingBtns = (
       <div>
+        <h3>Rate this app</h3>
         <button value={1} onClick={this.submitRating}>
           &#x272d;
         </button>
@@ -67,7 +76,6 @@ class AppDetail extends Component {
       </div>
     );
 
-    if (!this.state.app) return <div />;
     return (
       <div>
         <div>
@@ -93,10 +101,11 @@ class AppDetail extends Component {
           <p></p>
         </div>
         <h3>Rating</h3>
-        <p>{this.state.avrRating}</p>
-        <img class="star" src="../iconfinder_full.png" width="30px" />
-        <h3>Rate this app</h3>
-        <div>{ratingBtns}</div>
+        <p>
+          {this.state.avrRating}
+          <img class="star" src="../iconfinder_full.png" width="20px" />
+        </p>
+        <div>{this.props.user ? ratingBtns : null}</div>
       </div>
     );
   }

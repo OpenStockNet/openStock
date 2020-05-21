@@ -10,7 +10,6 @@ import AlternativesPage from "./components/AlternativesPage";
 import AppDetail from "./components/AppDetail";
 import NewApp from "./components/NewApp";
 
-
 class App extends Component {
   state = {
     user: this.props.user,
@@ -19,15 +18,19 @@ class App extends Component {
   //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {
     this.setState({
-      user: user,
+      user: user
     });
   };
 
   render() {
     return (
       <div className="App">
-        <Navbar />
-
+        <header>
+          <Navbar
+            user={this.state.user}
+          />
+        </header>
+        
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}>
@@ -46,7 +49,12 @@ class App extends Component {
             path="/apps/new"
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
-          <Route exact path="/apps/:id" component={AppDetail} />
+          {/* React router takes what comes after /apps/ and then take it into our param object */}
+          <Route 
+            exact 
+            path="/apps/:id" 
+            render={(props) => <AppDetail user={this.state.user} match={props.match} />} //{...props}
+          />
         </Switch>
       </div>
     );

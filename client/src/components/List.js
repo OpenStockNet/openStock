@@ -7,7 +7,7 @@ class List extends Component {
   render() {
     const apps = this.props.appsFiltered.map((app) => {
       return (
-        <div key={app._id}>
+        <div key={app._id} className="appCard">
           <Link to={`/apps/${app._id}`}>
             <img src={app.logo} />
           </Link>
@@ -21,14 +21,12 @@ class List extends Component {
       );
     });
     return (
-      <div>
+      <section id="listContainer">
         {this.props.appsFiltered.length === 0 && (
           <h4>Sorry, we haven't found any alternative app 😧. Try something different.</h4>
         )}
-        <h5>List of apps</h5>
         {apps}
-        <h5>End of list</h5>
-      </div>
+      </section>
     );
   }
 }
