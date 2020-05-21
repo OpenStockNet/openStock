@@ -95,8 +95,7 @@ class NewApp extends Component {
               </div>
               <div>
                 <label htmlFor='description'>Description </label>
-                <input
-                  type='description'
+                <textarea
                   name='description'
                   value={this.state.description}
                   onChange={this.handleChange}
