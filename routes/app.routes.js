@@ -27,7 +27,6 @@ router.get("/", (req, res) => {
 //this is server endpoint receiving http request from browser services/app.js
 //App.create(app) a Moongoose method saves app into data base
 router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
-  console.log('hellooooooooo')
   const app = req.body;
   App.create(app)
     .then((createdApp) => {
