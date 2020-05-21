@@ -5,8 +5,12 @@ import { logout } from "../services/auth";
 const Navbar = (props) => {
   //window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
-    logout().then(() => {
+    logout()
+    .then(() => {
       window.location = "/";
+    })
+    .catch((error) => {
+      alert(error.message);
     });
   };
 

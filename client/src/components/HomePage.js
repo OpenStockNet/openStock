@@ -21,17 +21,25 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    fetchAllCategories().then((categories) => {
+    fetchAllCategories()
+    .then((categories) => {
       this.setState({
         categories: categories,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
 
-    fetchAllApps().then((apps) => {
+    fetchAllApps()
+    .then((apps) => {
       this.setState({
         appsList: apps,
         appsFiltered: apps,
       });
+    })
+    .catch((error) => {
+      alert(error.message);
     });
   }
 
@@ -44,7 +52,7 @@ class HomePage extends Component {
   render() {
     return (
       <main className="">
-        <h2>Find the right software for you and protect your privacy</h2>
+        <h2>Find the right software to protect your privacy</h2>
         <Search setQuery={this.setQuery} query={this.state.query} />
         <Categories
           setApps={this.setApps}

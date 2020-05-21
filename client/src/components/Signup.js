@@ -24,18 +24,14 @@ class Signup extends Component {
     
         const { username, password } = this.state;
         //responseData is data we got from auth.js http requests
-        signup(username, password).then(responseData => {
-          if (responseData.message) {
-            // this.setState({
-            //   username: '',
-            //   password: ''
-          // });
-            alert(responseData.message)
-          } else {
-            this.props.setUser(responseData);
-            //redirect to the page '/'
-            this.props.history.push('/');
-          }
+        signup(username, password)
+        .then(user => {
+          this.props.setUser(user);
+          //redirect to the page '/'
+          this.props.history.push('/');
+        })
+        .catch((error) => {
+          alert(error.message)
         });
       };
 

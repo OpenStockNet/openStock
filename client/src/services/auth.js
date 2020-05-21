@@ -10,7 +10,7 @@ const signup = (username, password) => {
       return user;
     })
     .catch(error => {
-      throw new Error(error.response.data);
+      throw error.response.data;
     });
 }
 
@@ -22,7 +22,7 @@ const login = (username, password) => {
       return loggedInUser;
     })
     .catch(error => {
-      throw new Error(error.response.data);
+      throw error.response.data;
     });
 };
 
@@ -33,7 +33,7 @@ const logout = () => {
       return response.data;
     })
     .catch(error => {
-      throw new Error(error.response.data);
+      throw error.response.data;
     });
 };
 
@@ -45,7 +45,7 @@ const fetchLogInUser = () => {
       return user;
     })
     .catch(error => {
-      throw new Error(error.response.data);
+      throw error.response.data;
     });
 }
 

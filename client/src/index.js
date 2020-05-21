@@ -19,6 +19,9 @@ fetchLogInUser()
       </BrowserRouter>,
       document.getElementById('root')
     );
+  })
+  .catch((error) => {
+    alert(error.message);
   });
 
 

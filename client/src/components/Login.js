@@ -22,17 +22,16 @@ class Login extends Component {
     
         const { username, password } = this.state;
         
-        login(username, password).then(responseData => {
-          if (responseData.message) {
-            
-            alert(responseData.message)
-          } else {
-            //successfully logged in
-            //update the state for the parnet component
-            this.props.setUser(responseData);
-            //redirect to the page '/' 
-            this.props.history.push('/');
-          }
+        login(username, password)
+        .then(user => {
+          //successfully logged in
+          //update the state for the parnet component
+          this.props.setUser(user);
+          //redirect to the page '/' 
+          this.props.history.push('/');
+        })
+        .catch((error) => {
+          alert(error.message);
         });
       };
 
