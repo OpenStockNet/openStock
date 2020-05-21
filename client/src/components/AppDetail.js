@@ -1,6 +1,7 @@
 import dummyApps from "./dummyApps.json";
 import { fetchAllApps } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
+import appIconPlaceholder from "../app-icon-placeholder.svg";
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
@@ -95,11 +96,11 @@ class AppDetail extends Component {
     return (
       <div>
         <div>
-          <img src={this.state.app.logo} />
+          <img src={this.state.app.logo || appIconPlaceholder} />
           <h2>{this.state.app.name}</h2>
           <h4>{this.state.app.category.name}</h4>
           <a target="_blank" href={`${this.state.app.website}`}>
-            Visit oficial website
+            Visit official website
           </a>
         </div>
 
@@ -118,7 +119,7 @@ class AppDetail extends Component {
 
         <h3>Rating</h3>
         <p>
-          {this.state.avrRating}
+          {this.state.avrRating || 'Not yet rated'}
           <img className="star" src="../iconfinder_full.png" width="20px" />
         </p>
         <div>{this.props.user ? ratingBtns : null}</div>

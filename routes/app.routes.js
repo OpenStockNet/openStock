@@ -11,6 +11,7 @@ const ensureLogin = require('connect-ensure-login');
 // fetch all apps
 router.get("/", (req, res) => {
   App.find()
+    .sort({ recommended: 'descending', name: 'ascending' })
     .populate("category")
     .then((apps) => {
       res.status(200).json(apps);

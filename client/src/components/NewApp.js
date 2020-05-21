@@ -5,6 +5,7 @@ import { fetchAllCategories } from '../services/category'
 class NewApp extends Component {
     state = {
         name:"",
+        website: "",
         description: "",
         category:"",
         categories: [],
@@ -61,9 +62,9 @@ class NewApp extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { name, description, category, device } = this.state;
+        const { name, description, category, device, website } = this.state;
         //responseData is data we got from services/app.js http requests
-        createApp(name, description, category, device)
+        createApp(name, description, category, device, website)
         .then((app) => {
           this.props.history.push(`/apps/${app._id}`);
         })
@@ -94,9 +95,18 @@ class NewApp extends Component {
                 />
               </div>
               <div>
-                <label htmlFor='description'>Description </label>
+                <label htmlFor='website'>Official website </label>
                 <input
-                  type='description'
+                  type='text'
+                  name='website'
+                  id='website'
+                  value={this.state.website}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor='description'>Description </label>
+                <textarea
                   name='description'
                   value={this.state.description}
                   onChange={this.handleChange}
