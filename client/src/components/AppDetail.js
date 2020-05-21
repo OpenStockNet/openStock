@@ -11,6 +11,7 @@ class AppDetail extends Component {
   state = {
     app: {},
     avrRating: 0,
+    
   };
 
   componentDidMount() {
@@ -49,43 +50,44 @@ class AppDetail extends Component {
   }
 
   render() {
+    
     const ratingBtns = (
       <div>
+            <h3>Rate this app</h3>
+            <button
+              value={1}
+              onClick={this.submitRating}
+            >
+              &#x272d;  
+            </button>
+            <button
+              value={2}
+              onClick={this.submitRating}
+            >
+              &#x272d; &#x272d;  
+            </button>
+            <button
+              value={3}
+              onClick={this.submitRating}
+            >
+              &#x272d; &#x272d; &#x272d;   
+            </button>
+            <button
+              value={4}
+              onClick={this.submitRating}
+            >
+              &#x272d; &#x272d; &#x272d; &#x272d;
+            </button>
+            <button
+              value={5}
+              onClick={this.submitRating}
+            >
+              &#x272d; &#x272d; &#x272d; &#x272d; &#x272d;
+            </button>
         
-        <button
-          value={1}
-          onClick={this.submitRating}
-        >
-          &#x272d;  
-        </button>
-        <button
-          value={2}
-          onClick={this.submitRating}
-        >
-          &#x272d; &#x272d;  
-        </button>
-        <button
-          value={3}
-          onClick={this.submitRating}
-        >
-          &#x272d; &#x272d; &#x272d;   
-        </button>
-        <button
-          value={4}
-          onClick={this.submitRating}
-        >
-          &#x272d; &#x272d; &#x272d; &#x272d;
-        </button>
-        <button
-          value={5}
-          onClick={this.submitRating}
-        >
-          &#x272d; &#x272d; &#x272d; &#x272d; &#x272d;
-        </button>
-      
-      </div>
-    );
-
+        </div>
+        )
+    
     return (
       <div>
         <div>
@@ -106,10 +108,10 @@ class AppDetail extends Component {
           <p></p>
         </div>
         <h3>Rating</h3>
-        <p>{this.state.avrRating}</p> 
-        <img class="star" src="../iconfinder_full.png" width="30px" />
-        <h3>Rate this app</h3>
-        <div>{ratingBtns}</div>
+        <p>{this.state.avrRating} 
+        <img class="star" src="../iconfinder_full.png" width="20px" />
+        </p> 
+        <div>{this.props.user ? ratingBtns : null }</div>
       </div>
     );
   }
