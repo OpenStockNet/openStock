@@ -1,0 +1,120 @@
+/*
+    Created on : May 2020
+    Project: OpenStock
+    Author: Yung-Ting, Maria & Clara
+*/
+
+/* APP DETAIL
+=====================*/
+
+main#appDetail {
+  width: 56%;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+.appIntro {
+  text-align: left;
+  position: relative;
+}
+
+.appInfo {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  padding: 8px;
+}
+
+.appInfo img {
+  height: 96px;
+  margin-right: 24px;
+}
+
+.appInfo h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.appInfo h4 {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  color: #a1afc7;
+  border: 1px solid #7485a3;
+  padding: 2px 6px;
+  margin: 6px 0 18px;
+}
+
+.appInfo a {
+  font-size: 16px;
+  display: block;
+}
+
+.appIntro a span {
+  color: #16db86;
+  margin-right: 4px;
+}
+
+.ratingApp {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 16px;
+  text-align: right;
+}
+
+.ratingApp p {
+  font-size: 22px;
+}
+.ratingApp p span {
+  color: #16db86;
+  font-size: 24px;
+}
+
+.description {
+  text-align: left;
+  margin-top: 48px;
+  padding: 16px;
+}
+
+.description h3 {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.description p {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.description h4,
+.description ul,
+.description li {
+  display: inline-block;
+}
+
+.description h4 {
+  margin-right: 16px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.description li {
+  list-style: none;
+  font-size: 13px;
+  font-weight: 300;
+  color: #a1afc7;
+  border: 1px solid #7485a3;
+  padding: 2px 6px;
+  margin-right: 8px;
+}
+
+#rateApp {
+  margin-top: 48px;
+}
+
+#rateApp button:not(:last-child) {
+  margin-right: 16px;
+}

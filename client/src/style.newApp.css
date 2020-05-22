@@ -1,0 +1,104 @@
+/*
+    Created on : May 2020
+    Project: OpenStock
+    Author: Yung-Ting, Maria & Clara
+*/
+
+/* ADD NEW APP FORM
+=====================*/
+
+form#addApp {
+  width: 70%;
+  padding: 48px 96px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #2b2d42;
+  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
+}
+
+form h2 {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+#addApp input {
+  width: 100%;
+  display: block;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #232536;
+  color: #edf2f4;
+  border: 0;
+  margin-bottom: 16px;
+}
+#addApp textarea {
+  width: 100%;
+  display: block;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #232536;
+  color: #edf2f4;
+  border: 0;
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+#addApp input::placeholder,
+#addApp textarea::placeholder {
+  color: #7485a3;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+#addApp input:focus,
+#addApp textarea:focus,
+#addApp select {
+  outline-color: #16db86;
+  outline-width: 2px;
+  color: #edf2f4;
+}
+
+#addApp label,
+#addApp p {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+#addApp select {
+  width: 100%;
+  height: 40px;
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #232536;
+  color: #edf2f4;
+  border: 0;
+  margin-bottom: 24px;
+}
+
+#addApp .checkboxes {
+  text-align: left;
+  margin-bottom: 32px;
+}
+#addApp .checkboxes label,
+#addApp .checkboxes input {
+  display: inline;
+  width: auto;
+}
+
+#addApp .checkboxes label {
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#addApp .checkboxes input {
+  margin-right: 24px;
+}

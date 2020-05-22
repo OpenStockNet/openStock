@@ -32,6 +32,44 @@ body {
   text-align: center;
 }
 
+a {
+  color: #edf2f4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: wavy;
+  color: #16db86;
+}
+
+button,
+.aButton {
+  padding: 10px 20px;
+  background-color: #2b2d42;
+  border: 1px solid #16db86;
+  font-size: 16px;
+  font-weight: 500;
+  color: #16db86;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  border: 0;
+}
+
+form button {
+  padding: 12px 20px;
+  margin: 24px;
+  background-color: #2b2d42;
+  border: 1px solid #16db86;
+  font-size: 16px;
+  font-weight: 500;
+  color: #16db86;
+}
+
 /* HEADER
 =====================*/
 
@@ -48,7 +86,7 @@ nav {
   top: 0;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   z-index: 999;
 }
@@ -61,22 +99,68 @@ nav div:nth-child(2) a:not(:last-child) {
   margin-right: 24px;
 }
 
+.loggedUser p {
+  display: inline-block;
+  margin-right: 24px;
+  font-weight: 300;
+}
+.loggedUser span {
+  color: #16db86;
+}
+
 /* MAIN
 =====================*/
 
 main {
   max-width: 1140px;
   margin: 0 auto;
+  min-height: 72vh;
 }
 
-a {
+h1,
+h2 {
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+/* SEARCH */
+
+form#search {
+  margin-top: 48px;
+  margin-bottom: 80px;
+}
+
+#search input {
+  padding: 16px;
+  border: 0;
+  font-size: 16px;
+  font-weight: 500;
+  width: 60%;
+  max-width: 600px;
+  min-width: 400px;
+  background-color: #232536;
   color: #edf2f4;
-  text-decoration: none;
 }
 
-a:hover {
-  text-decoration: wavy;
-  color: #16db86;
+#search input::placeholder {
+  color: #7485a3;
+  font-weight: 300;
+}
+
+#search input:focus {
+  outline-color: #16db86;
+  outline-width: 2px;
+  color: #edf2f4;
 }
 
 /* CATEGORIES */
@@ -94,14 +178,17 @@ button.btnCategories {
   width: 112px;
   background: none;
   border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 300;
 }
 
-button.btnCategories:hover {
-  cursor: pointer;
+button.btnCategories:focus {
+  outline: none;
 }
 
 button.btnCategories img {
-  height: 48px;
+  height: 40px;
   margin-bottom: 14px;
 }
 
@@ -118,11 +205,11 @@ button.btnCategories p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 48px 0;
+  margin: 88px 0;
 }
 
 .appCard {
-  padding: 24px 16px;
+  padding: 16px 16px;
   margin: 8px;
   display: flex;
   flex-direction: row;
@@ -131,20 +218,49 @@ button.btnCategories p {
   text-align: left;
   background-color: #2b2d42;
   box-shadow: 0px 1px 4px #1a1829;
-  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.6);
+  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
 }
 
 .appCard a {
   width: 96px;
-  margin-right: 16px;
 }
 
 .appCard a img {
   height: 64px;
-<<<<<<< HEAD
   display: block;
   margin: 0 auto;
-=======
   max-width: 88px;
->>>>>>> 179b15ab312ce55d67b8981db4fcfdf56be5a1e0
+  filter: saturate(0.8);
+}
+
+.appCard div {
+  margin-left: 16px;
+}
+.appCard div a {
+  display: inline-block;
+}
+.appCard h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.appCard h6 {
+  color: #a1afc7;
+  font-size: 12px;
+}
+
+/* FOOTER
+=====================*/
+
+footer {
+  font-weight: 300;
+  font-size: 14px;
+  margin: 24px;
+}
+
+footer p:first-child {
+  margin-bottom: 8px;
+}
+footer a {
+  color: #16db86;
 }

@@ -22,25 +22,25 @@ class HomePage extends Component {
 
   componentDidMount() {
     fetchAllCategories()
-    .then((categories) => {
-      this.setState({
-        categories: categories,
+      .then((categories) => {
+        this.setState({
+          categories: categories,
+        });
+      })
+      .catch((error) => {
+        alert(error.message);
       });
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
 
     fetchAllApps()
-    .then((apps) => {
-      this.setState({
-        appsList: apps,
-        appsFiltered: apps,
+      .then((apps) => {
+        this.setState({
+          appsList: apps,
+          appsFiltered: apps,
+        });
+      })
+      .catch((error) => {
+        alert(error.message);
       });
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
   }
 
   setApps = (newApps) => {
@@ -52,7 +52,8 @@ class HomePage extends Component {
   render() {
     return (
       <main className="">
-        <h2>Find the right software to protect your privacy</h2>
+        <h1>If you dont protect your privacy, who will?</h1>
+        <h2>Find the right app to protect your privacy with OpenStock</h2>
         <Search setQuery={this.setQuery} query={this.state.query} />
         <Categories
           setApps={this.setApps}

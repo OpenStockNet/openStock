@@ -1,0 +1,66 @@
+/*
+    Created on : May 2020
+    Project: OpenStock
+    Author: Yung-Ting, Maria & Clara
+*/
+
+/* LOG IN and SIGN UP
+=====================*/
+
+form#login,
+form#signup {
+  width: 60%;
+  padding: 40px 88px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #2b2d42;
+  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
+}
+
+form h2 {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+#login input,
+#signup input {
+  width: 100%;
+  display: block;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #232536;
+  color: #edf2f4;
+  border: 0;
+}
+
+#login input#username,
+#signup input#username {
+  margin-bottom: 16px;
+}
+
+input::placeholder,
+#signup input::placeholder {
+  color: #7485a3;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+input:focus,
+#signup input:focus {
+  outline-color: #16db86;
+  outline-width: 2px;
+  color: #edf2f4;
+}
+
+#login label,
+#signup label {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  color: ;
+  margin-bottom: 8px;
+}

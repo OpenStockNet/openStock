@@ -1,6 +1,6 @@
-import dummyApps from "./dummyApps.json";
 import { fetchAllApps } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
+
 import appIconPlaceholder from "../app-icon-placeholder.svg";
 
 import React, { Component } from "react";
@@ -21,30 +21,30 @@ class AppDetail extends Component {
     const appId = this.props.match.params.id;
 
     fetchAllApps()
-    .then((apps) => {
-      const app = apps.find((app) => {
-        return app._id === appId;
-      });
+      .then((apps) => {
+        const app = apps.find((app) => {
+          return app._id === appId;
+        });
 
-      this.setState({
-        app: app,
+        this.setState({
+          app: app,
+        });
+      })
+      .catch((error) => {
+        alert(error.message);
       });
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
 
     //here pass param appId to API call in rating.js
     //calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
-    .then((averageRating) => {
-      this.setState({
-        avrRating: averageRating,
+      .then((averageRating) => {
+        this.setState({
+          avrRating: averageRating,
+        });
+      })
+      .catch((error) => {
+        alert(error.message);
       });
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
   }
 
   //.value is value attribute on button elem
@@ -61,32 +61,32 @@ class AppDetail extends Component {
     const ratingAppId = this.props.match.params.id;
 
     rateApp(ratingValue, ratingAppId)
-    .then(() => {
-      alert(`Thank you for rating ${this.state.app.name}.`);
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
+      .then(() => {
+        alert(`Thank you for rating ${this.state.app.name}.`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 
   render() {
     const ratingBtns = (
       <div>
-        <h3>Rate this app</h3>
+        <h4>Rate this app</h4>
         <button value={1} onClick={this.submitRating}>
-          &#x272d;
+          1 ✦
         </button>
         <button value={2} onClick={this.submitRating}>
-          &#x272d; &#x272d;
+          2 ✦ ✦
         </button>
         <button value={3} onClick={this.submitRating}>
-          &#x272d; &#x272d; &#x272d;
+          3 ✦ ✦ ✦
         </button>
         <button value={4} onClick={this.submitRating}>
-          &#x272d; &#x272d; &#x272d; &#x272d;
+          4 ✦ ✦ ✦ ✦
         </button>
         <button value={5} onClick={this.submitRating}>
-          &#x272d; &#x272d; &#x272d; &#x272d; &#x272d;
+          5 ✦ ✦ ✦ ✦ ✦
         </button>
       </div>
     );
@@ -94,36 +94,39 @@ class AppDetail extends Component {
     if (!this.state.app) return <div />;
 
     return (
-      <div>
-        <div>
-          <img src={this.state.app.logo || appIconPlaceholder} />
-          <h2>{this.state.app.name}</h2>
-          <h4>{this.state.app.category.name}</h4>
-          <a target="_blank" href={`${this.state.app.website}`}>
-            Visit official website
-          </a>
+      <main id="appDetail">
+        <div className="appIntro">
+          <div className="appInfo">
+            <img src={this.state.app.logo || appIconPlaceholder} />
+            <div>
+              <h2>{this.state.app.name}</h2>
+              <h4>{this.state.app.category.name}</h4>
+              <a target="_blank" href={`${this.state.app.website}`}>
+                <span>⎋</span>Visit official website
+              </a>
+            </div>
+          </div>
+          <div className="ratingApp">
+            <h5>Rating</h5>
+            <p>
+              {this.state.avrRating || "Not yet rated"} <span>✦</span>
+              {/* 
+              <img className="star" src="../iconfinder_full.png" /> */}
+            </p>
+          </div>
         </div>
+        <div className="description">
+          <h3>Description</h3>
+          <p>{this.state.app.description}</p>
 
-        <h3>Description</h3>
-        <p>{this.state.app.description}</p>
+          <div>
+            <h4>Available devices:</h4>
+            <ul>{this.state.app.device && this.state.app.device.map((device) => <li>{device}</li>)}</ul>
+          </div>
 
-        <div>
-          <h5>Available devices:</h5>
-          {this.state.app.device &&
-            this.state.app.device.map((device) => (
-              <ul key={device}>
-                <li>{device}</li>
-              </ul>
-            ))}
+          <div id="rateApp">{this.props.user ? ratingBtns : null}</div>
         </div>
-
-        <h3>Rating</h3>
-        <p>
-          {this.state.avrRating || 'Not yet rated'}
-          <img className="star" src="../iconfinder_full.png" width="20px" />
-        </p>
-        <div>{this.props.user ? ratingBtns : null}</div>
-      </div>
+      </main>
     );
   }
 }

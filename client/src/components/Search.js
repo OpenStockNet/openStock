@@ -19,9 +19,9 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <form id="search">
         <input
-          placeholder="Search for..."
+          placeholder="Search an app by name..."
           //ref={(input) => (this.search = input)}
           value={this.props.query}
           onChange={this.handleInputChange}

@@ -26,9 +26,9 @@ class List extends Component {
           </Link>
           <div>
             <Link to={`/apps/${app._id}`}>
-              <h2>{app.name}</h2>
+              <h3>{app.name}</h3>
             </Link>
-            <p>{app.category.name}</p>
+            <h6>{app.category.name}</h6>
           </div>
         </div>
       );

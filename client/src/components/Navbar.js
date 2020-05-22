@@ -6,28 +6,36 @@ const Navbar = (props) => {
   //window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
     logout()
-    .then(() => {
-      window.location = "/";
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
+      .then(() => {
+        window.location = "/";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 
   const loggedInContent = (
-    <div>
-      <span>Hello {props.user.username}</span>
-      <Link to="/apps/new">Suggest an app</Link>
+    <div className="loggedUser">
+      <p>
+        Hello <b>{props.user.username}</b>
+      </p>
+      <Link to="/apps/new">
+        <span>＋</span> Add new app
+      </Link>
       <button onClick={handleLogOut}>Log out</button>
     </div>
-  )
+  );
 
   const loggedOutContent = (
     <div>
-      <Link to="/login">Log in</Link>
-      <Link to="/signup">Sign up</Link>
+      <Link to="/login" className="aButton">
+        Log in
+      </Link>
+      <Link to="/signup" className="aButton">
+        Sign up
+      </Link>
     </div>
-  )
+  );
 
   return (
     <nav className="navbar">
