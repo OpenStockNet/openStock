@@ -9,7 +9,6 @@ class List extends Component {
     }
   }
   getApp = () => {
-    if (!this.props.query) return;
     const filteredApp = this.props.appsList.filter((searchApp) => {
       return searchApp.name.toLowerCase().includes(this.props.query.toLowerCase());
     });
