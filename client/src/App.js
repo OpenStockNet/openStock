@@ -15,7 +15,6 @@ class App extends Component {
     user: this.props.user,
   };
 
-  //user parameter comes from handleSUbmit() where I call the function
   setUser = (user) => {
     this.setState({
       user: user,
@@ -47,7 +46,6 @@ class App extends Component {
             path="/apps/new"
             render={(props) => <NewApp history={props.history} />} //{...props}
           />
-          {/* React router takes what comes after /apps/ and then take it into our param object */}
           <Route
             exact
             path="/apps/:id"

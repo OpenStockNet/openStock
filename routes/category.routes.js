@@ -1,4 +1,3 @@
-//server side: need to register the route in app.js 'app.use...'
 const express = require('express');
 const router = express.Router();
 const Category = require("../models/Category.model");

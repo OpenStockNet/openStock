@@ -52,7 +52,7 @@ class HomePage extends Component {
   render() {
     return (
       <main className="">
-        <h1>If you dont protect your privacy, who will?</h1>
+        <h1>If you don't protect your privacy, who will?</h1>
         <h2>Find the right app to protect your privacy with OpenStock</h2>
         <Search setQuery={this.setQuery} query={this.state.query} />
         <Categories

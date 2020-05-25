@@ -1,5 +1,9 @@
 # openStock
 
+## Demo on heroku
+
+https://openstock-berlin.herokuapp.com/
+
 ## Local Setup
 
 ### Prerequisites

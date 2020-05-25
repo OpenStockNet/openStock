@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-//axios returns a response object, which has a property "data"
-//this 'data' contains whatever is in our request body
 const signup = (username, password) => {
   return axios
     .post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, { username, password })

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-//http request is written in ../services/auth
 import { login } from "../services/auth";
 
 class Login extends Component {
@@ -26,7 +24,6 @@ class Login extends Component {
     login(username, password)
       .then((user) => {
         //successfully logged in
-        //update the state for the parnet component
         this.props.setUser(user);
         //redirect to the page '/'
         this.props.history.push("/");
