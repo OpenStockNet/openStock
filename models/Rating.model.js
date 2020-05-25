@@ -9,10 +9,6 @@ const ratingSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: App,
     },
-    // user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: User,
-    // }
   },
     {
         timestamps: true, 

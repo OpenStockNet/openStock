@@ -82,13 +82,6 @@ passport.use(new LocalStrategy({passReqToCallback: true}, (req, username, passwo
 }));
 ///
 
-//configure the express-session, initialize passport and passport session
-// below is the old code I wrote in lab
-// app.use(session({
-//   secret: "our-passport-local-strategy-app",
-//   resave: true,
-//   saveUninitialized: true
-// }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -100,8 +93,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes middleware goes here
-//'api/auth' + the route defined in "router.post('/login',...)" is the full path to api endpoint
-//'api/apps' is base url of server endpoints; all the incoming request starts with it will handled by the require ('xxx') file
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/categories', require('./routes/category.routes'))
 app.use('/api/apps', require('./routes/app.routes'))

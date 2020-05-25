@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//http request is written in ../services/auth
 import { signup } from "../services/auth";
 
 class Signup extends Component {
@@ -9,11 +8,8 @@ class Signup extends Component {
   };
 
   handleChange = (event) => {
-    //'name' and 'value' reference to attributes in <input field>
-    const name = event.target.name; // username or password
-    const value = event.target.value; // username/password we input: e.g. ananas
-
-    //ES6 syntax: name can be username or password, value change accordingly
+    const name = event.target.name; 
+    const value = event.target.value; 
     this.setState({
       [name]: value,
     });
@@ -23,7 +19,7 @@ class Signup extends Component {
     event.preventDefault();
 
     const { username, password } = this.state;
-    //responseData is data we got from auth.js http requests
+
     signup(username, password)
       .then((user) => {
         this.props.setUser(user);

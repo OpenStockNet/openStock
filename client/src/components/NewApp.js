@@ -12,8 +12,6 @@ class NewApp extends Component {
     device: [],
   };
 
-  //we want to display the all categories as soon as component is rendered,
-  //we pass categories from API call fetchAllCategorie, and set it into state.
   componentDidMount() {
     fetchAllCategories()
       .then((categories) => {
@@ -28,11 +26,9 @@ class NewApp extends Component {
   }
 
   handleChange = (event) => {
-    //'name' and 'value' reference to attributes in <input field>
-    const name = event.target.name; // username or password
-    const value = event.target.value; // username/password we input: e.g. ananas
+    const name = event.target.name; 
+    const value = event.target.value; 
 
-    //ES6 syntax: name can be username or password, value change accordingly
     this.setState({
       [name]: value,
     });
@@ -63,7 +59,7 @@ class NewApp extends Component {
     event.preventDefault();
 
     const { name, description, category, device, website, logo } = this.state;
-    //responseData is data we got from services/app.js http requests
+    
     createApp(name, description, category, device, website, logo)
       .then((app) => {
         this.props.history.push(`/apps/${app._id}`);
@@ -73,7 +69,6 @@ class NewApp extends Component {
       });
   };
 
-  //everytime we setState, react renders this component, so categorylist is updated
   render() {
     const categoryOptions = this.state.categories.map((category) => {
       return <option value={category._id}>{category.name}</option>;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { fetchAllApps } from "../services/app";
 
 class SearchFilteredApps extends Component {
