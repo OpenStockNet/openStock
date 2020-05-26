@@ -1,8 +1,11 @@
 # openStock
 
-## Demo on heroku
+openStock is a MERN app with REST API promoting open-source alternatives.
+
+## Demo on Heroku
 
 https://openstock-berlin.herokuapp.com/
+
 
 ## Local Setup
 
