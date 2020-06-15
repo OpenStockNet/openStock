@@ -34,7 +34,7 @@ router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
 router.delete("/:id", (req, res) => {
   App.findByIdAndDelete(req.params.id)
     .then((app) => {
-      res.json({ message: "App is deleted." });
+      res.json({ message: "App is deleted!" });
     })
     .catch((err) => {
       res.json(err);

@@ -57,10 +57,10 @@ class NewApp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+    const creator = this.props.user._id;
     const { name, description, category, device, website, logo } = this.state;
     
-    createApp(name, description, category, device, website, logo)
+    createApp(name, description, category, device, website, logo, creator)
       .then((app) => {
         this.props.history.push(`/apps/${app._id}`);
       })

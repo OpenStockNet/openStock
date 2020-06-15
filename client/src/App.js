@@ -44,7 +44,7 @@ class App extends Component {
           <Route
             exact
             path="/apps/new"
-            render={(props) => <NewApp history={props.history} />} //{...props}
+            render={(props) => <NewApp user={this.state.user} history={props.history} />} //{...props}
           />
           <Route
             exact

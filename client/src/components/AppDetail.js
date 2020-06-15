@@ -1,12 +1,10 @@
-import { fetchAllApps } from "../services/app";
+import { fetchAllApps, deleteApp  } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
 
 import appIconPlaceholder from "../app-icon-placeholder.svg";
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
-import List from "./List";
 
 class AppDetail extends Component {
   state = {
@@ -52,14 +50,6 @@ class AppDetail extends Component {
     const ratingValue = event.target.value;
     const ratingAppId = this.props.match.params.id;
 
-    rateApp(ratingValue, ratingAppId);
-  };
-
-  //.value is value attribute on button elem
-  submitRating = (event) => {
-    const ratingValue = event.target.value;
-    const ratingAppId = this.props.match.params.id;
-
     rateApp(ratingValue, ratingAppId)
       .then(() => {
         alert(`Thank you for rating ${this.state.app.name}.`);
@@ -68,6 +58,19 @@ class AppDetail extends Component {
         alert(error.message);
       });
   };
+
+  //delete app
+  deleteOneApp = (event) => {
+    const deletedAppId = this.props.match.params.id;
+
+    deleteApp(deletedAppId)
+      .then(() => {
+        alert(`You successfully deleted ${this.state.app.name}.`)
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
 
   render() {
     const ratingBtns = (
@@ -92,6 +95,13 @@ class AppDetail extends Component {
     );
 
     if (!this.state.app) return <div />;
+
+    const deleteBtn = (
+      <div>
+        <h4>This app is not valid anymore?</h4>
+        <button onClick={this.deleteOneApp}>Delete</button>
+      </div>
+    );
 
     return (
       <main id="appDetail">
@@ -125,6 +135,7 @@ class AppDetail extends Component {
           </div>
 
           <div id="rateApp">{this.props.user ? ratingBtns : null}</div>
+          <div id="rateApp">{this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
         </div>
       </main>
     );
