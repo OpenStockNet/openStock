@@ -135,7 +135,7 @@ class AppDetail extends Component {
           </div>
 
           <div id="rateApp">{this.props.user ? ratingBtns : null}</div>
-          <div id="rateApp">{this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
+          <div id="rateApp">{this.props.user._id != undefined && this.state.app.creator != undefined && this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
         </div>
       </main>
     );
