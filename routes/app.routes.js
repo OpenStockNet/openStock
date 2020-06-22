@@ -41,4 +41,23 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+//add app to wish list
+router.post('/user/:userId', (req, res) => {
+  const wishAppId = req.body.appId;
+  const wishUserId = req.body.userId;
+  
+  App
+  .findByIdAndUpdate(
+    wishAppId,
+    { $push: { wishUser: wishUserId}}
+  )
+  .then((updatedWishApp) => {
+      res.status(200).json(updatedWishApp);
+  })
+  .catch(err => {
+      res.json(err)
+  })
+})
+
+
 module.exports = router;

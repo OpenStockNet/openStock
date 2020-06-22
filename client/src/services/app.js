@@ -13,7 +13,6 @@ const fetchAllApps = () => {
     });
 }
 
-
 const createApp = (name, description, category, device, website, logo, creator) => {
   const app = { name, description, category, device, website, logo, creator }
   return axios 
@@ -38,6 +37,20 @@ const deleteApp = (appId) => {
         throw error.response.data;
       })
 }
+
+
+const addWishApp = (appId, userId) => {
+  return axios
+        .post (`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, {appId, userId})
+        .then (response => {
+          const wishAppAndUser = response.data;
+          return wishAppAndUser;
+        })
+        .catch(error => {
+          throw error.response.data;
+        });
+
+}
   
 
-export { fetchAllApps, createApp, deleteApp };
+export { fetchAllApps, createApp, deleteApp, addWishApp };

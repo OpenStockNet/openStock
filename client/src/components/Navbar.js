@@ -22,6 +22,9 @@ const Navbar = (props) => {
       <Link to="/apps/new">
         <span>＋</span> Add new app
       </Link>
+      <Link to={`/apps/wishlist/${props.user._id}`}>
+        My wish list
+      </Link>
       <button onClick={handleLogOut}>Log out</button>
     </div>
   );

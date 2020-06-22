@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 
 import AppDetail from "./components/AppDetail";
 import NewApp from "./components/NewApp";
+import WishList from "./components/WishList";
 
 class App extends Component {
   state = {
@@ -50,6 +51,11 @@ class App extends Component {
             exact
             path="/apps/:id"
             render={(props) => <AppDetail user={this.state.user} match={props.match} />} //{...props}
+          />
+          <Route
+            exact
+            path="/apps/wishlist/:id"
+            render={(props) => <WishList user={this.state.user} match={props.match} />} //{...props} 
           />
         </Switch>
       </div>
