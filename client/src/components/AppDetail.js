@@ -1,4 +1,4 @@
-import { fetchAllApps, deleteApp  } from "../services/app";
+import { fetchAllApps, deleteApp, addWishApp  } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
 
 import appIconPlaceholder from "../app-icon-placeholder.svg";
@@ -72,6 +72,20 @@ class AppDetail extends Component {
       });
   }
 
+  //add app to wish list
+  addToWishList = () => {
+    const wishAppId = this.props.match.params.id
+    const userId = this.props.user._id
+
+    addWishApp(wishAppId, userId)
+      .then(() => {
+        alert('Added to wish list!');
+      })
+      .catch((error) => {
+        alert(error.message)
+      });
+  }
+
   render() {
     const ratingBtns = (
       <div>
@@ -102,6 +116,14 @@ class AppDetail extends Component {
         <button onClick={this.deleteOneApp}>Delete</button>
       </div>
     );
+
+    const wishListBtn = (
+      <div>
+          <button key={this.props.user._id} onClick={this.addToWishList}  className="btnCategories">
+          <h3>+ Wish list  📑</h3>
+          </button>
+      </div>
+    )
 
     return (
       <main id="appDetail">
@@ -135,7 +157,8 @@ class AppDetail extends Component {
           </div>
 
           <div id="rateApp">{this.props.user ? ratingBtns : null}</div>
-          <div id="rateApp">{this.props.user._id != undefined && this.state.app.creator != undefined && this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
+          <div id="rateApp">{this.props.user._id && this.state.app.creator && this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
+          <div id="rateApp">{this.props.user ? wishListBtn : null}</div>
         </div>
       </main>
     );
