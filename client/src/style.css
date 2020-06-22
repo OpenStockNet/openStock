@@ -228,27 +228,19 @@ button.btnCategories p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 30% 30%;
+  width: 30%;
   text-align: center;
   background-color: #2b2d42;
   box-shadow: 0px 1px 4px #1a1829;
   box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
-  
 }
 
-.appCard_wish a {
-  width: 180px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 10px;
-} 
-
-.small_card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 8px;
+.appCard_wish a img {
+  height: 64px;
+  display: block;
+  margin: 0 auto;
+  max-width: 88px;
+  filter: saturate(0.8);
 }
 
 .appCard a {
