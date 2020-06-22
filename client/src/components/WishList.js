@@ -28,10 +28,8 @@ class WishList extends Component {
             <div key={app._id} className="appCard_wish">
              <Link to={`/apps/${app._id}`}>
                 <img src={app.logo||appIconPlaceholder} alt="" style={{width:"50px"}}/>
-                <div className="small_card">
                     <h3>{app.name}</h3>
                     <h6>{app.category.name}</h6>
-                </div>
             </Link>
             </div>
           )
