@@ -125,11 +125,7 @@ class AppDetail extends Component {
             <div>
               <h2>{this.state.app.name}</h2>
               <h4>{this.state.app.category.name}</h4>
-<<<<<<< HEAD
-              <a target="_blank" href={this.state.app.website ? `${this.state.app.website}`:`/`}>
-=======
-              <a target="_blank" href={`${this.state.app.website}`|| `/`}>
->>>>>>> 3d4f6d2cc0e05cd0a6b58544cda74043d1a44191
+              <a target="_blank" href={this.state.app.website?`${this.state.app.website}`:`/`}>
                 <span>⎋</span>Visit official website
               </a>
             </div>
