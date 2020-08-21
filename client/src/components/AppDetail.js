@@ -19,7 +19,6 @@ class AppDetail extends Component {
         this.setState({
           app: theApp,
         })
-        console.log(theApp);
       })
       .catch((error) => {
         alert(error.message);
@@ -113,7 +112,7 @@ class AppDetail extends Component {
     const wishListBtn = (
       <div>
           <button key={this.props.user._id} onClick={this.addToWishList}  className="btnCategories">
-          <h3>+ Wish list  📑</h3>
+          <h3>+ Wish list  <span>📑</span></h3>
           </button>
       </div>
     )
@@ -122,11 +121,11 @@ class AppDetail extends Component {
       <main id="appDetail">
         <div className="appIntro">
           <div className="appInfo">
-            <img src={this.state.app.logo || appIconPlaceholder} />
+            <img src={this.state.app.logo || appIconPlaceholder} alt=""/>
             <div>
               <h2>{this.state.app.name}</h2>
               <h4>{this.state.app.category.name}</h4>
-              <a target="_blank" href={`${this.state.app.website}`}>
+              <a target="_blank" href={`${this.state.app.website}`|| `/`}>
                 <span>⎋</span>Visit official website
               </a>
             </div>
@@ -150,7 +149,7 @@ class AppDetail extends Component {
           </div>
 
           <div id="rateApp">{this.props.user ? ratingBtns : null}</div>
-          <div id="rateApp">{this.props.user._id && this.state.app.creator && this.props.user._id == this.state.app.creator ? deleteBtn : null}</div>
+          <div id="rateApp">{this.props.user._id && this.state.app.creator && this.props.user._id === this.state.app.creator ? deleteBtn : null}</div>
           <div id="rateApp">{this.props.user ? wishListBtn : null}</div>
         </div>
       </main>
