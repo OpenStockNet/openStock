@@ -32,7 +32,7 @@ class List extends Component {
         </div>
       );
     });
-    console.log("HERE appsFiltered: ", this.props.appsFiltered);
+    // console.log("HERE appsFiltered: ", this.props.appsFiltered);
     return (
       <section id="listContainer">
         {/* <h3>{this.props.appsFiltered.category.name}</h3> */}

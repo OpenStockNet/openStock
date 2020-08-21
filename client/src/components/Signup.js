@@ -16,6 +16,7 @@ class Signup extends Component {
   };
 
   handleSubmit = (event) => {
+    //prevent reload once submit
     event.preventDefault();
 
     const { username, password } = this.state;
