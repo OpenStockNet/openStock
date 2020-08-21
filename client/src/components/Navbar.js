@@ -44,7 +44,7 @@ const Navbar = (props) => {
     <nav className="navbar">
       <div id="logoHome">
         <Link to="/">
-          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" />
+          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt=""/>
         </Link>
         {/* <Link to="/alternatives">Alternatives to</Link> */}
       </div>
