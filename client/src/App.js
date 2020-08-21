@@ -1,5 +1,5 @@
-import React, { Fragment, Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
