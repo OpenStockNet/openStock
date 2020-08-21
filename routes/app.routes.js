@@ -17,6 +17,19 @@ router.get("/", (req, res) => {
     });
 });
 
+//fetch one single app
+router.get("/:id", (req, res) => {
+  const appId = req.params.id;
+  App.findById(appId)
+    .populate("category")
+    .then((app) => {
+      res.status(200).json(app);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 //add an app in protected page
 router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
   const app = req.body;

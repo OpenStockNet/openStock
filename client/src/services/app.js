@@ -13,6 +13,19 @@ const fetchAllApps = () => {
     });
 }
 
+//fetch on single app
+const fetchApp = (appId) => {
+  return axios
+    .get(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
+    .then(response => {
+      const app = response.data
+      return app;
+    })
+    .catch(error => {
+      throw error.response.data;
+    });
+}
+
 const createApp = (name, description, category, device, website, logo, creator) => {
   const app = { name, description, category, device, website, logo, creator }
   return axios 
@@ -53,4 +66,4 @@ const addWishApp = (appId, userId) => {
 }
   
 
-export { fetchAllApps, createApp, deleteApp, addWishApp };
+export { fetchAllApps, fetchApp, createApp, deleteApp, addWishApp };

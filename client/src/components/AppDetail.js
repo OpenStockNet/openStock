@@ -1,10 +1,9 @@
-import { fetchAllApps, deleteApp, addWishApp  } from "../services/app";
+import { fetchApp, deleteApp, addWishApp  } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
 
 import appIconPlaceholder from "../app-icon-placeholder.svg";
-
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+
 
 class AppDetail extends Component {
   state = {
@@ -13,25 +12,19 @@ class AppDetail extends Component {
   };
 
   componentDidMount() {
-    //instead of fetching all apps, would be better fetch only one app
-    //if have time,create an endpoint for it
-
     const appId = this.props.match.params.id;
 
-    fetchAllApps()
-      .then((apps) => {
-        const app = apps.find((app) => {
-          return app._id === appId;
-        });
-
+    fetchApp(appId)
+      .then((theApp) => {
         this.setState({
-          app: app,
-        });
+          app: theApp,
+        })
+        console.log(theApp);
       })
       .catch((error) => {
         alert(error.message);
       });
-
+      
     //here pass param appId to API call in rating.js
     //calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
