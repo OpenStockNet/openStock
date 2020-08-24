@@ -46,7 +46,7 @@ class Login extends Component {
             value={this.state.username}
             onChange={this.handleChange}
             placeholder="Type username here"
-            autofocus="true"
+            autoFocus="true"
           />
           <label htmlFor="password">Password </label>
           <input
