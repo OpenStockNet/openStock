@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 
 import AppDetail from "./components/AppDetail";
+import AppDetailHook from "./components/AppDetail_hook";
 import NewApp from "./components/NewApp";
 import WishList from "./components/WishList";
 
@@ -49,7 +50,7 @@ class App extends Component {
           <Route
             exact
             path="/apps/:id"
-            render={(props) => <AppDetail user={this.state.user} match={props.match} />} //{...props}
+            render={(props) => <AppDetailHook user={this.state.user} match={props.match} />} //{...props}
           />
           <Route
             exact

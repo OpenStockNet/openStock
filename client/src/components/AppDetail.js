@@ -1,8 +1,7 @@
+import React, { Component } from "react";
 import { fetchApp, deleteApp, addWishApp  } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
-
 import appIconPlaceholder from "../app-icon-placeholder.svg";
-import React, { Component } from "react";
 
 
 class AppDetail extends Component {
