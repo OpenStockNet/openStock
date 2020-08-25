@@ -72,5 +72,22 @@ router.post('/user/:userId', (req, res) => {
   })
 })
 
+//remove app from wish list
+router.patch("/user/:userId", (req, res) => {
+  const wishAppId = req.body.appId;
+  const wishUserId = req.body.userId;
+
+  App
+  .findByIdAndUpdate(
+    wishAppId, 
+    { $pull: { wishUser: wishUserId}}
+    )
+    .then(() => {
+      res.json({ message: "App is removed!" });
+    })
+    .catch((err) => {
+      res.json(err);
+    })
+});
 
 module.exports = router;

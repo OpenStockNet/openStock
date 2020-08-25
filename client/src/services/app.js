@@ -1,4 +1,5 @@
 import axios from 'axios';
+import WishList from '../components/WishList';
 
 
 const fetchAllApps = () => {
@@ -13,7 +14,7 @@ const fetchAllApps = () => {
     });
 }
 
-//fetch on single app
+//fetch one single app
 const fetchApp = (appId) => {
   return axios
     .get(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
@@ -62,8 +63,17 @@ const addWishApp = (appId, userId) => {
         .catch(error => {
           throw error.response.data;
         });
-
 }
-  
 
-export { fetchAllApps, fetchApp, createApp, deleteApp, addWishApp };
+const removeWishApp = (appId, userId) => {
+  return axios
+        .patch (`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, {appId, userId})
+        .then (response => {
+          return response;
+        })
+        .catch(error => {
+          throw error.response.data;
+        });
+}
+
+export { fetchAllApps, fetchApp, createApp, deleteApp, addWishApp, removeWishApp };

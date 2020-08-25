@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchApp, deleteApp, addWishApp  } from "../services/app";
+import { fetchApp, deleteApp, addWishApp, removeWishApp } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
 import appIconPlaceholder from "../app-icon-placeholder.svg";
 
@@ -47,10 +47,10 @@ function AppDetailHook (props) {
 
   //update average rating without refreshing page
   const updateAvrRating = (appId) => {
+    //do i need Object.assign(target, source) here? why we use shallow copy before?
     getAverageRating(appId)
     .then((averageRating) => {
       setAvrRating(averageRating);
-      console.log(averageRating)
     })
     .catch((error) => {
       alert(error.message);
@@ -77,7 +77,21 @@ function AppDetailHook (props) {
 
     addWishApp(wishAppId, userId)
       .then(() => {
-        alert('Added to wish list!');
+        alert(`${app.name} is added to wish list!`);
+      })
+      .catch((error) => {
+        alert(error.message)
+      });
+  }
+
+  //remove app from wish list
+  const removeFromWishList = () => {
+    const wishAppId = props.match.params.id
+    const userId = props.user._id
+
+    removeWishApp(wishAppId, userId)
+      .then(() => {
+        alert(`${app.name} is removed from wish list!`);
       })
       .catch((error) => {
         alert(error.message)
@@ -122,6 +136,14 @@ function AppDetailHook (props) {
     </div>
   )
 
+  const removeWishListBtn = (
+    <div>
+        <button key={props.user._id} onClick={removeFromWishList}  className="btnCategories">
+        <h3>remove from wish list </h3>
+        </button>
+    </div>
+  )
+
       return (
         <main id="appDetail">
           <div className="appIntro">
@@ -154,6 +176,7 @@ function AppDetailHook (props) {
             <div id="rateApp">{props.user ? ratingBtns : null}</div>
             <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
             <div id="rateApp">{props.user ? wishListBtn : null}</div>
+            <div id="rateApp">{props.user ? removeWishListBtn : null}</div>
           </div>
         </main>
       );
