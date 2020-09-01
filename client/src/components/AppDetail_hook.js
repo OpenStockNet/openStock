@@ -130,7 +130,7 @@ function AppDetailHook (props) {
 
   const wishListBtn = (
     <div>
-        <button key={props.user._id} onClick={addToWishList}  className="btnCategories">
+        <button key={props.user._id} onClick={addToWishList}  className="small">
         <h3>+ Wish list  <span>📑</span></h3>
         </button>
     </div>
@@ -138,8 +138,8 @@ function AppDetailHook (props) {
 
   const removeWishListBtn = (
     <div>
-        <button key={props.user._id} onClick={removeFromWishList}  className="btnCategories">
-        <h3>remove from wish list </h3>
+        <button key={props.user._id} onClick={removeFromWishList}  className="small">
+        <h3>no more wished </h3>
         </button>
     </div>
   )

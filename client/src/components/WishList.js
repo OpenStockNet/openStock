@@ -4,6 +4,8 @@ import appIconPlaceholder from "../app-icon-placeholder.svg";
 import { Link } from "react-router-dom";
 
 // fetch all apps, and filter to wishUser_id includes props user id
+// TODO: conver to class
+// TODO: remove from wish list
 class WishList extends Component {
     state = {
         appList:[]
