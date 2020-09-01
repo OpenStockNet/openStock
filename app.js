@@ -14,6 +14,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User.model"); 
 const flash = require("connect-flash");
+// coockie session for log in
+const MongoStore = require('connect-mongo')(session);
 
 
 mongoose
@@ -79,13 +81,15 @@ passport.use(new LocalStrategy({passReqToCallback: true}, (req, username, passwo
     return next(null, user);
   });
 }));
-///
 
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+  }),
   })
 );
 app.use(passport.initialize());
