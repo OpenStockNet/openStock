@@ -71,11 +71,8 @@ function AppDetailHook (props) {
       });
   }
 
-
-  //update wishApp status without refreshing page
-  //fetch the app after push add/remove button
-  //only change on frontend: when there is a need to mutate an object in "state" which you should not,
-  //and make a copy, modify copy, and replace original object with copy
+  //if there's a need to change only on frontend, you shoud not mutate an object in "state",
+  //instead: make a copy, modify copy, and replace original object with copy
   
   //add app to wish list
   const addToWishList = () => {
