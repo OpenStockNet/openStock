@@ -9,16 +9,11 @@ function AppDetailHook (props) {
   const [avrRating, setAvrRating] = useState(0);
 
   const appId = props.match.params.id;
+  const userId = props.user._id
 
   useEffect(() => {
     
-    fetchApp(appId)
-      .then((theApp) => {
-        setApp(theApp);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    updateAppDetails();
 
     //calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
@@ -31,11 +26,20 @@ function AppDetailHook (props) {
 
   },[appId, avrRating])
 
+  const updateAppDetails = () => {
+    fetchApp(appId)
+      .then((theApp) => {
+        setApp(theApp);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
   const submitRating = (event) => {
     const ratingValue = event.target.value;
-    const ratingAppId = props.match.params.id;
 
-    rateApp(ratingValue, ratingAppId)
+    rateApp(ratingValue, appId)
       .then(() => {
         alert(`Thank you for rating ${app.name}.`);
         updateAvrRating(appId);
@@ -47,7 +51,6 @@ function AppDetailHook (props) {
 
   //update average rating without refreshing page
   const updateAvrRating = (appId) => {
-    //do i need Object.assign(target, source) here? why we use shallow copy before?
     getAverageRating(appId)
     .then((averageRating) => {
       setAvrRating(averageRating);
@@ -59,9 +62,7 @@ function AppDetailHook (props) {
 
   //delete app
   const deleteOneApp = () => {
-    const deletedAppId = props.match.params.id;
-
-    deleteApp(deletedAppId)
+    deleteApp(appId)
       .then(() => {
         alert(`You successfully deleted ${app.name}.`)
       })
@@ -70,14 +71,18 @@ function AppDetailHook (props) {
       });
   }
 
+
+  //update wishApp status without refreshing page
+  //fetch the app after push add/remove button
+  //only change on frontend: when there is a need to mutate an object in "state" which you should not,
+  //and make a copy, modify copy, and replace original object with copy
+  
   //add app to wish list
   const addToWishList = () => {
-    const wishAppId = props.match.params.id
-    const userId = props.user._id
-
-    addWishApp(wishAppId, userId)
+    addWishApp(appId, userId)
       .then(() => {
         alert(`${app.name} is added to wish list!`);
+        updateAppDetails();
       })
       .catch((error) => {
         alert(error.message)
@@ -86,12 +91,10 @@ function AppDetailHook (props) {
 
   //remove app from wish list
   const removeFromWishList = () => {
-    const wishAppId = props.match.params.id
-    const userId = props.user._id
-
-    removeWishApp(wishAppId, userId)
+    removeWishApp(appId, userId)
       .then(() => {
         alert(`${app.name} is removed from wish list!`);
+        updateAppDetails();
       })
       .catch((error) => {
         alert(error.message)
@@ -129,19 +132,15 @@ function AppDetailHook (props) {
   );
 
   const wishListBtn = (
-    <div>
         <button key={props.user._id} onClick={addToWishList}  className="small">
-        <h3>+ Wish list  <span>📑</span></h3>
+        + &nbsp; Wish list
         </button>
-    </div>
   )
 
   const removeWishListBtn = (
-    <div>
-        <button key={props.user._id} onClick={removeFromWishList}  className="small">
-        <h3>no more wished </h3>
+        <button key={props.user._id} onClick={removeFromWishList} className="small" >
+        saved
         </button>
-    </div>
   )
 
       return (
@@ -175,9 +174,11 @@ function AppDetailHook (props) {
   
             <div id="rateApp">{props.user ? ratingBtns : null}</div>
             <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
-            <div id="rateApp">{props.user ? wishListBtn : null}</div>
-            <div id="rateApp">{props.user ? removeWishListBtn : null}</div>
+            
+            <div >{app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn}</div>
           </div>
+          
+         
         </main>
       );
     }
