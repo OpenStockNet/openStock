@@ -7,6 +7,7 @@ import "./style.login.css";
 import "./style.detailApp.css";
 import "./style.newApp.css";
 import "./style.medias.css";
+import "./style.button.css";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";

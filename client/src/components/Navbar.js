@@ -15,18 +15,20 @@ const Navbar = (props) => {
   };
 
   const loggedInContent = (
+    props.user && (
     <div className="loggedUser">
       <p>
-        Hello <b>{props.user.username}</b>
+        Hi <b>{props.user.username}</b>
       </p>
       <Link to="/apps/new">
         <span>＋</span> Add new app
       </Link>
       <Link to={`/apps/wishlist/${props.user._id}`}>
-        My wish list
+        Wish list
       </Link>
       <button onClick={handleLogOut}>Log out</button>
     </div>
+    )
   );
 
   const loggedOutContent = (

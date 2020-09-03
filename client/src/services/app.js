@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const fetchAllApps = () => {
   return axios
     .get(`${process.env.REACT_APP_API_URL}/api/apps`)
@@ -13,7 +12,7 @@ const fetchAllApps = () => {
     });
 }
 
-//fetch on single app
+//fetch one single app
 const fetchApp = (appId) => {
   return axios
     .get(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
@@ -51,7 +50,6 @@ const deleteApp = (appId) => {
       })
 }
 
-
 const addWishApp = (appId, userId) => {
   return axios
         .post (`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, {appId, userId})
@@ -62,8 +60,17 @@ const addWishApp = (appId, userId) => {
         .catch(error => {
           throw error.response.data;
         });
-
 }
-  
 
-export { fetchAllApps, fetchApp, createApp, deleteApp, addWishApp };
+const removeWishApp = (appId, userId) => {
+  return axios
+        .patch (`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, {appId, userId})
+        .then (response => {
+          return response;
+        })
+        .catch(error => {
+          throw error.response.data;
+        });
+}
+
+export { fetchAllApps, fetchApp, createApp, deleteApp, addWishApp, removeWishApp };

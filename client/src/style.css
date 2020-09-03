@@ -57,7 +57,7 @@ button:hover {
 }
 
 button:focus {
-  border: 0;
+  outline: none;
 }
 
 form button {
