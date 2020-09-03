@@ -20,21 +20,23 @@ function WishListHook(props){
     return (
         <div>   
         <h1>My wish list</h1>
+        <section  id="listContainer">
         {appList
         .filter((app) => app.wishUser.includes(props.user._id))
         .map(app => {
             return (
-            <section id="listContainer">
-                <div key={app._id} className="appCard_wish">
+            
+                <div  key={app._id} className="appCard_wish">
                 <Link to={`/apps/${app._id}`}>
                     <img src={app.logo||appIconPlaceholder} alt="" style={{width:"50px"}}/>
                         <h3>{app.name}</h3>
                         <h6>{app.category.name}</h6>
                 </Link>
                 </div>
-            </section>
+            
             )
         })}
+        </section>
         </div>
     )
     
