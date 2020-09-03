@@ -143,6 +143,10 @@ function AppDetailHook (props) {
         </button>
   )
 
+  const wishListBtns = (
+    app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn
+  )
+
       return (
         <main id="appDetail">
           <div className="appIntro">
@@ -175,10 +179,9 @@ function AppDetailHook (props) {
             <div id="rateApp">{props.user ? ratingBtns : null}</div>
             <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
             
-            <div >{app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn}</div>
+            {props.user ? wishListBtns : null}
           </div>
           
-         
         </main>
       );
     }

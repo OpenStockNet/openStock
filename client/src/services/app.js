@@ -1,6 +1,4 @@
 import axios from 'axios';
-import WishList from '../components/WishList';
-
 
 const fetchAllApps = () => {
   return axios
@@ -51,7 +49,6 @@ const deleteApp = (appId) => {
         throw error.response.data;
       })
 }
-
 
 const addWishApp = (appId, userId) => {
   return axios
