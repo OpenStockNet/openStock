@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// * represents everything
+import * as icons from "../images";
 
 class Categories extends Component {
   handleCategory = (category) => {
@@ -11,12 +13,15 @@ class Categories extends Component {
     const appCategories = this.props.category.map((cat) => {
       return (
         <button key={cat._id} onClick={() => this.handleCategory(cat._id)} className="btnCategories">
-          <img src={cat.icon} alt=""/>
+          <img src={icons[cat.icon]} alt=""/>
           <p style={{ display: "inline-block" }}>{cat.name}</p>
         </button>
       );
     });
-    return <section id="catContainer">{appCategories}</section>;
+
+    return <section id="catContainer">
+      {appCategories}
+    </section>;
   }
 }
 
