@@ -102,3 +102,10 @@ form h2 {
 #addApp .checkboxes input {
   margin-right: 24px;
 }
+
+@media all and (max-width: 600px) {
+  form#addApp {
+    width: 90%;
+    padding: 40px 30px;
+  }
+}

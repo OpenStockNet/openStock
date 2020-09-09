@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => (
   <footer className="footer">
     <p>
-      Made with 💚 &nbsp; by{" "}
+      Made with 💚  by{" "}
       <a href="https://github.com/yung-ting" target="_blank" rel="noreferrer noopener">
         Yung-Ting
       </a>
