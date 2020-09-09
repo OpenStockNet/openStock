@@ -60,15 +60,14 @@ class Login extends Component {
           />
           <button type="submit">Log in</button>
           
-          <section>
-          <Link to="/signup" id="underline_text">
-           Sign up
-          </Link>
+          <section className="reminder">
+            <p>Don't have an account? &nbsp;</p> 
+            <Link to="/signup" id="underline_text">
+             Sign up
+            </Link>
           </section>
         </form>
         
-        
-
       </main>
     );
   }
