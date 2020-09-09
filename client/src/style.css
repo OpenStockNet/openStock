@@ -9,6 +9,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
 
+
 /* RESET
 =====================*/
 
@@ -21,6 +22,7 @@
   /*   border: 1px solid red;
  */
 }
+
 
 body {
   margin: 0 auto;
@@ -89,6 +91,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   z-index: 999;
+  height: 100px;
 }
 
 nav div#logoHome img {
@@ -132,6 +135,8 @@ h2 {
   font-size: 18px;
   margin-top: 16px;
 }
+
+
 
 /* SEARCH */
 

@@ -61,6 +61,24 @@ input:focus,
   text-align: left;
   font-size: 12px;
   font-weight: 300;
-  color: ;
+  
   margin-bottom: 8px;
+}
+
+.reminder {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+}
+
+#underline_text {
+  text-decoration: underline;
+}
+
+@media all and (max-width: 600px) {
+  form#login,
+  form#signup {
+    width: 90%;
+    padding: 40px 30px;
+  }
 }

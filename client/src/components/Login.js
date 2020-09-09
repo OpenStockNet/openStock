@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { login } from "../services/auth";
 
 class Login extends Component {
@@ -58,7 +59,15 @@ class Login extends Component {
             placeholder="Type password here"
           />
           <button type="submit">Log in</button>
+          
+          <section className="reminder">
+            <p>Don't have an account? &nbsp;</p> 
+            <Link to="/signup" id="underline_text">
+             Sign up
+            </Link>
+          </section>
         </form>
+        
       </main>
     );
   }
