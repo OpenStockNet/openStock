@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-// * represents everything
+//icons contains map of key-value pairs, where key are consts names and values are imgs
+//you can specify file's name, if not defualt take from index.js
+//you can import all/* or individual consts
 import * as icons from "../images";
 
 class Categories extends Component {
