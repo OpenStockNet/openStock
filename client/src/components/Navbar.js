@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../services/auth";
+//RWD
+import './Navbar.scss';
 
 const Navbar = (props) => {
   //window.location redirects user back to homepage and reload the page
@@ -16,7 +18,7 @@ const Navbar = (props) => {
 
   const loggedInContent = (
     props.user && (
-    <div className="loggedUser">
+    <div className="loggedUser" id="navbar_items">
       <p>
         Hi <b>{props.user.username}</b>
       </p>
@@ -32,13 +34,13 @@ const Navbar = (props) => {
   );
 
   const loggedOutContent = (
-    <div>
+    <div id="navbar_items">
       <Link to="/login" className="aButton">
         Log in
       </Link>
-      <Link to="/signup" className="aButton">
+      {/* <Link to="/signup" className="aButton">
         Sign up
-      </Link>
+      </Link> */}
     </div>
   );
 

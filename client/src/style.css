@@ -9,6 +9,11 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
 
+/* Responsive Design */
+
+
+
+
 /* RESET
 =====================*/
 
@@ -78,7 +83,7 @@ form button {
   margin: 0 auto;
 }
 
-nav {
+/* nav {
   width: 100%;
   padding: 16px 40px;
   background-color: #2b2d42;
@@ -89,7 +94,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   z-index: 999;
-}
+} */
 
 nav div#logoHome img {
   height: 28px;
@@ -117,6 +122,15 @@ main {
   min-height: 72vh;
 }
 
+@media screen and (min-width: 600px){
+  .main {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  
+}
+
 h1,
 h2 {
   margin: 0 auto;
@@ -133,6 +147,10 @@ h2 {
   margin-top: 16px;
 }
 
+#underline_text {
+  text-decoration: underline;
+  font-weight: 300;
+}
 /* SEARCH */
 
 form#search {
