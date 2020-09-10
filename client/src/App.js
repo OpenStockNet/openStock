@@ -19,9 +19,7 @@ import Backdrop from "./components/Backdrop";
 class App extends Component {
   state = {
     user: this.props.user,
-
     sideDrawerOpen: false,
-
   };
 
   setUser = (user) => {
@@ -42,11 +40,10 @@ class App extends Component {
   }
   
   render() {
-    let sideDrawer;
+    
     let backdrop;
 
     if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
       backdrop = <Backdrop click={this.handleBackdropClick}/>
     }
 
@@ -54,7 +51,8 @@ class App extends Component {
       <div className="App">
         <header>
           <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick}/>
-          {sideDrawer}
+          {/* side drawer always open, add animation*/}
+          <SideDrawer show={this.state.sideDrawerOpen}/>
           {backdrop}
         </header>
 
