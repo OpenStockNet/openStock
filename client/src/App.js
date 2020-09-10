@@ -20,7 +20,8 @@ class App extends Component {
   state = {
     user: this.props.user,
 
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
+
   };
 
   setUser = (user) => {
@@ -31,10 +32,13 @@ class App extends Component {
 
   handleDrawerToggleClick = () => {
     this.setState((prevState)=> {
-      console.log("it's clicked")
       return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      
     });
+  }
+
+  // click on backdrop to close side drawer
+  handleBackdropClick = () => {
+    this.setState({sideDrawerOpen:false});
   }
   
   render() {
@@ -43,7 +47,7 @@ class App extends Component {
 
     if (this.state.sideDrawerOpen) {
       sideDrawer = <SideDrawer />;
-      backdrop = <Backdrop />
+      backdrop = <Backdrop click={this.handleBackdropClick}/>
     }
 
     return (
