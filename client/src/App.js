@@ -6,10 +6,8 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 
-//import AppDetail from "./components/AppDetail";
 import AppDetailHook from "./components/AppDetail_hook";
 import NewApp from "./components/NewApp";
-//import WishList from "./components/WishList";
 import WishListHook from "./components/WishList_hook"
 
 import SideDrawer from "./components/SideDrawer";
@@ -42,7 +40,6 @@ class App extends Component {
   render() {
     
     let backdrop;
-
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.handleBackdropClick}/>
     }

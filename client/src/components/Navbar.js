@@ -47,7 +47,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar" >
-      <div>
+      <div className="navbar-toggle-btn">
         <DrawerToggleBtn click={props.handleDrawerToggleClick}/>
       </div>
       <div id="logoHome">

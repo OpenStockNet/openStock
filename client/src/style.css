@@ -115,7 +115,14 @@ nav div:nth-child(2) a:not(:last-child) {
   color: #16db86;
 }
 
-/* if below 600px, display no loggedUser navbar items */
+/* hide burger btn if larger than 601px */
+@media (min-width: 601px) {
+  .navbar-toggle-btn {
+    display: none;
+  }
+}
+
+/* hide loggedUser navbar items if below 600px */
 @media (max-width: 600px) {
   .loggedUser {
     display: none;

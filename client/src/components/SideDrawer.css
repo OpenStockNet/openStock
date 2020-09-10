@@ -38,3 +38,10 @@
 .side-drawer a:active {
     color: #521751
 }
+
+/* hide side-drawer items if larger than 601px */
+@media (min-width: 601px) {
+    .side-drawer{
+        display: none ;
+    }
+}

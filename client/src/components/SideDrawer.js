@@ -1,7 +1,6 @@
 import React from "react";
 import "./SideDrawer.css"
-
-
+import { logout } from "../services/auth";
 
 const sideDrawer = (props) => {
     //add css anmiation
@@ -9,6 +8,17 @@ const sideDrawer = (props) => {
     if (props.show) {
         drawerClasses = 'side-drawer open';
     }
+
+    const handleLogOut = () => {
+        logout()
+          .then(() => {
+            window.location = "/";
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      };
+
     return (
         <nav className={drawerClasses}>
             <ul>
@@ -18,6 +28,7 @@ const sideDrawer = (props) => {
                 <li>
                     <a href="/">Wish list</a> 
                 </li>
+                <button onClick={handleLogOut}>Log out</button>
             </ul>
         </nav>
     )
