@@ -115,6 +115,13 @@ nav div:nth-child(2) a:not(:last-child) {
   color: #16db86;
 }
 
+/* if below 600px, display no loggedUser navbar items */
+@media (max-width: 600px) {
+  .loggedUser {
+    display: none;
+  }
+}
+
 /* MAIN
 =====================*/
 
@@ -139,8 +146,6 @@ h2 {
   font-size: 18px;
   margin-top: 16px;
 }
-
-
 
 /* SEARCH */
 
