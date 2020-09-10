@@ -12,9 +12,15 @@ import NewApp from "./components/NewApp";
 //import WishList from "./components/WishList";
 import WishListHook from "./components/WishList_hook"
 
+import SideDrawer from "./components/SideDrawer";
+import Backdrop from "./components/Backdrop";
+
+
 class App extends Component {
   state = {
     user: this.props.user,
+
+    sideDrawerOpen: false
   };
 
   setUser = (user) => {
@@ -23,11 +29,29 @@ class App extends Component {
     });
   };
 
+  handleDrawerToggleClick = () => {
+    this.setState((prevState)=> {
+      console.log("it's clicked")
+      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      
+    });
+  }
+  
   render() {
+    let sideDrawer;
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      sideDrawer = <SideDrawer />;
+      backdrop = <Backdrop />
+    }
+
     return (
       <div className="App">
         <header>
-          <Navbar user={this.state.user} />
+          <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick}/>
+          {sideDrawer}
+          {backdrop}
         </header>
 
         <Switch>

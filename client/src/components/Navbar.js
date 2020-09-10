@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../services/auth";
 
+import DrawerToggleBtn from "./DrawerToggleBtn";
+// import SideDrawer from "./SideDrawer";
+// import Backdrop from "./Backdrop";
+
 const Navbar = (props) => {
+  
+
   //window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
     logout()
@@ -42,8 +48,14 @@ const Navbar = (props) => {
     </div>
   );
 
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" >
+      <div>
+        <DrawerToggleBtn click={props.handleDrawerToggleClick}/>
+        {/* <SideDrawer />
+        <Backdrop /> */}
+      </div>
       <div id="logoHome">
         <Link to="/">
           <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt=""/>
