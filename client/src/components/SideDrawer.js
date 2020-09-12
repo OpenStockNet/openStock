@@ -33,6 +33,9 @@ const sideDrawer = (props) => {
         <div>
         <nav className={drawerClasses}>
             <ul>
+                <li className="user-name">
+                    Hi <b>{props.user.username}</b>
+                </li>
                 <li>
                     <a href="/apps/new">Add new app</a> 
                 </li>
@@ -43,12 +46,11 @@ const sideDrawer = (props) => {
                     <button onClick={handleLogOut}>Log out</button>
                 </li>
                 <div className="btn-container">
-            <CloseBtn click={props.click}/>
-            </div>
+                    <CloseBtn click={props.click}/>
+                </div>
             </ul>
-            
         </nav>
-            {backdrop}
+                {backdrop}
         </div>
     )
 };

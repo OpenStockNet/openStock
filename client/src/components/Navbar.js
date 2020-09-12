@@ -45,11 +45,18 @@ const Navbar = (props) => {
     </div>
   );
 
-  return (
-    <nav className="navbar" >
+  const drawerToggleBtn = (
+    props.user &&
+      (
       <div className="navbar-toggle-btn">
         <DrawerToggleBtn click={props.handleDrawerToggleClick}/>
       </div>
+      )
+  );
+
+  return (
+    <nav className="navbar" >
+      {drawerToggleBtn}
       <div id="logoHome">
         <Link to="/">
           <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt=""/>

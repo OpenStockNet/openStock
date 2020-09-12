@@ -50,11 +50,19 @@
     padding: 0;
     color: #16db86;
     border: none;
+    font-family: "Roboto", sans-serif;
 }
 
 .side-drawer a:hover,
 .side-drawer a:active {
-    color: #521751
+    color:#a1afc7
+}
+
+.user-name {
+    border-bottom: 1px solid #a1afc7;
+    color: #a1afc7;
+    font-size: 1.6rem;
+    font-weight: 300;
 }
 
 .btn-container {

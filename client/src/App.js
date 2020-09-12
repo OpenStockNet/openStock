@@ -38,7 +38,7 @@ class App extends Component {
   }
   
   render() {
-    
+    //instead of write tenerary in JSX, write elegently as below
     let backdrop;
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.handleBackdropClick}/>
