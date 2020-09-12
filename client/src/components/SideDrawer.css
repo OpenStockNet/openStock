@@ -1,16 +1,21 @@
 .side-drawer {
     height: 100%;
-    background: black;
+    width: 80%;
+    background:  #2b2d42;
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%;
     max-width: 400px;
-    z-index: 200; /*above backdrop*/
+    /*above backdrop, if not remove z-index*/
+    /* z-index: 200;  */
     /*animation*/
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+    /*list position*/
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .side-drawer.open {
@@ -18,20 +23,33 @@
     transform: translateX(0);
 }
 
-.side-drawer li {
-    margin: 0.5rem;
-}
-
 .side-drawer ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.side-drawer li {
+    margin: 0.5rem;
+    padding: 1rem;
+    
 }
 
 .side-drawer a {
-   
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color:#AEA8D3;
+}
+
+.side-drawer button {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 0;
+    /* color:#edf2f4; */
+    color: #AEA8D3;
+    border: none;
 }
 
 .side-drawer a:hover,

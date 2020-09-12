@@ -28,7 +28,10 @@ const sideDrawer = (props) => {
                 <li>
                     <a href="/">Wish list</a> 
                 </li>
-                <button onClick={handleLogOut}>Log out</button>
+                <li>
+                    <button onClick={handleLogOut}>Log out</button>
+                </li>
+                {/* <button onClick={handleLogOut}>Log out</button> */}
             </ul>
         </nav>
     )
