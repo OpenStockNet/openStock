@@ -8,7 +8,7 @@
     left: 0;
     max-width: 400px;
     /*above backdrop, if not remove z-index*/
-    z-index: 200; 
+    /* z-index: 200;  */
     /*animation*/
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
@@ -41,14 +41,14 @@
 .side-drawer a {
     font-size: 1.8rem;
     font-weight: 500;
-    color:#AEA8D3;
+    color: #16db86;
 }
 
 .side-drawer button {
     font-size: 1.8rem;
     font-weight: 500;
     padding: 0;
-    color: #AEA8D3;
+    color: #16db86;
     border: none;
 }
 
@@ -57,6 +57,9 @@
     color: #521751
 }
 
+.btn-container {
+    align-self: flex-end;
+}
 /* hide side-drawer items if larger than 601px */
 @media (min-width: 601px) {
     .side-drawer{

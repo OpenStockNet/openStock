@@ -13,17 +13,10 @@ const sideDrawer = (props) => {
         drawerClasses = 'side-drawer open';
     }
 
-<<<<<<< HEAD
 
     let backdrop;
     if (props.show) {
       backdrop = <Backdrop />
-=======
-    
-    let backdrop;
-    if (props.show) {
-      backdrop = <Backdrop click={props.click}/>
->>>>>>> c47706f5a7311381c60e597119f4f276b11cd4cb
     }
 
     const handleLogOut = () => {
@@ -49,16 +42,13 @@ const sideDrawer = (props) => {
                 <li>
                     <button onClick={handleLogOut}>Log out</button>
                 </li>
-                
-            </ul>
-<<<<<<< HEAD
+                <div className="btn-container">
             <CloseBtn click={props.click}/>
-=======
-            <CloseBtn/>
-            {backdrop}
->>>>>>> c47706f5a7311381c60e597119f4f276b11cd4cb
+            </div>
+            </ul>
+            
         </nav>
-        {backdrop}
+            {backdrop}
         </div>
     )
 };
