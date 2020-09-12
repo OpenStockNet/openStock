@@ -29,6 +29,7 @@
     flex-direction: column;
     text-align: left;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .side-drawer li {
@@ -47,7 +48,6 @@
     font-size: 1.8rem;
     font-weight: 500;
     padding: 0;
-    /* color:#edf2f4; */
     color: #AEA8D3;
     border: none;
 }
