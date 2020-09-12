@@ -26,12 +26,11 @@ const sideDrawer = (props) => {
                     <a href="/apps/new">Add new app</a> 
                 </li>
                 <li>
-                    <a href="/">Wish list</a> 
+                    <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a> 
                 </li>
                 <li>
                     <button onClick={handleLogOut}>Log out</button>
                 </li>
-                {/* <button onClick={handleLogOut}>Log out</button> */}
             </ul>
         </nav>
     )

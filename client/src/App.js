@@ -49,7 +49,7 @@ class App extends Component {
         <header>
           <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick}/>
           {/* side drawer always open, add animation*/}
-          <SideDrawer show={this.state.sideDrawerOpen}/>
+          <SideDrawer user={this.state.user} show={this.state.sideDrawerOpen}/>
           {backdrop}
         </header>
 
