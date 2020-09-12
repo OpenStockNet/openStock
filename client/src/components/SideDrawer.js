@@ -2,11 +2,21 @@ import React from "react";
 import "./SideDrawer.css"
 import { logout } from "../services/auth";
 
+import CloseBtn from "./CloseBtn";
+import Backdrop from "./Backdrop"; 
+
 const sideDrawer = (props) => {
+
     //add css anmiation
     let drawerClasses = 'side-drawer';
     if (props.show) {
         drawerClasses = 'side-drawer open';
+    }
+
+
+    let backdrop;
+    if (props.show) {
+      backdrop = <Backdrop />
     }
 
     const handleLogOut = () => {
@@ -20,6 +30,7 @@ const sideDrawer = (props) => {
       };
 
     return (
+        <div>
         <nav className={drawerClasses}>
             <ul>
                 <li>
@@ -31,8 +42,12 @@ const sideDrawer = (props) => {
                 <li>
                     <button onClick={handleLogOut}>Log out</button>
                 </li>
+                
             </ul>
+            <CloseBtn click={props.click}/>
         </nav>
+        {backdrop}
+        </div>
     )
 };
 
