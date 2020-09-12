@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"; 
 import { signup } from "../services/auth";
 
 class Signup extends Component {
@@ -36,7 +37,7 @@ class Signup extends Component {
     return (
       <main>
         <form onSubmit={this.handleSubmit} id="signup">
-          <h2>Signup</h2>
+          <h2>Sign up</h2>
           <label htmlFor="username">User name </label>
           <input
             type="text"
@@ -56,6 +57,13 @@ class Signup extends Component {
             placeholder="Type password here"
           />
           <button type="submit">Sign up</button>
+
+          <section className="reminder">
+            <p>Alreayd have an account? &nbsp;</p> 
+            <Link to="/login" id="underline_text">
+             Log in
+            </Link>
+          </section>
         </form>
       </main>
     );
