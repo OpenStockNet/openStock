@@ -106,11 +106,17 @@ nav div:nth-child(2) a:not(:last-child) {
   margin-right: 24px;
 }
 
+.loggedUser .nav-bar-texts{
+  display: inline-block;
+  margin-right: 24px;
+}
+
 .loggedUser p {
   display: inline-block;
   margin-right: 24px;
   font-weight: 300;
 }
+
 .loggedUser span {
   color: #16db86;
 }
@@ -242,28 +248,6 @@ button.btnCategories p {
   box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
 }
 
-.appCard_wish {
-  padding: 16px 16px;
-  margin: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  text-align: center;
-  background-color: #2b2d42;
-  box-shadow: 0px 1px 4px #1a1829;
-  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
-}
-
-.appCard_wish a img {
-  height: 64px;
-  display: block;
-  margin: 0 auto;
-  max-width: 88px;
-  filter: saturate(0.8);
-}
-
 .appCard a {
   width: 96px;
 }
@@ -290,6 +274,12 @@ button.btnCategories p {
 .appCard h6 {
   color: #a1afc7;
   font-size: 12px;
+}
+
+@media all and (max-width: 600px) {
+  .appCard {
+    width: 70%;
+  }
 }
 
 /* FOOTER

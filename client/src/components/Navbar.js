@@ -23,10 +23,10 @@ const Navbar = (props) => {
       <p>
         Hi <b>{props.user.username}</b>
       </p>
-      <Link to="/apps/new">
+      <Link to="/apps/new" className="nav-bar-texts">
         <span>＋</span> Add new app
       </Link>
-      <Link to={`/apps/wishlist/${props.user._id}`}>
+      <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
         Wish list
       </Link>
       <button onClick={handleLogOut}>Log out</button>
