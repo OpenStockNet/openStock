@@ -292,6 +292,12 @@ button.btnCategories p {
   font-size: 12px;
 }
 
+@media all and (max-width: 600px) {
+  .appCard {
+    width: 70%;
+  }
+}
+
 /* FOOTER
 =====================*/
 
