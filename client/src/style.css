@@ -6,6 +6,7 @@
 
 /* IMPORTS
 =====================*/
+@import "~react-alice-carousel/lib/alice-carousel.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
 
@@ -279,6 +280,9 @@ button.btnCategories p {
 @media all and (max-width: 600px) {
   .appCard {
     width: 70%;
+  }
+  #listContainer {
+    margin: 20px 0 50px 0;
   }
 }
 

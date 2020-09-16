@@ -3,6 +3,9 @@ import React, { Component } from "react";
 //you can specify file's name, if not defualt take from index.js
 //you can import all/* or individual consts
 import * as icons from "../images";
+//ref https://github.com/maxmarinich/react-alice-carousel
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 class Categories extends Component {
   handleCategory = (category) => {
@@ -11,7 +14,16 @@ class Categories extends Component {
     this.props.setQuery("");
   };
 
+
+  responsive = {
+    //mobile
+    0: { items: 4 },
+    //desktop 
+    600: { items: 8 },
+  }
+
   render() {
+
     const appCategories = this.props.category.map((cat) => {
       return (
         <button key={cat._id} onClick={() => this.handleCategory(cat._id)} className="btnCategories">
@@ -22,7 +34,19 @@ class Categories extends Component {
     });
 
     return <section id="catContainer">
-      {appCategories}
+      {/* {appCategories} */}
+      <AliceCarousel
+        items={appCategories}
+        responsive={this.responsive}
+        controlsStrategy="responsive"
+        duration="600"
+        fadeOutAnimation={true}
+        mouseTrackingEnabled={true}
+        //disbale prev&next btns
+        buttonsDisabled={true}
+        swipeDisabled={false}
+        touchTrackingEnabled={true}
+      />
     </section>;
   }
 }
