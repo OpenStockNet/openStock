@@ -3,7 +3,7 @@ import React, { Component } from "react";
 //you can specify file's name, if not defualt take from index.js
 //you can import all/* or individual consts
 import * as icons from "../images";
-
+//ref https://github.com/maxmarinich/react-alice-carousel
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 

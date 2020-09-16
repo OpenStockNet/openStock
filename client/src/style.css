@@ -281,6 +281,9 @@ button.btnCategories p {
   .appCard {
     width: 70%;
   }
+  #listContainer {
+    margin: 20px 0 50px 0;
+  }
 }
 
 /* FOOTER
