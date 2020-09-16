@@ -19,19 +19,8 @@ class Categories extends Component {
     //mobile
     0: { items: 4 },
     //desktop 
-    1024: { items: 8 },
+    600: { items: 8 },
   }
-
-  // onSlideChange(e) {
-  //   console.debug('Item`s position during a change: ', e.item)
-  //   console.debug('Slide`s position during a change: ', e.slide)
-  // }
-
-  // onSlideChanged(e) {
-  //   console.debug('Item`s position after changes: ', e.item)
-  //   console.debug('Slide`s position after changes: ', e.slide)
-  // }
-
 
   render() {
 
@@ -46,21 +35,18 @@ class Categories extends Component {
 
     return <section id="catContainer">
       {/* {appCategories} */}
-      
       <AliceCarousel
         items={appCategories}
         responsive={this.responsive}
         controlsStrategy="responsive"
+        duration="600"
         fadeOutAnimation={true}
         mouseTrackingEnabled={true}
-        onSlideChange={this.onSlideChange}
-        onSlideChanged={this.onSlideChanged}
-        //below are default...
+        //disbale prev&next btns
+        buttonsDisabled={true}
         swipeDisabled={false}
         touchTrackingEnabled={true}
-
       />
-
     </section>;
   }
 }
