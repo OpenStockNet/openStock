@@ -282,7 +282,11 @@ button.btnCategories p {
     width: 70%;
   }
   #listContainer {
-    margin: 20px 0 50px 0;
+    margin: 10px 0 50px 0;
+  }
+  form#search {
+    margin-top: 30px;
+    margin-bottom: 48px;
   }
 }
 

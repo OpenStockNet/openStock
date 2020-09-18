@@ -42,10 +42,11 @@ class Categories extends Component {
         duration="600"
         fadeOutAnimation={true}
         mouseTrackingEnabled={true}
-        //disbale prev&next btns
-        buttonsDisabled={true}
         swipeDisabled={false}
         touchTrackingEnabled={true}
+        infinite={false}
+        //disbale prev&next btns
+        buttonsDisabled={true}
       />
     </section>;
   }
