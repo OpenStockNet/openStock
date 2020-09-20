@@ -3,12 +3,21 @@ import React, { useState, useEffect } from "react";
 import "./TextArea.css";
 
 const TextArea = (props) => {
-    const [app, setApp] = useState("");
+    const [comments, setComments] = useState("");
+
+    const handleChange = (event) => {    
+        setComments(event.target.value);  
+    }
+
+    const handleTextsSubmit = (event) => {
+        alert(`Thank you for reviewing ${props.app.name}.`);
+        event.preventDefault();
+    }
 
     return (
-        <form className="text-area">
+        <form onSubmit={handleTextsSubmit} className="text-area">
             <label>Reveiws</label>
-            <textarea className="comment-text-area">
+            <textarea value={comments} onChange={handleChange} className="comment-text-area">
                 How do you like this app? 
             </textarea> 
             <input type="submit" value="Submit" />

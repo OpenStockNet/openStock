@@ -178,7 +178,7 @@ function AppDetailHook (props) {
             
             {props.user ? wishListBtns : null}
 
-            <TextArea />
+            <TextArea user={props.user} app={app}/>
           </div>
         </main>
       );
