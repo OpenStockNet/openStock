@@ -22,14 +22,25 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
         .findByIdAndUpdate(
         appId,
         { $push: { reviews: addedReview._id}},
-    )
-    })
-    .then((app) => {
-        res.status(200).json(app);
+        )
     })
     .catch(err => {
        res.json(err);
     })
 })
+
+//fetch all reviews for app
+router.get("/:id", (req, res) => {
+    const appId = req.params.id;
+    App.findById(appId)
+      .populate("reviews")
+      .then((app) => {
+        res.status(200).json(app.reviews);
+        console.log('router',app.reviews)
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
 
 module.exports = router;

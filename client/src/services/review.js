@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const addReview = (value, appId, userId) => {
     return axios 
           .post(`${process.env.REACT_APP_API_URL}/api/reviews`, {value, appId, userId} )
@@ -13,4 +12,17 @@ const addReview = (value, appId, userId) => {
           });
   }
 
-  export { addReview };
+  const fetchReviews = (appId) => {
+      return axios 
+        .get(`${process.env.REACT_APP_API_URL}/api/reviews/${appId}`)
+        .then(response => {
+            const reviewsOfApp = response.data
+            console.log('what i am responding', reviewsOfApp)
+            return reviewsOfApp;
+        })
+        .catch(error => {
+            throw error.response.data;
+        });
+  }
+
+  export { addReview, fetchReviews };
