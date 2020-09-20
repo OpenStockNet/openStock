@@ -45,11 +45,12 @@ const TextArea = (props) => {
     return (
         <div>
            {reviews.map(review => {
+               console.log('names',review.user.username)
                 return (
                     <div key={review._id}>
                         <p>{review.value}</p>
-                        {/* need to populate user */}
-                        {/* <p>{review.user}</p> */}
+                        <p>{review.user.username}</p>
+                        
                     </div>
                 )
                 })

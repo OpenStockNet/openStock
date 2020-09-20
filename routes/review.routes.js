@@ -34,9 +34,16 @@ router.get("/:id", (req, res) => {
     const appId = req.params.id;
     App.findById(appId)
       .populate("reviews")
+      //deep populate
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+          select: 'username',
+        }
+      })
       .then((app) => {
         res.status(200).json(app.reviews);
-        console.log('router',app.reviews)
       })
       .catch((err) => {
         res.json(err);
