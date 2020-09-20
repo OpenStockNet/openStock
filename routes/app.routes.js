@@ -4,7 +4,7 @@ const App = require("../models/App.model");
 const ensureLogin = require('connect-ensure-login');
 
 
-// fetch all apps
+//fetch all apps
 router.get("/", (req, res) => {
   App.find()
     .sort({ recommended: 'descending', name: 'ascending' })
