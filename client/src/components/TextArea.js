@@ -47,7 +47,7 @@ const TextArea = (props) => {
     }
 
     return (
-        <div>
+        <div id="rateApp">
            <h4>Reviews</h4>
            {reviews.map(review => 
                 <div key={review._id} className="reivews-container">
