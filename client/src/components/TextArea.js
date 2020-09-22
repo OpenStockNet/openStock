@@ -3,39 +3,39 @@ import { addReview, fetchReviews } from "../services/review";
 import "./TextArea.css";
 
 const TextArea = (props) => {
-    const [comments, setComments] = useState("");
+    const [reviewInput, setReviewInput] = useState("");
     const [reviews, setReviews] = useState([]);
-    const appId = props.appId;
+    const appId = props.app._id
     const userId = props.userId;
 
     useEffect(() => {
-        // updateAppDetails();
-        
-        fetchReviews(appId)
-        .then((reviewsOfApp) => {
-            setReviews(reviewsOfApp);
-            console.log('reviews',reviewsOfApp);//array of objects
-            //when below executes, review still empty arr, will update next render
-            //which is, when useState returns value that you assign; this only happen once as reviews is a cons
-            console.log('another reviews', reviews);
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
-      },[setReviews])
+        updateReviewsList(appId)
+    },[setReviews])
 
     function handleChange (event) {    
-        setComments(event.target.value);  
+        setReviewInput(event.target.value);  
     }
 
     function handleSubmit (event) {
         event.preventDefault(); // stops default reloading behaviour
-        const value = comments; 
-        // const value = event.target.value; //not working, as event has two targets input and btn, need to write target[0] to specify
-
-        addReview(value, appId, userId)
+        //make sure take the input value in state, not event.target.value
+        
+        addReview(reviewInput, appId, userId)
             .then(() => {
                 alert(`Thank you for reviewing ${props.app.name}.`);
+
+                updateReviewsList(appId)
+                setReviewInput("");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+    }
+
+    const updateReviewsList = (appId) => {
+        fetchReviews(appId)
+            .then((reviewsOfApp) => {
+                setReviews(reviewsOfApp);
             })
             .catch((error) => {
                 alert(error.message);
@@ -44,31 +44,25 @@ const TextArea = (props) => {
 
     return (
         <div>
-           {reviews.map(review => {
-               console.log('names',review.user.username)
-                return (
-                    <div key={review._id}>
-                        <p>{review.value}</p>
-                        <p>{review.user.username}</p>
-                        
-                    </div>
-                )
-                })
-            }
-        
+           <h4>Reviews</h4>
+           {reviews.map(review => 
+                <div key={review._id}>
+                    <p>{review.value}</p>
+                    <p>{review.user.username}</p>
+                </div>
+                ) 
+           }
         <form onSubmit={handleSubmit} className="text-area">
-            <label>Reviews</label>
-            <input
+            <textarea
                 type="text"
-                name="comments"
-                value={comments} 
+                name="review-inputs"
+                value={reviewInput} 
                 onChange={handleChange} 
                 placeholder="How do you like this app?"
                 className="comment-text-area" 
             />
-            <button type="submit" >submit</button>
+            <button type="submit">submit</button>
         </form>
-
         </div> 
     )
 }

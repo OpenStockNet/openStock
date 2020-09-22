@@ -11,22 +11,24 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     const appId = req.body.appId;
     const userId = req.body.userId
 
-    //create a review schema; and save review id to app schema
     Review.create({
         value: appReview, 
         user: userId
     })
-    .then(addedReview => {
-        // console.log('new review id', addedReview._id)
-        return App
-        .findByIdAndUpdate(
-        appId,
-        { $push: { reviews: addedReview._id}},
-        )
-    })
-    .catch(err => {
-       res.json(err);
-    })
+    //save review id to app schema
+      .then(addedReview => {
+          return App
+          .findByIdAndUpdate(
+          appId,
+          { $push: { reviews: addedReview._id}},
+          )
+      })
+      .then((app) => {
+        res.status(200).json(app.reivews);
+      })
+      .catch(err => {
+        res.json(err);
+      })
 })
 
 //fetch all reviews for app
