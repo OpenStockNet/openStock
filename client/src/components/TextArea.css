@@ -12,8 +12,48 @@
   background-color: #232536;
   color: #edf2f4;
   border: 0;
-  margin-top: 10px;
+  margin-top: 1rem;
   margin-bottom: 16px;
   /* only differnce from #addApp textarea */
   height: 100px;
 }
+
+.small-submit-btn {
+  padding: 12px 20px;
+  margin: 0px;
+  background-color: #2b2d42;
+  border: 1px solid #16db86;
+  font-size: 16px;
+  font-weight: 500;
+  color: #16db86;
+}
+
+.reivews-container {
+  /* margin-top: 24px; */
+  padding: 16px;
+  /* add alpha value in rgb to generate line < 1px */
+  border-bottom: 1px solid rgb(174,168,211, 0.5);
+}
+
+.reivews-container p{
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.review-user-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-right: 10px;
+}
+
+.review-user-container h5 {
+  padding-right: 10px
+}
+
+.time-stamp
+{
+  font-size: 10px;
+  font-weight: 400;
+}
+

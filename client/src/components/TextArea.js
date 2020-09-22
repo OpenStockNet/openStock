@@ -42,13 +42,20 @@ const TextArea = (props) => {
             });
     }
 
+    const timeStampDates = (timeStamp) => {
+        return timeStamp.slice(0,10)
+    }
+
     return (
         <div>
            <h4>Reviews</h4>
            {reviews.map(review => 
-                <div key={review._id}>
+                <div key={review._id} className="reivews-container">
+                    <div className="review-user-container">
+                        <h5>{review.user.username}</h5>
+                        <h5 className="time-stamp">{timeStampDates(review.updatedAt)}</h5>
+                    </div>
                     <p>{review.value}</p>
-                    <p>{review.user.username}</p>
                 </div>
                 ) 
            }
@@ -61,7 +68,7 @@ const TextArea = (props) => {
                 placeholder="How do you like this app?"
                 className="comment-text-area" 
             />
-            <button type="submit">submit</button>
+            <button type="submit" className="small-submit-btn">Submit</button>
         </form>
         </div> 
     )
