@@ -6,7 +6,6 @@ const User = require("../models/User.model");
 const ensureLogin = require('connect-ensure-login');
 
 router.get('/', (req, res) => {
-    
     Category.find()
      .then(categories => {
          res.status(200).json(categories);
@@ -16,4 +15,5 @@ router.get('/', (req, res) => {
     })
 
 });
+
 module.exports = router;

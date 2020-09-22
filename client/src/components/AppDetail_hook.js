@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchApp, deleteApp, addWishApp, removeWishApp } from "../services/app";
 import { getAverageRating, rateApp } from "../services/rating";
 import appIconPlaceholder from "../app-icon-placeholder.svg";
-
+import TextArea from "./TextArea"
 
 function AppDetailHook (props) {
   const [app, setApp] = useState(null);
@@ -164,6 +164,11 @@ function AppDetailHook (props) {
               </p>
             </div>
           </div>
+
+          <div className="labels-container">
+            {props.user ? wishListBtns : null}  
+          </div>
+          
           <div className="description">
             <h3>Description</h3>
             <p>{app.description}</p>
@@ -176,9 +181,8 @@ function AppDetailHook (props) {
             <div id="rateApp">{props.user ? ratingBtns : null}</div>
             <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
             
-            {props.user ? wishListBtns : null}
+            <TextArea userId={userId} app={app}/>
           </div>
-          
         </main>
       );
     }

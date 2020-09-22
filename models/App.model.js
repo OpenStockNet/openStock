@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Category = require("./Category.model");
 const User = require("./User.model");
+const Review = require("./Review.model")
 
 const appSchema = new Schema(
   {
@@ -22,7 +23,12 @@ const appSchema = new Schema(
     wishUser: [{
       type: Schema.Types.ObjectId,
       ref: User,
-    }]
+    }],
+    reviews: [{
+      type: Schema.Types.ObjectId,
+      ref: Review,
+    }],
+    
   },
   {
     timestamps: true,

@@ -100,6 +100,7 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/categories', require('./routes/category.routes'))
 app.use('/api/apps', require('./routes/app.routes'))
 app.use('/api/ratings', require('./routes/rating.routes'))
+app.use('/api/reviews', require('./routes/review.routes'))
 
 //add production index.html (for deployment)
 app.use((req, res, next) => {

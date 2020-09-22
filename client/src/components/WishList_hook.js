@@ -28,7 +28,6 @@ function WishListHook(props){
                 <div  key={app._id} className="appCard">
                     <Link to={`/apps/${app._id}`}>
                         <img src={app.logo||appIconPlaceholder} alt="" /> 
-                        {/* style={{width:"50px"}} */}
                     </Link>
                     <div>
                     <Link to={`/apps/${app._id}`}>
