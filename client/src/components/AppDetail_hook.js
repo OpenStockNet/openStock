@@ -49,7 +49,6 @@ function AppDetailHook (props) {
       });
   };
 
-  //update average rating without refreshing page
   const updateAvrRating = (appId) => {
     getAverageRating(appId)
     .then((averageRating) => {
@@ -179,9 +178,8 @@ function AppDetailHook (props) {
             </div>
   
             <div id="rateApp">{props.user ? ratingBtns : null}</div>
-            <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
-            
             <TextArea userId={userId} app={app}/>
+            <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
           </div>
         </main>
       );
