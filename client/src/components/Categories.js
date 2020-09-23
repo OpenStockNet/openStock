@@ -39,7 +39,7 @@ class Categories extends Component {
         items={appCategories}
         responsive={this.responsive}
         controlsStrategy="responsive"
-        duration="600"
+        duration={250}
         fadeOutAnimation={true}
         mouseTrackingEnabled={true}
         swipeDisabled={false}
