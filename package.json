@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "build": "cd client && npm install && npm run build",
-    "dev": "DEBUG=openstock:* nodemon --ignore 'client/*' ./bin/www"
+    "dev": "DEBUG=openstock:* nodemon --ignore 'client/*' ./bin/www",
+    "lint": "eslint --no-eslintrc --config ./.eslintrc.js ."
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -26,6 +27,9 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "nodemon": "^1.12.1"
   }
 }
