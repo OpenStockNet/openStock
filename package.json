@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "build": "cd client && npm install && npm run build",
     "dev": "DEBUG=openstock:* nodemon --ignore 'client/*' ./bin/www",
-    "lint": "eslint --no-eslintrc --config ./.eslintrc.js ."
+    "lint": "eslint --no-eslintrc --config ./.eslintrc.js .",
+    "lint-fix": "eslint --fix --no-eslintrc --config ./.eslintrc.js ."
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

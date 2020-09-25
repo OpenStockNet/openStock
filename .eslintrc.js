@@ -15,5 +15,6 @@ module.exports = {
   // ignore checking client folder
   ignorePatterns: [
     'client/*',
+    'node_modules/*',
   ],
 };

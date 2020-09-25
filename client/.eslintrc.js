@@ -21,4 +21,8 @@ module.exports = {
   ],
   rules: {
   },
+  ignorePatterns: [
+    'build/*',
+    'node_modules/*',
+  ],
 };

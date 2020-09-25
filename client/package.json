@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "npx eslint --no-eslintrc --config ./.eslintrc.js ."
+    "lint": "eslint --no-eslintrc --config ./.eslintrc.js .",
+    "lint-fix": "eslint --fix --no-eslintrc --config ./.eslintrc.js ."
   },
   "eslintConfig": {
     "extends": "react-app"
