@@ -1,19 +1,20 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const App = require("./App.model");
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+const App = require('./App.model');
 
 const ratingSchema = new Schema(
   {
     value: Number,
     app: {
-        type: Schema.Types.ObjectId,
-        ref: App,
+      type: Schema.Types.ObjectId,
+      ref: App,
     },
   },
-    {
-        timestamps: true, 
-    }
+  {
+    timestamps: true,
+  },
 );
 
-const Rating = mongoose.model("Rating", ratingSchema);
+const Rating = mongoose.model('Rating', ratingSchema);
 module.exports = Rating;

@@ -1,14 +1,14 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
-const App = require("../models/App.model");
 const ensureLogin = require('connect-ensure-login');
+const App = require('../models/App.model');
 
-
-//fetch all apps
-router.get("/", (req, res) => {
+// fetch all apps
+router.get('/', (req, res) => {
   App.find()
     .sort({ recommended: 'descending', name: 'ascending' })
-    .populate("category")
+    .populate('category')
     .then((apps) => {
       res.status(200).json(apps);
     })
@@ -17,11 +17,11 @@ router.get("/", (req, res) => {
     });
 });
 
-//fetch one single app
-router.get("/:id", (req, res) => {
+// fetch one single app
+router.get('/:id', (req, res) => {
   const appId = req.params.id;
   App.findById(appId)
-    .populate("category")
+    .populate('category')
     .then((app) => {
       res.status(200).json(app);
     })
@@ -30,8 +30,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//add an app in protected page
-router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
+// add an app in protected page
+router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   const app = req.body;
   App.create(app)
     .then((createdApp) => {
@@ -42,52 +42,51 @@ router.post("/", ensureLogin.ensureLoggedIn(), (req, res) => {
     });
 });
 
-
-//delete an app
-router.delete("/:id", (req, res) => {
+// delete an app
+router.delete('/:id', (req, res) => {
   App.findByIdAndDelete(req.params.id)
-    .then((app) => {
-      res.json({ message: "App is deleted!" });
+    .then(() => {
+      res.json({ message: 'App is deleted!' });
     })
     .catch((err) => {
       res.json(err);
     });
 });
 
-//add app to wish list
+// add app to wish list
 router.post('/user/:userId', (req, res) => {
   const wishAppId = req.body.appId;
   const wishUserId = req.body.userId;
-  
-  App
-  .findByIdAndUpdate(
-    wishAppId,
-    { $push: { wishUser: wishUserId}}
-  )
-  .then((updatedWishApp) => {
-      res.status(200).json(updatedWishApp);
-  })
-  .catch(err => {
-      res.json(err)
-  })
-})
 
-//remove app from wish list
-router.patch("/user/:userId", (req, res) => {
+  App
+    .findByIdAndUpdate(
+      wishAppId,
+      { $push: { wishUser: wishUserId } },
+    )
+    .then((updatedWishApp) => {
+      res.status(200).json(updatedWishApp);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+// remove app from wish list
+router.patch('/user/:userId', (req, res) => {
   const wishAppId = req.body.appId;
   const wishUserId = req.body.userId;
 
   App
-  .findByIdAndUpdate(
-    wishAppId, 
-    { $pull: { wishUser: wishUserId}}
+    .findByIdAndUpdate(
+      wishAppId,
+      { $pull: { wishUser: wishUserId } },
     )
     .then(() => {
-      res.json({ message: "App is removed!" });
+      res.json({ message: 'App is removed!' });
     })
     .catch((err) => {
       res.json(err);
-    })
+    });
 });
 
 module.exports = router;
