@@ -251,7 +251,7 @@ button.btnCategories p {
 }
 
 .appCard a {
-  width: 96px;
+  width: 100px;
 }
 
 .appCard a img {
@@ -265,12 +265,16 @@ button.btnCategories p {
 .appCard div {
   margin-left: 16px;
 }
+
 .appCard div a {
   display: inline-block;
+  
 }
 .appCard h3 {
   font-size: 19px;
   margin-bottom: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .appCard h6 {
@@ -280,7 +284,15 @@ button.btnCategories p {
 
 @media all and (max-width: 600px) {
   .appCard {
-    width: 70%;
+    width: 76%;
+  }
+  .appCard a {
+    width: 136px;
+  }
+  .appCard h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   #listContainer {
     margin: 10px 0 50px 0;
