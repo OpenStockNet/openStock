@@ -11,6 +11,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'no-underscore-dangle': 0,
   },
   // ignore checking client folder
   ignorePatterns: [
