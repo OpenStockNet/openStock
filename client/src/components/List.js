@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import appIconPlaceholder from "../app-icon-placeholder.svg";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import appIconPlaceholder from '../app-icon-placeholder.svg';
 
 class List extends Component {
   componentDidUpdate(prevprops) {
@@ -8,30 +8,27 @@ class List extends Component {
       this.getApp();
     }
   }
+
   getApp = () => {
-    const filteredApp = this.props.appsList.filter((searchApp) => {
-      return searchApp.name.toLowerCase().includes(this.props.query.toLowerCase());
-    });
+    const filteredApp = this.props.appsList.filter((searchApp) => searchApp.name.toLowerCase().includes(this.props.query.toLowerCase()));
     this.props.setApps(filteredApp);
   };
 
   render() {
     if (!this.props.appsFiltered) return <div />;
-    const apps = this.props.appsFiltered.map((app) => {
-      return (
-        <div key={app._id} className="appCard">
+    const apps = this.props.appsFiltered.map((app) => (
+      <div key={app._id} className="appCard">
+        <Link to={`/apps/${app._id}`}>
+          <img src={app.logo || appIconPlaceholder} alt="" />
+        </Link>
+        <div>
           <Link to={`/apps/${app._id}`}>
-            <img src={app.logo || appIconPlaceholder} alt=""/>
+            <h3>{app.name}</h3>
           </Link>
-          <div>
-            <Link to={`/apps/${app._id}`}>
-              <h3>{app.name}</h3>
-            </Link>
-            <h6>{app.category.name}</h6>
-          </div>
+          <h6>{app.category.name}</h6>
         </div>
-      );
-    });
+      </div>
+    ));
     // console.log("HERE appsFiltered: ", this.props.appsFiltered);
     return (
       <section id="listContainer">

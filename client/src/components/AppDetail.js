@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { fetchApp, deleteApp, addWishApp  } from "../services/app";
-import { getAverageRating, rateApp } from "../services/rating";
-import appIconPlaceholder from "../app-icon-placeholder.svg";
-
+import React, { Component } from 'react';
+import { fetchApp, deleteApp, addWishApp } from '../services/app';
+import { getAverageRating, rateApp } from '../services/rating';
+import appIconPlaceholder from '../app-icon-placeholder.svg';
 
 class AppDetail extends Component {
   state = {
@@ -17,14 +16,14 @@ class AppDetail extends Component {
       .then((theApp) => {
         this.setState({
           app: theApp,
-        })
+        });
       })
       .catch((error) => {
         alert(error.message);
       });
-      
-    //here pass param appId to API call in rating.js
-    //calls function getAverageRating() with appId param from rating.js
+
+    // here pass param appId to API call in rating.js
+    // calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
       .then((averageRating) => {
         this.setState({
@@ -36,7 +35,7 @@ class AppDetail extends Component {
       });
   }
 
-  //.value is value attribute on button elem
+  // .value is value attribute on button elem
   submitRating = (event) => {
     const ratingValue = event.target.value;
     const ratingAppId = this.props.match.params.id;
@@ -50,30 +49,30 @@ class AppDetail extends Component {
       });
   };
 
-  //delete app
+  // delete app
   deleteOneApp = (event) => {
     const deletedAppId = this.props.match.params.id;
 
     deleteApp(deletedAppId)
       .then(() => {
-        alert(`You successfully deleted ${this.state.app.name}.`)
+        alert(`You successfully deleted ${this.state.app.name}.`);
       })
       .catch((error) => {
         alert(error.message);
       });
   }
 
-  //add app to wish list
+  // add app to wish list
   addToWishList = () => {
-    const wishAppId = this.props.match.params.id
-    const userId = this.props.user._id
+    const wishAppId = this.props.match.params.id;
+    const userId = this.props.user._id;
 
     addWishApp(wishAppId, userId)
       .then(() => {
         alert('Added to wish list!');
       })
       .catch((error) => {
-        alert(error.message)
+        alert(error.message);
       });
   }
 
@@ -110,30 +109,36 @@ class AppDetail extends Component {
 
     const wishListBtn = (
       <div>
-          <button key={this.props.user._id} onClick={this.addToWishList}  className="btnCategories">
-          <h3>+ Wish list  <span>📑</span></h3>
-          </button>
+        <button key={this.props.user._id} onClick={this.addToWishList} className="btnCategories">
+          <h3>
+            + Wish list
+            <span>📑</span>
+          </h3>
+        </button>
       </div>
-    )
+    );
 
     return (
       <main id="appDetail">
         <div className="appIntro">
           <div className="appInfo">
-            <img src={this.state.app.logo || appIconPlaceholder} alt=""/>
+            <img src={this.state.app.logo || appIconPlaceholder} alt="" />
             <div>
               <h2>{this.state.app.name}</h2>
               <h4>{this.state.app.category.name}</h4>
-              <a target="_blank" href={this.state.app.website?`${this.state.app.website}`:`/`}>
-                <span>⎋</span>Visit official website
+              <a target="_blank" href={this.state.app.website ? `${this.state.app.website}` : '/'}>
+                <span>⎋</span>
+                Visit official website
               </a>
             </div>
           </div>
           <div className="ratingApp">
             <h5>Rating</h5>
             <p>
-              {this.state.avrRating || "Not yet rated"} <span>✦</span>
-              {/* 
+              {this.state.avrRating || 'Not yet rated'}
+              {' '}
+              <span>✦</span>
+              {/*
               <img className="star" src="../iconfinder_full.png" /> */}
             </p>
           </div>

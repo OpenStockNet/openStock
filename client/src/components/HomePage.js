@@ -1,22 +1,22 @@
-import { fetchAllCategories } from "../services/category";
-import { fetchAllApps } from "../services/app";
+import React, { Component } from 'react';
+import { fetchAllCategories } from '../services/category';
+import { fetchAllApps } from '../services/app';
 
-import React, { Component } from "react";
-import Search from "./Search";
-import Categories from "./Categories";
-import List from "./List";
+import Search from './Search';
+import Categories from './Categories';
+import List from './List';
 
 class HomePage extends Component {
   state = {
     categories: [],
     appsList: [],
     appsFiltered: [],
-    query: "",
+    query: '',
   };
 
   setQuery = (query) => {
     this.setState({
-      query: query,
+      query,
     });
   };
 
@@ -24,7 +24,7 @@ class HomePage extends Component {
     fetchAllCategories()
       .then((categories) => {
         this.setState({
-          categories: categories,
+          categories,
         });
       })
       .catch((error) => {
@@ -51,7 +51,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <main className="" >
+      <main className="">
         <h1>If you don't protect your privacy, who will?</h1>
         <h2>Find the right app to protect your privacy with OpenStock</h2>
         <Search setQuery={this.setQuery} query={this.state.query} />

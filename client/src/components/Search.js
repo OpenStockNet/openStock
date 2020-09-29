@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Search extends Component {
   state = {
-    query: "",
+    query: '',
   };
 
   handleInputChange = (event) => {
@@ -22,7 +22,7 @@ class Search extends Component {
       <form id="search">
         <input
           placeholder="Search an app by name..."
-          //ref={(input) => (this.search = input)}
+          // ref={(input) => (this.search = input)}
           value={this.props.query}
           onChange={this.handleInputChange}
         />
