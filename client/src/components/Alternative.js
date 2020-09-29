@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Alternatives extends Component {
-  state = {};
-
   render() {
     return (
       <Link>
         <img src={this.props.icon} />
-        <p style={{ display: "inline-block" }}>{this.props.cat}</p>
+        <p style={{ display: 'inline-block' }}>{this.props.cat}</p>
       </Link>
     );
   }

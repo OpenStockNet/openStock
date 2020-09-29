@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Alternative from "./Alternative";
+import React, { Component } from 'react';
+import Alternative from './Alternative';
 
 class Alternatives extends Component {
   render() {

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { login } from "../services/auth";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { login } from '../services/auth';
 
 class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name } = event.target;
+    const { value } = event.target;
 
     this.setState({
       [name]: value,
@@ -24,10 +24,10 @@ class Login extends Component {
 
     login(username, password)
       .then((user) => {
-        //successfully logged in
+        // successfully logged in
         this.props.setUser(user);
-        //redirect to the page '/'
-        this.props.history.push("/");
+        // redirect to the page '/'
+        this.props.history.push('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -59,15 +59,15 @@ class Login extends Component {
             placeholder="Type password here"
           />
           <button type="submit">Log in</button>
-          
+
           <section className="reminder">
-            <p>Don't have an account? &nbsp;</p> 
+            <p>Don't have an account? &nbsp;</p>
             <Link to="/signup" id="underline_text">
-             Sign up
+              Sign up
             </Link>
           </section>
         </form>
-        
+
       </main>
     );
   }

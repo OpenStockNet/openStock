@@ -1,16 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { logout } from "../services/auth";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { logout } from '../services/auth';
 
-import DrawerToggleBtn from "./DrawerToggleBtn";
+import DrawerToggleBtn from './DrawerToggleBtn';
 
 const Navbar = (props) => {
-  
-  //window.location redirects user back to homepage and reload the page
+  // window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
     logout()
       .then(() => {
-        window.location = "/";
+        window.location = '/';
       })
       .catch((error) => {
         alert(error.message);
@@ -21,10 +20,14 @@ const Navbar = (props) => {
     props.user && (
     <div className="loggedUser">
       <p>
-        Hi <b>{props.user.username}</b>
+        Hi
+        {' '}
+        <b>{props.user.username}</b>
       </p>
       <Link to="/apps/new" className="nav-bar-texts">
-        <span>＋</span> Add new app
+        <span>＋</span>
+        {' '}
+        Add new app
       </Link>
       <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
         Wish list
@@ -46,20 +49,20 @@ const Navbar = (props) => {
   );
 
   const drawerToggleBtn = (
-    props.user &&
-      (
+    props.user
+      && (
       <div className="navbar-toggle-btn">
-        <DrawerToggleBtn click={props.handleDrawerToggleClick}/>
+        <DrawerToggleBtn click={props.handleDrawerToggleClick} />
       </div>
       )
   );
 
   return (
-    <nav className="navbar" >
+    <nav className="navbar">
       {drawerToggleBtn}
       <div id="logoHome">
         <Link to="/">
-          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt=""/>
+          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
         </Link>
         {/* <Link to="/alternatives">Alternatives to</Link> */}
       </div>

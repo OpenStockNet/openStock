@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Categories from "./Categories";
-import Alternatives from "./Alternatives";
+import React, { Component } from 'react';
+import Categories from './Categories';
+import Alternatives from './Alternatives';
 /* import List from "./List"; */
 
 class AlternativesPage extends Component {

@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom"; 
-import { signup } from "../services/auth";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { signup } from '../services/auth';
 
 class Signup extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   handleChange = (event) => {
-    const name = event.target.name; 
-    const value = event.target.value; 
+    // the same as:
+    // const name = event.target.name; 
+    // const value = event.target.value; 
+    const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
 
   handleSubmit = (event) => {
-    //prevent reload once submit
+    // prevent reload once submit
     event.preventDefault();
 
     const { username, password } = this.state;
@@ -25,8 +27,8 @@ class Signup extends Component {
     signup(username, password)
       .then((user) => {
         this.props.setUser(user);
-        //redirect to the page '/'
-        this.props.history.push("/");
+        // redirect to the page '/'
+        this.props.history.push('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -59,9 +61,9 @@ class Signup extends Component {
           <button type="submit">Sign up</button>
 
           <section className="reminder">
-            <p>Alreayd have an account? &nbsp;</p> 
+            <p>Alreayd have an account? &nbsp;</p>
             <Link to="/login" id="underline_text">
-             Log in
+              Log in
             </Link>
           </section>
         </form>

@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { createApp } from "../services/app";
-import { fetchAllCategories } from "../services/category";
+import React, { Component } from 'react';
+import { createApp } from '../services/app';
+import { fetchAllCategories } from '../services/category';
 
 class NewApp extends Component {
   state = {
-    name: "",
-    website: "",
-    description: "",
-    category: "",
+    name: '',
+    website: '',
+    description: '',
+    category: '',
     categories: [],
     device: [],
   };
@@ -17,7 +17,7 @@ class NewApp extends Component {
       .then((categories) => {
         this.setState({
           category: categories[0]._id,
-          categories: categories,
+          categories,
         });
       })
       .catch((error) => {
@@ -26,8 +26,11 @@ class NewApp extends Component {
   }
 
   handleChange = (event) => {
-    const name = event.target.name; 
-    const value = event.target.value; 
+    // before ES6:
+    // const name = event.target.name; 
+    // const value = event.target.value; 
+    const { name } = event.target;
+    const { value } = event.target;
 
     this.setState({
       [name]: value,
@@ -35,9 +38,13 @@ class NewApp extends Component {
   };
 
   handleCheckbox = (event) => {
-    const name = event.target.name;
-    const id = event.target.id;
-    const checked = event.target.checked;
+    // before ES6:
+    // const name = event.target.name;
+    // const id = event.target.id;
+    // const checked = event.target.checked;
+    const { name } = event.target;
+    const { id } = event.target;
+    const { checked } = event.target;
 
     const deviceCopy = this.state.device.map((device) => device);
 
@@ -58,8 +65,10 @@ class NewApp extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const creator = this.props.user._id;
-    const { name, description, category, device, website, logo } = this.state;
-    
+    const {
+      name, description, category, device, website, logo,
+    } = this.state;
+
     createApp(name, description, category, device, website, logo, creator)
       .then((app) => {
         this.props.history.push(`/apps/${app._id}`);
@@ -70,9 +79,7 @@ class NewApp extends Component {
   };
 
   render() {
-    const categoryOptions = this.state.categories.map((category) => {
-      return <option value={category._id}>{category.name}</option>;
-    });
+    const categoryOptions = this.state.categories.map((category) => <option value={category._id}>{category.name}</option>);
     return (
       <main>
         <form onSubmit={this.handleSubmit} id="addApp">
@@ -133,7 +140,7 @@ class NewApp extends Component {
               id="Desktop"
               name="device"
               type="checkbox"
-              checked={this.state.device.includes("Desktop")}
+              checked={this.state.device.includes('Desktop')}
               onChange={this.handleCheckbox}
             />
             <label htmlFor="Android">Android</label>
@@ -141,7 +148,7 @@ class NewApp extends Component {
               id="Android"
               name="device"
               type="checkbox"
-              checked={this.state.device.includes("Android")}
+              checked={this.state.device.includes('Android')}
               onChange={this.handleCheckbox}
             />
             <label htmlFor="iOS">iOS</label>
@@ -149,7 +156,7 @@ class NewApp extends Component {
               id="iOS"
               name="device"
               type="checkbox"
-              checked={this.state.device.includes("iOS")}
+              checked={this.state.device.includes('iOS')}
               onChange={this.handleCheckbox}
             />
             <label htmlFor="Browser">Browser</label>
@@ -157,7 +164,7 @@ class NewApp extends Component {
               id="Browser"
               name="device"
               type="checkbox"
-              checked={this.state.device.includes("Browser")}
+              checked={this.state.device.includes('Browser')}
               onChange={this.handleCheckbox}
             />
           </div>
