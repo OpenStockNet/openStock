@@ -301,6 +301,10 @@ button.btnCategories p {
     margin-top: 30px;
     margin-bottom: 48px;
   }
+  #search input {
+    width: 90%;
+    min-width: auto;
+  }
 }
 
 /* FOOTER
