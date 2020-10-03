@@ -13,11 +13,14 @@
 
   .loading {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 80px;
     width: 80px;
     margin: 0 auto;
+    color:#a1afc7;
+    font-weight: 300;
   }
   
   @keyframes stretch {
@@ -29,7 +32,6 @@
     }
     100% {
       transform: scale(1);
-    
     }
   }
   

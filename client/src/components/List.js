@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
+import Loader from './Loader';
 
 class List extends Component {
   componentDidUpdate(prevprops) {
@@ -15,7 +16,9 @@ class List extends Component {
   };
 
   render() {
-    if (!this.props.appsFiltered) return <div />;
+    // if (!this.props.appsFiltered) return <div />;
+    // TODO: didn't return loader 
+    if (!this.props.appsFiltered ) return <Loader />;
     const apps = this.props.appsFiltered.map((app) => (
       <div key={app._id} className="appCard">
         <Link to={`/apps/${app._id}`}>
@@ -29,7 +32,6 @@ class List extends Component {
         </div>
       </div>
     ));
-    // console.log("HERE appsFiltered: ", this.props.appsFiltered);
     return (
       <section id="listContainer">
         {/* <h3>{this.props.appsFiltered.category.name}</h3> */}
@@ -37,6 +39,7 @@ class List extends Component {
           <h4>Sorry, we haven't found any alternative app 😧. Try something different.</h4>
         )}
         {apps}
+        {/* <Loader/> */}
       </section>
     );
   }
