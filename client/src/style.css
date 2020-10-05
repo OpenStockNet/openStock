@@ -284,7 +284,7 @@ button.btnCategories p {
 
 @media all and (max-width: 600px) {
   .appCard {
-    width: 76%;
+    width: 80%;
   }
   .appCard a {
     width: 136px;

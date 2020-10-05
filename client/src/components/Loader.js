@@ -3,9 +3,9 @@ import './Loader.css';
 import Backdrop from './Backdrop';
 
 const loader = () => (
-
-  <div className="loading">
-    <Backdrop />
+    <div>
+     <Backdrop />
+    <div className="loading">
     <svg
       version="1.1"
       viewBox="0 0 75.259262 90.309227"
@@ -101,7 +101,6 @@ const loader = () => (
               >
                 <path
                   // shield contour
-                //   fill="#a4afc1"
                   fill="#a1afc7"
                   d="M 18,30 C 17.936,30 17.871,29.991 17.808,29.975 17.71,29.949 8,27.277 8,18.175 V 10.174 C 8,9.86 8.195,9.579 8.49,9.471 l 9.25,-3.424 c 0.168,-0.062 0.353,-0.062 0.521,0 l 9.25,3.424 C 27.805,9.579 28,9.86 28,10.174 v 8.001 c 0,9.103 -9.71,11.774 -9.808,11.8 C 18.129,29.991 18.064,30 18,30 Z M 9.5,10.696 v 7.479 c 0,7.298 7.232,9.895 8.503,10.294 1.32,-0.402 8.497,-2.93 8.497,-10.294 V 10.696 L 18,7.55 Z"
                   id="path881"
@@ -126,7 +125,8 @@ const loader = () => (
         </g>
       </g>
     </svg>
-    <p>loading...</p>
+    
+  </div>
   </div>
 );
 

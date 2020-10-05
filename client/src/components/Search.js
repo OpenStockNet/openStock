@@ -22,7 +22,6 @@ class Search extends Component {
       <form id="search">
         <input
           placeholder="Search an app by name..."
-          // ref={(input) => (this.search = input)}
           value={this.props.query}
           onChange={this.handleInputChange}
         />

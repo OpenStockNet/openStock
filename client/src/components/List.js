@@ -17,8 +17,9 @@ class List extends Component {
 
   render() {
     // if (!this.props.appsFiltered) return <div />;
-    // TODO: didn't return loader 
-    if (!this.props.appsFiltered ) return <Loader />;
+    // TODO: check if logics is correct
+    if (!this.props.appsFiltered || this.props.appsList.length == 0 ) return <Loader />;
+
     const apps = this.props.appsFiltered.map((app) => (
       <div key={app._id} className="appCard">
         <Link to={`/apps/${app._id}`}>
@@ -33,8 +34,7 @@ class List extends Component {
       </div>
     ));
     return (
-      <section id="listContainer">
-        {/* <h3>{this.props.appsFiltered.category.name}</h3> */}
+      <section id="listContainer" className="fadeIn">
         {this.props.appsFiltered.length === 0 && (
           <h4>Sorry, we haven't found any alternative app 😧. Try something different.</h4>
         )}

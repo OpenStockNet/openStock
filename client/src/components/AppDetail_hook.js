@@ -148,6 +148,7 @@ function AppDetailHook(props) {
   return (
     <main id="appDetail">
       <div className="appIntro">
+      {/* <Loader /> */}
         <div className="appInfo">
           <img src={app.logo || appIconPlaceholder} alt="" />
           <div>
@@ -173,7 +174,7 @@ function AppDetailHook(props) {
         {props.user ? wishListBtns : null}
       </div>
 
-      <div className="description">
+      <div className="description"> 
         <h3>Description</h3>
         <p>{app.description}</p>
 
