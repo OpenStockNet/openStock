@@ -45,12 +45,8 @@
 }
 
 .side-drawer button {
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding: 0;
-    color: #16db86;
-    border: none;
-    font-family: "Roboto", sans-serif;
+    border-color: #a1afc7 ;
+    color:#a1afc7
 }
 
 .side-drawer a:hover,
