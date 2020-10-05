@@ -162,6 +162,13 @@ h2 {
   margin-top: 16px;
 }
 
+@media (max-width: 600px) {
+  main {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
+
 /* SEARCH */
 
 form#search {
@@ -282,6 +289,21 @@ button.btnCategories p {
   font-size: 12px;
 }
 
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: .3s; 
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media all and (max-width: 600px) {
   .appCard {
     width: 80%;
@@ -310,6 +332,7 @@ button.btnCategories p {
 /* FOOTER
 =====================*/
 
+/* TODO: sticky footer */
 footer {
   font-weight: 300;
   font-size: 14px;

@@ -18,7 +18,7 @@ function WishListHook(props) {
       });
   }, [setAppList]);
 
-  if (!appList) return <Loader />
+  if (!appList) return <Loader />;
 
   return (
     <div>

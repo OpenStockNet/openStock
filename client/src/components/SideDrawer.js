@@ -30,9 +30,9 @@ const sideDrawer = (props) => {
   return (
     <div>
       <nav className={drawerClasses}>
-          <div className="btn-container">
-            <CloseBtn click={props.click} />
-          </div>
+        <div className="btn-container">
+          <CloseBtn click={props.click} />
+        </div>
         <ul>
           <li className="user-name">
             Hi
