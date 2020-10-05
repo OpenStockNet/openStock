@@ -30,6 +30,9 @@ const sideDrawer = (props) => {
   return (
     <div>
       <nav className={drawerClasses}>
+          <div className="btn-container">
+            <CloseBtn click={props.click} />
+          </div>
         <ul>
           <li className="user-name">
             Hi
@@ -45,9 +48,6 @@ const sideDrawer = (props) => {
           <li>
             <button onClick={handleLogOut}>Log out</button>
           </li>
-          <div className="btn-container">
-            <CloseBtn click={props.click} />
-          </div>
         </ul>
       </nav>
       {backdrop}
