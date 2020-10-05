@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchAllApps } from '../services/app';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
+import Loader from './Loader';
 
 // fetch all apps, filter to wishUser_id includes props user id
 function WishListHook(props) {
@@ -16,6 +17,8 @@ function WishListHook(props) {
         alert(error.message);
       });
   }, [setAppList]);
+
+  if (!appList) return <Loader />
 
   return (
     <div>
