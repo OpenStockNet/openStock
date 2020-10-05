@@ -5,6 +5,7 @@ import {
 import { getAverageRating, rateApp } from '../services/rating';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
+import Loader from './Loader';
 
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
@@ -118,7 +119,8 @@ function AppDetailHook(props) {
     </div>
   );
 
-  if (!app) return <div />;
+  // if (!app) return <div />;
+  if (!app) return <Loader />;
 
   const deleteBtn = (
     <div>
@@ -146,6 +148,7 @@ function AppDetailHook(props) {
   return (
     <main id="appDetail">
       <div className="appIntro">
+        {/* <Loader /> */}
         <div className="appInfo">
           <img src={app.logo || appIconPlaceholder} alt="" />
           <div>

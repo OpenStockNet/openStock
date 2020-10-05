@@ -53,7 +53,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}
-          >
+          
           <Route
             exact
             path="/signup"

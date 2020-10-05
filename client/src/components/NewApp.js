@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
+import Loader from './Loader'
 
 class NewApp extends Component {
   state = {
@@ -79,6 +80,7 @@ class NewApp extends Component {
   };
 
   render() {
+    if (!this.state.categories) return <Loader />
     const categoryOptions = this.state.categories.map((category) => <option value={category._id}>{category.name}</option>);
     return (
       <main>
