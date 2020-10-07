@@ -1,0 +1,36 @@
+@import "~react-alice-carousel/lib/alice-carousel.css";
+@import './Colors.scss';
+
+#catContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  button.btnCategories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 112px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  
+  button.btnCategories:focus {
+    outline: none;
+  }
+  
+  button.btnCategories img {
+    height: 40px;
+    margin-bottom: 14px;
+  }
+  
+  button.btnCategories p {
+    text-align: center;
+    font-size: 14px;
+    color:$bodyGreen;
+  }
+  
