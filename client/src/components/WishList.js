@@ -4,6 +4,8 @@ import { fetchAllApps } from '../services/app';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
 
+import './List.scss';
+
 // fetch all apps, filter to wishUser_id includes props user id
 function WishListHook(props) {
   const [appList, setAppList] = useState([]);

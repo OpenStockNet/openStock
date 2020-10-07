@@ -3,6 +3,8 @@ import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader'
 
+import './NewApp.scss';
+
 class NewApp extends Component {
   state = {
     name: '',

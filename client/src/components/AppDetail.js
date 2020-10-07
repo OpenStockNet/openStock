@@ -8,6 +8,8 @@ import TextArea from './TextArea';
 import Loader from './Loader';
 // import Loader from './Loader_copy';
 
+import './AppDetail.scss';
+
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);

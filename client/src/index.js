@@ -3,17 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import './components/style.scss';
-import './components/LoginSignup.scss';
-import './components/AppDetail.scss';
-import './components/NewApp.scss';
 import './components/Medias.scss';
 import './components/Button.scss';
-import './components/Categories.scss';
-import './components/List.scss';
-import './components/Navbar.scss';
-import './components/Search.scss';
-import './components/Footer.scss';
-import './components/HomePage.scss';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { signup } from '../services/auth';
 
+import './LoginSignup.scss';
+
 class Signup extends Component {
   state = {
     username: '',

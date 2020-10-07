@@ -1,9 +1,10 @@
 import React from 'react';
-import './SideDrawer.scss';
 import { logout } from '../services/auth';
 
 import CloseBtn from './CloseBtn';
 import Backdrop from './Backdrop';
+
+import './SideDrawer.scss';
 
 const sideDrawer = (props) => {
   // add css anmiation
@@ -37,7 +38,7 @@ const sideDrawer = (props) => {
           <li className="user-name">
             Hi
             {' '}
-            <b>{props.user.username}</b>
+            {props.user.username}
           </li>
           <li>
             <a href="/apps/new">Add new app</a>

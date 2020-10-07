@@ -4,6 +4,8 @@ import { logout } from '../services/auth';
 
 import DrawerToggleBtn from './DrawerToggleBtn';
 
+import './Navbar.scss';
+
 const Navbar = (props) => {
   // window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {

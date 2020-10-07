@@ -4,6 +4,8 @@ import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
 // import Loader from './Loader_copy';
 
+import './List.scss';
+
 class List extends Component {
   componentDidUpdate(prevprops) {
     if (prevprops.query !== this.props.query) {
