@@ -19,11 +19,12 @@ z-index: 999;
 }
 
 nav div#logoHome img {
-height: 28px;
+height: 32px;
+display: block;
 }
 
-nav div:nth-child(2) a:not(:last-child) {
-margin-right: 24px;
+nav a {
+display: block;
 }
 
 .loggedUser .nav-bar-texts{
