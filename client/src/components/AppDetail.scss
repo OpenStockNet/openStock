@@ -4,6 +4,7 @@
     Author: Yung-Ting, Maria & Clara
 */
 
+@import './Colors.scss';
 /* APP DETAIL
 =====================*/
 
@@ -40,8 +41,8 @@ main#appDetail {
   display: inline-block;
   font-size: 14px;
   font-weight: 300;
-  color: #a1afc7;
-  border: 1px solid #7485a3;
+  color: $lightGray;
+  border: 1px solid $gray;
   padding: 2px 6px;
   margin: 6px 0 18px;
 }
@@ -52,7 +53,7 @@ main#appDetail {
 }
 
 .appIntro a span {
-  color: #16db86;
+  color:$bodyGreen;
   margin-right: 4px;
 }
 
@@ -68,7 +69,7 @@ main#appDetail {
   font-size: 22px;
 }
 .ratingApp p span {
-  color: #16db86;
+  color:$bodyGreen;
   font-size: 24px;
 }
 
@@ -105,8 +106,8 @@ main#appDetail {
   list-style: none;
   font-size: 13px;
   font-weight: 300;
-  color: #a1afc7;
-  border: 1px solid #7485a3;
+  color: $lightGray;
+  border: 1px solid $gray;
   padding: 2px 6px;
   margin-right: 8px;
 }
@@ -131,3 +132,4 @@ main#appDetail {
     margin-top: 20px;
   }
 }
+

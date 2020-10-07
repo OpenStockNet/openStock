@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loader.css';
+import './Loader.scss';
 import Backdrop from './Backdrop';
 import { LoaderIcon } from '../images';
 

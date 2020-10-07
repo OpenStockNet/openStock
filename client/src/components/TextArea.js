@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { addReview, fetchReviews } from '../services/review';
-import './TextArea.css';
+import './TextArea.scss';
 
 const TextArea = (props) => {
   const [reviewInput, setReviewInput] = useState('');

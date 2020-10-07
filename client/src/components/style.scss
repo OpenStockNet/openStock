@@ -10,7 +10,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
 
-
+@import './Colors.scss';
 /* RESET
 =====================*/
 html {
@@ -33,31 +33,31 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #edf2f4;
-  background-color: #2b2d42;
+  color: $almostWhite;
+  background-color: $darkBlue;
   text-align: center;
   
   height:100%;
 }
 
 a {
-  color: #edf2f4;
+  color: $almostWhite;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: wavy;
-  color: #16db86;
+  color:$bodyGreen;
 }
 
 button,
 .aButton {
   padding: 10px 20px;
-  background-color: #2b2d42;
-  border: 1px solid #16db86;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
   font-size: 16px;
   font-weight: 500;
-  color: #16db86;
+  color: $bodyGreen;
   margin-top: 1rem;
 }
 
@@ -72,11 +72,11 @@ button:focus {
 form button {
   padding: 12px 20px;
   margin: 24px;
-  background-color: #2b2d42;
-  border: 1px solid #16db86;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
   font-size: 16px;
   font-weight: 500;
-  color: #16db86;
+  color: $bodyGreen;
 }
 
 /* HEADER
@@ -90,7 +90,7 @@ form button {
 nav {
   width: 100%;
   padding: 16px 40px;
-  background-color: #2b2d42;
+  background-color: $darkBlue;
   position: fixed;
   top: 0;
   display: flex;
@@ -120,7 +120,7 @@ nav div:nth-child(2) a:not(:last-child) {
 }
 
 .loggedUser span {
-  color: #16db86;
+  color:$bodyGreen;
 }
 
 /* hide burger btn if larger than 601px */
@@ -184,19 +184,19 @@ form#search {
   width: 60%;
   max-width: 600px;
   min-width: 400px;
-  background-color: #232536;
-  color: #edf2f4;
+  background-color: $darkerBlue;
+  color: $almostWhite;
 }
 
 #search input::placeholder {
-  color: #7485a3;
+  color: $gray;
   font-weight: 300;
 }
 
 #search input:focus {
-  outline-color: #16db86;
+  outline-color: $bodyGreen;
   outline-width: 2px;
-  color: #edf2f4;
+  color:$almostWhite;
 }
 
 /* CATEGORIES */
@@ -231,7 +231,7 @@ button.btnCategories img {
 button.btnCategories p {
   text-align: center;
   font-size: 14px;
-  color: #16db86;
+  color:$bodyGreen;
 }
 
 /* LIST */
@@ -252,9 +252,8 @@ button.btnCategories p {
   align-items: center;
   width: 30%;
   text-align: left;
-  background-color: #2b2d42;
-  box-shadow: 0px 1px 4px #1a1829;
-  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
+  background-color: $darkBlue;
+  box-shadow: 0px 1px 4px $boxShadow;
 }
 
 .appCard a {
@@ -285,7 +284,7 @@ button.btnCategories p {
 }
 
 .appCard h6 {
-  color: #a1afc7;
+  color:$lightGray;
   font-size: 12px;
 }
 
@@ -343,5 +342,5 @@ footer p:first-child {
   margin-bottom: 8px;
 }
 footer a {
-  color: #16db86;
+  color: $bodyGreen;
 }

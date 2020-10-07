@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './DrawerToggleBtn.css';
+import './DrawerToggleBtn.scss';
 
 const drawerToggleBtn = (props) => (
   <button type="button" className="toggle-btn" onClick={props.click}>

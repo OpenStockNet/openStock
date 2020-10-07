@@ -1,5 +1,5 @@
 import React from 'react';
-import './SideDrawer.css';
+import './SideDrawer.scss';
 import { logout } from '../services/auth';
 
 import CloseBtn from './CloseBtn';
