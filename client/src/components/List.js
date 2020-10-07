@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
+// import Loader from './Loader_copy';
 
 class List extends Component {
   componentDidUpdate(prevprops) {

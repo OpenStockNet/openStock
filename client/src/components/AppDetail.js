@@ -6,6 +6,7 @@ import { getAverageRating, rateApp } from '../services/rating';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
 import Loader from './Loader';
+// import Loader from './Loader_copy';
 
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
