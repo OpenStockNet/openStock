@@ -1,0 +1,14 @@
+@import './Colors.scss';
+
+.close-icon {
+    display:block;
+    box-sizing:border-box;
+    width:20px;
+    height:20px;
+    border: none;
+    border-radius:100%;
+    background: -webkit-linear-gradient(-45deg, transparent 0%, transparent 46%,$gray 46%, $gray 56%,transparent 56%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 46%,$gray 46%, $gray 56%,transparent 56%, transparent 100%);
+    background-color: transparent;
+    transition: all 0.3s ease;
+  }
+  

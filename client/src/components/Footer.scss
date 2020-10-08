@@ -1,0 +1,15 @@
+@import './Colors.scss';
+
+/* TODO: sticky footer */
+footer {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 24px;
+  }
+  
+  footer p:first-child {
+    margin-bottom: 8px;
+  }
+  footer a {
+    color: $bodyGreen;
+  }

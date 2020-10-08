@@ -1,7 +1,9 @@
+@import './Colors.scss';
+
 .side-drawer {
     height: 100%;
     width: 80%;
-    background:  #2b2d42;
+    background:  $darkBlue;
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -41,22 +43,22 @@
 .side-drawer a {
     font-size: 1.8rem;
     font-weight: 500;
-    color: #16db86;
+    color:$bodyGreen;
 }
 
 .side-drawer button {
-    border-color: #a1afc7 ;
-    color:#a1afc7
+    border-color: $lightGray ;
+    color:$lightGray
 }
 
 .side-drawer a:hover,
 .side-drawer a:active {
-    color:#a1afc7
+    color:$lightGray
 }
 
 .user-name {
-    border-bottom: 1px solid #a1afc7;
-    color: #a1afc7;
+    border-bottom: 1px solid $lightGray;
+    color: $lightGray;
     font-size: 1.6rem;
     font-weight: 300;
 }

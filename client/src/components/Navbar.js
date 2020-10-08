@@ -4,6 +4,8 @@ import { logout } from '../services/auth';
 
 import DrawerToggleBtn from './DrawerToggleBtn';
 
+import './Navbar.scss';
+
 const Navbar = (props) => {
   // window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
@@ -27,7 +29,7 @@ const Navbar = (props) => {
       <Link to="/apps/new" className="nav-bar-texts">
         <span>＋</span>
         {' '}
-        Add new app
+        Add app
       </Link>
       <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
         Wish list

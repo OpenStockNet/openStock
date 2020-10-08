@@ -6,6 +6,8 @@ import Search from './Search';
 import Categories from './Categories';
 import List from './List';
 
+import './HomePage.scss';
+
 class HomePage extends Component {
   state = {
     categories: [],

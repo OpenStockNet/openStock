@@ -1,0 +1,57 @@
+@import './Colors.scss';
+
+#root {
+padding-top: 104px;
+margin: 0 auto;
+}
+  
+nav {
+width: 100%;
+padding: 24px 40px 8px 40px;
+background-color: $darkBlue;
+position: fixed;
+top: 0;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+z-index: 999;
+}
+
+nav div#logoHome img {
+height: 32px;
+display: block;
+}
+
+nav a {
+display: block;
+}
+
+.loggedUser .nav-bar-texts{
+display: inline-block;
+margin-right: 24px;
+}
+
+.loggedUser p {
+display: inline-block;
+margin-right: 24px;
+font-weight: 300;
+}
+
+.loggedUser span {
+color:$bodyGreen;
+}
+
+/* hide burger btn if larger than 601px */
+@media (min-width: 601px) {
+.navbar-toggle-btn {
+    display: none;
+}
+}
+
+/* hide loggedUser navbar items if below 600px */
+@media (max-width: 600px) {
+.loggedUser {
+    display: none;
+}
+}

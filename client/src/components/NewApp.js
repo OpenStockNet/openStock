@@ -3,6 +3,8 @@ import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader'
 
+import './NewApp.scss';
+
 class NewApp extends Component {
   state = {
     name: '',
@@ -170,7 +172,7 @@ class NewApp extends Component {
               onChange={this.handleCheckbox}
             />
           </div>
-          <button type="submit">+ Add new app</button>
+          <button type="submit">+ Add app</button>
         </form>
       </main>
     );

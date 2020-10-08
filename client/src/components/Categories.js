@@ -7,6 +7,8 @@ import * as icons from '../images';
 // ref https://github.com/maxmarinich/react-alice-carousel
 import 'react-alice-carousel/lib/alice-carousel.css';
 
+import './Categories.scss';
+
 class Categories extends Component {
   handleCategory = (category) => {
     const newAppList = this.props.appsList.filter((app) => app.category._id === category);

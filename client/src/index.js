@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import './style.css';
-import './style.login.css';
-import './style.detailApp.css';
-import './style.newApp.css';
-import './style.medias.css';
-import './style.button.css';
+import './components/style.scss';
+import './components/Medias.scss';
+import './components/Button.scss';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';

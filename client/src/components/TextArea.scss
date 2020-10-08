@@ -1,3 +1,5 @@
+@import './Colors.scss';
+
 .text-area label{
   display: flex;
   justify-content: flex-start;
@@ -9,8 +11,8 @@
   padding: 14px;
   font-size: 15px;
   font-weight: 500;
-  background-color: #232536;
-  color: #edf2f4;
+  background-color: $darkerBlue;
+  color: $almostWhite;
   border: 0;
   margin-top: 1rem;
   margin-bottom: 16px;
@@ -21,23 +23,22 @@
 .small-submit-btn {
   padding: 12px 20px;
   margin: 0px;
-  background-color: #2b2d42;
-  border: 1px solid #16db86;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
   font-size: 16px;
   font-weight: 500;
-  color: #16db86;
+  color:$bodyGreen;
 }
 
 .reivews-container {
-  /* margin-top: 24px; */
-  padding: 16px;
+  padding: 0 16px 16px 16px;
   /* add alpha value in rgb to generate line < 1px */
-  border-bottom: 1px solid rgb(174,168,211, 0.5);
+  border-bottom: 1px solid $thinWhitePink;
 }
 
 .reivews-container p{
   margin-top: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .review-user-container {

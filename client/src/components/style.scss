@@ -1,0 +1,49 @@
+/*
+    Created on : May 2020
+    Project: OpenStock
+    Author: Yung-Ting, Maria & Clara
+*/
+
+/* IMPORTS
+=====================*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+
+@import './Colors.scss';
+/* RESET
+=====================*/
+html {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /*   border: 1px solid red;
+ */
+}
+
+body {
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $almostWhite;
+  background-color: $darkBlue;
+  text-align: center;
+  
+  height:100%;
+}
+
+a {
+  color: $almostWhite;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: wavy;
+  color:$bodyGreen;
+}
+

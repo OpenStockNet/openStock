@@ -4,6 +4,7 @@
     Author: Yung-Ting, Maria & Clara
 */
 
+@import './Colors.scss';
 /* ADD NEW APP FORM
 =====================*/
 
@@ -12,8 +13,8 @@ form#addApp {
   padding: 48px 96px;
   margin: 0 auto;
   text-align: center;
-  background-color: #2b2d42;
-  box-shadow: 0px 1px 4px rgba(26, 24, 41, 0.7);
+  background-color: $darkBlue;
+  box-shadow: 0px 1px 4px $boxShadow;
 }
 
 form h2 {
@@ -28,8 +29,8 @@ form h2 {
   padding: 14px;
   font-size: 15px;
   font-weight: 500;
-  background-color: #232536;
-  color: #edf2f4;
+  background-color:$darkerBlue;
+  color:$almostWhite;
   border: 0;
   margin-bottom: 16px;
 }
@@ -39,8 +40,8 @@ form h2 {
   padding: 14px;
   font-size: 15px;
   font-weight: 500;
-  background-color: #232536;
-  color: #edf2f4;
+  background-color:$darkerBlue;
+  color:$almostWhite;
   border: 0;
   height: 200px;
   margin-bottom: 16px;
@@ -48,17 +49,18 @@ form h2 {
 
 #addApp input::placeholder,
 #addApp textarea::placeholder {
-  color: #7485a3;
+  color:$gray;
   font-weight: 300;
   font-size: 14px;
+  font-family: "Roboto", sans-serif;
 }
 
 #addApp input:focus,
 #addApp textarea:focus,
 #addApp select {
-  outline-color: #16db86;
+  outline-color:$bodyGreen;
   outline-width: 2px;
-  color: #edf2f4;
+  color:$almostWhite;
 }
 
 #addApp label,
@@ -66,7 +68,7 @@ form h2 {
   width: 100%;
   display: inline-block;
   text-align: left;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 300;
   margin-bottom: 8px;
 }
@@ -77,8 +79,8 @@ form h2 {
   display: block;
   font-size: 15px;
   font-weight: 500;
-  background-color: #232536;
-  color: #edf2f4;
+  background-color:$darkerBlue;
+  color:$almostWhite;
   border: 0;
   margin-bottom: 24px;
 }

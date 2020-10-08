@@ -1,3 +1,5 @@
+@import './Colors.scss';
+
 .toggle-btn {
     display: flex;
     flex-direction: column;
@@ -18,5 +20,5 @@
 .toggle-btn-line {
     width: 30px;
     height: 2px;
-    background: #edf2f4;
+    background: $lightGray;
 }

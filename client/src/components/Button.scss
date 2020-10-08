@@ -1,0 +1,52 @@
+@import './Colors.scss';
+
+button,
+.aButton {
+  padding: 10px 20px;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
+  font-size: 16px;
+  font-weight: 500;
+  color: $bodyGreen;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+form button {
+  padding: 12px 20px;
+  margin: 24px;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
+  font-size: 16px;
+  font-weight: 500;
+  color: $bodyGreen;
+}
+
+.labels-container {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 1rem;
+  }
+
+ .small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    padding: 10px 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: $whitePink;
+    border: 1px solid $whitePink;
+  }
+  
+  .small:focus {
+    outline: none;
+  }

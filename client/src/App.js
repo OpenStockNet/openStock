@@ -6,9 +6,9 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import HomePage from './components/HomePage';
 
-import AppDetailHook from './components/AppDetail_hook';
+import AppDetail from './components/AppDetail';
 import NewApp from './components/NewApp';
-import WishListHook from './components/WishList_hook';
+import WishList from './components/WishList';
 
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
@@ -72,12 +72,12 @@ class App extends Component {
           <Route
             exact
             path="/apps/:id"
-            render={(props) => <AppDetailHook user={this.state.user} match={props.match} />} // {...props}
+            render={(props) => <AppDetail user={this.state.user} match={props.match} />} // {...props}
           />
           <Route
             exact
             path="/apps/wishlist/:id"
-            render={(props) => <WishListHook user={this.state.user} match={props.match} />} // {...props}
+            render={(props) => <WishList user={this.state.user} match={props.match} />} // {...props}
           />
         </Switch>
       </div>
