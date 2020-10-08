@@ -27,7 +27,7 @@ function WishListHook(props) {
         {appList
           .filter((app) => app.wishUser.includes(props.user._id))
           .map((app) => (
-            <AppsList 
+            <AppsList
               appId={app._id}
               src={app.logo || appIconPlaceholder}
               appName={app.name}

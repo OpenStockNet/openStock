@@ -166,7 +166,7 @@ function AppDetailHook(props) {
         <div className="ratingApp">
           <h5>Rating</h5>
           <p>
-            {avrRating || 'Not yet rated'}
+            {avrRating }
             {' '}
             <span>✦</span>
           </p>

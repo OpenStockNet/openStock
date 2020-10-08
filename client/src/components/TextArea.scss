@@ -31,14 +31,14 @@
 }
 
 .reivews-container {
-  padding: 16px;
+  padding: 0 16px 16px 16px;
   /* add alpha value in rgb to generate line < 1px */
   border-bottom: 1px solid $thinWhitePink;
 }
 
 .reivews-container p{
   margin-top: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .review-user-container {
