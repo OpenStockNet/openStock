@@ -52,6 +52,7 @@ form h2 {
   color:$gray;
   font-weight: 300;
   font-size: 14px;
+  font-family: "Roboto", sans-serif;
 }
 
 #addApp input:focus,
@@ -67,7 +68,7 @@ form h2 {
   width: 100%;
   display: inline-block;
   text-align: left;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 300;
   margin-bottom: 8px;
 }

@@ -29,7 +29,7 @@ const Navbar = (props) => {
       <Link to="/apps/new" className="nav-bar-texts">
         <span>＋</span>
         {' '}
-        Add new app
+        Add app
       </Link>
       <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
         Wish list

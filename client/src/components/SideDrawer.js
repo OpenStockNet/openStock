@@ -41,7 +41,7 @@ const sideDrawer = (props) => {
             {props.user.username}
           </li>
           <li>
-            <a href="/apps/new">Add new app</a>
+            <a href="/apps/new"> Add app</a>
           </li>
           <li>
             <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>

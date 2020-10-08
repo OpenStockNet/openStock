@@ -172,7 +172,7 @@ class NewApp extends Component {
               onChange={this.handleCheckbox}
             />
           </div>
-          <button type="submit">+ Add new app</button>
+          <button type="submit">+ Add app</button>
         </form>
       </main>
     );
