@@ -21,7 +21,7 @@ function WishListHook(props) {
   if (!appList) return <Loader />;
 
   return (
-    <div>
+    <main>
       <h1>My wish list</h1>
       <section id="listContainer" className="fadeIn">
         {appList
@@ -35,7 +35,7 @@ function WishListHook(props) {
             />
           ))}
       </section>
-    </div>
+    </main>
   );
 }
 

@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import HomePage from './components/HomePage';
+import About from './components/About';
 
 import AppDetail from './components/AppDetail';
 import NewApp from './components/NewApp';
@@ -78,6 +79,11 @@ class App extends Component {
             exact
             path="/apps/wishlist/:id"
             render={(props) => <WishList user={this.state.user} match={props.match} />} // {...props}
+          />
+          <Route 
+            exact
+            path="/about"
+            component={About}
           />
         </Switch>
       </div>
