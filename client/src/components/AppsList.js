@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './AppsList.scss';
 
 const AppsList = (props) => (
-  <div key={props.appId} className="appCard">
+  <div className="appCard">
     <Link to={`/apps/${props.appId}`}>
       <img src={props.src} alt="" />
     </Link>
