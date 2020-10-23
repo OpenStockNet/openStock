@@ -23,6 +23,7 @@ class List extends Component {
 
     const apps = this.props.appsFiltered.map((app) => (
       <AppsList 
+        key={app._id}
         appId={app._id}
         src={app.logo || appIconPlaceholder}
         appName={app.name}

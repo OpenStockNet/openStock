@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "name": "Browser",
+    "icon": "/images/categories/iconBrowser.svg"
+  },
+  {
+    "_id": 2,
+    "name": "Search Engine",
+    "icon": "/images/categories/iconSearchEngine.svg"
+  },
+  {
+    "_id": 3,
+    "name": "Messenger",
+    "icon": "/images/categories/iconMessenger.svg"
+  },
+  {
+    "_id": 4,
+    "name": "E-Mail Provider",
+    "icon": "/images/categories/iconEMail.svg"
+  },
+  {
+    "_id": 5,
+    "name": "Online Streaming",
+    "icon": "/images/categories/iconOnlineStreaming.svg"
+  },
+  {
+    "_id": 6,
+    "name": "Navigation",
+    "icon": "/images/categories/iconNavigation.svg"
+  }
+]

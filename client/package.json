@@ -4,9 +4,6 @@
   "proxy": "http://localhost:5500",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-alice-carousel": "^1.19.3",
@@ -19,10 +16,10 @@
     "build-dev": "dotenv -e .env.development react-scripts build",
     "build-prod": "dotenv -e .env.production react-scripts build",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint --no-eslintrc --config ./.eslintrc.js .",
-    "lint-fix": "eslint --fix --no-eslintrc --config ./.eslintrc.js ."
+    "lint-fix": "eslint --fix --no-eslintrc --config ./.eslintrc.js .",
+    "test": "react-scripts test --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,11 +37,17 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.24.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.0",
-    "eslint-plugin-react-hooks": "^4.1.2"
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "jest": "^26.5.2",
+    "react-test-renderer": "^16.13.1"
   }
 }

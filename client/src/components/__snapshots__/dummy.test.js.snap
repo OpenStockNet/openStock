@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cats are correct 1`] = `
+Array [
+  Object {
+    "_id": 1,
+    "icon": "/images/categories/iconBrowser.svg",
+    "name": "Browser",
+  },
+  Object {
+    "_id": 2,
+    "icon": "/images/categories/iconSearchEngine.svg",
+    "name": "Search Engine",
+  },
+  Object {
+    "_id": 3,
+    "icon": "/images/categories/iconMessenger.svg",
+    "name": "Messenger",
+  },
+  Object {
+    "_id": 4,
+    "icon": "/images/categories/iconEMail.svg",
+    "name": "E-Mail Provider",
+  },
+  Object {
+    "_id": 5,
+    "icon": "/images/categories/iconOnlineStreaming.svg",
+    "name": "Online Streaming",
+  },
+  Object {
+    "_id": 6,
+    "icon": "/images/categories/iconNavigation.svg",
+    "name": "Navigation",
+  },
+]
+`;
