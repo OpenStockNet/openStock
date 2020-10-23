@@ -29,9 +29,9 @@ class NewApp extends Component {
   }
 
   handleChange = (event) => {
-    // before ES6:
     // const name = event.target.name; 
     // const value = event.target.value; 
+    // ES6
     const { name } = event.target;
     const { value } = event.target;
 
@@ -41,10 +41,10 @@ class NewApp extends Component {
   };
 
   handleCheckbox = (event) => {
-    // before ES6:
     // const name = event.target.name;
     // const id = event.target.id;
     // const checked = event.target.checked;
+    // ES6
     const { name } = event.target;
     const { id } = event.target;
     const { checked } = event.target;
