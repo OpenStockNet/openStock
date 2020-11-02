@@ -16,9 +16,9 @@ function NewApp(props) {
 
   useEffect(() => {
     fetchAllCategories()
-      .then((categories) => {
-        setCategory(categories[0]._id);
-        setCategories(categories);
+      .then((allCategories) => {
+        setCategory(allCategories[0]._id);
+        setCategories(allCategories);
       })
       .catch((error) => {
         alert(error.message);
@@ -47,7 +47,7 @@ function NewApp(props) {
 
   function handleCheckbox(event) {
     const { id, checked } = event.target;
-    const deviceCopy = device.map((device) => device);
+    const deviceCopy = device.map((selectedDevice) => selectedDevice);
 
     if (checked) {
       deviceCopy.push(id);
@@ -75,100 +75,123 @@ function NewApp(props) {
   }
 
   if (!categories) return <Loader />;
-  const categoryOptions = categories.map((category) => <option key={category._id} value={category._id}>{category.name}</option>);
+  const categoryOptions = categories.map((selectedCategory) => 
+  <option 
+    key={selectedCategory._id} 
+    value={selectedCategory._id}>
+    {selectedCategory.name}
+  </option>);
 
   return (
     <main>
       <form onSubmit={handleSubmit} id="addApp">
         <h2>Fill in the form with the app information</h2>
         <div>
-          <label htmlFor="name">App name </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-            placeholder="Type in the app name here"
-          />
+          <label htmlFor="name">
+            App name
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={handleNameChange}
+              placeholder="Type in the app name here"
+            />
+          </label>
         </div>
         <div>
-          <label htmlFor="website">Official website </label>
-          <input
-            type="text"
-            name="website"
-            id="website"
-            value={website}
-            onChange={handleWebsiteChange}
-            placeholder="Type in the app wesite here"
-          />
+          <label htmlFor="website">
+            Official website
+            <input
+              type="text"
+              name="website"
+              id="website"
+              value={website}
+              onChange={handleWebsiteChange}
+              placeholder="Type in the app wesite here"
+            />
+          </label>
         </div>
         <div>
-          <label htmlFor="logo">Logo </label>
-          <input
-            type="text"
-            name="logo"
-            id="logo"
-            value={logo}
-            onChange={handleLogoChange}
-            placeholder="Type in the image url here"
-          />
+          <label htmlFor="logo">
+            Logo
+            <input
+              type="text"
+              name="logo"
+              id="logo"
+              value={logo}
+              onChange={handleLogoChange}
+              placeholder="Type in the image url here"
+            />
+          </label>
         </div>
         <div>
-          <label htmlFor="description">Description </label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={handleDescriptionChange}
-            id="description"
-            placeholder="Type in the app description here"
-          />
+          <label htmlFor="description">
+            Description
+            <textarea
+              name="description"
+              value={description}
+              onChange={handleDescriptionChange}
+              id="description"
+              placeholder="Type in the app description here"
+            />
+          </label>
         </div>
         <div>
-          <label htmlFor="category">Category</label>
-          <select
-            value={category}
-            name="category"
-            onChange={handleCategoryChange}
-            id="category"
-          >
-            {categoryOptions}
-          </select>
+          <label htmlFor="category">
+            Category
+            <select
+              value={category}
+              name="category"
+              onChange={handleCategoryChange}
+              id="category"
+            >
+              {categoryOptions}
+            </select>
+          </label>
         </div>
         <p>Select available devices</p>
         <div className="checkboxes">
-          <label htmlFor="Desktop">Desktop</label>
-          <input
-            id="Desktop"
-            name="device"
-            type="checkbox"
-            checked={device.includes('Desktop')}
-            onChange={handleCheckbox}
-          />
-          <label htmlFor="Android">Android</label>
-          <input
-            id="Android"
-            name="device"
-            type="checkbox"
-            checked={device.includes('Android')}
-            onChange={handleCheckbox}
-          />
-          <label htmlFor="iOS">iOS</label>
-          <input
-            id="iOS"
-            name="device"
-            type="checkbox"
-            checked={device.includes('iOS')}
-            onChange={handleCheckbox}
-          />
-          <label htmlFor="Browser">Browser</label>
-          <input
-            id="Browser"
-            name="device"
-            type="checkbox"
-            checked={device.includes('Browser')}
-            onChange={handleCheckbox}
-          />
+          <label htmlFor="Desktop">
+            Desktop
+            <input
+              id="Desktop"
+              name="device"
+              type="checkbox"
+              checked={device.includes('Desktop')}
+              onChange={handleCheckbox}
+            />
+          </label>
+          <label htmlFor="Android">
+            Android
+            <input
+              id="Android"
+              name="device"
+              type="checkbox"
+              checked={device.includes('Android')}
+              onChange={handleCheckbox}
+            />
+          </label>
+          <label htmlFor="iOS">
+            iOS
+            <input
+              id="iOS"
+              name="device"
+              type="checkbox"
+              checked={device.includes('iOS')}
+              onChange={handleCheckbox}
+            />
+          </label>
+          <label htmlFor="Browser">
+            Browser
+            <input
+              id="Browser"
+              name="device"
+              type="checkbox"
+              checked={device.includes('Browser')}
+              onChange={handleCheckbox}
+            />
+          </label>
         </div>
         <button type="submit">+ Add app</button>
       </form>
