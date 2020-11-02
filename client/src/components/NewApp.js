@@ -150,10 +150,12 @@ function NewApp(props) {
             </select>
           </label>
         </div>
-        <p>Select available devices</p>
+        <p>Available devices</p>
         <div className="checkboxes">
+        
           <label htmlFor="Desktop">
             Desktop
+            </label>
             <input
               id="Desktop"
               name="device"
@@ -161,9 +163,9 @@ function NewApp(props) {
               checked={device.includes('Desktop')}
               onChange={handleCheckbox}
             />
-          </label>
           <label htmlFor="Android">
             Android
+            </label>
             <input
               id="Android"
               name="device"
@@ -171,9 +173,9 @@ function NewApp(props) {
               checked={device.includes('Android')}
               onChange={handleCheckbox}
             />
-          </label>
           <label htmlFor="iOS">
             iOS
+            </label>
             <input
               id="iOS"
               name="device"
@@ -181,9 +183,9 @@ function NewApp(props) {
               checked={device.includes('iOS')}
               onChange={handleCheckbox}
             />
-          </label>
           <label htmlFor="Browser">
             Browser
+            </label>
             <input
               id="Browser"
               name="device"
@@ -191,7 +193,6 @@ function NewApp(props) {
               checked={device.includes('Browser')}
               onChange={handleCheckbox}
             />
-          </label>
         </div>
         <button type="submit">+ Add app</button>
       </form>
