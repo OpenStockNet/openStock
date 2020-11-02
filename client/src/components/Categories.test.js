@@ -119,7 +119,7 @@ describe('filter categories', () => {
     expect(mockSetApps).toHaveBeenCalledWith(filteredAppsList);
   });
 
-  it('filters apps', () => {
+  it('clears search query when category btn is clicked', () => {
     const mockSetApps = jest.fn();
     const mockSetQuery = jest.fn();
     const { queryAllByTestId } = render(
