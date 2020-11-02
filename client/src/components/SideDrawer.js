@@ -47,6 +47,11 @@ const sideDrawer = (props) => {
             <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>
           </li>
           <li>
+            <a href="/about" >
+              About
+            </a>
+          </li>
+          <li>
             <button onClick={handleLogOut}>Log out</button>
           </li>
         </ul>

@@ -1,23 +1,30 @@
 import React from 'react';
 import './About.scss';
 import './HomePage.scss';
-import './AppDetail.scss';
 
 const About = () => (
-  <main id="appDetail">
+  <main id="about">
     <div>
-      
-      <h2>
+
+      <h1 id="about-aTag">
         Openstock is a platform helps you find apps that respect your privacy.
-      </h2>
-    
-      <h1>Free and Open-Source Software</h1>
+      </h1>
+      {' '}
       <h2>
+
+        {'For software, free doesn\'t only mean \'free of charge\' but also \'freedom\'. We look into the sources of software that claim to be \'privacy-concerned\', and share those we use and trust.'}
+
+      </h2>
+      <h2>
+        To reach out, find us at
         {' '}
-        For software, free not only means 'free of charge' but also 'freedom'. The term “free” indicates that the software does not have constraints on copyrights. 
-      </h2>
-      <h2>
-        Feel free to reach out to us at xxx. Or, at Github.
+        <a id="about-aTag" href="mailto:hello@yung-ting-chang.eu">email</a>
+        {' '}
+        or
+        <a id="about-aTag" href="https://github.com/OpenStockNet/openStock" target="_blank" rel="noreferrer noopener">
+          {' '}
+          Github.
+        </a>
       </h2>
     </div>
   </main>

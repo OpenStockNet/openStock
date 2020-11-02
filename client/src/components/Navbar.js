@@ -26,6 +26,9 @@ const Navbar = (props) => {
         {' '}
         <b>{props.user.username}</b>
       </p>
+      <Link to="/about" className="nav-bar-texts">
+        About
+      </Link>
       <Link to="/apps/new" className="nav-bar-texts">
         <span>＋</span>
         {' '}

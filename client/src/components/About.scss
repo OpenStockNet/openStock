@@ -1,1 +1,20 @@
 @import './Colors.scss';
+
+a#about-aTag {
+    color: $bodyGreen ;
+}
+h1#about-aTag {
+    color: $whitePink ;
+}
+main#about {
+    width: 56%;
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
+@media all and (max-width: 600px) {
+    main#about {
+      width: 80%;
+      padding-top: 20px;
+    }
+  }
