@@ -10,6 +10,7 @@ import About from './components/About';
 import AppDetail from './components/AppDetail';
 import NewApp from './components/NewApp';
 import WishList from './components/WishList';
+import EditApp from './components/EditApp';
 
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
@@ -74,6 +75,11 @@ class App extends Component {
             exact
             path="/apps/:id"
             render={(props) => <AppDetail user={this.state.user} match={props.match} />} // {...props}
+          />
+          <Route
+            exact
+            path="/apps/edit/:id"
+            render={(props) => <EditApp user={this.state.user} match={props.match} />} // {...props}
           />
           <Route
             exact

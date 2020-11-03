@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { createApp } from '../services/app';
+import { fetchApp, createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 
 import './NewApp.scss';
 
-function NewApp(props) {
+function EditApp(props) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -14,6 +14,8 @@ function NewApp(props) {
   const [device, setDevice] = useState([]);
   const [logo, setLogo] = useState('');
 
+  const appId = props.match.params.id;
+  
   useEffect(() => {
     fetchAllCategories()
       .then((allCategories) => {
@@ -23,6 +25,19 @@ function NewApp(props) {
       .catch((error) => {
         alert(error.message);
       });
+    fetchApp(appId)
+      .then((app)=>{
+        setName(app.name);
+        setWebsite(app.website);
+        setDescription(app.description);
+        setCategory(app.category._id); //key
+        setDevice(app.device);
+        setLogo(app.logo);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+    
   }, [props]);
 
   function handleNameChange(event) {
@@ -87,7 +102,7 @@ function NewApp(props) {
   return (
     <main>
       <form onSubmit={handleSubmit} id="addApp">
-        <h2>Fill in the form with the app information</h2>
+        <h2>Edit app</h2>
         <div>
           <label htmlFor="name">
             App name
@@ -195,10 +210,10 @@ function NewApp(props) {
             onChange={handleCheckbox}
           />
         </div>
-        <button type="submit">+ Add app</button>
+        <button type="submit">Submit</button>
       </form>
     </main>
   );
 }
 
-export default NewApp;
+export default EditApp;
