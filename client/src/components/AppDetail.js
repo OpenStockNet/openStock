@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
 } from '../services/app';
@@ -148,6 +149,12 @@ function AppDetailHook(props) {
     app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn
   );
 
+  const editLinkBtn = (
+    <Link to={`/apps/edit/${appId}`} className="small">
+     Edit
+    </Link>
+  );
+
   return (
     <main id="appDetail">
       <div className="appIntro">
@@ -175,6 +182,7 @@ function AppDetailHook(props) {
 
       <div className="labels-container">
         {props.user ? wishListBtns : null}
+        {editLinkBtn}
       </div>
 
       <div className="description">
