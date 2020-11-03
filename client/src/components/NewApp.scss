@@ -117,15 +117,17 @@ input
   }
 }
 
+// custom checkbox
 @supports(-webkit-appearance: none) or (-moz-appearance: none) {
   input[type='checkbox']
    {
-    --active: #232536;
-    --active-inner: #16db86;
-    --focus: 1px  #232536;
-    --border:  #232536;
-    --border-hover:#c5b79f;
-    --background: #232536;
+    // Custom properties:define --* as CSS var
+    --active: #232536; //$darkerBlue
+    --active-inner: #edf2f4; //$bodyGreen
+    --focus: 1px   #16db86; //$bodyGreen
+    --border:  #232536; //$darkerBlue
+    --border-hover:#16db86; //$bodyGreen
+    --background: #232536; //$darkerBlue
     -webkit-appearance: none;
     -moz-appearance: none;
     height: 21px;
