@@ -75,12 +75,14 @@ function NewApp(props) {
   }
 
   if (!categories) return <Loader />;
-  const categoryOptions = categories.map((selectedCategory) => 
-  <option 
-    key={selectedCategory._id} 
-    value={selectedCategory._id}>
-    {selectedCategory.name}
-  </option>);
+  const categoryOptions = categories.map((selectedCategory) => (
+    <option
+      key={selectedCategory._id}
+      value={selectedCategory._id}
+    >
+      {selectedCategory.name}
+    </option>
+  ));
 
   return (
     <main>
@@ -150,48 +152,48 @@ function NewApp(props) {
             </select>
           </label>
         </div>
-        <p>Select available devices</p>
+        <p>Available devices</p>
         <div className="checkboxes">
           <label htmlFor="Desktop">
             Desktop
-            <input
-              id="Desktop"
-              name="device"
-              type="checkbox"
-              checked={device.includes('Desktop')}
-              onChange={handleCheckbox}
-            />
           </label>
+          <input
+            id="Desktop"
+            name="device"
+            type="checkbox"
+            checked={device.includes('Desktop')}
+            onChange={handleCheckbox}
+          />
           <label htmlFor="Android">
             Android
-            <input
-              id="Android"
-              name="device"
-              type="checkbox"
-              checked={device.includes('Android')}
-              onChange={handleCheckbox}
-            />
           </label>
+          <input
+            id="Android"
+            name="device"
+            type="checkbox"
+            checked={device.includes('Android')}
+            onChange={handleCheckbox}
+          />
           <label htmlFor="iOS">
             iOS
-            <input
-              id="iOS"
-              name="device"
-              type="checkbox"
-              checked={device.includes('iOS')}
-              onChange={handleCheckbox}
-            />
           </label>
+          <input
+            id="iOS"
+            name="device"
+            type="checkbox"
+            checked={device.includes('iOS')}
+            onChange={handleCheckbox}
+          />
           <label htmlFor="Browser">
             Browser
-            <input
-              id="Browser"
-              name="device"
-              type="checkbox"
-              checked={device.includes('Browser')}
-              onChange={handleCheckbox}
-            />
           </label>
+          <input
+            id="Browser"
+            name="device"
+            type="checkbox"
+            checked={device.includes('Browser')}
+            onChange={handleCheckbox}
+          />
         </div>
         <button type="submit">+ Add app</button>
       </form>

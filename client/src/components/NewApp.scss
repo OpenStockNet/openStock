@@ -8,7 +8,8 @@
 /* ADD NEW APP FORM
 =====================*/
 
-form#addApp {
+form#addApp 
+{
   width: 70%;
   padding: 48px 96px;
   margin: 0 auto;
@@ -23,7 +24,10 @@ form h2 {
   margin-bottom: 32px;
 }
 
-#addApp input {
+#addApp 
+:not(.checkboxes)
+input 
+{
   width: 100%;
   display: block;
   padding: 14px;
@@ -33,7 +37,10 @@ form h2 {
   color:$almostWhite;
   border: 0;
   margin-bottom: 16px;
+  margin-top: 8px;
 }
+
+
 #addApp textarea {
   width: 100%;
   display: block;
@@ -45,6 +52,7 @@ form h2 {
   border: 0;
   height: 200px;
   margin-bottom: 16px;
+  margin-top: 8px;
 }
 
 #addApp input::placeholder,
@@ -83,31 +91,107 @@ form h2 {
   color:$almostWhite;
   border: 0;
   margin-bottom: 24px;
+  margin-top: 8px;
 }
 
 #addApp .checkboxes {
-  text-align: left;
-  margin-bottom: 32px;
+  text-align: start;
 }
-#addApp .checkboxes label,
+
 #addApp .checkboxes input {
-  display: inline;
-  width: auto;
+  width: 21px;
+  height: 21px;
+  margin-right: 18px;
+  margin-left: 6px;
 }
 
 #addApp .checkboxes label {
-  margin-right: 8px;
-  font-size: 14px;
   font-weight: 500;
-}
-
-#addApp .checkboxes input {
-  margin-right: 24px;
+  width: auto;
 }
 
 @media all and (max-width: 600px) {
   form#addApp {
     width: 90%;
     padding: 40px 30px;
+  }
+}
+
+// custom checkbox
+@supports(-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type='checkbox']
+   {
+    // Custom properties:define --* as CSS var
+    --active: #232536; //$darkerBlue
+    --active-inner: #edf2f4; //$bodyGreen
+    --focus: 1px   #16db86; //$bodyGreen
+    --border:  #232536; //$darkerBlue
+    --border-hover:#16db86; //$bodyGreen
+    --background: #232536; //$darkerBlue
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    width: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    background: var(--b, var(--background));
+    transition: background .3s, border-color .3s, box-shadow .2s;
+    &:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
+    }
+    &:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: .3s;
+      --d-t: .6s;
+      --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+      --o: 1;
+    }
+    &:hover {
+      &:not(:checked) {
+        &:not(:disabled) {
+          --bc: var(--border-hover);
+        }
+      }
+    }
+    &:focus {
+      box-shadow: 0 0 0 var(--focus);
+    }
+    &:after {
+      opacity: var(--o, 0);
+    }
+    & + label {
+      font-size: 14px;
+      line-height: 21px;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+    }
+  }
+  input[type='checkbox'] {
+      border-radius: 6px;
+      &:after {
+        width: 5px;
+        height: 9px;
+        border: 2px solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        left: 7px;
+        top: 4px;
+        transform: rotate(var(--r, 20deg));
+      }
+      &:checked {
+        --r: 43deg;
+      }
   }
 }
