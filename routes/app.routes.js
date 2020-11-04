@@ -22,6 +22,16 @@ router.get('/:id', (req, res) => {
   const appId = req.params.id;
   App.findById(appId)
     .populate('category')
+    .populate('creator')
+    .populate('editors')
+    // deep populate
+    .populate({
+      path: 'editors',
+      populate: {
+        path: 'user',
+        select: 'username',
+      },
+    })
     .then((app) => {
       res.status(200).json(app);
     })
@@ -46,12 +56,20 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
 router.patch('/:id', (req, res) => {
   // appToBeEdit in editApp is sent as req.body in app.js
   const appToBeEdit = req.body;
+  const editorId = req.body.editor;
+
   App.findByIdAndUpdate(req.params.id, appToBeEdit, { new: true })
+    .then(() => App
+      .findByIdAndUpdate(
+        req.params.id,
+        { $push: { editors: editorId } },
+        { new: true },
+      ))
     .then((editedApp) => {
       // eslint-disable-next-line no-console
-      // console.log('request from client', req.body);
+      console.log('request from client', req.body);
       // eslint-disable-next-line no-console
-      // console.log('response to client', editedApp);
+      console.log('response to client', editedApp);
       res.status(200).json(editedApp);
     })
     .catch((err) => {

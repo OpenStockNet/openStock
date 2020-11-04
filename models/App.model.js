@@ -29,7 +29,10 @@ const appSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: Review,
     }],
-
+    editors: [{
+      type: Schema.Types.ObjectId,
+      ref: User,
+    }],
   },
   {
     timestamps: true,

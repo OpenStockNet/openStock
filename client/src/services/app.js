@@ -43,7 +43,7 @@ const editApp = (appId, name, description, category, device, website, logo, edit
   return axios
     .patch(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`, appToBeEdit)
     .then((response) => {
-      //console.log('response from server', response.data)
+      console.log('response from server', response.data)
       const editedApp = response.data;
       return editedApp; 
     })

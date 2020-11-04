@@ -155,6 +155,20 @@ function AppDetailHook(props) {
     </Link>
   );
 
+  let creatorUser;
+  if (app.creator) {
+    creatorUser = <div>created by {app.creator.username}</div>;
+  } else {
+    creatorUser = <div></div>
+  }
+
+  let lastEditUser; 
+  if (app.editors.length < 1) {
+    lastEditUser = <div></div>;
+  } else {
+    lastEditUser = <div>last edited by {app.editors[app.editors.length - 1].username}</div>;
+  }
+
   return (
     <main id="appDetail">
       <div className="appIntro">
@@ -198,6 +212,8 @@ function AppDetailHook(props) {
         <TextArea userId={userId} app={app} />
         <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
       </div>
+      {creatorUser}
+      {lastEditUser}
     </main>
   );
 }
