@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchApp, createApp } from '../services/app';
+import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 
@@ -15,7 +15,7 @@ function EditApp(props) {
   const [logo, setLogo] = useState('');
 
   const appId = props.match.params.id;
-  
+
   useEffect(() => {
     fetchAllCategories()
       .then((allCategories) => {
@@ -76,13 +76,12 @@ function EditApp(props) {
     setDevice(deviceCopy);
   }
 
-  function handleSubmit(event) {
+  function handleEditSubmit(event) {
     event.preventDefault();
-    const creator = props.user._id;
-
-    createApp(name, description, category, device, website, logo, creator)
-      .then((app) => {
-        props.history.push(`/apps/${app._id}`);
+    const editor = props.user._id;
+    editApp(appId, name, description, category, device, website, logo, editor)
+      .then((editedApp) => {
+        props.history.push(`/apps/${editedApp._id}`); 
       })
       .catch((error) => {
         alert(error.message);
@@ -101,7 +100,7 @@ function EditApp(props) {
 
   return (
     <main>
-      <form onSubmit={handleSubmit} id="addApp">
+      <form onSubmit={handleEditSubmit} id="addApp">
         <h2>Edit app</h2>
         <div>
           <label htmlFor="name">
@@ -210,7 +209,7 @@ function EditApp(props) {
             onChange={handleCheckbox}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Update</button>
       </form>
     </main>
   );

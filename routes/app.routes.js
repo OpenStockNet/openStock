@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// fetch one single app
+// fetch an app
 router.get('/:id', (req, res) => {
   const appId = req.params.id;
   App.findById(appId)
@@ -36,6 +36,23 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   App.create(app)
     .then((createdApp) => {
       res.status(200).json(createdApp);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+// edit an app
+router.patch('/:id', (req, res) => {
+  // appToBeEdit in editApp is sent as req.body in app.js
+  const appToBeEdit = req.body;
+  App.findByIdAndUpdate(req.params.id, appToBeEdit, { new: true })
+    .then((editedApp) => {
+      // eslint-disable-next-line no-console
+      // console.log('request from client', req.body);
+      // eslint-disable-next-line no-console
+      // console.log('response to client', editedApp);
+      res.status(200).json(editedApp);
     })
     .catch((err) => {
       res.json(err);

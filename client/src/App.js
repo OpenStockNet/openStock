@@ -79,7 +79,7 @@ class App extends Component {
           <Route
             exact
             path="/apps/edit/:id"
-            render={(props) => <EditApp user={this.state.user} match={props.match} />} // {...props}
+            render={(props) => <EditApp user={this.state.user} match={props.match} history={props.history} />} // {...props}
           />
           <Route
             exact
