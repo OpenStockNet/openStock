@@ -34,9 +34,7 @@ form button {
     margin-top: 1rem;
   }
 
- .small {
-    display: flex;
-    flex-direction: column;
+.small {
     align-items: center;
     width: 160px;
     padding: 10px 20px;
@@ -45,8 +43,12 @@ form button {
     font-weight: 500;
     color: $whitePink;
     border: 1px solid $whitePink;
+    font-family: inherit;
   }
   
-  .small:focus {
-    outline: none;
-  }
+// override general a:hover style
+a:hover #linkBtn {
+  color: $whitePink;
+  font-size: 16px;
+  font-weight: 500;
+}

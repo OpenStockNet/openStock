@@ -126,13 +126,6 @@ function AppDetailHook(props) {
   // if (!app) return <div />;
   if (!app) return <Loader />;
 
-  const deleteBtn = (
-    <div>
-      <h4>This app is not valid anymore?</h4>
-      <button type="button" onClick={deleteOneApp}>Delete</button>
-    </div>
-  );
-
   const wishListBtn = (
     <button type="button" key={props.user._id} onClick={addToWishList} className="small">
       + &nbsp; Wish list
@@ -141,7 +134,7 @@ function AppDetailHook(props) {
 
   const removeWishListBtn = (
     <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
-      saved
+      Saved
     </button>
   );
 
@@ -150,23 +143,38 @@ function AppDetailHook(props) {
   );
 
   const editLinkBtn = (
-    <Link to={`/apps/edit/${appId}`} className="small">
-     Edit
+    <Link to={`/apps/edit/${appId}`} className="small" id='linkBtn'>
+     <span style={{fontWeight:'800'}} id='linkBtn'>&#10000; &nbsp; &nbsp; Edit</span> 
+     
     </Link>
+    
   );
 
-  let creatorUser;
-  if (app.creator) {
-    creatorUser = <div>created by {app.creator.username}</div>;
+  let deleteBtn;
+  if (props.user._id && app.creator && props.user._id === app.creator._id) {
+    deleteBtn = 
+    <div id="rateApp">
+      <h4>This app is not valid?</h4>
+      <button type="button" onClick={deleteOneApp}>
+      Delete
+      </button>
+    </div>;
   } else {
-    creatorUser = <div></div>
+    deleteBtn = <div></div>;
+  }
+
+  let creatorUser;
+  if (app.creator && app.editors.length < 1) {
+    creatorUser = <div className='notes'>This page was added by {app.creator.username}.</div>;
+  } else {
+    creatorUser = null;
   }
 
   let lastEditUser; 
   if (app.editors.length < 1) {
-    lastEditUser = <div></div>;
+    lastEditUser = null;
   } else {
-    lastEditUser = <div>last edited by {app.editors[app.editors.length - 1].username}</div>;
+    lastEditUser = <div className='notes'>This page was last updated by {app.editors[app.editors.length - 1].username}.</div>;
   }
 
   return (
@@ -207,13 +215,12 @@ function AppDetailHook(props) {
           <h4>Available devices:</h4>
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
-
         <div id="rateApp">{props.user ? ratingBtns : null}</div>
-        <TextArea userId={userId} app={app} />
-        <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
-      </div>
-      {creatorUser}
-      {lastEditUser}
+          <TextArea userId={userId} app={app} />
+          {deleteBtn}
+        </div>
+        {creatorUser}
+        {lastEditUser}
     </main>
   );
 }
