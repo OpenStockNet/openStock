@@ -67,9 +67,9 @@ router.patch('/:id', (req, res) => {
       ))
     .then((editedApp) => {
       // eslint-disable-next-line no-console
-      console.log('request from client', req.body);
+      // console.log('request from client', req.body);
       // eslint-disable-next-line no-console
-      console.log('response to client', editedApp);
+      // console.log('response to client', editedApp);
       res.status(200).json(editedApp);
     })
     .catch((err) => {

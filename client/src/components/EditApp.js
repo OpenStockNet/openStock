@@ -26,18 +26,17 @@ function EditApp(props) {
         alert(error.message);
       });
     fetchApp(appId)
-      .then((app)=>{
+      .then((app) => {
         setName(app.name);
         setWebsite(app.website);
         setDescription(app.description);
-        setCategory(app.category._id); //key
+        setCategory(app.category._id); // key
         setDevice(app.device);
         setLogo(app.logo);
       })
       .catch((error) => {
         alert(error.message);
       });
-    
   }, [props]);
 
   function handleNameChange(event) {
@@ -81,7 +80,7 @@ function EditApp(props) {
     const editor = props.user._id;
     editApp(appId, name, description, category, device, website, logo, editor)
       .then((editedApp) => {
-        props.history.push(`/apps/${editedApp._id}`); 
+        props.history.push(`/apps/${editedApp._id}`);
       })
       .catch((error) => {
         alert(error.message);
