@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
 } from '../services/app';
@@ -125,13 +126,6 @@ function AppDetailHook(props) {
   // if (!app) return <div />;
   if (!app) return <Loader />;
 
-  const deleteBtn = (
-    <div>
-      <h4>This app is not valid anymore?</h4>
-      <button type="button" onClick={deleteOneApp}>Delete</button>
-    </div>
-  );
-
   const wishListBtn = (
     <button type="button" key={props.user._id} onClick={addToWishList} className="small">
       + &nbsp; Wish list
@@ -140,13 +134,61 @@ function AppDetailHook(props) {
 
   const removeWishListBtn = (
     <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
-      saved
+      Saved
     </button>
   );
 
   const wishListBtns = (
     app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn
   );
+
+  const editLinkBtn = (
+    <Link to={`/apps/edit/${appId}`} className="small" id="linkBtn">
+      <span style={{ fontWeight: '800' }} id="linkBtn">&#10000; &nbsp; &nbsp; Edit</span>
+    </Link>
+  );
+
+  let deleteBtn;
+  if (props.user._id && app.creator && props.user._id === app.creator._id) {
+    deleteBtn = (
+      <div id="rateApp">
+        <h4>This app is not valid?</h4>
+        <button type="button" onClick={deleteOneApp}>
+          Delete
+        </button>
+      </div>
+    );
+  } else {
+    deleteBtn = <div />;
+  }
+
+  let creatorUser;
+  if (app.creator && app.editors.length < 1) {
+    creatorUser = (
+      <div className="notes">
+        This page was added by
+        {' '}
+        {app.creator.username}
+        .
+      </div>
+    );
+  } else {
+    creatorUser = null;
+  }
+
+  let lastEditUser;
+  if (app.editors.length < 1) {
+    lastEditUser = null;
+  } else {
+    lastEditUser = (
+      <div className="notes">
+        This page was last updated by
+        {' '}
+        {app.editors[app.editors.length - 1].username}
+        .
+      </div>
+    );
+  }
 
   return (
     <main id="appDetail">
@@ -157,7 +199,7 @@ function AppDetailHook(props) {
           <div>
             <h2>{app.name}</h2>
             <h4>{app.category.name}</h4>
-            <a target="_blank" href={app.website ? `${app.website}` : '/'}>
+            <a target="_blank" rel="noreferrer" href={app.website ? `${app.website}` : '/'}>
               <span>⎋</span>
               Visit official website
             </a>
@@ -175,6 +217,7 @@ function AppDetailHook(props) {
 
       <div className="labels-container">
         {props.user ? wishListBtns : null}
+        {props.user ? editLinkBtn : null}
       </div>
 
       <div className="description">
@@ -185,11 +228,15 @@ function AppDetailHook(props) {
           <h4>Available devices:</h4>
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
-
         <div id="rateApp">{props.user ? ratingBtns : null}</div>
         <TextArea userId={userId} app={app} />
-        <div id="rateApp">{props.user._id && app.creator && props.user._id === app.creator ? deleteBtn : null}</div>
+        {deleteBtn}
       </div>
+      <div>
+        {creatorUser}
+        {lastEditUser}
+      </div>
+
     </main>
   );
 }

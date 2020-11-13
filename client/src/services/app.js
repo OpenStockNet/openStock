@@ -36,6 +36,22 @@ const createApp = (name, description, category, device, website, logo, creator) 
     });
 };
 
+const editApp = (appId, name, description, category, device, website, logo, editor) => {
+  const appToBeEdit = {
+    name, description, category, device, website, logo, editor,
+  };
+  return axios
+    .patch(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`, appToBeEdit)
+    .then((response) => {
+      // console.log('response from server', response.data);
+      const editedApp = response.data;
+      return editedApp;
+    })
+    .catch((error) => {
+      throw error.response.data;
+    });
+};
+
 const deleteApp = (appId) => axios
   .delete(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
   .then((response) => {
@@ -64,5 +80,5 @@ const removeWishApp = (appId, userId) => axios
   });
 
 export {
-  fetchAllApps, fetchApp, createApp, deleteApp, addWishApp, removeWishApp,
+  fetchAllApps, fetchApp, createApp, editApp, deleteApp, addWishApp, removeWishApp,
 };
