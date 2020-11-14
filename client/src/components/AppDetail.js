@@ -8,12 +8,37 @@ import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
 import Loader from './Loader';
 // import Loader from './Loader_copy';
+// import Modal from './components/popupModal';
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import './AppDetail.scss';
+import { CloudStorageIcon } from '../images';
 
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
+  //
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const useStyles = makeStyles((theme) => ({
+    typography: {
+      padding: theme.spacing(2),
+      color: '#c5b79f',
+      backgroundColor: '#31708f',
+      boxShadow: "10px 10px 5px 0px  rgba(26, 24, 41, 0.7)",
+    },
+    // root: {
+    //   "& .MuiPaper-root": {
+        
+    //   }
+    // }
+  }));
+
+  const classes = useStyles();
+
 
   const appId = props.match.params.id;
   const userId = props.user._id;
@@ -43,16 +68,23 @@ function AppDetailHook(props) {
 
   const submitRating = (event) => {
     const ratingValue = event.target.value;
-
+    
     rateApp(ratingValue, appId)
       .then(() => {
-        alert(`Thank you for rating ${app.name}.`);
+        alert(`Thank you for rating ${app.name}.`); // replace it with a modal module
+        
         updateAvrRating(appId);
       })
       .catch((error) => {
         alert(error.message);
       });
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const id = open ? 'simple-popover' : null;
 
   const updateAvrRating = () => {
     getAverageRating(appId)
@@ -78,12 +110,14 @@ function AppDetailHook(props) {
   // if there's a need to change only on frontend, you shoud not mutate an object in "state",
   // instead: make a copy, modify copy, and replace original object with copy
 
+ 
   // add app to wish list
   const addToWishList = () => {
+    
     addWishApp(appId, userId)
       .then(() => {
-        alert(`${app.name} is added to wish list!`);
         updateAppDetails();
+        setOpen(true);
       })
       .catch((error) => {
         alert(error.message);
@@ -91,11 +125,11 @@ function AppDetailHook(props) {
   };
 
   // remove app from wish list
-  const removeFromWishList = () => {
+  const removeFromWishList = (event) => {
     removeWishApp(appId, userId)
       .then(() => {
-        alert(`${app.name} is removed from wish list!`);
         updateAppDetails();
+        setOpen(true);
       })
       .catch((error) => {
         alert(error.message);
@@ -127,15 +161,54 @@ function AppDetailHook(props) {
   if (!app) return <Loader />;
 
   const wishListBtn = (
+    <div>
     <button type="button" key={props.user._id} onClick={addToWishList} className="small">
       + &nbsp; Wish list
     </button>
+    <Popover
+      anchorReference="anchorPosition"
+      anchorPosition={{ top: 80,  left:500}}
+      id={id}
+      open={open}
+      onClose={handleClose}
+      anchorOrigin={{
+        vertical: 'center',
+        horizontal: 'bottom',
+      }}
+      transformOrigin={{
+        vertical: 'center',
+        horizontal: 'bottom',
+      }}
+    >
+    <Typography className={classes.typography}>{app.name} is removed from the list!</Typography>
+  </Popover>
+  </div>
   );
 
   const removeWishListBtn = (
-    <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
-      Saved
-    </button>
+    <div>
+      <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
+        Saved
+      </button>
+      <Popover
+      anchorReference="anchorPosition"
+      anchorPosition={{ top: 80, left:500 }}
+      id={id}
+      open={open}
+      onClose={handleClose}
+      anchorOrigin={{
+        vertical: 'center',
+        horizontal: 'bottom',
+      }}
+      transformOrigin={{
+        vertical: 'center',
+        horizontal: 'bottom',
+      }}
+    >
+      
+    <Typography className={classes.typography}>{app.name} is saved to the list!</Typography>
+    </Popover>
+  </div>
   );
 
   const wishListBtns = (
@@ -216,7 +289,8 @@ function AppDetailHook(props) {
       </div>
 
       <div className="labels-container">
-        {props.user ? wishListBtns : null}
+        {/* {props.user ? wishListBtns : null} */}
+        {wishListBtns}
         {props.user ? editLinkBtn : null}
       </div>
 
