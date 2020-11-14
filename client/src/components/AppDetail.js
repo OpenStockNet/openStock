@@ -8,11 +8,10 @@ import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
 import Loader from './Loader';
 // import Loader from './Loader_copy';
-// import Modal from './components/popupModal';
+import PopupModal from './PopupModal';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 import './AppDetail.scss';
 import { CloudStorageIcon } from '../images';
@@ -21,7 +20,7 @@ function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
   //
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const useStyles = makeStyles((theme) => ({
     typography: {
@@ -165,23 +164,14 @@ function AppDetailHook(props) {
     <button type="button" key={props.user._id} onClick={addToWishList} className="small">
       + &nbsp; Wish list
     </button>
-    <Popover
-      anchorReference="anchorPosition"
-      anchorPosition={{ top: 80,  left:500}}
-      id={id}
-      open={open}
-      onClose={handleClose}
-      anchorOrigin={{
-        vertical: 'center',
-        horizontal: 'bottom',
-      }}
-      transformOrigin={{
-        vertical: 'center',
-        horizontal: 'bottom',
-      }}
-    >
-    <Typography className={classes.typography}>{app.name} is removed from the list!</Typography>
-  </Popover>
+    <PopupModal
+     id= {id}
+     open = {open}
+     handleClose = {handleClose}
+     wishListMessage = {`${app.name} is removed from the wish list!`}
+    />
+
+   
   </div>
   );
 
@@ -190,24 +180,12 @@ function AppDetailHook(props) {
       <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
         Saved
       </button>
-      <Popover
-      anchorReference="anchorPosition"
-      anchorPosition={{ top: 80, left:500 }}
-      id={id}
-      open={open}
-      onClose={handleClose}
-      anchorOrigin={{
-        vertical: 'center',
-        horizontal: 'bottom',
-      }}
-      transformOrigin={{
-        vertical: 'center',
-        horizontal: 'bottom',
-      }}
-    >
-      
-    <Typography className={classes.typography}>{app.name} is saved to the list!</Typography>
-    </Popover>
+    <PopupModal
+     id= {id}
+     open = {open}
+     handleClose = {handleClose}
+     wishListMessage = {`${app.name} is saved to the wish list!`}
+    />
   </div>
   );
 
