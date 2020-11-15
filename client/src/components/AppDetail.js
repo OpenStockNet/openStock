@@ -7,38 +7,20 @@ import { getAverageRating, rateApp } from '../services/rating';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
 import Loader from './Loader';
-// import Loader from './Loader_copy';
+
 import PopupModal from './PopupModal';
-import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
+
 
 import './AppDetail.scss';
-import { CloudStorageIcon } from '../images';
+//import { CloudStorageIcon } from '../images';
 
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
-  //
-  // const [anchorEl, setAnchorEl] = useState(null);
+  // popover 
   const [open, setOpen] = useState(false);
-  const useStyles = makeStyles((theme) => ({
-    typography: {
-      padding: theme.spacing(2),
-      color: '#c5b79f',
-      backgroundColor: '#31708f',
-      boxShadow: "10px 10px 5px 0px  rgba(26, 24, 41, 0.7)",
-    },
-    // root: {
-    //   "& .MuiPaper-root": {
-        
-    //   }
-    // }
-  }));
-
-  const classes = useStyles();
-
-
+  const [openMsg, setOpenMsg] = useState(null);
+ 
   const appId = props.match.params.id;
   const userId = props.user._id;
 
@@ -70,21 +52,24 @@ function AppDetailHook(props) {
     
     rateApp(ratingValue, appId)
       .then(() => {
-        alert(`Thank you for rating ${app.name}.`); // replace it with a modal module
-        
         updateAvrRating(appId);
+        updateAppDetails();
+        setOpenMsg(`Thank you for rating ${app.name}!`);
+        setOpen(true);
       })
       .catch((error) => {
         alert(error.message);
       });
   };
 
+  // popover logics
   const handleClose = () => {
     setOpen(false);
   };
-
-  const id = open ? 'simple-popover' : null;
-
+  
+  // I want: always open only one, and change only the message
+  const confirm = open ? 'simple-popover' : null;
+  
   const updateAvrRating = () => {
     getAverageRating(appId)
       .then((averageRating) => {
@@ -115,7 +100,8 @@ function AppDetailHook(props) {
     
     addWishApp(appId, userId)
       .then(() => {
-        updateAppDetails();
+        updateAppDetails(); 
+        setOpenMsg(`${app.name} is added to wish list!`);
         setOpen(true);
       })
       .catch((error) => {
@@ -124,10 +110,11 @@ function AppDetailHook(props) {
   };
 
   // remove app from wish list
-  const removeFromWishList = (event) => {
+  const removeFromWishList = () => {
     removeWishApp(appId, userId)
       .then(() => {
         updateAppDetails();
+        setOpenMsg(`${app.name} is removed from wish list!`);
         setOpen(true);
       })
       .catch((error) => {
@@ -136,23 +123,26 @@ function AppDetailHook(props) {
   };
 
   const ratingBtns = (
-    <div>
+    <div id="rateApp">
       <h4>Rate this app</h4>
-      <button type="button" value={1} onClick={submitRating}>
-        1 ✦
-      </button>
-      <button type="button" value={2} onClick={submitRating}>
-        2 ✦ ✦
-      </button>
-      <button type="button" value={3} onClick={submitRating}>
-        3 ✦ ✦ ✦
-      </button>
-      <button type="button" value={4} onClick={submitRating}>
-        4 ✦ ✦ ✦ ✦
-      </button>
-      <button type="button" value={5} onClick={submitRating}>
-        5 ✦ ✦ ✦ ✦ ✦
-      </button>
+      <div>
+          <button type="button" value={1} onClick={submitRating}>
+            1 ✦
+          </button>
+          
+          <button type="button" value={2} onClick={submitRating}>
+            2 ✦ ✦
+          </button>
+            <button type="button" value={3} onClick={submitRating}>
+            3 ✦ ✦ ✦
+          </button>
+          <button type="button" value={4} onClick={submitRating}>
+            4 ✦ ✦ ✦ ✦
+          </button>
+          <button type="button" value={5} onClick={submitRating}>
+            5 ✦ ✦ ✦ ✦ ✦
+          </button>
+      </div>
     </div>
   );
 
@@ -161,32 +151,19 @@ function AppDetailHook(props) {
 
   const wishListBtn = (
     <div>
-    <button type="button" key={props.user._id} onClick={addToWishList} className="small">
-      + &nbsp; Wish list
-    </button>
-    <PopupModal
-     id= {id}
-     open = {open}
-     handleClose = {handleClose}
-     wishListMessage = {`${app.name} is removed from the wish list!`}
-    />
-
-   
+        <button type="button" key={props.user._id} onClick={addToWishList} className="small">
+          + &nbsp; Wish list
+         
+        </button>
   </div>
   );
 
   const removeWishListBtn = (
     <div>
-      <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
-        Saved
-      </button>
-    <PopupModal
-     id= {id}
-     open = {open}
-     handleClose = {handleClose}
-     wishListMessage = {`${app.name} is saved to the wish list!`}
-    />
-  </div>
+        <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
+          Saved
+        </button>
+    </div>
   );
 
   const wishListBtns = (
@@ -243,6 +220,12 @@ function AppDetailHook(props) {
 
   return (
     <main id="appDetail">
+      <PopupModal 
+        id= {confirm}
+        open = {open}
+        handleClose = {handleClose}
+        message = {openMsg}
+        />
       <div className="appIntro">
         {/* <Loader /> */}
         <div className="appInfo">
@@ -267,8 +250,7 @@ function AppDetailHook(props) {
       </div>
 
       <div className="labels-container">
-        {/* {props.user ? wishListBtns : null} */}
-        {wishListBtns}
+        {props.user ? wishListBtns : null}
         {props.user ? editLinkBtn : null}
       </div>
 
@@ -280,7 +262,7 @@ function AppDetailHook(props) {
           <h4>Available devices:</h4>
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
-        <div id="rateApp">{props.user ? ratingBtns : null}</div>
+        {props.user ? ratingBtns : null}
         <TextArea userId={userId} app={app} />
         {deleteBtn}
       </div>

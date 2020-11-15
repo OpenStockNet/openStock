@@ -4,26 +4,26 @@ import Typography from '@material-ui/core/Typography';
 import './PopupModal.scss'
 
 export default function PopupModal(props) {
-
+    
   return (
     <div>
       <Popover
         anchorReference="anchorPosition"
-        anchorPosition={{ top: 80,  left:500}}
+        anchorPosition={{ top: 80,  left:550 }}
         id={props.id}
         open={props.open}
         onClose={props.handleClose}
-        anchorOrigin={{
-            vertical: 'center',
-            horizontal: 'bottom',
-          }}
-          transformOrigin={{
-            vertical: 'center',
-            horizontal: 'bottom',
-          }}
+        // anchorOrigin={{
+        //     vertical: 'center',
+        //     horizontal: 'top',
+        //     }}
+        // transformOrigin={{
+        //     vertical: 'center',
+        //     horizontal: 'top',
+        // }}
       >
          <Typography className='typography'>
-             {props.wishListMessage}
+             {props.message}
         </Typography>
       </Popover>
     </div>
