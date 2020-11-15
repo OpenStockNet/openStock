@@ -67,7 +67,6 @@ function AppDetailHook(props) {
     setOpen(false);
   };
   
-  // I want: always open only one, and change only the message
   const confirm = open ? 'simple-popover' : null;
   
   const updateAvrRating = () => {
@@ -85,6 +84,7 @@ function AppDetailHook(props) {
     deleteApp(appId)
       .then(() => {
         alert(`You successfully deleted ${app.name}.`);
+        props.history.push('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -94,7 +94,6 @@ function AppDetailHook(props) {
   // if there's a need to change only on frontend, you shoud not mutate an object in "state",
   // instead: make a copy, modify copy, and replace original object with copy
 
- 
   // add app to wish list
   const addToWishList = () => {
     
@@ -129,7 +128,6 @@ function AppDetailHook(props) {
           <button type="button" value={1} onClick={submitRating}>
             1 ✦
           </button>
-          
           <button type="button" value={2} onClick={submitRating}>
             2 ✦ ✦
           </button>
@@ -151,17 +149,18 @@ function AppDetailHook(props) {
 
   const wishListBtn = (
     <div>
-        <button type="button" key={props.user._id} onClick={addToWishList} className="small">
-          + &nbsp; Wish list
-         
+        <button type="button" key={props.user._id} onClick={addToWishList} className="small" >
+          {/* Wish list  */}
+          &#9825;
         </button>
   </div>
   );
 
   const removeWishListBtn = (
     <div>
-        <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
-          Saved
+        <button type="button" key={props.user._id} onClick={removeFromWishList} className="small" >
+          {/* Saved  */}
+          &#9829;
         </button>
     </div>
   );
@@ -172,7 +171,7 @@ function AppDetailHook(props) {
 
   const editLinkBtn = (
     <Link to={`/apps/edit/${appId}`} className="small" id="linkBtn">
-      <span style={{ fontWeight: '800' }} id="linkBtn">&#10000; &nbsp; &nbsp; Edit</span>
+      <span style={{ fontWeight: '500', fontSize:'21px' }} id="linkBtn">&#10000; </span>
     </Link>
   );
 

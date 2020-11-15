@@ -74,7 +74,7 @@ class App extends Component {
           <Route
             exact
             path="/apps/:id"
-            render={(props) => <AppDetail user={this.state.user} match={props.match} />} // {...props}
+            render={(props) => <AppDetail user={this.state.user} match={props.match} history={props.history}/>} // {...props}
           />
           <Route
             exact
