@@ -14,7 +14,6 @@
   background-color: $darkerBlue;
   color: $almostWhite;
   border: 0;
-  margin-top: 1rem;
   margin-bottom: 16px;
   /* only differnce from #addApp textarea */
   height: 100px;
@@ -34,6 +33,7 @@
   padding: 0 16px 16px 16px;
   /* add alpha value in rgb to generate line < 1px */
   border-bottom: 1px solid $thinWhitePink;
+  border-top: 1px solid $thinWhitePink;
 }
 
 .reivews-container p{
@@ -46,9 +46,10 @@
   flex-direction: row;
   align-items: baseline;
   padding-right: 10px;
+  margin-top: 1rem;
 }
 
-.review-user-container h5 {
+.review-user-container h5  {
   padding-right: 10px
 }
 

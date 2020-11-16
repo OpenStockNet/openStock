@@ -36,19 +36,22 @@ form button {
 
 .small {
     align-items: center;
-    width: 160px;
+    width: 60px;
     padding: 10px 20px;
     margin-bottom: 0;
+    margin-left: 0.3rem;
     font-size: 16px;
-    font-weight: 500;
-    color: $whitePink;
-    border: 1px solid $whitePink;
+    color: $bodyGreen;
+    border: 1px solid $bodyGreen;
     font-family: inherit;
   }
-  
-// override general a:hover style
-a:hover #linkBtn {
-  color: $whitePink;
-  font-size: 16px;
-  font-weight: 500;
-}
+
+
+#linkBtn {
+    font-size: 21px;
+  }
+
+// override general a:hover style for aButton
+// a:hover #linkBtn {
+//   color: $gold;
+// }

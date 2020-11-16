@@ -4,6 +4,7 @@
   "proxy": "http://localhost:5500",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-alice-carousel": "^1.19.3",
