@@ -46,7 +46,11 @@ form button {
     font-family: inherit;
   }
 
-  
+
+#linkBtn {
+    font-size: 21px;
+  }
+
 // override general a:hover style for aButton
 // a:hover #linkBtn {
 //   color: $gold;

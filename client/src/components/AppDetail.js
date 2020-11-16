@@ -10,17 +10,16 @@ import Loader from './Loader';
 
 import PopupModal from './PopupModal';
 
-
 import './AppDetail.scss';
-//import { CloudStorageIcon } from '../images';
+// import { CloudStorageIcon } from '../images';
 
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
-  // popover 
+  // popover
   const [open, setOpen] = useState(false);
   const [openMsg, setOpenMsg] = useState(null);
- 
+
   const appId = props.match.params.id;
   const userId = props.user._id;
 
@@ -47,9 +46,16 @@ function AppDetailHook(props) {
       });
   };
 
+  // popover logics
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const confirm = open ? 'simple-popover' : null;
+
   const submitRating = (event) => {
     const ratingValue = event.target.value;
-    
+
     rateApp(ratingValue, appId)
       .then(() => {
         updateAvrRating(appId);
@@ -62,13 +68,6 @@ function AppDetailHook(props) {
       });
   };
 
-  // popover logics
-  const handleClose = () => {
-    setOpen(false);
-  };
-  
-  const confirm = open ? 'simple-popover' : null;
-  
   const updateAvrRating = () => {
     getAverageRating(appId)
       .then((averageRating) => {
@@ -96,10 +95,9 @@ function AppDetailHook(props) {
 
   // add app to wish list
   const addToWishList = () => {
-    
     addWishApp(appId, userId)
       .then(() => {
-        updateAppDetails(); 
+        updateAppDetails();
         setOpenMsg(`${app.name} is added to wish list!`);
         setOpen(true);
       })
@@ -125,21 +123,21 @@ function AppDetailHook(props) {
     <div id="rateApp">
       <h4>Rate this app</h4>
       <div>
-          <button type="button" value={1} onClick={submitRating}>
-            1 ✦
-          </button>
-          <button type="button" value={2} onClick={submitRating}>
-            2 ✦ ✦
-          </button>
-            <button type="button" value={3} onClick={submitRating}>
-            3 ✦ ✦ ✦
-          </button>
-          <button type="button" value={4} onClick={submitRating}>
-            4 ✦ ✦ ✦ ✦
-          </button>
-          <button type="button" value={5} onClick={submitRating}>
-            5 ✦ ✦ ✦ ✦ ✦
-          </button>
+        <button type="button" value={1} onClick={submitRating}>
+          1 ✦
+        </button>
+        <button type="button" value={2} onClick={submitRating}>
+          2 ✦ ✦
+        </button>
+        <button type="button" value={3} onClick={submitRating}>
+          3 ✦ ✦ ✦
+        </button>
+        <button type="button" value={4} onClick={submitRating}>
+          4 ✦ ✦ ✦ ✦
+        </button>
+        <button type="button" value={5} onClick={submitRating}>
+          5 ✦ ✦ ✦ ✦ ✦
+        </button>
       </div>
     </div>
   );
@@ -149,19 +147,19 @@ function AppDetailHook(props) {
 
   const wishListBtn = (
     <div>
-        <button type="button" key={props.user._id} onClick={addToWishList} className="small" >
-          {/* Wish list  */}
-          &#9825;
-        </button>
-  </div>
+      <button type="button" key={props.user._id} onClick={addToWishList} className="small">
+        {/* + Wish list  */}
+        &#9825;
+      </button>
+    </div>
   );
 
   const removeWishListBtn = (
     <div>
-        <button type="button" key={props.user._id} onClick={removeFromWishList} className="small" >
-          {/* Saved  */}
-          &#9829;
-        </button>
+      <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
+        {/* Saved  */}
+        &#9829;
+      </button>
     </div>
   );
 
@@ -171,7 +169,7 @@ function AppDetailHook(props) {
 
   const editLinkBtn = (
     <Link to={`/apps/edit/${appId}`} className="small" id="linkBtn">
-      <span style={{ fontWeight: '500', fontSize:'21px' }} id="linkBtn">&#10000; </span>
+      <span id="linkBtn">&#10000; </span>
     </Link>
   );
 
@@ -219,12 +217,12 @@ function AppDetailHook(props) {
 
   return (
     <main id="appDetail">
-      <PopupModal 
-        id= {confirm}
-        open = {open}
-        handleClose = {handleClose}
-        message = {openMsg}
-        />
+      <PopupModal
+        id={confirm}
+        open={open}
+        handleClose={handleClose}
+        message={openMsg}
+      />
       <div className="appIntro">
         {/* <Loader /> */}
         <div className="appInfo">

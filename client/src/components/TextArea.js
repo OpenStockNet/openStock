@@ -13,11 +13,10 @@ const TextArea = (props) => {
   const appId = props.app._id;
   const { userId } = props;
 
-  const updateReviewsList = (appId) => {
-    fetchReviews(appId)
+  const updateReviewsList = (reviewedAppId) => {
+    fetchReviews(reviewedAppId)
       .then((reviewsOfApp) => {
         setReviews(reviewsOfApp);
-        
       })
       .catch((error) => {
         alert(error.message);
@@ -32,12 +31,12 @@ const TextArea = (props) => {
     setReviewInput(event.target.value);
   }
 
-  // popover 
+  // popover
   const handleClose = () => {
     setOpen(false);
   };
 
-const confirm = open ? 'simple-popover' : null;
+  const confirm = open ? 'simple-popover' : null;
   function handleSubmit(event) {
     event.preventDefault(); // stops default reloading behaviour
     // make sure take the input value in state, not event.target.value
@@ -59,12 +58,12 @@ const confirm = open ? 'simple-popover' : null;
 
   return (
     <div id="rateApp">
-      <PopupModal 
-        id= {confirm}
-        open = {open}
-        handleClose = {handleClose}
-        message = {openMsg}
-        />
+      <PopupModal
+        id={confirm}
+        open={open}
+        handleClose={handleClose}
+        message={openMsg}
+      />
       <h4>Comments</h4>
       {reviews.map((review) => (
         <div key={review._id} className="reivews-container">
