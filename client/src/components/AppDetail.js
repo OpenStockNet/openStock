@@ -8,6 +8,10 @@ import appIconPlaceholder from '../app-icon-placeholder.svg';
 import TextArea from './TextArea';
 import Loader from './Loader';
 
+import iconPlusSign from '../images/iconPlusSign.svg'
+import iconApproved from '../images/iconApproved.svg'
+import iconPencilEdit from '../images/iconPencilEdit.svg'
+
 import PopupModal from './PopupModal';
 
 import './AppDetail.scss';
@@ -146,21 +150,24 @@ function AppDetailHook(props) {
   if (!app) return <Loader />;
 
   const wishListBtn = (
-    <div>
-      <button type="button" key={props.user._id} onClick={addToWishList} className="small">
+    
+      <button type="button" key={props.user._id} onClick={addToWishList} id="small">
         {/* + Wish list  */}
-        &#9825;
+        {/* &#9825; */}
+        <img src={iconPlusSign} alt="" className='icon-btns'/>
       </button>
-    </div>
+   
   );
 
   const removeWishListBtn = (
-    <div>
-      <button type="button" key={props.user._id} onClick={removeFromWishList} className="small">
+    
+      <button type="button" key={props.user._id} onClick={removeFromWishList} id="small">
         {/* Saved  */}
-        &#9829;
+        {/* &#9829; */}
+      {/* <img src={iconBookmark} alt="" /> */}
+      <img src={iconApproved} alt="" className='icon-btns'/>
       </button>
-    </div>
+    
   );
 
   const wishListBtns = (
@@ -168,8 +175,9 @@ function AppDetailHook(props) {
   );
 
   const editLinkBtn = (
-    <Link to={`/apps/edit/${appId}`} className="small" id="linkBtn">
-      <span id="linkBtn">&#10000; </span>
+    <Link to={`/apps/edit/${appId}`} id="small" >
+      {/* <span id="linkBtn">&#10000; </span> */}
+      <img src={iconPencilEdit} alt="" className='icon-btns'/>
     </Link>
   );
 
