@@ -1,7 +1,8 @@
 @import './Colors.scss';
 
 button,
-.aButton {
+.aButton 
+{
   padding: 10px 20px;
   background-color: $darkBlue;
   border: 1px solid $bodyGreen;
@@ -31,26 +32,24 @@ form button {
 .labels-container {
     display: flex;
     flex-direction: row-reverse;
-    margin-top: 1rem;
   }
 
-.small {
+#small {
     align-items: center;
-    width: 60px;
-    padding: 10px 20px;
-    margin-bottom: 0;
-    margin-left: 0.3rem;
+    margin: 0 0 0 1rem;
+    padding: 0; 
     font-size: 16px;
     color: $bodyGreen;
-    border: 1px solid $bodyGreen;
+    border: none;
     font-family: inherit;
+    background-color: $darkBlue;
   }
 
+.icon-btns {
+  width: 30px;
+}
 
-#linkBtn {
-    font-size: 21px;
-  }
-
+  
 // override general a:hover style for aButton
 // a:hover #linkBtn {
 //   color: $gold;
