@@ -1,49 +1,43 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { login } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-class Login extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+function Login (props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  handleChange = (event) => {
-    const { name } = event.target;
-    const { value } = event.target;
+  function handleUsernameChange (event) {
+    setUsername(event.target.value)
+  }
 
-    this.setState({
-      [name]: value,
-    });
-  };
+  function handPasswordChange (event) {
+    setPassword(event.target.value)
+  }
 
-  handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const { username, password } = this.state;
 
     login(username, password)
       .then((user) => {
         // successfully logged in
-        this.props.setUser(user);
+        props.setUser(user);
         // redirect to the page '/'
-        this.props.history.push('/');
+        props.history.push('/');
       })
       .catch((error) => {
         alert(error.message);
       });
-  };
+  }
 
-  render() {
     return (
       <main>
         <CredentialsForm
           title={'Log in'}
-          handleSubmit={this.handleSubmit}
-          username={this.state.username}
-          password={this.state.password}
-          handleChange={this.handleChange}
+          handleSubmit={handleSubmit}
+          username={username}
+          password={password}
+          handleUsernameChange={handleUsernameChange}
+          handPasswordChange={handPasswordChange}
           buttonText={'Log in'}
           text={`Don't have an account?`}
           url={'/signup'}
@@ -51,7 +45,7 @@ class Login extends Component {
         />
       </main>
     );
-  }
+  
 }
 
 export default Login;

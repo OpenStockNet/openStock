@@ -11,7 +11,7 @@ const CredentialsForm = (props) => (
       name="username"
       id="username"
       value={props.username}
-      onChange={props.handleChange}
+      onChange={props.handleUsernameChange}
       placeholder="Type username here"
       autoFocus="true"
     />
@@ -20,7 +20,7 @@ const CredentialsForm = (props) => (
       type="password"
       name="password"
       value={props.password}
-      onChange={props.handleChange}
+      onChange={props.handPasswordChange}
       id="password"
       placeholder="Type password here"
     />

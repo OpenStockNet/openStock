@@ -1,50 +1,43 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { signup } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-class Signup extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+function Signup(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  handleChange = (event) => {
-    // the same as:
-    // const name = event.target.name; 
-    // const value = event.target.value; 
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
+  function handleUsernameChange (event) {
+    setUsername(event.target.value)
+  }
 
-  handleSubmit = (event) => {
-    // prevent reload once submit
+  function handPasswordChange (event) {
+    setPassword(event.target.value)
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const { username, password } = this.state;
 
     signup(username, password)
       .then((user) => {
-        this.props.setUser(user);
+        // successfully logged in
+        props.setUser(user);
         // redirect to the page '/'
-        this.props.history.push('/');
+        props.history.push('/');
       })
       .catch((error) => {
         alert(error.message);
       });
-  };
+  }
 
-  render() {
     return (
       <main>
         <CredentialsForm
           title={'Sign up'}
-          handleSubmit={this.handleSubmit}
-          username={this.state.username}
-          password={this.state.password}
-          handleChange={this.handleChange}
+          handleSubmit={handleSubmit}
+          username={username}
+          password={password}
+          handleUsernameChange={handleUsernameChange}
+          handPasswordChange={handPasswordChange}
           buttonText={'Sign up'}
           text={'Already have an account?'}
           url={'/login'}
@@ -52,7 +45,7 @@ class Signup extends Component {
         />
       </main>
     );
-  }
+  
 }
 
 export default Signup;
