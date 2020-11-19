@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { login } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
+
+
 function Login (props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   function handleUsernameChange (event) {
     setUsername(event.target.value)
@@ -25,26 +28,33 @@ function Login (props) {
         props.history.push('/');
       })
       .catch((error) => {
-        alert(error.message);
+        //alert(error.message);
+        setErrorMsg(error.message);
       });
   }
 
     return (
-      <main>
-        <CredentialsForm
-          title={'Log in'}
-          handleSubmit={handleSubmit}
-          username={username}
-          password={password}
-          handleUsernameChange={handleUsernameChange}
-          handPasswordChange={handPasswordChange}
-          buttonText={'Log in'}
-          text={`Don't have an account?`}
-          url={'/signup'}
-          urlName={'Sign up'}
-        />
-      </main>
-    );
+        
+         
+            <main>
+              <CredentialsForm
+                errorMsg={errorMsg}
+                title={'Log in'}
+                handleSubmit={handleSubmit}
+                username={username}
+                password={password}
+                handleUsernameChange={handleUsernameChange}
+                handPasswordChange={handPasswordChange}
+                buttonText={'Log in'}
+                text={`Don't have an account?`}
+                url={'/signup'}
+                urlName={'Sign up'}
+              />
+            </main>
+          );
+        
+      
+    
   
 }
 

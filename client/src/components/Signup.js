@@ -5,6 +5,7 @@ import CredentialsForm from './CredentialsForm';
 function Signup(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   function handleUsernameChange (event) {
     setUsername(event.target.value)
@@ -25,13 +26,15 @@ function Signup(props) {
         props.history.push('/');
       })
       .catch((error) => {
-        alert(error.message);
+        //alert(error.message);
+        setErrorMsg(error.message);
       });
   }
 
     return (
       <main>
         <CredentialsForm
+          errorMsg={errorMsg}
           title={'Sign up'}
           handleSubmit={handleSubmit}
           username={username}

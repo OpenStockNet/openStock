@@ -17,7 +17,7 @@ router.post('/signup', (req, res) => {
   if (!password || password.length < 8) {
     return res
       .status(400)
-      .json({ message: 'Password must be 8 char. minimum.' });
+      .json({ message: 'Password must be 8 char. minimum!' }); 
   }
   if (!username) {
     return res.status(400).json({ message: 'Username cannot be empty.' });
@@ -28,7 +28,7 @@ router.post('/signup', (req, res) => {
       if (foundUser !== null) {
         return res
           .status(400)
-          .json({ message: 'This username is already taken.' });
+          .json({ message: 'This username is already taken!' }); 
       }
 
       const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -59,7 +59,7 @@ router.post('/login', (req, res) => {
       return res.status(500).json({ message: 'Error while authenticating.' });
     }
     if (!user) {
-      return res.status(400).json({ message: 'Wrong credentials.' });
+      return res.status(400).json({ message: 'Wrong username and/or password!' }); 
     }
     req.login(user, () => {
       if (err) {

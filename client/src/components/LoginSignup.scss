@@ -77,6 +77,12 @@ input:focus,
   text-decoration: underline;
 }
 
+.errorMsg {
+  color: $washedOutRed;
+  font-weight: 400;
+  font-size: 14px;
+}
+
 @media all and (max-width: 600px) {
   form#login,
   form#signup {
