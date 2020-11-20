@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
@@ -14,6 +14,8 @@ import iconPencilEdit from '../images/iconPencilEdit.svg';
 
 import PopupModal from './PopupModal';
 
+import SharedSnackbarContext from './SharedSnackbar.context'
+
 import './AppDetail.scss';
 // import { CloudStorageIcon } from '../images';
 
@@ -23,6 +25,8 @@ function AppDetailHook(props) {
   // popover
   const [open, setOpen] = useState(false);
   const [openMsg, setOpenMsg] = useState(null);
+  
+  const { openSnackbar } = useContext(SharedSnackbarContext)
 
   const appId = props.match.params.id;
   const userId = props.user._id;
@@ -66,6 +70,7 @@ function AppDetailHook(props) {
         updateAppDetails();
         setOpenMsg(`Thank you for rating ${app.name}!`);
         setOpen(true);
+        openSnackbar(`Thank you for rating ${app.name}!`);
       })
       .catch((error) => {
         alert(error.message);
@@ -86,7 +91,7 @@ function AppDetailHook(props) {
   const deleteOneApp = () => {
     deleteApp(appId)
       .then(() => {
-        alert(`You successfully deleted ${app.name}.`);
+        openSnackbar(`${app.name} is deleted!`);
         props.history.push('/');
       })
       .catch((error) => {
