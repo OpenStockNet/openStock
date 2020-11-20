@@ -1,53 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import SharedSnackbar from './SharedSnackBar.component'
 import './SharedSnackbar.scss';
 
 const SharedSnackbarContext = React.createContext();
 
-export class SharedSnackbarProvider extends Component {
-  constructor(props) {
-    super(props);
+export function SharedSnackbarProvider(props) {
+  
+  const [ isOpen, setIsOpen ] = useState(false);
+  const [ message ,setMessage ] = useState('');
 
-    this.state = {
-      isOpen: false,
-      message: '',
-    };
-  }
-
-  openSnackbar = message => {
-    this.setState({
-      message,
-      isOpen: true,
-    });
+  const openSnackbar = (message) => {
+    setMessage(message);
+    setIsOpen(true);
   };
 
-  closeSnackbar = () => {
-    this.setState({
-      message: '',
-      isOpen: false,
-    });
+  const closeSnackbar = () => {
+    setMessage('');
+    setIsOpen(false);
   };
-
-  render() {
-    const { children } = this.props;
+  
+  const { children } = props;
 
     return (
       <SharedSnackbarContext.Provider
         value={{
-          openSnackbar: this.openSnackbar,
-          closeSnackbar: this.closeSnackbar,
-          snackbarIsOpen: this.state.isOpen,
-          message: this.state.message,
+          openSnackbar: openSnackbar,
+          closeSnackbar: closeSnackbar,
+          snackbarIsOpen: isOpen,
+          message: message,
         }}
       >
         {/* Render Snackbar presentation component here */}
-        
         <SharedSnackbar /> 
-        
         {children}
       </SharedSnackbarContext.Provider>
     );
-  }
+  
 }
 
 export const SharedSnackbarConsumer = SharedSnackbarContext.Consumer;
