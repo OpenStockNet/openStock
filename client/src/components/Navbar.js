@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../services/auth';
 
 import DrawerToggleBtn from './DrawerToggleBtn';
+import SharedSnackbarContext from './SharedSnackbar.context';
+
 
 import './Navbar.scss';
 
 const Navbar = (props) => {
+
+  const { openSnackbar } = useContext(SharedSnackbarContext);
   // window.location redirects user back to homepage and reload the page
   const handleLogOut = () => {
     logout()
       .then(() => {
+        openSnackbar('See you next time!')
         window.location = '/';
       })
       .catch((error) => {
@@ -47,9 +52,6 @@ const Navbar = (props) => {
       <Link to="/login" className="aButton">
         Log in
       </Link>
-      {/* <Link to="/signup" className="aButton">
-        Sign up
-      </Link> */}
     </div>
   );
 

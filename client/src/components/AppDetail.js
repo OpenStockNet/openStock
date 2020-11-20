@@ -12,7 +12,7 @@ import iconPlusSign from '../images/iconPlusSign.svg';
 import iconApproved from '../images/iconApproved.svg';
 import iconPencilEdit from '../images/iconPencilEdit.svg';
 
-import PopupModal from './PopupModal';
+// import PopupModal from './PopupModal';
 
 import SharedSnackbarContext from './SharedSnackbar.context'
 
@@ -23,8 +23,8 @@ function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
   // popover
-  const [open, setOpen] = useState(false);
-  const [openMsg, setOpenMsg] = useState(null);
+  // const [open, setOpen] = useState(false);
+  // const [openMsg, setOpenMsg] = useState(null);
   
   const { openSnackbar } = useContext(SharedSnackbarContext)
 
@@ -55,11 +55,11 @@ function AppDetailHook(props) {
   };
 
   // popover logics
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
-  const confirm = open ? 'simple-popover' : null;
+  // const confirm = open ? 'simple-popover' : null;
 
   const submitRating = (event) => {
     const ratingValue = event.target.value;
@@ -68,8 +68,8 @@ function AppDetailHook(props) {
       .then(() => {
         updateAvrRating(appId);
         updateAppDetails();
-        setOpenMsg(`Thank you for rating ${app.name}!`);
-        setOpen(true);
+        // setOpenMsg(`Thank you for rating ${app.name}!`);
+        // setOpen(true);
         openSnackbar(`Thank you for rating ${app.name}!`);
       })
       .catch((error) => {
@@ -107,8 +107,9 @@ function AppDetailHook(props) {
     addWishApp(appId, userId)
       .then(() => {
         updateAppDetails();
-        setOpenMsg(`${app.name} is added to wish list!`);
-        setOpen(true);
+        // setOpenMsg(`${app.name} is added to wish list!`);
+        // setOpen(true);
+        openSnackbar(`${app.name} is added to wish list!`);
       })
       .catch((error) => {
         alert(error.message);
@@ -120,8 +121,9 @@ function AppDetailHook(props) {
     removeWishApp(appId, userId)
       .then(() => {
         updateAppDetails();
-        setOpenMsg(`${app.name} is removed from wish list!`);
-        setOpen(true);
+        // setOpenMsg(`${app.name} is removed from wish list!`);
+        // setOpen(true);
+        openSnackbar(`${app.name} is removed from wish list!`);
       })
       .catch((error) => {
         alert(error.message);
@@ -220,12 +222,12 @@ function AppDetailHook(props) {
 
   return (
     <main id="appDetail">
-      <PopupModal
+      {/* <PopupModal
         id={confirm}
         open={open}
         handleClose={handleClose}
         message={openMsg}
-      />
+      /> */}
       <div className="appIntro">
         {/* <Loader /> */}
         <div className="appInfo">
