@@ -12,9 +12,7 @@ import iconPlusSign from '../images/iconPlusSign.svg';
 import iconApproved from '../images/iconApproved.svg';
 import iconPencilEdit from '../images/iconPencilEdit.svg';
 
-// import PopupModal from './PopupModal';
-
-import SharedSnackbarContext from './SharedSnackbar.context'
+import SharedSnackbarContext from './SharedSnackbar.context';
 
 import './AppDetail.scss';
 // import { CloudStorageIcon } from '../images';
@@ -22,11 +20,8 @@ import './AppDetail.scss';
 function AppDetailHook(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
-  // popover
-  // const [open, setOpen] = useState(false);
-  // const [openMsg, setOpenMsg] = useState(null);
-  
-  const { openSnackbar } = useContext(SharedSnackbarContext)
+
+  const { openSnackbar } = useContext(SharedSnackbarContext);
 
   const appId = props.match.params.id;
   const userId = props.user._id;
@@ -54,13 +49,6 @@ function AppDetailHook(props) {
       });
   };
 
-  // popover logics
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const confirm = open ? 'simple-popover' : null;
-
   const submitRating = (event) => {
     const ratingValue = event.target.value;
 
@@ -68,8 +56,6 @@ function AppDetailHook(props) {
       .then(() => {
         updateAvrRating(appId);
         updateAppDetails();
-        // setOpenMsg(`Thank you for rating ${app.name}!`);
-        // setOpen(true);
         openSnackbar(`Thank you for rating ${app.name}!`);
       })
       .catch((error) => {
@@ -107,8 +93,6 @@ function AppDetailHook(props) {
     addWishApp(appId, userId)
       .then(() => {
         updateAppDetails();
-        // setOpenMsg(`${app.name} is added to wish list!`);
-        // setOpen(true);
         openSnackbar(`${app.name} is added to wish list!`);
       })
       .catch((error) => {
@@ -121,8 +105,6 @@ function AppDetailHook(props) {
     removeWishApp(appId, userId)
       .then(() => {
         updateAppDetails();
-        // setOpenMsg(`${app.name} is removed from wish list!`);
-        // setOpen(true);
         openSnackbar(`${app.name} is removed from wish list!`);
       })
       .catch((error) => {

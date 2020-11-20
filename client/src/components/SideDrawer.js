@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import { logout } from '../services/auth';
 
 import CloseBtn from './CloseBtn';
@@ -6,8 +6,6 @@ import Backdrop from './Backdrop';
 import SharedSnackbarContext from './SharedSnackbar.context';
 
 import './SideDrawer.scss';
-
-
 
 const SideDrawer = (props) => {
   // add css anmiation
@@ -26,7 +24,7 @@ const SideDrawer = (props) => {
   const handleLogOut = () => {
     logout()
       .then(() => {
-        openSnackbar('See you next time!')
+        openSnackbar('See you next time!');
         window.location = '/';
       })
       .catch((error) => {

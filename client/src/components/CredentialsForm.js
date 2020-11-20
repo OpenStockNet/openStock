@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './LoginSignup.scss';
 
 const CredentialsForm = (props) => (
-  
+
   <form onSubmit={props.handleSubmit} id="login">
-    <p className='errorMsg'>{props.errorMsg}</p>
+    <p className="errorMsg">{props.errorMsg}</p>
     <h2>{props.title}</h2>
     <label htmlFor="username">User name </label>
     <input
@@ -26,7 +26,7 @@ const CredentialsForm = (props) => (
       id="password"
       placeholder="Type password here"
     />
-    <button type="submit" >{props.buttonText}</button>
+    <button type="submit">{props.buttonText}</button>
 
     <section className="reminder">
       <p>

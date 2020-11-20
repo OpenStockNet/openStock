@@ -7,12 +7,12 @@ function Signup(props) {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  function handleUsernameChange (event) {
-    setUsername(event.target.value)
+  function handleUsernameChange(event) {
+    setUsername(event.target.value);
   }
 
-  function handPasswordChange (event) {
-    setPassword(event.target.value)
+  function handPasswordChange(event) {
+    setPassword(event.target.value);
   }
 
   function handleSubmit(event) {
@@ -26,29 +26,28 @@ function Signup(props) {
         props.history.push('/');
       })
       .catch((error) => {
-        //alert(error.message);
+        // alert(error.message);
         setErrorMsg(error.message);
       });
   }
 
-    return (
-      <main>
-        <CredentialsForm
-          errorMsg={errorMsg}
-          title={'Sign up'}
-          handleSubmit={handleSubmit}
-          username={username}
-          password={password}
-          handleUsernameChange={handleUsernameChange}
-          handPasswordChange={handPasswordChange}
-          buttonText={'Sign up'}
-          text={'Already have an account?'}
-          url={'/login'}
-          urlName={'Log in'}
-        />
-      </main>
-    );
-  
+  return (
+    <main>
+      <CredentialsForm
+        errorMsg={errorMsg}
+        title="Sign up"
+        handleSubmit={handleSubmit}
+        username={username}
+        password={password}
+        handleUsernameChange={handleUsernameChange}
+        handPasswordChange={handPasswordChange}
+        buttonText="Sign up"
+        text="Already have an account?"
+        url="/login"
+        urlName="Log in"
+      />
+    </main>
+  );
 }
 
 export default Signup;
