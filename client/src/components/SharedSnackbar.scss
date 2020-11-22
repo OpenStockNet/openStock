@@ -3,11 +3,11 @@
 .MuiSnackbarContent-message {
     color: $lightGold;
     font-size: 16px;
-    
 }
 
 .MuiSnackbarContent-root {
-    background-color: $headsupBlue !important;
+    background-color: $bodyGreen !important;
+    background-image: $successGreenGradient;
     box-shadow: 10px 10px 5px 0px  $boxShadow !important;
     display: block !important;
 }
