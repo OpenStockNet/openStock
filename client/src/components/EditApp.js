@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
+
+import SharedSnackbarContext from './SharedSnackbar.context';
 
 import './NewApp.scss';
 
@@ -13,6 +15,8 @@ function EditApp(props) {
   const [categories, setCategories] = useState([]);
   const [device, setDevice] = useState([]);
   const [logo, setLogo] = useState('');
+
+  const { openSnackbar } = useContext(SharedSnackbarContext);
 
   const appId = props.match.params.id;
 
@@ -80,6 +84,7 @@ function EditApp(props) {
     const editor = props.user._id;
     editApp(appId, name, description, category, device, website, logo, editor)
       .then((editedApp) => {
+        openSnackbar(`Your changes on ${editedApp.name} are published!`);
         props.history.push(`/apps/${editedApp._id}`);
       })
       .catch((error) => {

@@ -12,14 +12,6 @@ export default function PopupModal(props) {
         id={props.id}
         open={props.open}
         onClose={props.handleClose}
-        // anchorOrigin={{
-        //     vertical: 'center',
-        //     horizontal: 'top',
-        //     }}
-        // transformOrigin={{
-        //     vertical: 'center',
-        //     horizontal: 'top',
-        // }}
       >
         <Typography className="typography">
           {props.message}

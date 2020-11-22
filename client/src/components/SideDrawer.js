@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { logout } from '../services/auth';
 
 import CloseBtn from './CloseBtn';
 import Backdrop from './Backdrop';
+import SharedSnackbarContext from './SharedSnackbar.context';
 
 import './SideDrawer.scss';
 
-const sideDrawer = (props) => {
+const SideDrawer = (props) => {
   // add css anmiation
   let drawerClasses = 'side-drawer';
   if (props.show) {
@@ -18,9 +19,12 @@ const sideDrawer = (props) => {
     backdrop = <Backdrop />;
   }
 
+  const { openSnackbar } = useContext(SharedSnackbarContext);
+
   const handleLogOut = () => {
     logout()
       .then(() => {
+        openSnackbar('See you next time!');
         window.location = '/';
       })
       .catch((error) => {
@@ -41,7 +45,7 @@ const sideDrawer = (props) => {
             {props.user.username}
           </li>
           <li>
-            <a href="/apps/new"> Add app</a>
+            <a href="/apps/new">Add app</a>
           </li>
           <li>
             <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>
@@ -61,4 +65,4 @@ const sideDrawer = (props) => {
   );
 };
 
-export default sideDrawer;
+export default SideDrawer;

@@ -15,6 +15,8 @@ import EditApp from './components/EditApp';
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 
+import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
+
 class App extends Component {
   state = {
     user: this.props.user,
@@ -45,13 +47,15 @@ class App extends Component {
 
     return (
       <div className="App">
+        <SharedSnackbarProvider>
+       
         <header>
           <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick} />
           {/* side drawer always open, add animation */}
           <SideDrawer user={this.state.user} show={this.state.sideDrawerOpen} click={this.handleBackdropClick} />
           {backdrop}
         </header>
-
+        
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/alternatives" component={AlternativesPage} / */}
@@ -92,6 +96,7 @@ class App extends Component {
             component={About}
           />
         </Switch>
+        </SharedSnackbarProvider>
       </div>
     );
   }

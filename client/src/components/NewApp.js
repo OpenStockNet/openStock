@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
+
+import SharedSnackbarContext from './SharedSnackbar.context';
 
 import './NewApp.scss';
 
@@ -13,6 +15,8 @@ function NewApp(props) {
   const [categories, setCategories] = useState([]);
   const [device, setDevice] = useState([]);
   const [logo, setLogo] = useState('');
+
+  const { openSnackbar } = useContext(SharedSnackbarContext);
 
   useEffect(() => {
     fetchAllCategories()
@@ -68,6 +72,7 @@ function NewApp(props) {
     createApp(name, description, category, device, website, logo, creator)
       .then((app) => {
         props.history.push(`/apps/${app._id}`);
+        openSnackbar(`${app.name} is published. Thanks for your contribution!`)
       })
       .catch((error) => {
         alert(error.message);

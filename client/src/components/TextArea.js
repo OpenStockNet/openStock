@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { addReview, fetchReviews } from '../services/review';
 import './TextArea.scss';
 
-import PopupModal from './PopupModal';
+// import PopupModal from './PopupModal';
+import SharedSnackbarContext from './SharedSnackbar.context';
 
 const TextArea = (props) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [openMsg, setOpenMsg] = useState(null);
+  // const [open, setOpen] = useState(false);
+  // const [openMsg, setOpenMsg] = useState(null);
 
   const appId = props.app._id;
   const { userId } = props;
+
+  const { openSnackbar } = useContext(SharedSnackbarContext);
 
   const updateReviewsList = (reviewedAppId) => {
     fetchReviews(reviewedAppId)
@@ -32,20 +35,20 @@ const TextArea = (props) => {
   }
 
   // popover
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+  // const confirm = open ? 'simple-popover' : null;
 
-  const confirm = open ? 'simple-popover' : null;
   function handleSubmit(event) {
     event.preventDefault(); // stops default reloading behaviour
     // make sure take the input value in state, not event.target.value
 
     addReview(reviewInput, appId, userId)
       .then(() => {
-        setOpenMsg('Thanks for sharing!');
-        setOpen(true);
-
+        // setOpenMsg('Thanks for sharing!');
+        // setOpen(true);
+        openSnackbar('Thanks for sharing your thoughts!');
         updateReviewsList(appId);
         setReviewInput('');
       })
@@ -58,12 +61,12 @@ const TextArea = (props) => {
 
   return (
     <div id="rateApp">
-      <PopupModal
+      {/* <PopupModal
         id={confirm}
         open={open}
         handleClose={handleClose}
         message={openMsg}
-      />
+      /> */}
       <h4>Comments</h4>
       {reviews.map((review) => (
         <div key={review._id} className="reivews-container">
