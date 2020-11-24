@@ -16,6 +16,7 @@ import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
+import { SharedDialogProvider } from './components/SharedDialog.context';
 
 class App extends Component {
   state = {
@@ -38,6 +39,7 @@ class App extends Component {
     this.setState({ sideDrawerOpen: false });
   }
 
+
   render() {
     // instead of write tenerary in JSX, write elegently as below
     let backdrop;
@@ -47,8 +49,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        <SharedDialogProvider>
         <SharedSnackbarProvider>
-       
+        
         <header>
           <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick} />
           {/* side drawer always open, add animation */}
@@ -58,8 +61,6 @@ class App extends Component {
         
         <Switch>
           <Route exact path="/" component={HomePage} />
-          {/* <Route exact path="/alternatives" component={AlternativesPage} / */}
-          
           <Route
             exact
             path="/signup"
@@ -96,7 +97,9 @@ class App extends Component {
             component={About}
           />
         </Switch>
+        
         </SharedSnackbarProvider>
+        </SharedDialogProvider>
       </div>
     );
   }
