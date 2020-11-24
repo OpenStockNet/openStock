@@ -4,6 +4,7 @@ import './TextArea.scss';
 
 // import PopupModal from './PopupModal';
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 const TextArea = (props) => {
   const [reviewInput, setReviewInput] = useState('');
@@ -15,6 +16,7 @@ const TextArea = (props) => {
   const { userId } = props;
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
 
   const updateReviewsList = (reviewedAppId) => {
     fetchReviews(reviewedAppId)
@@ -40,6 +42,11 @@ const TextArea = (props) => {
   // };
   // const confirm = open ? 'simple-popover' : null;
 
+  const handlePopup = (dynamicMsg) => {
+    if (!props.userId) openDialog('Log in to share your thoughts.');
+    else openSnackbar(dynamicMsg);
+  };
+
   function handleSubmit(event) {
     event.preventDefault(); // stops default reloading behaviour
     // make sure take the input value in state, not event.target.value
@@ -48,9 +55,10 @@ const TextArea = (props) => {
       .then(() => {
         // setOpenMsg('Thanks for sharing!');
         // setOpen(true);
-        openSnackbar('Thanks for sharing your thoughts!');
+        // openSnackbar('Thanks for sharing your thoughts!');
         updateReviewsList(appId);
         setReviewInput('');
+        handlePopup('Thanks for sharing your thoughts!');
       })
       .catch((error) => {
         alert(error.message);
