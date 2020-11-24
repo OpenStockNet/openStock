@@ -51,18 +51,65 @@ function AppDetailHook(props) {
       });
   };
 
-  const submitRating = (event) => {
-    const ratingValue = event.target.value;
+  // check on frontend if user logs in
+  const ensureLogin = (callbackFunc) => {
+    const dialogMessage = 'Log in to continue.';
+    if (props.user) {
+      callbackFunc();
+    } else {
+      openDialog(dialogMessage);
+    }
+  };
 
+  const sendSubmitRatingRequest = (event) => {
+    const ratingValue = event.target.value;
     rateApp(ratingValue, appId)
       .then(() => {
         updateAvrRating(appId);
         updateAppDetails();
-        handlePopup(`Thank you for rating ${app.name}!`);
+        openSnackbar(`Thank you for rating ${app.name}!`);
       })
       .catch((error) => {
         alert(error.message);
       });
+  };
+
+  const submitRating = (event) => {
+    // anonymous function (()=>{}), as need to pass a parameter which is a function
+    // ensureLogin desides whenever to call sendSubmitRatingRequest
+    ensureLogin(() => sendSubmitRatingRequest(event));
+  };
+
+  const sendWishListRequest = () => {
+    addWishApp(appId, userId)
+      .then(() => {
+        updateAppDetails();
+        openSnackbar(`${app.name} is added to wish list!`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const addToWishList = () => {
+    // sendWishListRequest is callback passed to ensureLogin;
+    // ensureLogin call callback if props.user
+    ensureLogin(sendWishListRequest);
+  };
+
+  const sendRemoveRequest = () => {
+    removeWishApp(appId, userId)
+      .then(() => {
+        updateAppDetails();
+        openSnackbar(`${app.name} is removed from wish list!`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const removeFromWishList = () => {
+    ensureLogin(sendRemoveRequest);
   };
 
   const updateAvrRating = () => {
@@ -86,35 +133,8 @@ function AppDetailHook(props) {
       });
   };
 
-  // if there's a need to change only on frontend, you shoud not mutate an object in "state",
+  // if there's a need to change only on frontend, you should not mutate an object in "state",
   // instead: make a copy, modify copy, and replace original object with copy
-
-  const handlePopup = (dynamicMsg) => {
-    if (!props.user) openDialog('Log in to continue.');
-    else openSnackbar(dynamicMsg);
-  };
-
-  const addToWishList = () => {
-    addWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        handlePopup(`${app.name} is added to wish list!`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
-  const removeFromWishList = () => {
-    removeWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        handlePopup(`${app.name} is removed from wish list!`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
 
   const ratingBtns = (
     <div id="rateApp">

@@ -94,7 +94,7 @@ function EditApp(props) {
 
   const handleEditPermission = (event) => {
     // prevent brwoser default sends http form request (only send from JS)
-    event.preventDefault(); 
+    event.preventDefault();
 
     if (!props.user) openDialog('Log in to continue.');
     else handleEditSubmit();

@@ -42,15 +42,17 @@ const TextArea = (props) => {
   // };
   // const confirm = open ? 'simple-popover' : null;
 
-  const handlePopup = (dynamicMsg) => {
-    if (!props.userId) openDialog('Log in to share your thoughts.');
-    else openSnackbar(dynamicMsg);
+  const ensureLogin = (callbackFunc) => {
+    const dialogMessage = 'Log in to continue.';
+    if (props.userId) {
+      callbackFunc();
+    } else {
+      openDialog(dialogMessage);
+    }
   };
 
-  function handleSubmit(event) {
-    event.preventDefault(); // stops default reloading behaviour
+  const sendReviewRequest = () => {
     // make sure take the input value in state, not event.target.value
-
     addReview(reviewInput, appId, userId)
       .then(() => {
         // setOpenMsg('Thanks for sharing!');
@@ -58,12 +60,17 @@ const TextArea = (props) => {
         // openSnackbar('Thanks for sharing your thoughts!');
         updateReviewsList(appId);
         setReviewInput('');
-        handlePopup('Thanks for sharing your thoughts!');
+        openSnackbar('Thanks for sharing your thoughts!');
       })
       .catch((error) => {
         alert(error.message);
       });
-  }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    ensureLogin(sendReviewRequest);
+  };
 
   const timeStampDates = (timeStamp) => timeStamp.slice(0, 10);
 
