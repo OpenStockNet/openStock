@@ -1,14 +1,20 @@
 @import './Colors.scss';
 
-.MuiSnackbarContent-message {
+.success .MuiSnackbarContent-message {
     color: $lightGold;
     font-size: 16px;
 }
 
-.MuiSnackbarContent-root {
-    background-color: $bodyGreen !important;
+.success .MuiSnackbarContent-root {
     background-image: $successGreenGradient;
-    box-shadow: 10px 10px 5px 0px  $boxShadow !important;
-    display: block !important;
+    box-shadow: 10px 10px 5px 0px  $boxShadow ;
+    display: block ;
 }
+
+@media (min-width: 601px) {
+    .success .MuiSnackbarContent-root {
+        flex-grow: initial;
+        min-width: 340px;
+       }
+    }
 

@@ -72,7 +72,7 @@ function NewApp(props) {
     createApp(name, description, category, device, website, logo, creator)
       .then((app) => {
         props.history.push(`/apps/${app._id}`);
-        openSnackbar(`${app.name} is published. Thanks for your contribution!`)
+        openSnackbar(`${app.name} is published. Thanks for your contribution!`);
       })
       .catch((error) => {
         alert(error.message);

@@ -4,6 +4,7 @@ import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 import './NewApp.scss';
 
@@ -17,6 +18,7 @@ function EditApp(props) {
   const [logo, setLogo] = useState('');
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
 
   const appId = props.match.params.id;
 
@@ -75,12 +77,10 @@ function EditApp(props) {
         deviceCopy.splice(index, 1);
       }
     }
-
     setDevice(deviceCopy);
   }
 
-  function handleEditSubmit(event) {
-    event.preventDefault();
+  function handleEditSubmit() {
     const editor = props.user._id;
     editApp(appId, name, description, category, device, website, logo, editor)
       .then((editedApp) => {
@@ -91,6 +91,14 @@ function EditApp(props) {
         alert(error.message);
       });
   }
+
+  const handleEditPermission = (event) => {
+    // prevent brwoser default sends http form request (only send from JS)
+    event.preventDefault();
+
+    if (!props.user) openDialog('Log in to continue.');
+    else handleEditSubmit();
+  };
 
   if (!categories) return <Loader />;
   const categoryOptions = categories.map((selectedCategory) => (
@@ -104,7 +112,7 @@ function EditApp(props) {
 
   return (
     <main>
-      <form onSubmit={handleEditSubmit} id="addApp">
+      <form onSubmit={handleEditPermission} id="addApp">
         <h2>Edit app</h2>
         <div>
           <label htmlFor="name">

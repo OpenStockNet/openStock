@@ -53,7 +53,7 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
 });
 
 // edit an app
-router.patch('/:id', (req, res) => {
+router.patch('/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
   // appToBeEdit in editApp is sent as req.body in app.js
   const appToBeEdit = req.body;
   const editorId = req.body.editor;
@@ -89,10 +89,10 @@ router.delete('/:id', (req, res) => {
 });
 
 // add app to wish list
-router.post('/user/:userId', (req, res) => {
+router.post('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
   const wishAppId = req.body.appId;
   const wishUserId = req.body.userId;
-
+  // if wishUserId is null, do nothing
   App
     .findByIdAndUpdate(
       wishAppId,
@@ -107,7 +107,7 @@ router.post('/user/:userId', (req, res) => {
 });
 
 // remove app from wish list
-router.patch('/user/:userId', (req, res) => {
+router.patch('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
   const wishAppId = req.body.appId;
   const wishUserId = req.body.userId;
 

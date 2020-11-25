@@ -1,0 +1,44 @@
+@import './Colors.scss';
+
+.top-message .MuiSnackbarContent-message {
+    color: $paleWhitePink;
+    font-size: 20px;
+}
+
+.top-message .MuiSnackbarContent-action {
+    display: inline-block ;
+    padding: 0px ;
+    margin: 0px ;
+}
+
+.top-message .MuiSnackbarContent-root  {
+    font-size: 18px;
+    background-image: $headsupBlueGradient;
+    display: inline-block ;
+}
+
+.top-message .dialog-aBtns {
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.top-message .dialog-aBtns a {
+    padding: 10px 20px;
+}
+
+.top-message .dialog-btn {
+    background-color: transparent;
+    color: $lightGold;
+    border: none;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+// apply rules if larger than 601px
+@media (min-width: 601px) {
+.top-message .MuiSnackbarContent-root {
+    flex-grow: initial;
+    min-width: 680px;
+   }
+}

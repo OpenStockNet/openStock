@@ -13,6 +13,7 @@ import iconApproved from '../images/iconApproved.svg';
 import iconPencilEdit from '../images/iconPencilEdit.svg';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 import './AppDetail.scss';
 // import { CloudStorageIcon } from '../images';
@@ -22,6 +23,7 @@ function AppDetailHook(props) {
   const [avrRating, setAvrRating] = useState(0);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
 
   const appId = props.match.params.id;
   const userId = props.user._id;
@@ -49,9 +51,18 @@ function AppDetailHook(props) {
       });
   };
 
-  const submitRating = (event) => {
-    const ratingValue = event.target.value;
+  // check on frontend if user logs in
+  const ensureLogin = (callbackFunc) => {
+    const dialogMessage = 'Log in to continue.';
+    if (props.user) {
+      callbackFunc();
+    } else {
+      openDialog(dialogMessage);
+    }
+  };
 
+  const sendSubmitRatingRequest = (event) => {
+    const ratingValue = event.target.value;
     rateApp(ratingValue, appId)
       .then(() => {
         updateAvrRating(appId);
@@ -61,6 +72,44 @@ function AppDetailHook(props) {
       .catch((error) => {
         alert(error.message);
       });
+  };
+
+  const submitRating = (event) => {
+    // anonymous function (()=>{}), as need to pass a parameter which is a function
+    // ensureLogin desides whenever to call sendSubmitRatingRequest
+    ensureLogin(() => sendSubmitRatingRequest(event));
+  };
+
+  const sendWishListRequest = () => {
+    addWishApp(appId, userId)
+      .then(() => {
+        updateAppDetails();
+        openSnackbar(`${app.name} is added to wish list!`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const addToWishList = () => {
+    // sendWishListRequest is callback passed to ensureLogin;
+    // ensureLogin call callback if props.user
+    ensureLogin(sendWishListRequest);
+  };
+
+  const sendRemoveRequest = () => {
+    removeWishApp(appId, userId)
+      .then(() => {
+        updateAppDetails();
+        openSnackbar(`${app.name} is removed from wish list!`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const removeFromWishList = () => {
+    ensureLogin(sendRemoveRequest);
   };
 
   const updateAvrRating = () => {
@@ -73,7 +122,6 @@ function AppDetailHook(props) {
       });
   };
 
-  // delete app
   const deleteOneApp = () => {
     deleteApp(appId)
       .then(() => {
@@ -85,32 +133,8 @@ function AppDetailHook(props) {
       });
   };
 
-  // if there's a need to change only on frontend, you shoud not mutate an object in "state",
+  // if there's a need to change only on frontend, you should not mutate an object in "state",
   // instead: make a copy, modify copy, and replace original object with copy
-
-  // add app to wish list
-  const addToWishList = () => {
-    addWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        openSnackbar(`${app.name} is added to wish list!`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
-  // remove app from wish list
-  const removeFromWishList = () => {
-    removeWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        openSnackbar(`${app.name} is removed from wish list!`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
 
   const ratingBtns = (
     <div id="rateApp">
@@ -189,7 +213,7 @@ function AppDetailHook(props) {
   }
 
   let lastEditUser;
-  if (app.editors.length < 1) {
+  if (app.editors.length < 1 || app.editors[app.editors.length - 1].username == null) {
     lastEditUser = null;
   } else {
     lastEditUser = (
@@ -204,14 +228,8 @@ function AppDetailHook(props) {
 
   return (
     <main id="appDetail">
-      {/* <PopupModal
-        id={confirm}
-        open={open}
-        handleClose={handleClose}
-        message={openMsg}
-      /> */}
+
       <div className="appIntro">
-        {/* <Loader /> */}
         <div className="appInfo">
           <img src={app.logo || appIconPlaceholder} alt="" />
           <div>
@@ -234,19 +252,18 @@ function AppDetailHook(props) {
       </div>
 
       <div className="labels-container">
-        {props.user ? wishListBtns : null}
-        {props.user ? editLinkBtn : null}
+        {wishListBtns}
+        {editLinkBtn}
       </div>
 
       <div className="description">
         <h3>Description</h3>
         <p>{app.description}</p>
-
         <div>
           <h4>Available devices:</h4>
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
-        {props.user ? ratingBtns : null}
+        {ratingBtns}
         <TextArea userId={userId} app={app} />
         {deleteBtn}
       </div>
@@ -254,7 +271,6 @@ function AppDetailHook(props) {
         {creatorUser}
         {lastEditUser}
       </div>
-
     </main>
   );
 }

@@ -4,6 +4,7 @@ import './TextArea.scss';
 
 // import PopupModal from './PopupModal';
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 const TextArea = (props) => {
   const [reviewInput, setReviewInput] = useState('');
@@ -15,6 +16,7 @@ const TextArea = (props) => {
   const { userId } = props;
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
 
   const updateReviewsList = (reviewedAppId) => {
     fetchReviews(reviewedAppId)
@@ -40,22 +42,35 @@ const TextArea = (props) => {
   // };
   // const confirm = open ? 'simple-popover' : null;
 
-  function handleSubmit(event) {
-    event.preventDefault(); // stops default reloading behaviour
-    // make sure take the input value in state, not event.target.value
+  const ensureLogin = (callbackFunc) => {
+    const dialogMessage = 'Log in to continue.';
+    if (props.userId) {
+      callbackFunc();
+    } else {
+      openDialog(dialogMessage);
+    }
+  };
 
+  const sendReviewRequest = () => {
+    // make sure take the input value in state, not event.target.value
     addReview(reviewInput, appId, userId)
       .then(() => {
         // setOpenMsg('Thanks for sharing!');
         // setOpen(true);
-        openSnackbar('Thanks for sharing your thoughts!');
+        // openSnackbar('Thanks for sharing your thoughts!');
         updateReviewsList(appId);
         setReviewInput('');
+        openSnackbar('Thanks for sharing your thoughts!');
       })
       .catch((error) => {
         alert(error.message);
       });
-  }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    ensureLogin(sendReviewRequest);
+  };
 
   const timeStampDates = (timeStamp) => timeStamp.slice(0, 10);
 
