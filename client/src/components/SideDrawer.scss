@@ -42,8 +42,8 @@
 
 .side-drawer a {
     font-size: 1.8rem;
-    font-weight: 500;
-    color:$bodyGreen;
+    font-weight: 300;
+    color: $almostWhite;
 }
 
 .side-drawer button {
@@ -57,9 +57,9 @@
 }
 
 .user-name {
-    border-bottom: 1px solid $lightGray;
-    color: $lightGray;
-    font-size: 1.6rem;
+    border-bottom: 1px solid  $thinBodyGreen;
+    color:$bodyGreen;
+    font-size: 1.3rem;
     font-weight: 300;
 }
 
@@ -67,6 +67,27 @@
     align-self: flex-start;
     margin-top: 1rem;
 }
+
+.side-drawer .sidebar-btn-link {
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: $almostWhite;
+    display: block;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+.side-drawer .sidebar-a-btn {
+    padding: 10px 20px;
+    background-color: #2b2d42;
+    border: 1px solid #16db86;
+    font-size: 16px;
+    font-weight: 500;
+    color: $bodyGreen;
+    display: inline-block;
+}
+
 /* hide side-drawer items if larger than 601px */
 @media (min-width: 601px) {
     .side-drawer{

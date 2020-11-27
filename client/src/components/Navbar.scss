@@ -42,6 +42,20 @@ font-weight: 300;
 color:$bodyGreen;
 }
 
+.button-link {
+appearance: none; // browser default look
+text-decoration: none;
+border: none;
+color: $almostWhite;
+padding: 0;
+font-family: 'Roboto';
+}
+
+.logout-content {
+    display: flex;
+    align-items: baseline;
+}
+
 /* hide burger btn if larger than 601px */
 @media (min-width: 601px) {
 .navbar-toggle-btn {
@@ -51,7 +65,7 @@ color:$bodyGreen;
 
 /* hide loggedUser navbar items if below 600px */
 @media (max-width: 600px) {
-.loggedUser {
+.loggedUser  {
     display: none;
 }
 }

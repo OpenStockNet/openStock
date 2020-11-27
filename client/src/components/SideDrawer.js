@@ -4,6 +4,7 @@ import { logout } from '../services/auth';
 import CloseBtn from './CloseBtn';
 import Backdrop from './Backdrop';
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 import './SideDrawer.scss';
 
@@ -20,6 +21,27 @@ const SideDrawer = (props) => {
   }
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
+
+  const wishListAButton =  (
+    props.user ? (
+      <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>
+    ) : (
+      <button onClick={() => openDialog('Log in to create a wish list.')} className='sidebar-btn-link'>
+        Wish list
+     </button>
+    )
+  );
+
+  const welcomeMsg = (
+    props.user && (
+      <li className="user-name">
+            Hi,
+            {' '}
+            {props.user.username}
+          </li>
+    ) 
+  )
 
   const handleLogOut = () => {
     logout()
@@ -39,25 +61,31 @@ const SideDrawer = (props) => {
           <CloseBtn click={props.click} />
         </div>
         <ul>
-          <li className="user-name">
-            Hi
-            {' '}
-            {props.user.username}
+          {welcomeMsg}
+          <li>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="/apps/new">Add app</a>
           </li>
           <li>
-            <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>
+            {wishListAButton}
           </li>
           <li>
             <a href="/about">
               About
             </a>
           </li>
-          <li>
-            <button onClick={handleLogOut}>Log out</button>
-          </li>
+          {props.user ?
+            <li>
+              <button onClick={handleLogOut}>Log out</button>
+            </li> : 
+            <li>
+              <a href="/login" className='sidebar-a-btn'>
+                Log in
+              </a>
+            </li>
+          }
         </ul>
       </nav>
       {backdrop}
