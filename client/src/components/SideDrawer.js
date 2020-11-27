@@ -84,8 +84,8 @@ const SideDrawer = (props) => {
             )
             : (
               <li>
-                <a href="/login" className="sidebar-a-btn">
-                  Log in
+                <a href="/signup" className="sidebar-a-btn">
+                  Sign up
                 </a>
               </li>
             )}

@@ -116,11 +116,11 @@ function EditApp(props) {
 
   return (
     <main>
-         <div className="return-container">
-           <button className="return-arrow" onClick={returnToPage} >
-            <span title='return to last page'>↩</span>
-           </button>
-         </div>
+      <div className="return-container">
+        <button className="return-arrow" onClick={returnToPage}>
+          <span title="return to last page">↩</span>
+        </button>
+      </div>
       <form onSubmit={handleEditPermission} id="addApp">
         <h2>Edit app</h2>
         <div>

@@ -95,11 +95,11 @@ function NewApp(props) {
 
   return (
     <main>
-         <div className="return-container">
-           <a className="return-arrow" href='/' title='return to last page'>
-             ↩
-           </a>
-         </div>
+      <div className="return-container">
+        <a className="return-arrow" href="/" title="return to last page">
+          ↩
+        </a>
+      </div>
       <form onSubmit={handleSubmit} id="addApp">
         <h2>Fill in the form with the app information</h2>
         <div>
