@@ -4,6 +4,7 @@ import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
+import SharedDialogContext from './SharedDialog.context';
 
 import './NewApp.scss';
 
@@ -17,6 +18,7 @@ function NewApp(props) {
   const [logo, setLogo] = useState('');
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
+  const { openDialog } = useContext(SharedDialogContext);
 
   useEffect(() => {
     fetchAllCategories()
@@ -61,14 +63,15 @@ function NewApp(props) {
         deviceCopy.splice(index, 1);
       }
     }
-
     setDevice(deviceCopy);
   }
 
+  // can also be nested in ensureLogin as in EditApp
   function handleSubmit(event) {
     event.preventDefault();
     const creator = props.user._id;
 
+    if (props.user)
     createApp(name, description, category, device, website, logo, creator)
       .then((app) => {
         props.history.push(`/apps/${app._id}`);
@@ -77,6 +80,7 @@ function NewApp(props) {
       .catch((error) => {
         alert(error.message);
       });
+    else (openDialog('Log in to continue.'));
   }
 
   if (!categories) return <Loader />;
