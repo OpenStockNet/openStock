@@ -110,10 +110,27 @@ input
   width: auto;
 }
 
+.return-container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.return-arrow {
+  color: $bodyGreen;
+  font-size: 20px;
+  border: none;
+  padding: 0;
+}
+
+
 @media all and (max-width: 600px) {
   form#addApp {
     width: 90%;
     padding: 40px 30px;
+  }
+  .return-container {
+    width: 90%;
   }
 }
 

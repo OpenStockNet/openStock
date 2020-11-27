@@ -95,6 +95,11 @@ function NewApp(props) {
 
   return (
     <main>
+      <div className="return-container">
+        <a className="return-arrow" href="/" title="return to last page">
+          ↩
+        </a>
+      </div>
       <form onSubmit={handleSubmit} id="addApp">
         <h2>Fill in the form with the app information</h2>
         <div>
@@ -119,7 +124,7 @@ function NewApp(props) {
               id="website"
               value={website}
               onChange={handleWebsiteChange}
-              placeholder="Type in the app wesite here"
+              placeholder="Type in the app website here"
             />
           </label>
         </div>

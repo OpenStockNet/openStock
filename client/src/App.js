@@ -83,13 +83,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/apps/edit/:id"
+            path="/apps/:id/edit"
             render={(props) => <EditApp user={this.state.user} match={props.match} history={props.history} />} // {...props}
           />
           <Route
             exact
             path="/apps/wishlist/:id"
-            render={(props) => <WishList user={this.state.user} match={props.match} />} // {...props}
+            render={(props) => <WishList user={this.state.user}  match={props.match} />} // {...props}
           />
           <Route 
             exact
