@@ -31,9 +31,9 @@ const Navbar = (props) => {
         Log in
       </Link>
     )
-  )
+  );
 
-  const wishListAButton =  (
+  const wishListAButton = (
     props.user ? (
       <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
         Wish list
@@ -41,7 +41,7 @@ const Navbar = (props) => {
     ) : (
       <button className="nav-bar-texts button-link" onClick={() => openDialog('Log in to create a wish list.')}>
         Wish list
-     </button>
+      </button>
     )
   );
 
@@ -52,49 +52,49 @@ const Navbar = (props) => {
         {' '}
         {props.user.username}
       </p>
-       <Link to="/about" className="nav-bar-texts">
-       About
-     </Link>
-     <Link to="/apps/new" className="nav-bar-texts">
-       <span>＋</span>
-       {' '}
-       Add app
-     </Link>
+      <Link to="/about" className="nav-bar-texts">
+        About
+      </Link>
+      <Link to="/apps/new" className="nav-bar-texts">
+        <span>＋</span>
+        {' '}
+        Add app
+      </Link>
       {wishListAButton}
       {logInlogOutBtn}
-     </div>
-  )
+    </div>
+  );
 
   const logoutContent = (
-    <div className='logout-content'>
-        <div className="loggedUser">
-          <Link to="/about" className="nav-bar-texts">
+    <div className="logout-content">
+      <div className="loggedUser">
+        <Link to="/about" className="nav-bar-texts">
           About
-          </Link>
-          <Link to="/apps/new" className="nav-bar-texts">
+        </Link>
+        <Link to="/apps/new" className="nav-bar-texts">
           <span>＋</span>
           {' '}
           Add app
-          </Link>
-          {wishListAButton}
-        </div>
-        {logInlogOutBtn}
-    </div>
-  )
-      
-  const drawerToggleBtn = (
-      <div className="navbar-toggle-btn">
-        <DrawerToggleBtn click={props.handleDrawerToggleClick} />
+        </Link>
+        {wishListAButton}
       </div>
+      {logInlogOutBtn}
+    </div>
+  );
+
+  const drawerToggleBtn = (
+    <div className="navbar-toggle-btn">
+      <DrawerToggleBtn click={props.handleDrawerToggleClick} />
+    </div>
   );
 
   return (
     <nav className="navbar">
       {drawerToggleBtn}
       <div id="logoHome">
-          <Link to="/">
-            <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
-          </Link>
+        <Link to="/">
+          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
+        </Link>
       </div>
       {props.user ? loginContent : logoutContent}
     </nav>

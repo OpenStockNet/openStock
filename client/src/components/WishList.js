@@ -13,40 +13,38 @@ function WishListHook(props) {
   const { openDialog } = useContext(SharedDialogContext);
 
   useEffect(() => {
-    if (!props.user) 
-    { openDialog('Log in to continue.') }    
-    else {
+    if (!props.user) { openDialog('Log in to continue.'); } else {
       fetchAllApps()
-      .then((apps) => {
-        setAppList(apps);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+        .then((apps) => {
+          setAppList(apps);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     }
   }, [setAppList]);
 
   const loggedInWishList = (
     <section id="listContainer" className="fadeIn">
-        {appList
-          .filter((app) => app.wishUser.includes(props.user._id))
-          .map((app) => (
-            <AppsList
-              appId={app._id}
-              src={app.logo || appIconPlaceholder}
-              appName={app.name}
-              appCategoryName={app.category.name}
-            />
-          ))}
+      {appList
+        .filter((app) => app.wishUser.includes(props.user._id))
+        .map((app) => (
+          <AppsList
+            appId={app._id}
+            src={app.logo || appIconPlaceholder}
+            appName={app.name}
+            appCategoryName={app.category.name}
+          />
+        ))}
     </section>
-  )
-  
+  );
+
   if (!appList) return <Loader />;
 
   return (
     <main>
       <h1>My wish list</h1>
-      { props.user && loggedInWishList  }
+      { props.user && loggedInWishList }
     </main>
   );
 }

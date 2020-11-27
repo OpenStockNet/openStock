@@ -71,16 +71,16 @@ function NewApp(props) {
     event.preventDefault();
     const creator = props.user._id;
 
-    if (props.user)
-    createApp(name, description, category, device, website, logo, creator)
-      .then((app) => {
-        props.history.push(`/apps/${app._id}`);
-        openSnackbar(`${app.name} is published. Thanks for your contribution!`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-    else (openDialog('Log in to continue.'));
+    if (props.user) {
+      createApp(name, description, category, device, website, logo, creator)
+        .then((app) => {
+          props.history.push(`/apps/${app._id}`);
+          openSnackbar(`${app.name} is published. Thanks for your contribution!`);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else (openDialog('Log in to continue.'));
   }
 
   if (!categories) return <Loader />;
