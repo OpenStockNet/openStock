@@ -179,7 +179,7 @@ function AppDetailHook(props) {
   );
 
   const editLinkBtn = (
-    <Link to={`/apps/edit/${appId}`} id="small">
+    <Link to={`/apps/${appId}/edit`} id="small">
       <img src={iconPencilEdit} alt="" className="icon-btns" />
     </Link>
   );

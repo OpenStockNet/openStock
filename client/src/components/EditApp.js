@@ -110,8 +110,17 @@ function EditApp(props) {
     </option>
   ));
 
+  const returnToPage = () => {
+    props.history.push('./');
+  };
+
   return (
     <main>
+         <div className="return-container">
+           <button className="return-arrow" onClick={returnToPage} >
+            <span title='return to last page'>↩</span>
+           </button>
+         </div>
       <form onSubmit={handleEditPermission} id="addApp">
         <h2>Edit app</h2>
         <div>
@@ -136,7 +145,7 @@ function EditApp(props) {
               id="website"
               value={website}
               onChange={handleWebsiteChange}
-              placeholder="Type in the app wesite here"
+              placeholder="Type in the app website here"
             />
           </label>
         </div>
