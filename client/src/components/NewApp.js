@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
@@ -96,9 +97,9 @@ function NewApp(props) {
   return (
     <main>
       <div className="return-container">
-        <a className="return-arrow" href="/" title="return to last page">
-          ↩
-        </a>
+        <Link to="/" className="return-arrow"  title="back to homepage">
+          ↩ 
+        </Link>
       </div>
       <form onSubmit={handleSubmit} id="addApp">
         <h2>Fill in the form with the app information</h2>

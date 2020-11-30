@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
@@ -110,16 +111,16 @@ function EditApp(props) {
     </option>
   ));
 
-  const returnToPage = () => {
-    props.history.push('./');
-  };
+  // const returnToPage = () => {
+  //   props.history.push('./');
+  // };
 
   return (
     <main>
       <div className="return-container">
-        <button className="return-arrow" onClick={returnToPage}>
-          <span title="return to last page">↩</span>
-        </button>
+        <Link to={`./`} className="return-arrow"  title="back to app">
+          ↩ 
+        </Link>
       </div>
       <form onSubmit={handleEditPermission} id="addApp">
         <h2>Edit app</h2>
