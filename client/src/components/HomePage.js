@@ -32,7 +32,7 @@ function HomePage() {
       .catch((error) => {
         alert(error.message);
       });
-  }, [])
+  }, []);
 
   const setQuery = (newQueries) => {
     setQueries(newQueries);
@@ -45,7 +45,6 @@ function HomePage() {
 
   return (
     <main className="">
-      Search term: '{searchTerm}'
       <h1>If you don't protect your privacy, who will?</h1>
       <h2>Find the right app to protect your privacy with OpenStock</h2>
       <Search setQuery={setQuery} queries={queries} />
@@ -64,6 +63,5 @@ function HomePage() {
     </main>
   );
 }
-
 
 export default HomePage;

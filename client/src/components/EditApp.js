@@ -118,8 +118,8 @@ function EditApp(props) {
   return (
     <main>
       <div className="return-container">
-        <Link to={`./`} className="return-arrow"  title="back to app">
-          ↩ 
+        <Link to="./" className="return-arrow" title="back to app">
+          ↩
         </Link>
       </div>
       <form onSubmit={handleEditPermission} id="addApp">

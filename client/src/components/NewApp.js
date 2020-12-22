@@ -54,7 +54,8 @@ function NewApp(props) {
 
   function handleCheckbox(event) {
     const { id, checked } = event.target;
-    const deviceCopy = device.map((selectedDevice) => selectedDevice);
+    // const deviceCopy = device.map((selectedDevice) => selectedDevice);
+    const deviceCopy = [...device];
 
     if (checked) {
       deviceCopy.push(id);
@@ -97,8 +98,8 @@ function NewApp(props) {
   return (
     <main>
       <div className="return-container">
-        <Link to="/" className="return-arrow"  title="back to homepage">
-          ↩ 
+        <Link to="/" className="return-arrow" title="back to homepage">
+          ↩
         </Link>
       </div>
       <form onSubmit={handleSubmit} id="addApp">
