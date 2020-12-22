@@ -7,10 +7,10 @@ import AppsList from './AppsList';
 function List(props) {
     useEffect(() => {
       getApp();
-    }, getApp);
+    }, [props.queries]);
 
     function getApp()  {
-      const filteredApp = props.appsList.filter((searchApp) => searchApp.name.toLowerCase().includes(props.query.toLowerCase()));
+      const filteredApp = props.appsList.filter((searchApp) => searchApp.name.toLowerCase().includes(props.queries.toLowerCase()));
       props.setApps(filteredApp);
     };
 
@@ -18,7 +18,7 @@ function List(props) {
       <AppsList 
         key={app._id}
         appId={app._id}
-        src={app.logo || appIconPlaceholder}d
+        src={app.logo || appIconPlaceholder}
         appName={app.name}
         appCategoryName={app.category.name}
       />

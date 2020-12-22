@@ -10,10 +10,9 @@ function Search(props) {
     //   setKeys(keyWords)
     // }
 
-    // const handleSubmit = (event) => {
+    // const handleSubmit = () => {
 
     //   event.preventDefault();
-    //   const keyWords = event.target.value;
     //    props.setQuery(keys);
     // }
     const handleInputChange = (event) => {
@@ -23,10 +22,10 @@ function Search(props) {
 
     return(
       // <form id="search" onSubmit={handleSubmit} >
-      <form id="search">
+      <form id="search"  >
         <input
           placeholder='Search an app by name'
-          value={props.query}
+          value={props.queries}
           // value={keys}
           onChange={handleInputChange}
         />
