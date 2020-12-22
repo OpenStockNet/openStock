@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchAllCategories } from '../services/category';
 import { fetchAllApps } from '../services/app';
 
@@ -8,26 +8,17 @@ import List from './List';
 
 import './HomePage.scss';
 
-class HomePage extends Component {
-  state = {
-    categories: [],
-    appsList: [],
-    appsFiltered: [],
-    query: '',
-  };
+function HomePage() {
+  const [categories, setCategories] = useState([]);
+  const [appsList, setAppsList] = useState([]);
+  const [appsFiltered, setAppsFiltered] = useState([]);
+  const [queries, setQueries] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  setQuery = (query) => {
-    this.setState({
-      query,
-    });
-  };
-
-  componentDidMount() {
+  useEffect(() => {
     fetchAllCategories()
       .then((categories) => {
-        this.setState({
-          categories,
-        });
+        setCategories(categories);
       })
       .catch((error) => {
         alert(error.message);
@@ -35,43 +26,42 @@ class HomePage extends Component {
 
     fetchAllApps()
       .then((apps) => {
-        this.setState({
-          appsList: apps,
-          appsFiltered: apps,
-        });
+        setAppsList(apps);
+        setAppsFiltered(apps);
       })
       .catch((error) => {
         alert(error.message);
       });
-  }
+  }, []);
 
-  setApps = (newApps) => {
-    this.setState({
-      appsFiltered: newApps,
-    });
+  const setQuery = (newQueries) => {
+    setQueries(newQueries);
+    setSearchTerm(newQueries);
   };
 
-  render() {
-    return (
-      <main className="">
-        <h1>If you don't protect your privacy, who will?</h1>
-        <h2>Find the right app to protect your privacy with OpenStock</h2>
-        <Search setQuery={this.setQuery} query={this.state.query} />
-        <Categories
-          setApps={this.setApps}
-          setQuery={this.setQuery}
-          appsList={this.state.appsList}
-          category={this.state.categories}
-        />
-        <List
-          appsList={this.state.appsList}
-          setApps={this.setApps}
-          appsFiltered={this.state.appsFiltered}
-          query={this.state.query}
-        />
-      </main>
-    );
-  }
+  const setApps = (newApps) => {
+    setAppsFiltered(newApps);
+  };
+
+  return (
+    <main className="">
+      <h1>If you don't protect your privacy, who will?</h1>
+      <h2>Find the right app to protect your privacy with OpenStock</h2>
+      <Search setQuery={setQuery} queries={queries} />
+      <Categories
+        setApps={setApps}
+        setQuery={setQuery}
+        appsList={appsList}
+        category={categories}
+      />
+      <List
+        setApps={setApps}
+        appsList={appsList}
+        appsFiltered={appsFiltered}
+        queries={queries}
+      />
+    </main>
+  );
 }
 
 export default HomePage;

@@ -1,35 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Search.scss';
 
-class Search extends Component {
-  state = {
-    query: '',
+function Search(props) {
+  // const [keys, setKeys] = useState();
+
+  // const handleInputChange = (event) => {
+  //   const keyWords = event.target.value;
+  //   setKeys(keyWords)
+  // }
+
+  // const handleSubmit = () => {
+
+  //   event.preventDefault();
+  //    props.setQuery(keys);
+  // }
+  const handleInputChange = (event) => {
+    const keyWords = event.target.value;
+    props.setQuery(keyWords);
   };
 
-  handleInputChange = (event) => {
-    this.setState({
-      query: event.target.value,
-    });
-  };
-
-  componentDidUpdate(_, prevState) {
-    if (prevState !== this.state) {
-      this.props.setQuery(this.state.query);
-    }
-  }
-
-  render() {
-    return (
-      <form id="search">
-        <input
-          placeholder="Search an app by name..."
-          value={this.props.query}
-          onChange={this.handleInputChange}
-        />
-      </form>
-    );
-  }
+  return (
+  // <form id="search" onSubmit={handleSubmit} >
+    <form id="search">
+      <input
+        placeholder="Search an app by name"
+        value={props.queries}
+          // value={keys}
+        onChange={handleInputChange}
+      />
+      {/* <button>find</button> */}
+    </form>
+  );
 }
 
 export default Search;
