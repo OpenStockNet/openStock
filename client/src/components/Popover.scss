@@ -1,0 +1,53 @@
+@import './Colors.scss';
+
+.popover-container
+{
+    height: 50%;
+    width: 80%;
+    background: $darkBlue;
+    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    border-radius: 20px;
+    /*above backdrop, if not remove z-index*/
+    z-index: 200; 
+    // center display (parent position: relative)
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*animation*/
+    animation-duration: 0.8s;
+    animation-name: slidein;
+    // inner content
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.popover-container.close {
+    display: none;
+}
+
+.primary {
+    align-items: center;
+    font-size: 16px;
+    color: $bodyGreen;
+    border: none;
+    font-family: inherit;
+    background-color: $darkBlue;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: 100%;
+    }
+
+    to {
+        margin-top: 0%;
+    }
+}
+
+// media-max
+@media (max-width: 601px) {
+   
+}
