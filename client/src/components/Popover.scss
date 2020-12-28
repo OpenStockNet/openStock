@@ -2,20 +2,20 @@
 
 .popover-container
 {
-    height: 50%;
-    width: 80%;
+    height: 60%;
+    width: 88%;
     background: $darkBlue;
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
+    max-width: 500px;
     border-radius: 20px;
-    /*above backdrop, if not remove z-index*/
+    // above backdrop, if not remove z-index
     z-index: 200; 
     // center display (parent position: relative)
     position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /*animation*/
+    // animation
     animation-duration: 0.8s;
     animation-name: slidein;
     // inner content
@@ -31,23 +31,34 @@
 .primary {
     align-items: center;
     font-size: 16px;
-    color: $bodyGreen;
-    border: none;
+    color: $darkBlue;
     font-family: inherit;
-    background-color: $darkBlue;
+    background-color: $bodyGreen;
+    align-self: center;
+    margin-top: 16px;
+}
+
+.popover-container p {
+    padding: 10px 10%;
+    color: $lightGold;
+    text-align: justify;
+}
+
+.popover-container img {
+    margin-bottom: 16px;
 }
 
 @keyframes slidein {
     from {
         margin-top: 100%;
     }
-
     to {
         margin-top: 0%;
     }
 }
 
-// media-max
-@media (max-width: 601px) {
-   
+@media (min-width: 601px) {
+    .popover-container p {
+        padding: 10px 16%;
+    }
 }
