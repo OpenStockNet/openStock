@@ -5,6 +5,7 @@ import { fetchAllApps } from '../services/app';
 import Search from './Search';
 import Categories from './Categories';
 import List from './List';
+import Loader from './Loader';
 
 import './HomePage.scss';
 
@@ -42,6 +43,8 @@ function HomePage() {
   const setApps = (newApps) => {
     setAppsFiltered(newApps);
   };
+
+  if (!categories.length || !appsList.length) return <Loader/>;
 
   return (
     <main className="">
