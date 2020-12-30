@@ -1,5 +1,11 @@
 @import './Colors.scss';
 
+.wrapper {
+  // sticky footer: loader fill remaining space of the page
+  // calc: saas feature, entire screen 100vh, minus header, footer, and margin
+  height: calc(100vh - 104px - 47px - 48px)
+}
+
 .loading img {
     width: 100%;
     height: 100%;
@@ -16,10 +22,10 @@
   animation-iteration-count: infinite;
   animation-fill-mode: none;
   animation-play-state: running;
-  //
+  // center loader
   position: absolute;
   top: 50%;
-  left: 45%;
+  left: 47%;
   transform: translate(-50%, -50%);
 }
 
