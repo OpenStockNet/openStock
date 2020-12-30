@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { logout } from '../services/auth';
 
 import CloseBtn from './CloseBtn';
@@ -25,7 +26,7 @@ const SideDrawer = (props) => {
 
   const wishListAButton = (
     props.user ? (
-      <a href={`/apps/wishlist/${props.user._id}`}>Wish list</a>
+      <Link to={`/apps/wishlist/${props.user._id}`} onClick={props.click}>Wish list</Link>
     ) : (
       <button onClick={() => openDialog('Log in to create a wish list.')} className="sidebar-btn-link">
         Wish list
@@ -53,7 +54,9 @@ const SideDrawer = (props) => {
         alert(error.message);
       });
   };
-
+  // a link reloads once clicked on, react Link naviagate internally in app.
+  // that's why each time Link has onClick to close sidedrawer
+  // a: externally; Link internally 
   return (
     <div>
       <nav className={drawerClasses}>
@@ -63,18 +66,22 @@ const SideDrawer = (props) => {
         <ul>
           {welcomeMsg}
           <li>
-            <a href="/">Home</a>
+            <Link to="/" onClick={props.click}>
+              Home
+            </Link>
           </li>
           <li>
-            <a href="/apps/new">Add app</a>
+            <Link to="/apps/new" onClick={props.click}>
+              Add app
+            </Link>
           </li>
           <li>
             {wishListAButton}
           </li>
           <li>
-            <a href="/about">
+            <Link to="/about" onClick={props.click}>
               About
-            </a>
+            </Link>
           </li>
           {props.user
             ? (
@@ -84,9 +91,9 @@ const SideDrawer = (props) => {
             )
             : (
               <li>
-                <a href="/signup" className="sidebar-a-btn">
+                <Link to="/signup" className="sidebar-a-btn" onClick={props.click}>
                   Sign up
-                </a>
+                </Link>
               </li>
             )}
         </ul>
