@@ -22,10 +22,10 @@
   animation-iteration-count: infinite;
   animation-fill-mode: none;
   animation-play-state: running;
-  // center loader
+  // center loader: minus the height/2 and width/2 of svg
   position: absolute;
-  top: 50%;
-  left: 47%;
+  top: calc(50% - 58px/2);
+  left: calc(50% - 48px/2);
   transform: translate(-50%, -50%);
 }
 
