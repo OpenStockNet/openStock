@@ -2,11 +2,13 @@
 
 .popover-container
 {
-    height: 60%;
+    height: 66%;
     width: 88%;
-    background: $darkBlue;
+    // background: $darkBlue;
+    background: forestgreen;
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
     max-width: 500px;
+    max-height: 500px;
     border-radius: 20px;
     // above backdrop, if not remove z-index
     z-index: 200; 
@@ -20,7 +22,7 @@
     animation-name: slidein;
     // inner content
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 
@@ -34,25 +36,44 @@
     color: $darkBlue;
     font-family: inherit;
     background-color: $bodyGreen;
+    // background-color: forestgreen;
     align-self: center;
-    margin-top: 16px;
+    margin-bottom: 16px;
+    //margin-top: 16px;
+}
+
+.primary:hover {
+    color: $darkBlue; //override
+}
+
+.popover-container h1 {
+    color:$paleWhitePink; //cornflowerblue
 }
 
 .popover-container p {
     padding: 10px 10%;
-    color: $lightGold;
+    //color: $lightGold;
+    color:$paleWhitePink;
     text-align: justify;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .popover-container img {
-    margin-bottom: 16px;
+    margin-top: 16px;
+    //margin-bottom: 16px;
+    max-width: 150px;
+    align-self: center;
 }
 
 @keyframes slidein {
-    from {
+    0% {
         margin-top: 100%;
     }
-    to {
+    50% {
+        margin-top: 50%;
+    }
+    100% {
         margin-top: 0%;
     }
 }
@@ -61,4 +82,10 @@
     .popover-container p {
         padding: 10px 16%;
     }
+    // .popover-container img {
+    //     margin-top: 16px;
+    //     //margin-bottom: 16px;
+    //     max-width: 150px;
+    //     align-self: center;
+    // }
 }
