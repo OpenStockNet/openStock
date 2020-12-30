@@ -28,7 +28,7 @@ const PopoverCenter = () => {
             <div className={popoverClasses}>
             <img src={confettiIcon}/>
                 <div>
-                    <h1>Schascha,</h1>
+                    <h1>Schascha &#x2764;</h1>
                     <p>Thanks for shedding lights on my world to programming in 2020. Would you like to shine through 2021 together?</p>
                 </div>
                 <button className='primary' onClick={handlePopoverClose}>YES, I DO</button>
