@@ -47,7 +47,7 @@ function HomePage() {
   if (!categories.length || !appsList.length) return <Loader/>;
 
   return (
-    <main className="">
+    <main>
       <h1>If you don't protect your privacy, who will?</h1>
       <h2>Find the right app to protect your privacy with OpenStock</h2>
       <Search setQuery={setQuery} queries={queries} />
