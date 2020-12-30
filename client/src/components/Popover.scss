@@ -4,8 +4,7 @@
 {
     height: 66%;
     width: 88%;
-    // background: $darkBlue;
-    background: forestgreen;
+    background: forestgreen; //$darkBlue;
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
     max-width: 500px;
     max-height: 500px;
@@ -35,11 +34,9 @@
     font-size: 16px;
     color: $darkBlue;
     font-family: inherit;
-    background-color: $bodyGreen;
-    // background-color: forestgreen;
+    background-color: $bodyGreen; // forestgreen;
     align-self: center;
     margin-bottom: 16px;
-    //margin-top: 16px;
 }
 
 .primary:hover {
@@ -52,8 +49,7 @@
 
 .popover-container p {
     padding: 10px 10%;
-    //color: $lightGold;
-    color:$paleWhitePink;
+    color:$paleWhitePink; //$lightGold;
     text-align: justify;
     font-weight: 400;
     font-size: 14px;
@@ -61,7 +57,7 @@
 
 .popover-container img {
     margin-top: 16px;
-    //margin-bottom: 16px;
+    // manage svg size, otherwise it may over phones' design
     max-width: 150px;
     align-self: center;
 }
@@ -81,11 +77,12 @@
 @media (min-width: 601px) {
     .popover-container p {
         padding: 10px 16%;
+        font-size: 16px;
     }
-    // .popover-container img {
-    //     margin-top: 16px;
-    //     //margin-bottom: 16px;
-    //     max-width: 150px;
-    //     align-self: center;
-    // }
+    .popover-container h1 {
+        font-size: 30px;
+    }
+    .popover-container img {
+        max-width: none;
+    }
 }
