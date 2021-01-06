@@ -44,7 +44,7 @@ function HomePage() {
     setAppsFiltered(newApps);
   };
 
-  if (!categories.length || !appsList.length) return <Loader/>;
+  if (!categories.length || !appsList.length) return <Loader />;
 
   return (
     <main>

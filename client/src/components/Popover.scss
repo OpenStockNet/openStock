@@ -1,0 +1,88 @@
+@import './Colors.scss';
+
+.popover-container
+{
+    height: 66%;
+    width: 88%;
+    background: forestgreen; //$darkBlue;
+    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 20px;
+    // above backdrop, if not remove z-index
+    z-index: 200; 
+    // center display (parent position: relative)
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // animation
+    animation-duration: 0.8s;
+    animation-name: slidein;
+    // inner content
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.popover-container.close {
+    display: none;
+}
+
+.primary {
+    align-items: center;
+    font-size: 16px;
+    color: $darkBlue;
+    font-family: inherit;
+    background-color: $bodyGreen; // forestgreen;
+    align-self: center;
+    margin-bottom: 16px;
+}
+
+.primary:hover {
+    color: $darkBlue; //override
+}
+
+.popover-container h1 {
+    color:$paleWhitePink; //cornflowerblue
+}
+
+.popover-container p {
+    padding: 10px 10%;
+    color:$paleWhitePink; //$lightGold;
+    text-align: justify;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.popover-container img {
+    margin-top: 16px;
+    // manage svg size, otherwise it may over phones' design
+    max-width: 150px;
+    align-self: center;
+}
+
+@keyframes slidein {
+    0% {
+        margin-top: 100%;
+    }
+    50% {
+        margin-top: 50%;
+    }
+    100% {
+        margin-top: 0%;
+    }
+}
+
+@media (min-width: 601px) {
+    .popover-container p {
+        padding: 10px 16%;
+        font-size: 16px;
+    }
+    .popover-container h1 {
+        font-size: 30px;
+    }
+    .popover-container img {
+        max-width: none;
+    }
+}
