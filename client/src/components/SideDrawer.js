@@ -56,7 +56,7 @@ const SideDrawer = (props) => {
   };
   // a link reloads once clicked on, react Link naviagate internally in app.
   // that's why each time Link has onClick to close sidedrawer
-  // a: externally; Link internally 
+  // a: externally; Link internally
   return (
     <div>
       <nav className={drawerClasses}>

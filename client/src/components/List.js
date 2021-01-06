@@ -25,7 +25,7 @@ function List(props) {
 
   return (
     <section id="listContainer" className="fadeIn">
-       {apps || <Loader />}
+      {apps || <Loader />}
       {props.appsFiltered.length === 0 && (
       <h4>Sorry, we haven't found any alternative app 😧. Try something different.</h4>
       )}
