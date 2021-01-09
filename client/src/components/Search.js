@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import IconMagnifier from '../images/searchMagnifier.svg'
+import React from 'react';
+import { SearchIcon } from '../images'
 import './Search.scss';
 
 function Search(props) {
@@ -16,7 +16,7 @@ function Search(props) {
         onChange={handleInputChange}
       />
       <div className='search-icon-container'>
-        <img src={IconMagnifier} alt='search-icon'/>
+        <img src={ SearchIcon } alt='search-icon'/>
       </div>
     </form>
   );
