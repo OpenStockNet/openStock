@@ -58,7 +58,6 @@ class App extends Component {
           {/* side drawer always open, add animation */}
           <SideDrawer user={this.state.user} show={this.state.sideDrawerOpen} click={this.handleBackdropClick} />
           {backdrop}
-         
         </header>
         <Popover />
         <Switch>

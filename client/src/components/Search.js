@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchIcon } from '../images'
+import { SearchIcon } from '../images';
 import './Search.scss';
 
 function Search(props) {
@@ -15,8 +15,8 @@ function Search(props) {
         value={props.queries}
         onChange={handleInputChange}
       />
-      <div className='search-icon-container'>
-        <img src={ SearchIcon } alt='search-icon'/>
+      <div className="search-icon-container">
+        <img src={SearchIcon} alt="search-icon" />
       </div>
     </form>
   );
