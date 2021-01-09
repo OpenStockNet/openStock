@@ -9,3 +9,4 @@ export const MessengerIcon = require('./messenger.svg');
 export const StreamingIcon = require('./onlineStreaming.svg');
 
 export const LoaderIcon = require('./shieldLoader.svg');
+export const SearchIcon = require('./searchMagnifier.svg');
