@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import './App.css';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -16,27 +16,37 @@ import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 import Popover from './components/Popover';
 
-import './App.css';
-
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
 
-function App(props) {
-  const [user, setUser] = useState(props.user);
-  const [sideDrawerOpen, setsideDrawerOpen] = useState(false);
+class App extends Component {
+  state = {
+    user: this.props.user,
+    sideDrawerOpen: false,
+  };
 
-  const handleDrawerToggleClick = () => {
-    setsideDrawerOpen(!sideDrawerOpen);
+  setUser = (user) => {
+    this.setState({
+      user,
+    });
+  };
+
+  handleDrawerToggleClick = () => {
+    this.setState((prevState) => ({ sideDrawerOpen: !prevState.sideDrawerOpen }));
   }
 
-  const handleBackdropClick = () => {
-    setsideDrawerOpen(false);
+  // click on backdrop to close side drawer
+  handleBackdropClick = () => {
+    this.setState({ sideDrawerOpen: false });
   }
 
-  let backdrop;
-  if (sideDrawerOpen) {
-    backdrop = <Backdrop click={handleBackdropClick} />;
-  }
+
+  render() {
+    // instead of write tenerary in JSX, write elegently as below
+    let backdrop;
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.handleBackdropClick} />;
+    }
 
     return (
       <div className="App">
@@ -44,9 +54,9 @@ function App(props) {
         <SharedSnackbarProvider>
         
         <header>
-          <Navbar user={user} handleDrawerToggleClick={handleDrawerToggleClick} />
+          <Navbar user={this.state.user} handleDrawerToggleClick={this.handleDrawerToggleClick} />
           {/* side drawer always open, add animation */}
-          <SideDrawer user={user} show={sideDrawerOpen} click={handleBackdropClick} />
+          <SideDrawer user={this.state.user} show={this.state.sideDrawerOpen} click={this.handleBackdropClick} />
           {backdrop}
         </header>
         <Popover />
@@ -55,32 +65,32 @@ function App(props) {
           <Route
             exact
             path="/signup"
-            render={(props) => <Signup setUser={setUser} history={props.history} />}
+            render={(props) => <Signup setUser={this.setUser} history={props.history} />}
           />
           <Route
             exact
             path="/login"
-            render={(props) => <Login setUser={setUser} history={props.history} />} // {...props}
+            render={(props) => <Login setUser={this.setUser} history={props.history} />} // {...props}
           />
           <Route
             exact
             path="/apps/new"
-            render={(props) => <NewApp user={user} history={props.history} />} // {...props}
+            render={(props) => <NewApp user={this.state.user} history={props.history} />} // {...props}
           />
           <Route
             exact
             path="/apps/:id"
-            render={(props) => <AppDetail user={user} match={props.match} history={props.history}/>} // {...props}
+            render={(props) => <AppDetail user={this.state.user} match={props.match} history={props.history}/>} // {...props}
           />
           <Route
             exact
             path="/apps/:id/edit"
-            render={(props) => <EditApp user={user} match={props.match} history={props.history} />} // {...props}
+            render={(props) => <EditApp user={this.state.user} match={props.match} history={props.history} />} // {...props}
           />
           <Route
             exact
             path="/apps/wishlist/:id"
-            render={(props) => <WishList user={user}  match={props.match} />} // {...props}
+            render={(props) => <WishList user={this.state.user}  match={props.match} />} // {...props}
           />
           <Route 
             exact
@@ -93,7 +103,7 @@ function App(props) {
         </SharedDialogProvider>
       </div>
     );
-  
+  }
 }
 
 export default App;

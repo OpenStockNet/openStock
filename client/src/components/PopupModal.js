@@ -3,7 +3,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import './PopupModal.scss';
 
-export default function PopupModal(props) {
+function PopupModal(props) {
   return (
     <div>
       <Popover
@@ -20,3 +20,5 @@ export default function PopupModal(props) {
     </div>
   );
 }
+
+export default PopupModal;
