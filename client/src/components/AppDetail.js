@@ -18,7 +18,7 @@ import SharedDialogContext from './SharedDialog.context';
 import './AppDetail.scss';
 // import { CloudStorageIcon } from '../images';
 
-function AppDetailHook(props) {
+function AppDetail(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
 
@@ -275,4 +275,4 @@ function AppDetailHook(props) {
   );
 }
 
-export default AppDetailHook;
+export default AppDetail;
