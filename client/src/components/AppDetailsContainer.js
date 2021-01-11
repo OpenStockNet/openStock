@@ -15,7 +15,7 @@ import iconPencilEdit from '../images/iconPencilEdit.svg';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-import './AppDetail.scss';
+import './AppDetailsContainer.scss';
 // import { CloudStorageIcon } from '../images';
 
 function AppDetail(props) {

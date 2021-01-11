@@ -7,7 +7,7 @@ import AppCard from './AppCard';
 import SharedDialogContext from './SharedDialog.context';
 
 // fetch all apps, filter to wishUser_id includes props user id
-function WishListHook(props) {
+function WishListContainer(props) {
   const [appList, setAppList] = useState([]);
 
   const { openDialog } = useContext(SharedDialogContext);
@@ -49,4 +49,4 @@ function WishListHook(props) {
   );
 }
 
-export default WishListHook;
+export default WishListContainer;

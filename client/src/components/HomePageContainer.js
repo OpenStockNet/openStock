@@ -7,9 +7,9 @@ import Categories from './Categories';
 import List from './List';
 import Loader from './Loader';
 
-import './HomePage.scss';
+import './HomePageContainer.scss';
 
-function HomePage() {
+function HomePageContainer() {
   const [categories, setCategories] = useState([]);
   const [appsList, setAppsList] = useState([]);
   const [appsFiltered, setAppsFiltered] = useState([]);
@@ -67,4 +67,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomePageContainer;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { signup } from '../services/auth';
+import { login } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-function Signup(props) {
+function LoginContainer(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -18,7 +18,7 @@ function Signup(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    signup(username, password)
+    login(username, password)
       .then((user) => {
         // successfully logged in
         props.setUser(user);
@@ -32,22 +32,23 @@ function Signup(props) {
   }
 
   return (
+
     <main>
       <CredentialsForm
         errorMsg={errorMsg}
-        title="Sign up"
+        title="Log in"
         handleSubmit={handleSubmit}
         username={username}
         password={password}
         handleUsernameChange={handleUsernameChange}
         handPasswordChange={handPasswordChange}
-        buttonText="Sign up"
-        text="Already have an account?"
-        url="/login"
-        urlName="Log in"
+        buttonText="Log in"
+        text={'Don\'t have an account?'}
+        url="/signup"
+        urlName="Sign up"
       />
     </main>
   );
 }
 
-export default Signup;
+export default LoginContainer;

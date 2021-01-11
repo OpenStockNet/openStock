@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchApp, editApp } from '../services/app';
+import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 
@@ -9,7 +9,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewApp.scss';
 
-function EditApp(props) {
+function NewAppContainer(props) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -21,25 +21,11 @@ function EditApp(props) {
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
 
-  const appId = props.match.params.id;
-
   useEffect(() => {
     fetchAllCategories()
       .then((allCategories) => {
         setCategory(allCategories[0]._id);
         setCategories(allCategories);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-    fetchApp(appId)
-      .then((app) => {
-        setName(app.name);
-        setWebsite(app.website);
-        setDescription(app.description);
-        setCategory(app.category._id); // key
-        setDevice(app.device);
-        setLogo(app.logo);
       })
       .catch((error) => {
         alert(error.message);
@@ -68,7 +54,8 @@ function EditApp(props) {
 
   function handleCheckbox(event) {
     const { id, checked } = event.target;
-    const deviceCopy = device.map((selectedDevice) => selectedDevice);
+    // const deviceCopy = device.map((selectedDevice) => selectedDevice);
+    const deviceCopy = [...device];
 
     if (checked) {
       deviceCopy.push(id);
@@ -81,25 +68,22 @@ function EditApp(props) {
     setDevice(deviceCopy);
   }
 
-  function handleEditSubmit() {
-    const editor = props.user._id;
-    editApp(appId, name, description, category, device, website, logo, editor)
-      .then((editedApp) => {
-        openSnackbar(`Your changes on ${editedApp.name} are published!`);
-        props.history.push(`/apps/${editedApp._id}`);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  }
-
-  const handleEditPermission = (event) => {
-    // prevent brwoser default sends http form request (only send from JS)
+  // can also be nested in ensureLogin as in EditApp
+  function handleSubmit(event) {
     event.preventDefault();
+    const creator = props.user._id;
 
-    if (!props.user) openDialog('Log in to continue.');
-    else handleEditSubmit();
-  };
+    if (props.user) {
+      createApp(name, description, category, device, website, logo, creator)
+        .then((app) => {
+          props.history.push(`/apps/${app._id}`);
+          openSnackbar(`${app.name} is published. Thanks for your contribution!`);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else (openDialog('Log in to continue.'));
+  }
 
   if (!categories) return <Loader />;
   const categoryOptions = categories.map((selectedCategory) => (
@@ -111,19 +95,15 @@ function EditApp(props) {
     </option>
   ));
 
-  // const returnToPage = () => {
-  //   props.history.push('./');
-  // };
-
   return (
     <main>
       <div className="return-container">
-        <Link to="./" className="return-arrow" title="back to app">
+        <Link to="/" className="return-arrow" title="back to homepage">
           ↩
         </Link>
       </div>
-      <form onSubmit={handleEditPermission} id="addApp">
-        <h2>Edit app</h2>
+      <form onSubmit={handleSubmit} id="addApp">
+        <h2>Fill in the form with the app information</h2>
         <div>
           <label htmlFor="name">
             App name
@@ -231,10 +211,10 @@ function EditApp(props) {
             onChange={handleCheckbox}
           />
         </div>
-        <button type="submit">Update</button>
+        <button type="submit">+ Add app</button>
       </form>
     </main>
   );
 }
 
-export default EditApp;
+export default NewAppContainer;
