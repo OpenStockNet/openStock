@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AppsList.scss';
+import './AppCard.scss';
 
-const AppsList = (props) => (
+const AppCard = (props) => (
   <div className="appCard">
     <Link to={`/apps/${props.appId}`}>
       <img src={props.src} alt="" />
@@ -16,4 +16,4 @@ const AppsList = (props) => (
   </div>
 );
 
-export default AppsList;
+export default AppCard;

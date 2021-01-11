@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { fetchAllApps } from '../services/app';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
-import AppsList from './AppsList';
+import AppCard from './AppCard';
 
 import SharedDialogContext from './SharedDialog.context';
 
@@ -29,7 +29,7 @@ function WishListHook(props) {
       {appList
         .filter((app) => app.wishUser.includes(props.user._id))
         .map((app) => (
-          <AppsList
+          <AppCard
             appId={app._id}
             src={app.logo || appIconPlaceholder}
             appName={app.name}

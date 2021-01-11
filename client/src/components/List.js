@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
-import AppsList from './AppsList';
+import AppCard from './AppCard';
 
 function List(props) {
   useEffect(() => {
@@ -14,7 +14,7 @@ function List(props) {
   }
 
   const apps = props.appsFiltered.map((app) => (
-    <AppsList
+    <AppCard
       key={app._id}
       appId={app._id}
       src={app.logo || appIconPlaceholder}
