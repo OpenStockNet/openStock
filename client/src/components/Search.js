@@ -5,7 +5,7 @@ import './Search.scss';
 function Search(props) {
   const handleInputChange = (event) => {
     const keyWords = event.target.value;
-    props.setQuery(keyWords);
+    props.onQueryChange(keyWords);
   };
 
   return (

@@ -4,15 +4,6 @@ import Loader from './Loader';
 import AppCard from './AppCard';
 
 function List(props) {
-  useEffect(() => {
-    getApp();
-  }, [props.queries]);
-
-  function getApp() {
-    const filteredApp = props.appsList.filter((searchApp) => searchApp.name.toLowerCase().includes(props.queries.toLowerCase()));
-    props.setApps(filteredApp);
-  }
-
   const apps = props.appsFiltered.map((app) => (
     <AppCard
       key={app._id}

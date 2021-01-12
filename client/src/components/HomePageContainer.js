@@ -11,10 +11,9 @@ import './HomePageContainer.scss';
 
 function HomePageContainer() {
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [appsList, setAppsList] = useState([]);
-  const [appsFiltered, setAppsFiltered] = useState([]);
   const [queries, setQueries] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchAllCategories()
@@ -28,21 +27,31 @@ function HomePageContainer() {
     fetchAllApps()
       .then((apps) => {
         setAppsList(apps);
-        setAppsFiltered(apps);
       })
       .catch((error) => {
         alert(error.message);
       });
   }, []);
 
-  const setQuery = (newQueries) => {
+  const handleQuery = (newQueries) => {
     setQueries(newQueries);
-    setSearchTerm(newQueries);
+    setSelectedCategory(null);
   };
 
-  const setApps = (newApps) => {
-    setAppsFiltered(newApps);
+  const handleCategory = (categoryId) => {
+    setQueries('');
+    setSelectedCategory(categoryId);
   };
+
+  // category and search are independent from each other
+  function filterApps() {
+    if (selectedCategory) {
+      return appsList
+        .filter((app) => (selectedCategory ? app.category._id === selectedCategory : true));
+    }
+    return appsList
+      .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
+  }
 
   if (!categories.length || !appsList.length) return <Loader />;
 
@@ -50,18 +59,13 @@ function HomePageContainer() {
     <main>
       <h1>If you don't protect your privacy, who will?</h1>
       <h2>Find the right app to protect your privacy with OpenStock</h2>
-      <Search setQuery={setQuery} queries={queries} />
+      <Search onQueryChange={handleQuery} queries={queries} />
       <Categories
-        setApps={setApps}
-        setQuery={setQuery}
-        appsList={appsList}
-        category={categories}
+        categories={categories}
+        onCategoryChange={handleCategory}
       />
       <List
-        setApps={setApps}
-        appsList={appsList}
-        appsFiltered={appsFiltered}
-        queries={queries}
+        appsFiltered={filterApps()}
       />
     </main>
   );
