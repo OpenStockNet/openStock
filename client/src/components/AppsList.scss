@@ -14,6 +14,13 @@
     animation-iteration-count: 1;
   }
 
+#listContainer p{
+  color: $lightGray;
+  margin: 2rem 2rem;
+  font-weight: 300;
+  font-size: 18px;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

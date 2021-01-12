@@ -20,7 +20,7 @@ function AppsList(props) {
     <section id="listContainer" className="fadeIn">
       {apps || <Loader />}
       {props.appsFiltered.length === 0 && (
-      <h4>{props.text}</h4>
+      <p>{props.text}</p>
       )}
     </section>
   );
