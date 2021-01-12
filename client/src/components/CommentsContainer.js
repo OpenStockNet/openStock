@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { addReview, fetchReviews } from '../services/review';
 import './CommentsContainer.scss';
 
+import CommentCard from './CommentCard';
+
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
@@ -62,19 +64,11 @@ const CommentsContainer = (props) => {
     ensureLogin(sendReviewRequest);
   };
 
-  const timeStampDates = (timeStamp) => timeStamp.slice(0, 10);
-
   return (
     <div id="rateApp">
       <h4>Comments</h4>
       {reviews.map((review) => (
-        <div key={review._id} className="reivews-container">
-          <div className="review-user-container">
-            <h5>{review.user.username}</h5>
-            <h5 className="time-stamp">{timeStampDates(review.updatedAt)}</h5>
-          </div>
-          <p>{review.value}</p>
-        </div>
+        <CommentCard review={review} key={review._id} />
       ))}
       <form onSubmit={handleSubmit} className="text-area">
         <textarea
