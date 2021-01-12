@@ -1,6 +1,5 @@
 import React from 'react';
 import './About.scss';
-import './HomePage.scss';
 
 const About = () => (
   <main id="about">

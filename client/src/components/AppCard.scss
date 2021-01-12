@@ -1,0 +1,60 @@
+@import './Colors.scss';
+
+  .appCard {
+    padding: 16px 16px;
+    margin: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    text-align: left;
+    background-color: $darkBlue;
+    box-shadow: 0px 1px 4px $boxShadow;
+  }
+  
+  .appCard a {
+    width: 100px;
+  }
+  
+  .appCard a img {
+    height: 64px;
+    display: block;
+    margin: 0 auto;
+    max-width: 88px;
+    filter: saturate(0.8);
+  }
+  
+  .appCard div {
+    margin-left: 16px;
+  }
+  
+  .appCard div a {
+    display: inline-block;
+    
+  }
+  .appCard h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .appCard h6 {
+    color:$lightGray;
+    font-size: 12px;
+  }
+  
+  @media all and (max-width: 600px) {
+    .appCard {
+      width: 80%;
+    }
+    .appCard a {
+      width: 136px;
+    }
+    .appCard h3 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  

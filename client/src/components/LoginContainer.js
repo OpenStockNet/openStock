@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { login } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-function Login(props) {
+function LoginContainer(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -32,7 +32,6 @@ function Login(props) {
   }
 
   return (
-
     <main>
       <CredentialsForm
         errorMsg={errorMsg}
@@ -51,4 +50,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default LoginContainer;

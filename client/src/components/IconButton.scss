@@ -1,0 +1,16 @@
+@import './Colors.scss';
+
+.icon-btns {
+  width: 30px;
+}
+
+#small {
+    align-items: center;
+    margin: 0 0 0 1rem;
+    padding: 0; 
+    font-size: 16px;
+    color: $bodyGreen;
+    border: none;
+    font-family: inherit;
+    background-color: $darkBlue;
+  }

@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import HomePage from './components/HomePage';
+import SignupContainer from './components/SignupContainer';
+import LoginContainer from './components/LoginContainer';
+import HomePageContainer from './components/HomePageContainer';
 import About from './components/About';
 
-import AppDetail from './components/AppDetail';
-import NewApp from './components/NewApp';
-import WishList from './components/WishList';
-import EditApp from './components/EditApp';
+import AppDetailsContainer from './components/AppDetailsContainer';
+import NewAppContainer from './components/NewAppContainer';
+import WishListContainer from './components/WishListContainer';
+import EditAppContainer from './components/EditAppContainer';
 
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
@@ -27,73 +27,72 @@ function App(props) {
 
   const handleDrawerToggleClick = () => {
     setsideDrawerOpen(!sideDrawerOpen);
-  }
+  };
 
   const handleBackdropClick = () => {
     setsideDrawerOpen(false);
-  }
+  };
 
   let backdrop;
   if (sideDrawerOpen) {
     backdrop = <Backdrop click={handleBackdropClick} />;
   }
 
-    return (
-      <div className="App">
-        <SharedDialogProvider>
+  return (
+    <div className="App">
+      <SharedDialogProvider>
         <SharedSnackbarProvider>
-        
-        <header>
-          <Navbar user={user} handleDrawerToggleClick={handleDrawerToggleClick} />
-          {/* side drawer always open, add animation */}
-          <SideDrawer user={user} show={sideDrawerOpen} click={handleBackdropClick} />
-          {backdrop}
-        </header>
-        <Popover />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route
-            exact
-            path="/signup"
-            render={(props) => <Signup setUser={setUser} history={props.history} />}
-          />
-          <Route
-            exact
-            path="/login"
-            render={(props) => <Login setUser={setUser} history={props.history} />} // {...props}
-          />
-          <Route
-            exact
-            path="/apps/new"
-            render={(props) => <NewApp user={user} history={props.history} />} // {...props}
-          />
-          <Route
-            exact
-            path="/apps/:id"
-            render={(props) => <AppDetail user={user} match={props.match} history={props.history}/>} // {...props}
-          />
-          <Route
-            exact
-            path="/apps/:id/edit"
-            render={(props) => <EditApp user={user} match={props.match} history={props.history} />} // {...props}
-          />
-          <Route
-            exact
-            path="/apps/wishlist/:id"
-            render={(props) => <WishList user={user}  match={props.match} />} // {...props}
-          />
-          <Route 
-            exact
-            path="/about"
-            component={About}
-          />
-        </Switch>
-        
+
+          <header>
+            <Navbar user={user} handleDrawerToggleClick={handleDrawerToggleClick} />
+            {/* side drawer always open, add animation */}
+            <SideDrawer user={user} show={sideDrawerOpen} click={handleBackdropClick} />
+            {backdrop}
+          </header>
+          <Popover />
+          <Switch>
+            <Route exact path="/" component={HomePageContainer} />
+            <Route
+              exact
+              path="/signup"
+              render={(props) => <SignupContainer setUser={setUser} history={props.history} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) => <LoginContainer setUser={setUser} history={props.history} />}
+            />
+            <Route
+              exact
+              path="/apps/new"
+              render={(props) => <NewAppContainer user={user} history={props.history} />}
+            />
+            <Route
+              exact
+              path="/apps/:id"
+              render={(props) => <AppDetailsContainer user={user} match={props.match} history={props.history} />}
+            />
+            <Route
+              exact
+              path="/apps/:id/edit"
+              render={(props) => <EditAppContainer user={user} match={props.match} history={props.history} />}
+            />
+            <Route
+              exact
+              path="/apps/wishlist/:id"
+              render={(props) => <WishListContainer user={user} match={props.match} />}
+            />
+            <Route
+              exact
+              path="/about"
+              component={About}
+            />
+          </Switch>
+
         </SharedSnackbarProvider>
-        </SharedDialogProvider>
-      </div>
-    );
-  
+      </SharedDialogProvider>
+    </div>
+  );
 }
 
 export default App;

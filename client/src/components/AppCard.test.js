@@ -2,13 +2,13 @@ import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
-import AppsList from './AppsList';
+import AppCard from './AppCard';
 
 // basic test of rendering a whole component
 it('renders without errors', () => {
   const { container } = render(
     <BrowserRouter>
-      <AppsList />
+      <AppCard />
     </BrowserRouter>,
   );
   expect(container).toBeInTheDocument();
@@ -19,7 +19,7 @@ it('displays app name', () => {
   const name = 'testing name';
   const { getByText } = render(
     <BrowserRouter>
-      <AppsList
+      <AppCard
         appName={name}
       />
     </BrowserRouter>,
@@ -35,7 +35,7 @@ it('displays app category', () => {
   const name = 'testing category';
   const { getByText } = render(
     <BrowserRouter>
-      <AppsList
+      <AppCard
         appCategoryName={name}
       />
     </BrowserRouter>,
@@ -52,7 +52,7 @@ it('has app id in link', () => {
   const id = '20201015';
   const { getAllByRole } = render(
     <BrowserRouter>
-      <AppsList
+      <AppCard
         appId={id}
       />
     </BrowserRouter>,
@@ -67,7 +67,7 @@ it('display app logo', () => {
   const imgSrc = 'app logo';
   const { getByRole } = render(
     <BrowserRouter>
-      <AppsList
+      <AppCard
         src={imgSrc}
       />
     </BrowserRouter>,

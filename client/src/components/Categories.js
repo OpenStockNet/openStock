@@ -9,12 +9,8 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import './Categories.scss';
 
 function Categories(props) {
-  const handleCategory = (category) => {
-    const newAppList = props.appsList
-      .filter((app) => app.category._id === category);
-
-    props.setApps(newAppList);
-    props.setQuery('');
+  const handleCategory = (categoryId) => {
+    props.onCategoryChange(categoryId);
   };
 
   const responsive = {
@@ -24,7 +20,7 @@ function Categories(props) {
     600: { items: 8 },
   };
 
-  const appCategories = props.category.map((cat) => (
+  const appCategories = props.categories.map((cat) => (
     <button
       data-testid="filter-button"
       key={cat._id}

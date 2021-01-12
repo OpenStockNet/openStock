@@ -1,0 +1,29 @@
+@import './Colors.scss';
+
+.text-area label {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comment-text-area {
+  width: 100%;
+  display: block;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: $darkerBlue;
+  color: $almostWhite;
+  border: 0;
+  margin-bottom: 16px;
+  height: 100px;
+}
+
+.small-submit-btn {
+  padding: 12px 20px;
+  margin: 0px;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
+  font-size: 16px;
+  font-weight: 500;
+  color:$bodyGreen;
+}

@@ -5,7 +5,9 @@ import {
 } from '../services/app';
 import { getAverageRating, rateApp } from '../services/rating';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
-import TextArea from './TextArea';
+import CommentsContainer from './CommentsContainer';
+import RatingButtons from './RatingButtons';
+import IconButton from './IconButton';
 import Loader from './Loader';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
@@ -15,10 +17,10 @@ import iconPencilEdit from '../images/iconPencilEdit.svg';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-import './AppDetail.scss';
+import './AppDetailsContainer.scss';
 // import { CloudStorageIcon } from '../images';
 
-function AppDetail(props) {
+function AppDetailContainer(props) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
 
@@ -74,7 +76,7 @@ function AppDetail(props) {
       });
   };
 
-  const submitRating = (event) => {
+  const handleSubmitRating = (event) => {
     // anonymous function (()=>{}), as need to pass a parameter which is a function
     // ensureLogin desides whenever to call sendSubmitRatingRequest
     ensureLogin(() => sendSubmitRatingRequest(event));
@@ -91,7 +93,7 @@ function AppDetail(props) {
       });
   };
 
-  const addToWishList = () => {
+  const handleAddToWishList = () => {
     // sendWishListRequest is callback passed to ensureLogin;
     // ensureLogin call callback if props.user
     ensureLogin(sendWishListRequest);
@@ -108,7 +110,7 @@ function AppDetail(props) {
       });
   };
 
-  const removeFromWishList = () => {
+  const handleRemoveFromWishList = () => {
     ensureLogin(sendRemoveRequest);
   };
 
@@ -136,46 +138,12 @@ function AppDetail(props) {
   // if there's a need to change only on frontend, you should not mutate an object in "state",
   // instead: make a copy, modify copy, and replace original object with copy
 
-  const ratingBtns = (
-    <div id="rateApp">
-      <h4>Rate this app</h4>
-      <div>
-        <button type="button" value={1} onClick={submitRating}>
-          1 ✦
-        </button>
-        <button type="button" value={2} onClick={submitRating}>
-          2 ✦ ✦
-        </button>
-        <button type="button" value={3} onClick={submitRating}>
-          3 ✦ ✦ ✦
-        </button>
-        <button type="button" value={4} onClick={submitRating}>
-          4 ✦ ✦ ✦ ✦
-        </button>
-        <button type="button" value={5} onClick={submitRating}>
-          5 ✦ ✦ ✦ ✦ ✦
-        </button>
-      </div>
-    </div>
-  );
-
-  // if (!app) return <div />;
   if (!app) return <Loader />;
 
-  const wishListBtn = (
-    <button type="button" key={props.user._id} onClick={addToWishList} id="small">
-      <img src={iconPlusSign} alt="" className="icon-btns" />
-    </button>
-  );
-
-  const removeWishListBtn = (
-    <button type="button" key={props.user._id} onClick={removeFromWishList} id="small">
-      <img src={iconApproved} alt="" className="icon-btns" />
-    </button>
-  );
-
   const wishListBtns = (
-    app.wishUser.includes(props.user._id) ? removeWishListBtn : wishListBtn
+    app.wishUser.includes(props.user._id)
+      ? <IconButton onHandleWishList={handleRemoveFromWishList} icon={iconApproved} userId={userId} />
+      : <IconButton onHandleWishList={handleAddToWishList} icon={iconPlusSign} userId={userId} />
   );
 
   const editLinkBtn = (
@@ -251,7 +219,7 @@ function AppDetail(props) {
         </div>
       </div>
 
-      <div className="labels-container">
+      <div className="icons-container">
         {wishListBtns}
         {editLinkBtn}
       </div>
@@ -263,8 +231,13 @@ function AppDetail(props) {
           <h4>Available devices:</h4>
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
-        {ratingBtns}
-        <TextArea userId={userId} app={app} />
+        <RatingButtons
+          onSubmitRating={handleSubmitRating}
+        />
+        <CommentsContainer
+          userId={userId}
+          app={app}
+        />
         {deleteBtn}
       </div>
       <div>
@@ -275,4 +248,4 @@ function AppDetail(props) {
   );
 }
 
-export default AppDetail;
+export default AppDetailContainer;
