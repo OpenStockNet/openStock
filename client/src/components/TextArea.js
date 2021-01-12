@@ -2,15 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { addReview, fetchReviews } from '../services/review';
 import './TextArea.scss';
 
-// import PopupModal from './PopupModal';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
+// TODO: clean up; seperate concerns of textArea input and displaying reviews
+// TODO: comments container => textArea component
 const TextArea = (props) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
-  // const [open, setOpen] = useState(false);
-  // const [openMsg, setOpenMsg] = useState(null);
 
   const appId = props.app._id;
   const { userId } = props;
@@ -36,12 +35,6 @@ const TextArea = (props) => {
     setReviewInput(event.target.value);
   }
 
-  // popover
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-  // const confirm = open ? 'simple-popover' : null;
-
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
     if (props.userId) {
@@ -55,9 +48,6 @@ const TextArea = (props) => {
     // make sure take the input value in state, not event.target.value
     addReview(reviewInput, appId, userId)
       .then(() => {
-        // setOpenMsg('Thanks for sharing!');
-        // setOpen(true);
-        // openSnackbar('Thanks for sharing your thoughts!');
         updateReviewsList(appId);
         setReviewInput('');
         openSnackbar('Thanks for sharing your thoughts!');
@@ -76,12 +66,6 @@ const TextArea = (props) => {
 
   return (
     <div id="rateApp">
-      {/* <PopupModal
-        id={confirm}
-        open={open}
-        handleClose={handleClose}
-        message={openMsg}
-      /> */}
       <h4>Comments</h4>
       {reviews.map((review) => (
         <div key={review._id} className="reivews-container">
