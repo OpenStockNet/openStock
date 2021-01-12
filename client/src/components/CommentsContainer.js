@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { addReview, fetchReviews } from '../services/review';
-import './CommentsContainer.scss';
 
 import CommentCard from './CommentCard';
+import CommentForm from './CommentForm';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-// TODO: clean up; seperate concerns of textArea input and displaying reviews
-// TODO: comments container => textArea component
 const CommentsContainer = (props) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
@@ -33,7 +31,7 @@ const CommentsContainer = (props) => {
     updateReviewsList(appId);
   }, [setReviews]);
 
-  function handleChange(event) {
+  function handleInputChange(event) {
     setReviewInput(event.target.value);
   }
 
@@ -70,17 +68,11 @@ const CommentsContainer = (props) => {
       {reviews.map((review) => (
         <CommentCard review={review} key={review._id} />
       ))}
-      <form onSubmit={handleSubmit} className="text-area">
-        <textarea
-          type="text"
-          name="review-inputs"
-          value={reviewInput}
-          onChange={handleChange}
-          placeholder="How do you like this app?"
-          className="comment-text-area"
-        />
-        <button type="submit" className="small-submit-btn">Post</button>
-      </form>
+      <CommentForm
+        onChange={handleInputChange}
+        onSubmit={handleSubmit}
+        reviewInput={reviewInput}
+      />
     </div>
   );
 };
