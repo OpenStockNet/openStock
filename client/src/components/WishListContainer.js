@@ -35,7 +35,7 @@ function WishListContainer(props) {
         && (
         <AppsList
           appsFiltered={wishedApps}
-          text={'You haven\'t created your wish list. Please log in to add apps.'}
+          text={'You haven\'t created your wish list.  Log in to add apps.'}
         />
         )}
     </main>

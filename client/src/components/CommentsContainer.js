@@ -45,7 +45,7 @@ const CommentsContainer = (props) => {
   };
 
   const sendReviewRequest = () => {
-    // make sure take the input value in state, not event.target.value
+    // take input value in state, not event.target.value
     addReview(reviewInput, appId, userId)
       .then(() => {
         updateReviewsList(appId);

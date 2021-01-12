@@ -32,7 +32,6 @@ function LoginContainer(props) {
   }
 
   return (
-
     <main>
       <CredentialsForm
         errorMsg={errorMsg}
