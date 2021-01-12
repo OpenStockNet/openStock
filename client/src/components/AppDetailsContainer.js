@@ -5,7 +5,7 @@ import {
 } from '../services/app';
 import { getAverageRating, rateApp } from '../services/rating';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
-import TextArea from './TextArea';
+import CommentsContainer from './CommentsContainer';
 import Loader from './Loader';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
@@ -264,7 +264,7 @@ function AppDetail(props) {
           <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
         </div>
         {ratingBtns}
-        <TextArea userId={userId} app={app} />
+        <CommentsContainer userId={userId} app={app} />
         {deleteBtn}
       </div>
       <div>

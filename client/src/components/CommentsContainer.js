@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { addReview, fetchReviews } from '../services/review';
-import './TextArea.scss';
+import './CommentsContainer.scss';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
 // TODO: clean up; seperate concerns of textArea input and displaying reviews
 // TODO: comments container => textArea component
-const TextArea = (props) => {
+const CommentsContainer = (props) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
 
@@ -91,4 +91,4 @@ const TextArea = (props) => {
   );
 };
 
-export default TextArea;
+export default CommentsContainer;
