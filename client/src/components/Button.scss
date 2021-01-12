@@ -29,28 +29,12 @@ form button {
   color: $bodyGreen;
 }
 
-.labels-container {
+.icons-container {
     display: flex;
     flex-direction: row-reverse;
+    margin: .5rem 0;
   }
-
-#small {
-    align-items: center;
-    margin: 0 0 0 1rem;
-    padding: 0; 
-    font-size: 16px;
-    color: $bodyGreen;
-    border: none;
-    font-family: inherit;
-    background-color: $darkBlue;
-  }
-
+  
 .icon-btns {
   width: 30px;
 }
-
-  
-// override general a:hover style for aButton
-// a:hover #linkBtn {
-//   color: $gold;
-// }
