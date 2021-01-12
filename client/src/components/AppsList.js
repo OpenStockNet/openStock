@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
 import AppCard from './AppCard';
 
-function List(props) {
+import './AppsList.scss';
+
+function AppsList(props) {
   const apps = props.appsFiltered.map((app) => (
     <AppCard
       key={app._id}
@@ -18,10 +20,10 @@ function List(props) {
     <section id="listContainer" className="fadeIn">
       {apps || <Loader />}
       {props.appsFiltered.length === 0 && (
-      <h4>Sorry, we haven't found any alternative app 😧. Try something different.</h4>
+      <h4>{props.text}</h4>
       )}
     </section>
   );
 }
 
-export default List;
+export default AppsList;

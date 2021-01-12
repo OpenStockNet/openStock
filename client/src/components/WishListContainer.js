@@ -1,50 +1,43 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { fetchAllApps } from '../services/app';
-import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
-import AppCard from './AppCard';
+import AppsList from './AppsList';
 
 import SharedDialogContext from './SharedDialog.context';
 
 // fetch all apps, filter to wishUser_id includes props user id
 function WishListContainer(props) {
-  const [appList, setAppList] = useState([]);
+  const [wishedApps, setWishedApps] = useState(null);
 
   const { openDialog } = useContext(SharedDialogContext);
 
   useEffect(() => {
-    if (!props.user) { openDialog('Log in to continue.'); } else {
+    if (!props.user) {
+      openDialog('Log in to continue.');
+    } else {
       fetchAllApps()
         .then((apps) => {
-          setAppList(apps);
+          const appsFiltered = apps.filter((app) => app.wishUser.includes(props.user._id));
+          setWishedApps(appsFiltered);
         })
         .catch((error) => {
           alert(error.message);
         });
     }
-  }, [setAppList]);
+  }, [setWishedApps]);
 
-  const loggedInWishList = (
-    <section id="listContainer" className="fadeIn">
-      {appList
-        .filter((app) => app.wishUser.includes(props.user._id))
-        .map((app) => (
-          <AppCard
-            appId={app._id}
-            src={app.logo || appIconPlaceholder}
-            appName={app.name}
-            appCategoryName={app.category.name}
-          />
-        ))}
-    </section>
-  );
-
-  if (!appList) return <Loader />;
+  if (!wishedApps) return <Loader />;
 
   return (
     <main>
       <h1>My wish list</h1>
-      { props.user && loggedInWishList }
+      { props.user
+        && (
+        <AppsList
+          appsFiltered={wishedApps}
+          text={'You haven\'t created your wish list. Please log in to add apps.'}
+        />
+        )}
     </main>
   );
 }

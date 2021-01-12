@@ -4,7 +4,7 @@ import { fetchAllApps } from '../services/app';
 
 import Search from './Search';
 import Categories from './Categories';
-import List from './List';
+import AppsList from './AppsList';
 import Loader from './Loader';
 
 import './HomePageContainer.scss';
@@ -17,8 +17,8 @@ function HomePageContainer() {
 
   useEffect(() => {
     fetchAllCategories()
-      .then((categories) => {
-        setCategories(categories);
+      .then((allCategories) => {
+        setCategories(allCategories);
       })
       .catch((error) => {
         alert(error.message);
@@ -59,13 +59,17 @@ function HomePageContainer() {
     <main>
       <h1>If you don't protect your privacy, who will?</h1>
       <h2>Find the right app to protect your privacy with OpenStock</h2>
-      <Search onQueryChange={handleQuery} queries={queries} />
+      <Search
+        onQueryChange={handleQuery}
+        queries={queries}
+      />
       <Categories
         categories={categories}
         onCategoryChange={handleCategory}
       />
-      <List
+      <AppsList
         appsFiltered={filterApps()}
+        text={'Sorry, we haven\'t found any alternative app 😧. Try something different.'}
       />
     </main>
   );
