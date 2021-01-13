@@ -65,6 +65,7 @@ function HomePageContainer() {
       />
       <Categories
         categories={categories}
+        selectedCategory={selectedCategory}
         onCategoryChange={handleCategory}
       />
       <AppsList
