@@ -15,22 +15,25 @@ function Categories(props) {
 
   const responsive = {
     // mobile
-    0: { items: 4 },
+    0: { items: 2 },
+    324: { items: 3 },
     // desktop
     600: { items: 8 },
   };
 
-  const appCategories = props.categories.map((cat) => (
+  const appCategories = props.categories.map((cat) => 
+   (
     <button
       data-testid="filter-button"
       key={cat._id}
       onClick={() => handleCategory(cat._id)}
-      className="btnCategories"
+      className={props.selectedCategory === cat._id ? 'btnCategories selected' : 'btnCategories'}
     >
       <img src={icons[cat.icon]} alt="" />
       <p style={{ display: 'inline-block' }}>{cat.name}</p>
     </button>
-  ));
+    )
+  );
 
   return (
     <section id="catContainer">

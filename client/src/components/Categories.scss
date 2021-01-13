@@ -2,35 +2,60 @@
 @import './Colors.scss';
 
 #catContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
   
-  button.btnCategories {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 112px;
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 14px;
-    font-weight: 300;
-  }
-  
-  button.btnCategories:focus {
-    outline: none;
-  }
-  
-  button.btnCategories img {
-    height: 40px;
-    margin-bottom: 14px;
-  }
-  
-  button.btnCategories p {
-    text-align: center;
-    font-size: 14px;
-    color:$bodyGreen;
-  }
-  
+button.btnCategories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 108px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px;
+  margin: 6px auto;
+  position: relative; // to button.btnCategories::after
+}
+
+button.btnCategories:hover {
+  outline: none;
+  border-radius: 10px;
+  background: $darkerBlue;
+}
+
+// add ::after for pure deco element
+button.btnCategories::after {
+  content: '';
+  width: 100%;
+  border-bottom: 3px solid transparent;
+  bottom: -6px ; //move underline outside of btn
+  position: absolute; 
+}
+
+button.btnCategories.selected::after {
+  border-bottom: 3px solid darkslategray;
+}
+
+button.btnCategories img {
+  height: 40px;
+  margin-bottom: 14px;
+}
+
+button.btnCategories p {
+  text-align: center;
+  font-size: 14px;
+  color:$bodyGreen;
+}
+
+// override library default
+.alice-carousel__dots {
+  margin: 20px 3px 5px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
