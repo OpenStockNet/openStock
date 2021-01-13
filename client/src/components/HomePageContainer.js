@@ -9,9 +9,11 @@ import Loader from './Loader';
 
 import './HomePageContainer.scss';
 
+const ALLCAT = 'allCat';
+
 function HomePageContainer() {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(ALLCAT);
   const [appsList, setAppsList] = useState([]);
   const [queries, setQueries] = useState('');
 
@@ -35,7 +37,7 @@ function HomePageContainer() {
 
   const handleQuery = (newQueries) => {
     setQueries(newQueries);
-    setSelectedCategory(null);
+    setSelectedCategory(ALLCAT);
   };
 
   const handleCategory = (categoryId) => {
@@ -45,12 +47,13 @@ function HomePageContainer() {
 
   // category and search are independent from each other
   function filterApps() {
-    if (selectedCategory) {
+    if (selectedCategory === ALLCAT) {
       return appsList
-        .filter((app) => (selectedCategory ? app.category._id === selectedCategory : true));
+        .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
+    } else {
+      return appsList
+        .filter((app) => app.category._id === selectedCategory);
     }
-    return appsList
-      .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
   }
 
   if (!categories.length || !appsList.length) return <Loader />;

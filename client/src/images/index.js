@@ -7,6 +7,7 @@ export const EmailIcon = require('./email.svg');
 export const SearchEngineIcon = require('./searchEngine.svg');
 export const MessengerIcon = require('./messenger.svg');
 export const StreamingIcon = require('./onlineStreaming.svg');
+export const AllAppsIcon = require('./appsAll.svg');
 
 export const LoaderIcon = require('./shieldLoader.svg');
 export const SearchIcon = require('./searchMagnifier.svg');

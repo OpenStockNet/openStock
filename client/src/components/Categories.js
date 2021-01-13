@@ -18,23 +18,39 @@ function Categories(props) {
     0: { items: 2 },
     324: { items: 3 },
     // desktop
-    600: { items: 8 },
+    600: { items: 9 },
   };
 
-  const appCategories = props.categories.map((cat) => 
-   (
-    <button
-      data-testid="filter-button"
-      key={cat._id}
-      onClick={() => handleCategory(cat._id)}
-      className={props.selectedCategory === cat._id ? 'btnCategories selected' : 'btnCategories'}
-    >
-      <img src={icons[cat.icon]} alt="" />
-      <p style={{ display: 'inline-block' }}>{cat.name}</p>
-    </button>
-    )
-  );
+  const ALLCAT = 'allCat';
 
+  const allCat = (
+    <button
+        data-testid="filter-button"
+        key={ALLCAT}
+        onClick={() => handleCategory(ALLCAT)}
+        className={props.selectedCategory === ALLCAT ? 'btnCategories selected' : 'btnCategories'}
+      >
+        <img src={icons.AllAppsIcon} alt="" />
+        <p style={{ display: 'inline-block' }}>All</p>
+      </button>
+  )
+
+  const appCategories = 
+      props.categories
+        .map((cat) => (
+          <button
+            data-testid="filter-button"
+            key={cat._id}
+            onClick={() => handleCategory(cat._id)}
+            className={props.selectedCategory === cat._id ? 'btnCategories selected' : 'btnCategories'}
+          >
+            <img src={icons[cat.icon]} alt="" />
+            <p style={{ display: 'inline-block' }}>{cat.name}</p>
+          </button>
+        ));
+  
+  appCategories.unshift(allCat);
+      
   return (
     <section id="catContainer">
       {/* {appCategories} */}
