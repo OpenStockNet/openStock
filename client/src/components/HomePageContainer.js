@@ -7,11 +7,12 @@ import Categories from './Categories';
 import AppsList from './AppsList';
 import Loader from './Loader';
 
+import { ALL_CATEGORIES } from '../constants';
 import './HomePageContainer.scss';
 
 function HomePageContainer() {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORIES);
   const [appsList, setAppsList] = useState([]);
   const [queries, setQueries] = useState('');
 
@@ -35,7 +36,7 @@ function HomePageContainer() {
 
   const handleQuery = (newQueries) => {
     setQueries(newQueries);
-    setSelectedCategory(null);
+    setSelectedCategory(ALL_CATEGORIES);
   };
 
   const handleCategory = (categoryId) => {
@@ -45,12 +46,12 @@ function HomePageContainer() {
 
   // category and search are independent from each other
   function filterApps() {
-    if (selectedCategory) {
+    if (selectedCategory === ALL_CATEGORIES) {
       return appsList
-        .filter((app) => (selectedCategory ? app.category._id === selectedCategory : true));
+        .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
     }
     return appsList
-      .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
+      .filter((app) => app.category._id === selectedCategory);
   }
 
   if (!categories.length || !appsList.length) return <Loader />;
