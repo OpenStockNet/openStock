@@ -8,7 +8,11 @@ import AppCard from './AppCard';
 it('renders without errors', () => {
   const { container } = render(
     <BrowserRouter>
-      <AppCard />
+      <AppCard
+        appId="dummyId"
+        appName="dummyName"
+        appCategoryName="dummyCategoryName"
+      />
     </BrowserRouter>,
   );
   expect(container).toBeInTheDocument();
@@ -20,7 +24,9 @@ it('displays app name', () => {
   const { getByText } = render(
     <BrowserRouter>
       <AppCard
+        appId="dummyId"
         appName={name}
+        appCategoryName="dummyCategoryName"
       />
     </BrowserRouter>,
   );
@@ -32,16 +38,18 @@ it('displays app name', () => {
 });
 
 it('displays app category', () => {
-  const name = 'testing category';
+  const dummyCategoryName = 'testing category';
   const { getByText } = render(
     <BrowserRouter>
       <AppCard
-        appCategoryName={name}
+        appId="dummyId"
+        appName="dummyName"
+        appCategoryName={dummyCategoryName}
       />
     </BrowserRouter>,
   );
 
-  const element = getByText(name);
+  const element = getByText(dummyCategoryName);
 
   expect(element).toBeInTheDocument();
   expect(element.tagName).toEqual('H6');
@@ -54,6 +62,8 @@ it('has app id in link', () => {
     <BrowserRouter>
       <AppCard
         appId={id}
+        appName="dummyName"
+        appCategoryName="dummyCategoryName"
       />
     </BrowserRouter>,
   );
@@ -69,6 +79,9 @@ it('display app logo', () => {
     <BrowserRouter>
       <AppCard
         src={imgSrc}
+        appId="dummyId"
+        appName="dummyName"
+        appCategoryName="dummyCategoryName"
       />
     </BrowserRouter>,
   );
