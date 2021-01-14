@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import appIconPlaceholder from '../app-icon-placeholder.svg';
 import './AppCard.scss';
 
 const AppCard = (props) => (
   <div className="appCard">
     <Link to={`/apps/${props.appId}`}>
-      <img src={props.src} alt="" />
+      <img src={props.src || appIconPlaceholder} alt="" />
     </Link>
     <div>
       <Link to={`/apps/${props.appId}`}>

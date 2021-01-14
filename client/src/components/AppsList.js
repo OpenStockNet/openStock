@@ -1,5 +1,4 @@
 import React from 'react';
-import appIconPlaceholder from '../app-icon-placeholder.svg';
 import Loader from './Loader';
 import AppCard from './AppCard';
 
@@ -10,7 +9,7 @@ function AppsList(props) {
     <AppCard
       key={app._id}
       appId={app._id}
-      src={app.logo || appIconPlaceholder}
+      src={app.logo}
       appName={app.name}
       appCategoryName={app.category.name}
     />
