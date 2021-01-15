@@ -1,18 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SearchIcon } from '../images';
 import './Search.scss';
 
-function Search(props) {
+function Search({ onQueryChange, queries }) {
   const handleInputChange = (event) => {
     const keyWords = event.target.value;
-    props.onQueryChange(keyWords);
+    onQueryChange(keyWords);
   };
 
   return (
     <form id="search">
       <input
         placeholder="Search an app by name"
-        value={props.queries}
+        value={queries}
         onChange={handleInputChange}
       />
       <div className="search-icon-container">
@@ -21,5 +22,10 @@ function Search(props) {
     </form>
   );
 }
+
+Search.propTypes = {
+  onQueryChange: PropTypes.func.isRequired,
+  queries: PropTypes.string.isRequired,
+};
 
 export default Search;
