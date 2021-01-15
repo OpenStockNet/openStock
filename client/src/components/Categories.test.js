@@ -31,7 +31,7 @@ const mockAppsList = [
 it('renders without errors', () => {
   const { container } = render(
     <Categories
-      category={cats}
+      categories={cats}
     />,
   );
   expect(container).toBeInTheDocument();
@@ -40,7 +40,7 @@ it('renders without errors', () => {
 it('displays category name', () => {
   const { getAllByText } = render(
     <Categories
-      category={cats}
+      categories={cats}
     />,
   );
 
@@ -55,12 +55,12 @@ it('displays category name', () => {
 it('displays category icon', () => {
   const { getAllByRole } = render(
     <Categories
-      category={cats}
+      categories={cats}
     />,
   );
 
   const elements = getAllByRole('img');
-  const element = elements[0];
+  const element = elements[1]; // pick 2nd element, as 1st ALL isn't mapped
   expect(element).toBeInTheDocument();
   expect(element.getAttribute('src')).toEqual(MockIcon);
 });
@@ -69,41 +69,35 @@ describe('filter categories', () => {
   it('has certain number of cat btns', () => {
     const { queryAllByTestId } = render(
       <Categories
-        category={cats}
+        categories={cats}
       />,
     );
 
-    // carousel pck renders minimum 3 sections; though we only has 1 here
-    expect(queryAllByTestId('filter-button')).toHaveLength(3);
+    // carousel pck renders minimum 3 sections; and we have 1 ALL + 1 rest from cats
+    expect(queryAllByTestId('filter-button')).toHaveLength(6);
   });
 
   it('filter is called after click', () => {
-    // first check if btn exists
-    const mockSetApps = jest.fn();
-    const mockSetQuery = jest.fn();
+    const mockOnCategoryChange = jest.fn();
     const { queryAllByTestId } = render(
       <Categories
-        category={cats}
-        setApps={mockSetApps}
-        setQuery={mockSetQuery}
-        appsList={mockAppsList}
+        categories={cats}
+        selectedCategory="dummyCategoryId"
+        onCategoryChange={mockOnCategoryChange}
       />,
     );
-    // commont out fireEvent to test if it fails without click
+    // fireEvent of click
     fireEvent.click(queryAllByTestId('filter-button')[0]);
-    expect(mockSetApps).toHaveBeenCalled();
-    expect(mockSetQuery).toHaveBeenCalled();
+    expect(mockOnCategoryChange).toHaveBeenCalled();
   });
 
   it('filters apps', () => {
-    const mockSetApps = jest.fn();
-    const mockSetQuery = jest.fn();
+    const mockOnCategoryChange = jest.fn();
     const { queryAllByTestId } = render(
       <Categories
-        category={cats}
-        setApps={mockSetApps}
-        setQuery={mockSetQuery}
-        appsList={mockAppsList}
+        categories={cats}
+        selectedCategory="dummyCategoryId"
+        onCategoryChange={mockOnCategoryChange}
       />,
     );
 
@@ -114,25 +108,8 @@ describe('filter categories', () => {
         },
       },
     ];
-    // test if fails by e.g. changing cat id
-    fireEvent.click(queryAllByTestId('filter-button')[0]);
-    expect(mockSetApps).toHaveBeenCalledWith(filteredAppsList);
-  });
-
-  it('clears search query when category btn is clicked', () => {
-    const mockSetApps = jest.fn();
-    const mockSetQuery = jest.fn();
-    const { queryAllByTestId } = render(
-      <Categories
-        category={cats}
-        setApps={mockSetApps}
-        setQuery={mockSetQuery}
-        appsList={mockAppsList}
-      />,
-    );
-
-    // test if fails e.g. by changing query str
-    fireEvent.click(queryAllByTestId('filter-button')[0]);
-    expect(mockSetQuery).toHaveBeenCalledWith('');
+    // pick 2nd item because 1st item ALL is hard coded
+    fireEvent.click(queryAllByTestId('filter-button')[1]); 
+    expect(mockOnCategoryChange).toHaveBeenCalledWith(filteredAppsList[0].category._id);
   });
 });
