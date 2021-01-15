@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
@@ -9,7 +10,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewApp.scss';
 
-function EditAppContainer(props) {
+function EditAppContainer({ user, match, history }) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -21,7 +22,7 @@ function EditAppContainer(props) {
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
 
-  const appId = props.match.params.id;
+  const appId = match.params.id;
 
   useEffect(() => {
     fetchAllCategories()
@@ -44,7 +45,7 @@ function EditAppContainer(props) {
       .catch((error) => {
         alert(error.message);
       });
-  }, [props]);
+  }, [appId]);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -82,11 +83,11 @@ function EditAppContainer(props) {
   }
 
   function handleEditSubmit() {
-    const editor = props.user._id;
+    const editor = user._id;
     editApp(appId, name, description, category, device, website, logo, editor)
       .then((editedApp) => {
         openSnackbar(`Your changes on ${editedApp.name} are published!`);
-        props.history.push(`/apps/${editedApp._id}`);
+        history.push(`/apps/${editedApp._id}`);
       })
       .catch((error) => {
         alert(error.message);
@@ -97,7 +98,7 @@ function EditAppContainer(props) {
     // prevent brwoser default sends http form request (only send from JS)
     event.preventDefault();
 
-    if (!props.user) openDialog('Log in to continue.');
+    if (!user) openDialog('Log in to continue.');
     else handleEditSubmit();
   };
 
@@ -112,7 +113,7 @@ function EditAppContainer(props) {
   ));
 
   // const returnToPage = () => {
-  //   props.history.push('./');
+  //   history.push('./');
   // };
 
   return (
@@ -236,5 +237,11 @@ function EditAppContainer(props) {
     </main>
   );
 }
+
+EditAppContainer.propTypes = {
+  user: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default EditAppContainer;
