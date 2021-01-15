@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './CommentForm.scss';
 
-function CommentForm(props) {
+function CommentForm({ onSubmit, reviewInput, onChange }) {
   return (
-    <form onSubmit={props.onSubmit} className="text-area">
+    <form onSubmit={onSubmit} className="text-area">
       <textarea
         type="text"
         name="review-inputs"
-        value={props.reviewInput}
-        onChange={props.onChange}
+        value={reviewInput}
+        onChange={onChange}
         placeholder="How do you like this app?"
         className="comment-text-area"
       />
@@ -16,5 +17,11 @@ function CommentForm(props) {
     </form>
   );
 }
+
+CommentForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  reviewInput: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default CommentForm;
