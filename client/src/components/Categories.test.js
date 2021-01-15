@@ -32,6 +32,8 @@ it('renders without errors', () => {
   const { container } = render(
     <Categories
       categories={cats}
+      selectedCategory="dummyCategoryId"
+      onCategoryChange={() => {}}
     />,
   );
   expect(container).toBeInTheDocument();
@@ -41,6 +43,8 @@ it('displays category name', () => {
   const { getAllByText } = render(
     <Categories
       categories={cats}
+      selectedCategory="dummyCategoryId"
+      onCategoryChange={() => {}}
     />,
   );
 
@@ -56,6 +60,8 @@ it('displays category icon', () => {
   const { getAllByRole } = render(
     <Categories
       categories={cats}
+      selectedCategory="dummyCategoryId"
+      onCategoryChange={() => {}}
     />,
   );
 
@@ -70,10 +76,12 @@ describe('filter categories', () => {
     const { queryAllByTestId } = render(
       <Categories
         categories={cats}
+        selectedCategory="dummyCategoryId"
+        onCategoryChange={() => {}}
       />,
     );
 
-    // carousel pck renders minimum 3 sections; and we have 1 ALL + 1 rest from cats
+    // carousel lib renders minimum 3 sections; and we have 1 ALL + 1 rest from cats
     expect(queryAllByTestId('filter-button')).toHaveLength(6);
   });
 
@@ -109,7 +117,7 @@ describe('filter categories', () => {
       },
     ];
     // pick 2nd item because 1st item ALL is hard coded
-    fireEvent.click(queryAllByTestId('filter-button')[1]); 
+    fireEvent.click(queryAllByTestId('filter-button')[1]);
     expect(mockOnCategoryChange).toHaveBeenCalledWith(filteredAppsList[0].category._id);
   });
 });
