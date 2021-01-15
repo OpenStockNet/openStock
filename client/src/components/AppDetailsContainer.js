@@ -18,17 +18,16 @@ import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
 import './AppDetailsContainer.scss';
-// import { CloudStorageIcon } from '../images';
 
-function AppDetailContainer(props) {
+function AppDetailContainer({ user, match, history }) {
   const [app, setApp] = useState(null);
   const [avrRating, setAvrRating] = useState(0);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
 
-  const appId = props.match.params.id;
-  const userId = props.user._id;
+  const appId = match.params.id;
+  const userId = user._id;
 
   useEffect(() => {
     updateAppDetails();
@@ -56,7 +55,7 @@ function AppDetailContainer(props) {
   // check on frontend if user logs in
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
-    if (props.user) {
+    if (user) {
       callbackFunc();
     } else {
       openDialog(dialogMessage);
@@ -95,7 +94,7 @@ function AppDetailContainer(props) {
 
   const handleAddToWishList = () => {
     // sendWishListRequest is callback passed to ensureLogin;
-    // ensureLogin call callback if props.user
+    // ensureLogin call callback if is login user
     ensureLogin(sendWishListRequest);
   };
 
@@ -128,7 +127,7 @@ function AppDetailContainer(props) {
     deleteApp(appId)
       .then(() => {
         openSnackbar(`${app.name} is deleted!`);
-        props.history.push('/');
+        history.push('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -141,7 +140,7 @@ function AppDetailContainer(props) {
   if (!app) return <Loader />;
 
   const wishListBtns = (
-    app.wishUser.includes(props.user._id)
+    app.wishUser.includes(userId)
       ? <IconButton onHandleWishList={handleRemoveFromWishList} icon={iconApproved} userId={userId} />
       : <IconButton onHandleWishList={handleAddToWishList} icon={iconPlusSign} userId={userId} />
   );
@@ -153,7 +152,7 @@ function AppDetailContainer(props) {
   );
 
   let deleteBtn;
-  if (props.user._id && app.creator && props.user._id === app.creator._id) {
+  if (userId && app.creator && userId === app.creator._id) {
     deleteBtn = (
       <div id="rateApp">
         <h4>This app is not valid?</h4>
