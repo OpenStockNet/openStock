@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { logout } from '../services/auth';
 
@@ -8,7 +9,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './Navbar.scss';
 
-const Navbar = (props) => {
+const Navbar = ({ user, handleDrawerToggleClick }) => {
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
   // window.location redirects user back to homepage and reload the page
@@ -24,7 +25,7 @@ const Navbar = (props) => {
   };
 
   const logInlogOutBtn = (
-    props.user ? (
+    user ? (
       <button onClick={handleLogOut}>Log out</button>
     ) : (
       <Link to="/login" className="aButton nav-bar-texts">
@@ -34,8 +35,8 @@ const Navbar = (props) => {
   );
 
   const wishListAButton = (
-    props.user ? (
-      <Link to={`/apps/wishlist/${props.user._id}`} className="nav-bar-texts">
+    user ? (
+      <Link to={`/apps/wishlist/${user._id}`} className="nav-bar-texts">
         Wish list
       </Link>
     ) : (
@@ -50,7 +51,7 @@ const Navbar = (props) => {
       <p>
         Hi,
         {' '}
-        {props.user.username}
+        {user.username}
       </p>
       <Link to="/about" className="nav-bar-texts">
         About
@@ -84,7 +85,7 @@ const Navbar = (props) => {
 
   const drawerToggleBtn = (
     <div className="navbar-toggle-btn">
-      <DrawerToggleBtn click={props.handleDrawerToggleClick} />
+      <DrawerToggleBtn click={handleDrawerToggleClick} />
     </div>
   );
 
@@ -96,9 +97,18 @@ const Navbar = (props) => {
           <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
         </Link>
       </div>
-      {props.user ? loginContent : logoutContent}
+      {user ? loginContent : logoutContent}
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  // unloggedin user emptry string, loggedin user object
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+  handleDrawerToggleClick: PropTypes.func.isRequired,
 };
 
 export default Navbar;
