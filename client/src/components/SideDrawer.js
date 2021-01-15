@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { logout } from '../services/auth';
 
@@ -9,15 +10,14 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './SideDrawer.scss';
 
-const SideDrawer = (props) => {
-  // add css anmiation
+const SideDrawer = ({ user, show, click }) => {
   let drawerClasses = 'side-drawer';
-  if (props.show) {
+  if (show) {
     drawerClasses = 'side-drawer open';
   }
 
   let backdrop;
-  if (props.show) {
+  if (show) {
     backdrop = <Backdrop />;
   }
 
@@ -25,8 +25,8 @@ const SideDrawer = (props) => {
   const { openDialog } = useContext(SharedDialogContext);
 
   const wishListAButton = (
-    props.user ? (
-      <Link to={`/apps/wishlist/${props.user._id}`} onClick={props.click}>Wish list</Link>
+    user ? (
+      <Link to={`/apps/wishlist/${user._id}`} onClick={click}>Wish list</Link>
     ) : (
       <button onClick={() => openDialog('Log in to create a wish list.')} className="sidebar-btn-link">
         Wish list
@@ -35,11 +35,11 @@ const SideDrawer = (props) => {
   );
 
   const welcomeMsg = (
-    props.user && (
+    user && (
       <li className="user-name">
         Hi,
         {' '}
-        {props.user.username}
+        {user.username}
       </li>
     )
   );
@@ -54,24 +54,24 @@ const SideDrawer = (props) => {
         alert(error.message);
       });
   };
-  // a link reloads once clicked on, react Link naviagate internally in app.
-  // that's why each time Link has onClick to close sidedrawer
-  // a: externally; Link internally
+
+  // a link: nav externally, reloads once clicked;
+  // react Link: nav internally in app
   return (
     <div>
       <nav className={drawerClasses}>
         <div className="btn-container">
-          <CloseBtn click={props.click} />
+          <CloseBtn click={click} />
         </div>
         <ul>
           {welcomeMsg}
           <li>
-            <Link to="/" onClick={props.click}>
+            <Link to="/" onClick={click}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/apps/new" onClick={props.click}>
+            <Link to="/apps/new" onClick={click}>
               Add app
             </Link>
           </li>
@@ -79,11 +79,11 @@ const SideDrawer = (props) => {
             {wishListAButton}
           </li>
           <li>
-            <Link to="/about" onClick={props.click}>
+            <Link to="/about" onClick={click}>
               About
             </Link>
           </li>
-          {props.user
+          {user
             ? (
               <li>
                 <button onClick={handleLogOut}>Log out</button>
@@ -91,7 +91,7 @@ const SideDrawer = (props) => {
             )
             : (
               <li>
-                <Link to="/signup" className="sidebar-a-btn" onClick={props.click}>
+                <Link to="/signup" className="sidebar-a-btn" onClick={click}>
                   Sign up
                 </Link>
               </li>
@@ -101,6 +101,15 @@ const SideDrawer = (props) => {
       {backdrop}
     </div>
   );
+};
+
+SideDrawer.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+  show: PropTypes.bool.isRequired,
+  click: PropTypes.func.isRequired,
 };
 
 export default SideDrawer;
