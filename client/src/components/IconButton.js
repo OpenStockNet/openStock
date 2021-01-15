@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './IconButton.scss';
 
-const IconButton = (props) => (
+const IconButton = ({ userId, onHandleWishList, icon }) => (
   <button
     type="button"
-    key={props.userId}
-    onClick={props.onHandleWishList}
+    key={userId}
+    onClick={onHandleWishList}
     id="small"
   >
-    <img src={props.icon} alt="" className="icon-btns" />
+    <img src={icon} alt="" className="icon-btns" />
   </button>
 );
+
+IconButton.propTypes = {
+  userId: PropTypes.string.isRequired,
+  onHandleWishList: PropTypes.func.isRequired,
+  icon: PropTypes.string.isRequired,
+};
 
 export default IconButton;
