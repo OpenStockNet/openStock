@@ -18,7 +18,8 @@ const CredentialsForm = ({
       value={username}
       onChange={handleUsernameChange}
       placeholder="Type username here"
-      autoFocus="true"
+      autoFocus
+      autoComplete="username"
     />
     <label htmlFor="password">Password </label>
     <input
@@ -28,6 +29,8 @@ const CredentialsForm = ({
       onChange={handPasswordChange}
       id="password"
       placeholder="Type password here"
+      autoFocus
+      autoComplete="current-password"
     />
     <button type="submit">{buttonText}</button>
 
