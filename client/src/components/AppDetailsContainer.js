@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
@@ -246,5 +247,11 @@ function AppDetailContainer({ user, match, history }) {
     </main>
   );
 }
+
+AppDetailContainer.propTypes = {
+  user: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default AppDetailContainer;
