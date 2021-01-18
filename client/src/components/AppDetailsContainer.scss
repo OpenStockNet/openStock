@@ -31,7 +31,7 @@ main#appDetail {
 }
 
 .appInfo h2 {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 500;
   margin: 0;
 }
@@ -122,6 +122,9 @@ main#appDetail {
 @media all and (max-width: 600px) {
   .appInfo {
     display: block;
+  }
+  .appInfo h2 {
+    font-size: 28px;
   }
   main#appDetail {
     width: 80%;
