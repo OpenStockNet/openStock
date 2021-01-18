@@ -30,14 +30,13 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 1rem auto;
+   
 }
 
 .side-drawer li {
     margin: 0.5rem;
     padding: 1rem;
-    
 }
 
 .side-drawer a {
@@ -86,6 +85,10 @@
     font-weight: 500;
     color: $bodyGreen;
     display: inline-block;
+}
+
+.sidebar-a-btn:hover {
+  background: $hoverButtonGradient;
 }
 
 /* hide side-drawer items if larger than 601px */

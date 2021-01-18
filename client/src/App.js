@@ -47,7 +47,7 @@ function App(props) {
             <SideDrawer user={user} show={sideDrawerOpen} click={handleBackdropClick} />
             {backdrop}
           </header>
-          <Popover />
+          {/* <Popover /> */}
           <Switch>
             <Route exact path="/" component={HomePageContainer} />
             <Route

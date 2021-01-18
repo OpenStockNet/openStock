@@ -9,12 +9,14 @@
   width: 100%;
   display: block;
   padding: 14px;
-  font-size: 14px;
+  font-size: 15px;
   background-color: $darkerBlue;
   color: $almostWhite;
   border: 0;
   margin-bottom: 16px;
   height: 100px;
+  font-family: inherit;
+  font-weight: 300;
 }
 
 .small-submit-btn {

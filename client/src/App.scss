@@ -36,6 +36,10 @@ body {
   height:100%;
 }
 
+header {
+  margin-bottom: 30px;
+}
+
 a {
   color: $almostWhite;
   text-decoration: none;
@@ -60,7 +64,6 @@ button,
 button:hover {
   cursor: pointer;
   color:$bodyGreen;
-  background: $hoverButtonGradient;
 }
 
 button:focus {
@@ -79,4 +82,10 @@ form button {
 
 .highlight {
   letter-spacing: 0.6px;
+}
+
+@media (max-width: 601px) {
+  header{
+      margin-bottom: 0;
+  }
 }
