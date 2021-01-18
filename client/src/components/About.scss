@@ -10,6 +10,7 @@ h1#about-aTag {
 }
 .about-container h2{
     align-self: center;  
+    margin: 0 15px;
 }
 main#about {
     width: 56%;
@@ -36,4 +37,13 @@ main#about {
     .about-container {
       max-height: initial;
     }
+    .about-container h2{
+      margin: 10px 0;
+    }
+    h1#about-aTag {
+      color: $gold;
+      font-size: 28px;
+      align-self: center;
+      margin-bottom: 10px;
+  }
   }
