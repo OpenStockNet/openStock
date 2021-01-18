@@ -5,7 +5,7 @@ import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
 } from '../services/app';
 import { getAverageRating, rateApp } from '../services/rating';
-import appIconPlaceholder from '../app-icon-placeholder.svg';
+import appIconPlaceholder from '../images/logoPlaceholder.svg';
 import CommentsContainer from './CommentsContainer';
 import RatingButtons from './RatingButtons';
 import IconButton from './IconButton';
