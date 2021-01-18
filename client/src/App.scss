@@ -60,6 +60,7 @@ button,
 button:hover {
   cursor: pointer;
   color:$bodyGreen;
+  background: $hoverButtonGradient;
 }
 
 button:focus {
