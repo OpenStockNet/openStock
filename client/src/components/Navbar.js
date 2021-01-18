@@ -26,7 +26,7 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
 
   const logInlogOutBtn = (
     user ? (
-      <button onClick={handleLogOut}>Log out</button>
+      <button onClick={handleLogOut} className='nav-bar-btn'>Log out</button>
     ) : (
       <Link to="/login" className="aButton nav-bar-texts">
         Log in
