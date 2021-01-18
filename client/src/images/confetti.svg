@@ -1,218 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
-   sodipodi:docname="confetti.svg"
-   version="1.1"
-   width="200"
-   viewBox="0 0 200 200"
-   height="200"
-   enable-background="new 0 0 512 512"
-   id="Capa_1">
-  <metadata
-     id="metadata926">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs924" />
-  <sodipodi:namedview
-     inkscape:current-layer="Capa_1"
-     inkscape:window-maximized="0"
-     inkscape:window-y="160"
-     inkscape:window-x="1209"
-     inkscape:cy="256"
-     inkscape:cx="256"
-     inkscape:zoom="1.3066406"
-     showgrid="false"
-     id="namedview922"
-     inkscape:window-height="904"
-     inkscape:window-width="1266"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
-     bordercolor="#666666"
-     pagecolor="#ffffff" />
-  <g
-     transform="scale(0.390625)"
-     id="g919">
-    <g
-       id="g845">
-      <g
-         id="g843">
-        <g
-           id="g841">
-          <g
-             id="g839">
-            <g
-               id="g837">
-              <g
-                 id="g835">
-                <circle
-                   id="circle833"
-                   r="256"
-                   fill="#ffce00"
-                   cy="256"
-                   cx="256" />
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="confetti.svg" version="1.1" width="200" viewBox="0 0 200 200" height="200" enable-background="new 0 0 512 512" id="Capa_1">
+  <g transform="scale(0.390625)" id="g919">
+    <g id="g845">
+      <g id="g843">
+        <g id="g841">
+          <g id="g839">
+            <g id="g837">
+              <g id="g835">
+                <circle id="circle833" r="256" fill="#ffce00" cy="256" cx="256" />
               </g>
             </g>
           </g>
         </g>
       </g>
     </g>
-    <g
-       id="g853"
-       fill="#fdba12">
-      <path
-         id="path847"
-         d="m 490.819,358.122 -68.808,-68.808 -41.794,-7.76 -231.206,159.654 67.812,67.813 C 229.595,510.982 242.679,512 256,512 361.084,512 451.379,448.685 490.819,358.122 Z" />
-      <path
-         id="path849"
-         d="m 507.769,302.599 -136.429,-136.43 -4.037,5.473 -48.865,-48.865 -23.217,22.939 200.45,200.449 c 5.261,-13.98 9.335,-28.544 12.098,-43.566 z" />
-      <path
-         id="path851"
-         d="M 509.433,292.391 C 511.124,280.504 512,268.354 512,256 c 0,-21.946 -2.762,-43.248 -7.957,-63.575 l -106,-106 -22.713,23.393 43.191,43.19 -0.813,0.813 -104.776,-104.777 -21.052,24.677 103.812,103.812 -0.955,0.163 z" />
+    <g id="g853" fill="#fdba12">
+      <path id="path847" d="m 490.819,358.122 -68.808,-68.808 -41.794,-7.76 -231.206,159.654 67.812,67.813 C 229.595,510.982 242.679,512 256,512 361.084,512 451.379,448.685 490.819,358.122 Z" />
+      <path id="path849" d="m 507.769,302.599 -136.429,-136.43 -4.037,5.473 -48.865,-48.865 -23.217,22.939 200.45,200.449 c 5.261,-13.98 9.335,-28.544 12.098,-43.566 z" />
+      <path id="path851" d="M 509.433,292.391 C 511.124,280.504 512,268.354 512,256 c 0,-21.946 -2.762,-43.248 -7.957,-63.575 l -106,-106 -22.713,23.393 43.191,43.19 -0.813,0.813 -104.776,-104.777 -21.052,24.677 103.812,103.812 -0.955,0.163 z" />
     </g>
-    <g
-       id="g857">
-      <path
-         id="path855"
-         fill="#7584f2"
-         d="M 149.011,441.209 77.989,370.186 222.827,117.11 402.087,296.37 Z" />
+    <g id="g857">
+      <path id="path855" fill="#7584f2" d="M 149.011,441.209 77.989,370.186 222.827,117.11 402.087,296.37 Z" />
     </g>
-    <g
-       id="g861">
-      <path
-         id="path859"
-         fill="#606aea"
-         d="m 113.401,405.599 35.61,35.609 253.076,-144.838 -89.729,-89.728 z" />
+    <g id="g861">
+      <path id="path859" fill="#606aea" d="m 113.401,405.599 35.61,35.609 253.076,-144.838 -89.729,-89.728 z" />
     </g>
-    <g
-       id="g865">
-      <path
-         id="path863"
-         fill="#a9baff"
-         d="M 206.842,408.112 243.735,386.997 106.42,320.509 88.952,351.03 Z" />
+    <g id="g865">
+      <path id="path863" fill="#a9baff" d="M 206.842,408.112 243.735,386.997 106.42,320.509 88.952,351.03 Z" />
     </g>
-    <g
-       id="g869">
-      <path
-         id="path867"
-         fill="#7a8ff4"
-         d="m 142.192,376.808 64.65,31.303 36.893,-21.114 -75.281,-36.451 z" />
+    <g id="g869">
+      <path id="path867" fill="#7a8ff4" d="m 142.192,376.808 64.65,31.303 36.893,-21.114 -75.281,-36.451 z" />
     </g>
-    <g
-       id="g873">
-      <path
-         id="path871"
-         fill="#a9baff"
-         d="M 289.016,361.082 325.909,339.968 145.325,252.53 127.858,283.05 Z" />
+    <g id="g873">
+      <path id="path871" fill="#a9baff" d="M 289.016,361.082 325.909,339.968 145.325,252.53 127.858,283.05 Z" />
     </g>
-    <g
-       id="g877">
-      <path
-         id="path875"
-         fill="#7a8ff4"
-         d="m 200.687,318.313 88.329,42.769 36.893,-21.114 -98.96,-47.917 z" />
+    <g id="g877">
+      <path id="path875" fill="#7a8ff4" d="m 200.687,318.313 88.329,42.769 36.893,-21.114 -98.96,-47.917 z" />
     </g>
-    <g
-       id="g881">
-      <path
-         id="path879"
-         fill="#a9baff"
-         d="M 166.763,215.07 371.19,314.053 402.087,296.37 389.805,284.089 184.231,184.55 Z" />
+    <g id="g881">
+      <path id="path879" fill="#a9baff" d="M 166.763,215.07 371.19,314.053 402.087,296.37 389.805,284.089 184.231,184.55 Z" />
     </g>
-    <g
-       id="g885">
-      <path
-         id="path883"
-         fill="#7a8ff4"
-         d="m 285.443,233.557 -26.262,26.262 112.009,54.234 30.897,-17.683 -12.282,-12.281 z" />
+    <g id="g885">
+      <path id="path883" fill="#7a8ff4" d="m 285.443,233.557 -26.262,26.262 112.009,54.234 30.897,-17.683 -12.282,-12.281 z" />
     </g>
-    <g
-       id="g889">
-      <path
-         id="path887"
-         transform="matrix(0.707,0.707,-0.707,0.707,237.507,-160.862)"
-         fill="#ffffff"
-         d="m 177.077,187.859 h 271.71 v 36.814 h -271.71 z" />
+    <g id="g889">
+      <path id="path887" transform="matrix(0.707,0.707,-0.707,0.707,237.507,-160.862)" fill="#ffffff" d="m 177.077,187.859 h 271.71 v 36.814 h -271.71 z" />
     </g>
-    <g
-       id="g893">
-      <path
-         id="path891"
-         transform="matrix(0.707,-0.707,0.707,0.707,-74.072,329.672)"
-         fill="#e9edf5"
-         d="m 342.507,186.251 h 36.814 v 135.994 h -36.814 z" />
+    <g id="g893">
+      <path id="path891" transform="matrix(0.707,-0.707,0.707,0.707,-74.072,329.672)" fill="#e9edf5" d="m 342.507,186.251 h 36.814 v 135.994 h -36.814 z" />
     </g>
-    <g
-       id="g897">
-      <circle
-         id="circle895"
-         r="16.358999"
-         fill="#ff5f96"
-         cy="60"
-         cx="300.785" />
+    <g id="g897">
+      <circle id="circle895" r="16.358999" fill="#ff5f96" cy="60" cx="300.785" />
     </g>
-    <g
-       id="g901">
-      <circle
-         id="circle899"
-         r="16.358999"
-         fill="#00d65b"
-         cy="133.46899"
-         cx="306.061" />
+    <g id="g901">
+      <circle id="circle899" r="16.358999" fill="#00d65b" cy="133.46899" cx="306.061" />
     </g>
-    <g
-       id="g905">
-      <circle
-         id="circle903"
-         r="16.358999"
-         fill="#ffffff"
-         cy="97.185997"
-         cx="385.728" />
+    <g id="g905">
+      <circle id="circle903" r="16.358999" fill="#ffffff" cy="97.185997" cx="385.728" />
     </g>
-    <g
-       id="g909">
-      <circle
-         id="circle907"
-         r="16.358999"
-         fill="#ffffff"
-         cy="176.87"
-         cx="358.97198" />
+    <g id="g909">
+      <circle id="circle907" r="16.358999" fill="#ffffff" cy="176.87" cx="358.97198" />
     </g>
-    <g
-       id="g913">
-      <circle
-         id="circle911"
-         r="16.358999"
-         fill="#0d9b50"
-         cy="252.53"
-         cx="425.81299" />
+    <g id="g913">
+      <circle id="circle911" r="16.358999" fill="#0d9b50" cy="252.53" cx="425.81299" />
     </g>
-    <g
-       id="g917">
-      <circle
-         id="circle915"
-         r="20.198999"
-         fill="#d72878"
-         cy="163.86099"
-         cx="409.45401" />
+    <g id="g917">
+      <circle id="circle915" r="20.198999" fill="#d72878" cy="163.86099" cx="409.45401" />
     </g>
   </g>
 </svg>

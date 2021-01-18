@@ -1,21 +1,20 @@
-/*
-    Created on : May 2020
-    Project: OpenStock
-    Author: Yung-Ting, Maria & Clara
-*/
-
-@import './Colors.scss';
-/* APP DETAIL
-=====================*/
+@import '../Colors.scss';
 
 main#appDetail {
   width: 56%;
   padding-top: 40px;
   margin: 0 auto;
 }
+
 .appIntro {
   text-align: left;
   position: relative;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: .5rem 0;
 }
 
 .appInfo {

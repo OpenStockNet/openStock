@@ -16,8 +16,6 @@ import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 import Popover from './components/Popover';
 
-import './App.css';
-
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
 

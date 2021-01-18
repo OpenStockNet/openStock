@@ -8,7 +8,7 @@ import Loader from './Loader';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-import './NewApp.scss';
+import './NewAppContainer.scss';
 
 function NewAppContainer({ user, history }) {
   const [name, setName] = useState('');
