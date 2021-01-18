@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './LoginSignup.scss';
+import './CredentialsForm.scss';
 
 const CredentialsForm = ({
   handleSubmit, errorMsg, title, username, password, handleUsernameChange, handPasswordChange, buttonText, text, url, urlName,
