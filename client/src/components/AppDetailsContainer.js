@@ -201,7 +201,7 @@ function AppDetailContainer({ user, match, history }) {
         <div className="appInfo">
           <img src={app.logo || appIconPlaceholder} alt="" />
           <div>
-            <h2>{app.name}</h2>
+            <h2 className='highlight'>{app.name}</h2>
             <h4>{app.category.name}</h4>
             <a target="_blank" rel="noreferrer" href={app.website ? `${app.website}` : '/'}>
               <span>⎋</span>

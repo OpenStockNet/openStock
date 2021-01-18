@@ -42,7 +42,7 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
         className={selectedCategory === cat._id ? 'btnCategories selected' : 'btnCategories'}
       >
         <img src={icons[cat.icon]} alt="" />
-        <p style={{ display: 'inline-block' }}>{cat.name}</p>
+        <p className="highlight">{cat.name}</p>
       </button>
     ));
 
