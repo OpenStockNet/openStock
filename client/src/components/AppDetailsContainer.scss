@@ -13,9 +13,16 @@ main#appDetail {
   padding-top: 40px;
   margin: 0 auto;
 }
+
 .appIntro {
   text-align: left;
   position: relative;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: .5rem 0;
 }
 
 .appInfo {

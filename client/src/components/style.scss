@@ -33,7 +33,6 @@ body {
   color: $almostWhite;
   background-color: $darkBlue;
   text-align: center;
-  
   height:100%;
 }
 
@@ -47,7 +46,33 @@ a:hover {
   color:$bodyGreen;
 }
 
+button,
+.aButton 
+{
+  padding: 10px 20px;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
+  font-size: 16px;
+  font-weight: 500;
+  color: $bodyGreen;
+}
+
 button:hover {
+  cursor: pointer;
   color:$bodyGreen;
+}
+
+button:focus {
+  outline: none;
+}
+
+form button {
+  padding: 12px 20px;
+  margin: 24px;
+  background-color: $darkBlue;
+  border: 1px solid $bodyGreen;
+  font-size: 16px;
+  font-weight: 500;
+  color: $bodyGreen;
 }
 
