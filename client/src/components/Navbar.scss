@@ -32,6 +32,10 @@ display: inline-block;
 margin-right: 24px;
 }
 
+.nav-bar-btn button:hover {
+  background: $hoverButtonGradient;
+}
+
 .loggedUser p {
 display: inline-block;
 margin-right: 24px;
@@ -40,6 +44,10 @@ font-weight: 300;
 
 .loggedUser span {
 color:$bodyGreen;
+}
+
+.aButton.nav-bar-texts:hover {
+background: $hoverButtonGradient;
 }
 
 .button-link {
@@ -52,8 +60,8 @@ font-family: 'Roboto';
 }
 
 .logout-content {
-    display: flex;
-    align-items: baseline;
+display: flex;
+align-items: baseline;
 }
 
 /* hide burger btn if larger than 601px */

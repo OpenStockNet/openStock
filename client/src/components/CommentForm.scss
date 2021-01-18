@@ -10,12 +10,13 @@
   display: block;
   padding: 14px;
   font-size: 15px;
-  font-weight: 500;
   background-color: $darkerBlue;
   color: $almostWhite;
   border: 0;
   margin-bottom: 16px;
   height: 100px;
+  font-family: inherit;
+  font-weight: 300;
 }
 
 .small-submit-btn {

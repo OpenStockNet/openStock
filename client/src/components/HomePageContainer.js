@@ -58,8 +58,8 @@ function HomePageContainer() {
 
   return (
     <main>
-      <h1>If you don't protect your privacy, who will?</h1>
-      <h2>Find the right app to protect your privacy with OpenStock</h2>
+      <h1 className="highlight">If you don't protect your privacy, who will?</h1>
+      <h2 className="highlight">Find the right app to protect your privacy with OpenStock</h2>
       <Search
         onQueryChange={handleQuery}
         queries={queries}

@@ -12,7 +12,7 @@ function Search({ onQueryChange, queries }) {
   return (
     <form id="search">
       <input
-        placeholder="Search an app by name"
+        placeholder="Search app"
         value={queries}
         onChange={handleInputChange}
       />

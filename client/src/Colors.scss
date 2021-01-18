@@ -5,7 +5,7 @@ $bodyGreen: #16db86;
 $thinBodyGreen: rgba(22,219,135,0.5);
 $gray: #7485a3;
 $lightGray:#a1afc7;
-$darlSlateGray: #2f4f4f;
+$darkSlateGray: #2f4f4f;
 $boxShadow: rgba(26, 24, 41, 0.7);
 $whitePink: #AEA8D3;
 $thinWhitePink: rgba(174,168,211, 0.5);
@@ -14,6 +14,8 @@ $backDropBlack: rgba(0, 0, 0, 0.3);
 
 $successGreenGradient: linear-gradient(to right, #1E7B1E, #28A428, #008081);
 $headsupBlueGradient: linear-gradient(to right, #6699CD, #618DB8, #5D81A3, #58748D, #536878);
+$hoverButtonGradient: linear-gradient(315deg, #485461 0%, $darkerBlue 74%);
+
 $errorRed: #ff3c46;
 $headsupBlue: #31708f;
 $headsupLightBlue: #bce8f1;

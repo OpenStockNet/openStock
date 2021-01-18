@@ -14,7 +14,7 @@ const AppCard = ({
     </Link>
     <div>
       <Link to={`/apps/${appId}`}>
-        <h3>{appName}</h3>
+        <h3 className='highlight'>{appName}</h3>
       </Link>
       <h6>{appCategoryName}</h6>
     </div>
