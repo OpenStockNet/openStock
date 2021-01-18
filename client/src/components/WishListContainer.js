@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { fetchAllApps } from '../services/app';
 import Loader from './Loader';
 import AppsList from './AppsList';
@@ -6,18 +7,18 @@ import AppsList from './AppsList';
 import SharedDialogContext from './SharedDialog.context';
 
 // fetch all apps, filter to wishUser_id includes props user id
-function WishListContainer(props) {
+function WishListContainer({ user }) {
   const [wishedApps, setWishedApps] = useState(null);
 
   const { openDialog } = useContext(SharedDialogContext);
 
   useEffect(() => {
-    if (!props.user) {
+    if (!user) {
       openDialog('Log in to continue.');
     } else {
       fetchAllApps()
         .then((apps) => {
-          const appsFiltered = apps.filter((app) => app.wishUser.includes(props.user._id));
+          const appsFiltered = apps.filter((app) => app.wishUser.includes(user._id));
           setWishedApps(appsFiltered);
         })
         .catch((error) => {
@@ -31,7 +32,7 @@ function WishListContainer(props) {
   return (
     <main>
       <h1>My wish list</h1>
-      { props.user
+      { user
         && (
         <AppsList
           appsFiltered={wishedApps}
@@ -41,5 +42,9 @@ function WishListContainer(props) {
     </main>
   );
 }
+
+WishListContainer.propTypes = {
+  user: PropTypes.object,
+};
 
 export default WishListContainer;

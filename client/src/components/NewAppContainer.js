@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
@@ -9,7 +10,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewApp.scss';
 
-function NewAppContainer(props) {
+function NewAppContainer({ user, history }) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -30,7 +31,7 @@ function NewAppContainer(props) {
       .catch((error) => {
         alert(error.message);
       });
-  }, [props]);
+  }, []);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -71,12 +72,12 @@ function NewAppContainer(props) {
   // can also be nested in ensureLogin as in EditApp
   function handleSubmit(event) {
     event.preventDefault();
-    const creator = props.user._id;
+    const creator = user._id;
 
-    if (props.user) {
+    if (user) {
       createApp(name, description, category, device, website, logo, creator)
         .then((app) => {
-          props.history.push(`/apps/${app._id}`);
+          history.push(`/apps/${app._id}`);
           openSnackbar(`${app.name} is published. Thanks for your contribution!`);
         })
         .catch((error) => {
@@ -216,5 +217,13 @@ function NewAppContainer(props) {
     </main>
   );
 }
+
+NewAppContainer.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+  history: PropTypes.object.isRequired,
+};
 
 export default NewAppContainer;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { signup } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-function SignupContainer(props) {
+function SignupContainer({ setUser, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -21,9 +22,9 @@ function SignupContainer(props) {
     signup(username, password)
       .then((user) => {
         // successfully logged in
-        props.setUser(user);
+        setUser(user);
         // redirect to the page '/'
-        props.history.push('/');
+        history.push('/');
       })
       .catch((error) => {
         // alert(error.message);
@@ -49,5 +50,10 @@ function SignupContainer(props) {
     </main>
   );
 }
+
+SignupContainer.propTypes = {
+  setUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default SignupContainer;

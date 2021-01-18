@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { act, render, fireEvent } from '@testing-library/react';
-import NewApp from './NewApp';
+import NewAppContainer from './NewAppContainer';
 
 import { createApp as mockCreateApp } from '../services/app';
 import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
@@ -23,7 +23,7 @@ it('renders without errors', async () => {
   let renderResult;
   await act(async () => {
     renderResult = render(
-      <NewApp />,
+      <NewAppContainer />,
     );
   });
 
@@ -43,7 +43,7 @@ describe('form input', () => {
     let renderResult;
     await act(async () => {
       renderResult = render(
-        <NewApp
+        <NewAppContainer
           user={dummyUser}
         />,
       );

@@ -80,7 +80,7 @@ function App(props) {
             <Route
               exact
               path="/apps/wishlist/:id"
-              render={(props) => <WishListContainer user={user} match={props.match} />}
+              render={() => <WishListContainer user={user} />}
             />
             <Route
               exact

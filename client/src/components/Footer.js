@@ -5,7 +5,11 @@ import './Footer.scss';
 const Footer = () => (
   <footer className="footer">
     <p>
-      Made with 💚  by
+      Made with
+      {' '}
+      <span role="img" aria-label="green-heart">💚</span>
+      {' '}
+      by
       {' '}
       <a href="https://github.com/yung-ting" target="_blank" rel="noreferrer noopener">
         Yung-Ting

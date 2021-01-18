@@ -1,13 +1,17 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './DrawerToggleBtn.scss';
 
-const drawerToggleBtn = (props) => (
-  <button type="button" className="toggle-btn" onClick={props.click}>
+const drawerToggleBtn = ({ click }) => (
+  <button type="button" className="toggle-btn" onClick={click}>
     <div className="toggle-btn-line" />
     <div className="toggle-btn-line" />
     <div className="toggle-btn-line" />
   </button>
 );
+
+drawerToggleBtn.propTypes = {
+  click: PropTypes.func.isRequired,
+};
 
 export default drawerToggleBtn;

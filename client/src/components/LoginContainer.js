@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { login } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-function LoginContainer(props) {
+function LoginContainer({ setUser, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -21,9 +22,9 @@ function LoginContainer(props) {
     login(username, password)
       .then((user) => {
         // successfully logged in
-        props.setUser(user);
+        setUser(user);
         // redirect to the page '/'
-        props.history.push('/');
+        history.push('/');
       })
       .catch((error) => {
         // alert(error.message);
@@ -49,5 +50,10 @@ function LoginContainer(props) {
     </main>
   );
 }
+
+LoginContainer.propTypes = {
+  setUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default LoginContainer;

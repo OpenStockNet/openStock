@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { addReview, fetchReviews } from '../services/review';
-
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-const CommentsContainer = (props) => {
+const CommentsContainer = ({ userId, app }) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
 
-  const appId = props.app._id;
-  const { userId } = props;
+  const appId = app._id;
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -37,7 +36,7 @@ const CommentsContainer = (props) => {
 
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
-    if (props.userId) {
+    if (userId) {
       callbackFunc();
     } else {
       openDialog(dialogMessage);
@@ -75,6 +74,11 @@ const CommentsContainer = (props) => {
       />
     </div>
   );
+};
+
+CommentsContainer.propTypes = {
+  userId: PropTypes.string.isRequired,
+  app: PropTypes.object.isRequired,
 };
 
 export default CommentsContainer;

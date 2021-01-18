@@ -1,44 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './LoginSignup.scss';
 
-const CredentialsForm = (props) => (
+const CredentialsForm = ({
+  handleSubmit, errorMsg, title, username, password, handleUsernameChange, handPasswordChange, buttonText, text, url, urlName,
+}) => (
 
-  <form onSubmit={props.handleSubmit} id="login">
-    <p className="errorMsg">{props.errorMsg}</p>
-    <h2>{props.title}</h2>
+  <form onSubmit={handleSubmit} id="login">
+    <p className="errorMsg">{errorMsg}</p>
+    <h2>{title}</h2>
     <label htmlFor="username">User name </label>
     <input
       type="text"
       name="username"
       id="username"
-      value={props.username}
-      onChange={props.handleUsernameChange}
+      value={username}
+      onChange={handleUsernameChange}
       placeholder="Type username here"
-      autoFocus="true"
+      autoFocus
+      autoComplete="username"
     />
     <label htmlFor="password">Password </label>
     <input
       type="password"
       name="password"
-      value={props.password}
-      onChange={props.handPasswordChange}
+      value={password}
+      onChange={handPasswordChange}
       id="password"
       placeholder="Type password here"
+      autoFocus
+      autoComplete="current-password"
     />
-    <button type="submit">{props.buttonText}</button>
+    <button type="submit">{buttonText}</button>
 
     <section className="reminder">
       <p>
-        {props.text}
+        {text}
         {' '}
 &nbsp;
       </p>
-      <Link to={props.url} id="underline_text">
-        {props.urlName}
+      <Link to={url} id="underline_text">
+        {urlName}
       </Link>
     </section>
   </form>
 );
+
+CredentialsForm.propTypes = {
+  errorMsg: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  handleUsernameChange: PropTypes.func.isRequired,
+  handPasswordChange: PropTypes.func.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  urlName: PropTypes.string.isRequired,
+};
 
 export default CredentialsForm;
