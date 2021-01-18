@@ -1,5 +1,5 @@
 @import "~react-alice-carousel/lib/alice-carousel.css";
-@import './Colors.scss';
+@import '../Colors.scss';
 
 #catContainer {
   display: flex;
@@ -37,7 +37,7 @@ button.btnCategories::after {
 }
 
 button.btnCategories.selected::after {
-  border-bottom: 3px solid darkslategray;
+  border-bottom: 3px solid $darlSlateGray;
 }
 
 button.btnCategories img {
