@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './IconButton.scss';
 
-const IconButton = ({
-  onHandleWishList, icon, title,
-}) => (
+const IconButton = ({ userId, onHandleWishList, icon, title }) => (
   <button
     type="button"
+    key={userId}
     onClick={onHandleWishList}
     id="small"
     title={title}
@@ -16,6 +15,7 @@ const IconButton = ({
 );
 
 IconButton.propTypes = {
+  userId: PropTypes.string.isRequired,
   onHandleWishList: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
 };

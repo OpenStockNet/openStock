@@ -28,8 +28,7 @@ function AppDetailContainer({ user, match, history }) {
   const { openDialog } = useContext(SharedDialogContext);
 
   const appId = match.params.id;
-  const userId = user ? user._id : null;
-  // const userId = user._id;
+  const userId = user._id;
 
   useEffect(() => {
     updateAppDetails();
@@ -143,13 +142,13 @@ function AppDetailContainer({ user, match, history }) {
 
   const wishListBtns = (
     app.wishUser.includes(userId)
-      ? <IconButton onHandleWishList={handleRemoveFromWishList} icon={iconApproved} title="added to wish list" />
-      : <IconButton onHandleWishList={handleAddToWishList} icon={iconPlusSign} title="add to wish list" />
+      ? <IconButton onHandleWishList={handleRemoveFromWishList} icon={iconApproved} userId={userId} title={'added to wish list'}/>
+      : <IconButton onHandleWishList={handleAddToWishList} icon={iconPlusSign} userId={userId} title={'add to wish list'}/>
   );
 
   const editLinkBtn = (
     <Link to={`/apps/${appId}/edit`} id="small">
-      <img src={iconPencilEdit} alt="" className="icon-btns" title="edit" />
+      <img src={iconPencilEdit} alt="" className="icon-btns" title="edit"/>
     </Link>
   );
 
@@ -202,7 +201,7 @@ function AppDetailContainer({ user, match, history }) {
         <div className="appInfo">
           <img src={app.logo || appIconPlaceholder} alt="" />
           <div>
-            <h2 className="highlight">{app.name}</h2>
+            <h2 className='highlight'>{app.name}</h2>
             <h4>{app.category.name}</h4>
             <a target="_blank" rel="noreferrer" href={app.website ? `${app.website}` : '/'}>
               <span>⎋</span>
@@ -250,7 +249,7 @@ function AppDetailContainer({ user, match, history }) {
 }
 
 AppDetailContainer.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
