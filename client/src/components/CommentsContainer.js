@@ -77,7 +77,7 @@ const CommentsContainer = ({ userId, app }) => {
 };
 
 CommentsContainer.propTypes = {
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
   app: PropTypes.object.isRequired,
 };
 
