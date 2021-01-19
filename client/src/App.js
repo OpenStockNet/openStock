@@ -24,16 +24,17 @@ import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
 
 function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
   const [sideDrawerOpen, setsideDrawerOpen] = useState(false);
 
   useEffect(() => {
     fetchLogInUser()
       .then((user) => {
         setUser(user);
+        console.log(user);
       })
       .catch((error) => {
-        alert(error.message);
+        console.log(error.message);
       });
   }, []);
 
