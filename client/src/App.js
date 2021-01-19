@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { fetchLogInUser } from './services/auth';
 
 import Navbar from './components/Navbar';
 import SignupContainer from './components/SignupContainer';
@@ -19,9 +20,19 @@ import Popover from './components/Popover';
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
 
-function App(props) {
-  const [user, setUser] = useState(props.user);
+function App() {
+  const [user, setUser] = useState('');
   const [sideDrawerOpen, setsideDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    fetchLogInUser()
+      .then((user) => {
+        setUser(user);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }, []);
 
   const handleDrawerToggleClick = () => {
     setsideDrawerOpen(!sideDrawerOpen);
