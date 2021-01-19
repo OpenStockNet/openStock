@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { fetchLogInUser } from './services/auth';
 
 import Navbar from './components/Navbar';
 import SignupContainer from './components/SignupContainer';
@@ -15,13 +16,27 @@ import EditAppContainer from './components/EditAppContainer';
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 import Popover from './components/Popover';
+import Footer from './components/Footer';
+
+import './App.scss';
 
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
 
-function App(props) {
-  const [user, setUser] = useState(props.user);
+function App() {
+  const [user, setUser] = useState(null);
   const [sideDrawerOpen, setsideDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    fetchLogInUser()
+      .then((user) => {
+        setUser(user);
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
 
   const handleDrawerToggleClick = () => {
     setsideDrawerOpen(!sideDrawerOpen);
@@ -86,7 +101,7 @@ function App(props) {
               component={About}
             />
           </Switch>
-
+          <Footer />
         </SharedSnackbarProvider>
       </SharedDialogProvider>
     </div>
