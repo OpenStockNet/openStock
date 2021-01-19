@@ -16,6 +16,9 @@ import EditAppContainer from './components/EditAppContainer';
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 import Popover from './components/Popover';
+import Footer from './components/Footer';
+
+import './App.scss';
 
 import { SharedSnackbarProvider } from './components/SharedSnackbar.context';
 import { SharedDialogProvider } from './components/SharedDialog.context';
@@ -97,7 +100,7 @@ function App() {
               component={About}
             />
           </Switch>
-
+          <Footer />
         </SharedSnackbarProvider>
       </SharedDialogProvider>
     </div>
