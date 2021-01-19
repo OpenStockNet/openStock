@@ -44,7 +44,7 @@ function WishListContainer({ user }) {
 }
 
 WishListContainer.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 
 export default WishListContainer;

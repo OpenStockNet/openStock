@@ -26,7 +26,7 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
 
   const logInlogOutBtn = (
     user ? (
-      <button onClick={handleLogOut} className="nav-bar-btn">Log out</button>
+      <button onClick={handleLogOut} className='nav-bar-btn'>Log out</button>
     ) : (
       <Link to="/login" className="aButton nav-bar-texts">
         Log in
@@ -46,14 +46,29 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
     )
   );
 
-  const navbarContent = (
-    user ? (
+  const loginContent = (
+    <div className="loggedUser">
+      <p>
+        Hi,
+        {' '}
+        {user.username}
+      </p>
+      <Link to="/about" className="nav-bar-texts">
+        About
+      </Link>
+      <Link to="/apps/new" className="nav-bar-texts">
+        <span>＋</span>
+        {' '}
+        Add app
+      </Link>
+      {wishListAButton}
+      {logInlogOutBtn}
+    </div>
+  );
+
+  const logoutContent = (
+    <div className="logout-content">
       <div className="loggedUser">
-        <p>
-          Hi,
-          {' '}
-          {user.username}
-        </p>
         <Link to="/about" className="nav-bar-texts">
           About
         </Link>
@@ -63,24 +78,9 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
           Add app
         </Link>
         {wishListAButton}
-        {logInlogOutBtn}
       </div>
-    ) : (
-      <div className="logout-content">
-        <div className="loggedUser">
-          <Link to="/about" className="nav-bar-texts">
-            About
-          </Link>
-          <Link to="/apps/new" className="nav-bar-texts">
-            <span>＋</span>
-            {' '}
-            Add app
-          </Link>
-          {wishListAButton}
-        </div>
-        {logInlogOutBtn}
-      </div>
-    )
+      {logInlogOutBtn}
+    </div>
   );
 
   const drawerToggleBtn = (
@@ -97,14 +97,17 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
           <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
         </Link>
       </div>
-
-      {navbarContent}
+      {user ? loginContent : logoutContent}
     </nav>
   );
 };
 
 Navbar.propTypes = {
-  user: PropTypes.object,
+  // unloggedin user emptry string, loggedin user object
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
   handleDrawerToggleClick: PropTypes.func.isRequired,
 };
 
