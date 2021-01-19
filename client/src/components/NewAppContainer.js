@@ -219,10 +219,7 @@ function NewAppContainer({ user, history }) {
 }
 
 NewAppContainer.propTypes = {
-  user: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]),
+  user: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
