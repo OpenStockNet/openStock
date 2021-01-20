@@ -24,7 +24,9 @@ const About = () => (
         or
         {' '}
         <a id="about-aTag" href="mailto:hello@yung-ting-chang.eu">Email</a>
-        {' '} ❤
+        {' '}
+        {' '}
+        ❤
       </h2>
     </div>
   </main>

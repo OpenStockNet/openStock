@@ -29,7 +29,6 @@ function AppDetailContainer({ user, match, history }) {
 
   const appId = match.params.id;
   const userId = user ? user._id : null;
-  // const userId = user._id;
 
   useEffect(() => {
     updateAppDetails();
