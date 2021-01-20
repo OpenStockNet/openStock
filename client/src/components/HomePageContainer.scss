@@ -2,8 +2,8 @@
 
 main {
     max-width: 1140px;
-    margin: 0 auto;
     min-height: 72vh;
+    margin: 0 auto 88px;
   }
   
   h1,
@@ -22,7 +22,7 @@ main {
     margin-top: 16px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 601px) {
     main {
       margin-left: .5rem;
       margin-right: .5rem;
