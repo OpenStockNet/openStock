@@ -29,7 +29,7 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
       className={selectedCategory === ALL_CATEGORIES ? 'btnCategories selected' : 'btnCategories'}
     >
       <img src={icons.AllAppsIcon} alt="" />
-      <p style={{ display: 'inline-block' }}>All</p>
+      <p>All</p>
     </button>
   );
 
