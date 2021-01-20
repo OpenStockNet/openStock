@@ -2,14 +2,21 @@
 
 /* sticky footer: see .wrapper in Loader*/
 footer {
-    font-weight: 300;
-    font-size: 14px;
-    margin: 24px;
+  font-weight: 300;
+  font-size: 14px;
+  margin: 24px;
+  padding: 8px 0;
+}
+
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: $bodyGreen;
+}
+
+@media (max-width: 601px) {
+  footer {
+    font-size: 12px;
   }
-  
-  footer p:first-child {
-    margin-bottom: 8px;
-  }
-  footer a {
-    color: $bodyGreen;
-  }
+}
