@@ -32,7 +32,7 @@ display: inline-block;
 margin-right: 24px;
 }
 
-.nav-bar-btn button:hover {
+button:hover.nav-bar-btn {
   background: $hoverButtonGradient;
 }
 
