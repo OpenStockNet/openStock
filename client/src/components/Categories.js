@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 // icons contains map of key-value/name-image pairs in index.js
 import * as icons from '../images';
@@ -9,8 +9,14 @@ import PropTypes from 'prop-types';
 import './Categories.scss';
 
 function Categories({ categories, selectedCategory, onCategoryChange }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const handleCategory = (categoryId) => {
     onCategoryChange(categoryId);
+  };
+
+  const handleSlideChange = (event) => {
+    setActiveIndex(event.item);
   };
 
   const responsive = {
@@ -58,11 +64,11 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
         duration={250}
         fadeOutAnimation
         mouseTrackingEnabled
-        swipeDisabled={false}
-        touchTrackingEnabled
         infinite={false}
         // disbale prev&next btns
-        buttonsDisabled
+        disableButtonsControls
+        activeIndex={activeIndex}
+        onSlideChanged={handleSlideChange}
       />
     </section>
   );
