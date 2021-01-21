@@ -6,7 +6,6 @@ const drawerToggleBtn = ({ click }) => (
   <button type="button" className="toggle-btn" onClick={click}>
     <div className="toggle-btn-line" />
     <div className="toggle-btn-line" />
-    <div className="toggle-btn-line" />
   </button>
 );
 
