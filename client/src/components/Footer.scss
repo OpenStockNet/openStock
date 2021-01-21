@@ -3,7 +3,7 @@
 /* sticky footer: see .wrapper in Loader*/
 footer {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 12px;
   margin: 24px;
   padding: 8px 0;
 }
@@ -15,8 +15,15 @@ footer a {
   color: $bodyGreen;
 }
 
-@media (max-width: 601px) {
+@media (min-width: 600px) {
   footer {
-    font-size: 12px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  footer p {
+    margin-right: 6px;
   }
 }
+
