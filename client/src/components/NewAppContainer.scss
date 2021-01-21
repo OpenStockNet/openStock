@@ -102,6 +102,10 @@ input
   width: auto;
 }
 
+#addApp button:hover {
+  background: $hoverButtonGradient;
+}
+
 .return-container {
   width: 70%;
   margin: 0 auto;

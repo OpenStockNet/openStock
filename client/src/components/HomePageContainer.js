@@ -71,7 +71,7 @@ function HomePageContainer() {
       />
       <AppsList
         appsFiltered={filterApps()}
-        text={'Sorry, we haven\'t found any alternative app 😧. Try something different.'}
+        text={'Haven\'t found any matching app 😧. Try something different.'}
       />
     </main>
   );
