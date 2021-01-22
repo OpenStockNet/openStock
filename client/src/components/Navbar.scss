@@ -27,26 +27,26 @@ nav a {
 display: block;
 }
 
-.loggedUser .nav-bar-texts{
+.navbar-wrapper .navbar-texts{
 display: inline-block;
 margin-right: 24px;
 }
 
-button:hover.nav-bar-btn {
+button:hover.navbar-btn {
   background: $hoverButtonGradient;
 }
 
-.loggedUser p {
+.navbar-wrapper p {
 display: inline-block;
 margin-right: 24px;
 font-weight: 300;
 }
 
-.loggedUser span {
+.navbar-wrapper span {
 color:$bodyGreen;
 }
 
-.aButton.nav-bar-texts:hover {
+.aButton.navbar-texts:hover {
 background: $hoverButtonGradient;
 }
 
@@ -59,11 +59,6 @@ padding: 0;
 font-family: 'Roboto';
 }
 
-.logout-content {
-display: flex;
-align-items: baseline;
-}
-
 /* hide burger btn for big screen */
 @media (min-width: 601px) {
 .navbar-toggle-btn {
@@ -71,24 +66,23 @@ align-items: baseline;
 }
 }
 
-/* hide loggedUser navbar for small screen */
+/* hide navbar-wrapper navbar for small screen */
 @media (max-width: 600px) {
 #root {
   padding-top: 74px; //54px navbar height
 }
 
-.loggedUser  {
-    display: none;
-}
-
-.aButton.nav-bar-texts {
-  display: none;
-}
-
 nav {
   padding: 12px 40px;
   justify-content: center;
+}
 
+.navbar-wrapper  {
+    display: none;
+}
+
+.aButton.navbar-texts {
+  display: none;
 }
 
 .navbar-toggle-btn {

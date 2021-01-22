@@ -7,6 +7,7 @@ import DrawerToggleBtn from './DrawerToggleBtn';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
+import { OpenStockLogoIcon } from '../images';
 import './Navbar.scss';
 
 const Navbar = ({ user, handleDrawerToggleClick }) => {
@@ -24,87 +25,64 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
       });
   };
 
-  const logInlogOutBtn = (
-    user ? (
-      <button onClick={handleLogOut} className="nav-bar-btn">Log out</button>
-    ) : (
-      <Link to="/login" className="aButton nav-bar-texts">
-        Log in
-      </Link>
-    )
-  );
+  return (
+    <nav>
+      <div className="navbar-toggle-btn">
+        <DrawerToggleBtn click={handleDrawerToggleClick} />
+      </div>
 
-  const wishListAButton = (
-    user ? (
-      <Link to={`/apps/wishlist/${user._id}`} className="nav-bar-texts">
-        Wish list
-      </Link>
-    ) : (
-      <button className="nav-bar-texts button-link" onClick={() => openDialog('Log in to create a wish list.')}>
-        Wish list
-      </button>
-    )
-  );
+      <div id="logoHome">
+        <Link to="/">
+          <img src={OpenStockLogoIcon} alt="logo_openStock" />
+        </Link>
+      </div>
 
-  const navbarContent = (
-    user ? (
-      <div className="loggedUser">
+      <div className="navbar-wrapper">
+        {user && (
         <p>
           Hi,
           {' '}
           {user.username}
         </p>
-        <Link to="/about" className="nav-bar-texts">
+        )}
+        <Link to="/about" className="navbar-texts">
           About
         </Link>
-        <Link to="/apps/new" className="nav-bar-texts">
+        <Link to="/apps/new" className="navbar-texts">
           <span>＋</span>
           {' '}
           Add app
         </Link>
-        {wishListAButton}
-        {logInlogOutBtn}
+        { user ? (
+          //Fragement to group children without adding extra nodes to the DOM
+          <> 
+            <Link to={`/apps/wishlist/${user._id}`} className="navbar-texts">
+              Wish list
+            </Link>
+            <button onClick={handleLogOut} className="navbar-btn">
+              Log out
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="navbar-texts button-link" onClick={() => openDialog('Log in to create a wish list.')}>
+              Wish list
+            </button>
+            <Link to="/login" className="aButton navbar-texts">
+              Log in
+            </Link>
+          </>
+        )}
       </div>
-    ) : (
-      <div className="logout-content">
-        <div className="loggedUser">
-          <Link to="/about" className="nav-bar-texts">
-            About
-          </Link>
-          <Link to="/apps/new" className="nav-bar-texts">
-            <span>＋</span>
-            {' '}
-            Add app
-          </Link>
-          {wishListAButton}
-        </div>
-        {logInlogOutBtn}
-      </div>
-    )
-  );
-
-  const drawerToggleBtn = (
-    <div className="navbar-toggle-btn">
-      <DrawerToggleBtn click={handleDrawerToggleClick} />
-    </div>
-  );
-
-  return (
-    <nav className="navbar">
-      {drawerToggleBtn}
-      <div id="logoHome">
-        <Link to="/">
-          <img src="https://res.cloudinary.com/dt9v4wqeu/image/upload/v1590001345/openstock/logoOpenstock.svg" alt="" />
-        </Link>
-      </div>
-
-      {navbarContent}
     </nav>
   );
 };
 
 Navbar.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.shape({
+    _id: PropTypes.string,
+    name: PropTypes.string,
+  }),
   handleDrawerToggleClick: PropTypes.func.isRequired,
 };
 
