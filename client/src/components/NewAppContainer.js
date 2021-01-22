@@ -72,9 +72,10 @@ function NewAppContainer({ user, history }) {
   // can also be nested in ensureLogin as in EditApp
   function handleSubmit(event) {
     event.preventDefault();
-    const creator = user._id;
 
     if (user) {
+      const creator = user._id;
+
       createApp(name, description, category, device, website, logo, creator)
         .then((app) => {
           history.push(`/apps/${app._id}`);
