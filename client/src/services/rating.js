@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// each function is API call
 const getAverageRating = (appId) => axios
-  .get(`${process.env.REACT_APP_API_URL}/api/ratings/average/${appId}`)
+  .get(`/ratings/average/${appId}`)
   .then((response) => {
     const averageRating = response.data;
     return averageRating;
@@ -12,7 +11,7 @@ const getAverageRating = (appId) => axios
   });
 
 const rateApp = (value, app) => axios
-  .post(`${process.env.REACT_APP_API_URL}/api/ratings`, { value, app })
+  .post('/ratings', { value, app })
   .then((response) => {
     const rating = response.data;
     return rating;

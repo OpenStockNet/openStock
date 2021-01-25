@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 const addReview = (value, appId, userId) => axios
-  .post(`${process.env.REACT_APP_API_URL}/api/reviews`, { value, appId, userId })
-// receive "response" from back end,
-// response data is sent from backend, in this case: json(app.reivews)
+  .post('/reviews', { value, appId, userId })
+  // response data(json(app.rviews)) sent from backend
   .then((response) => {
     const addedReview = response.data;
     return addedReview;
@@ -13,10 +12,9 @@ const addReview = (value, appId, userId) => axios
   });
 
 const fetchReviews = (appId) => axios
-  .get(`${process.env.REACT_APP_API_URL}/api/reviews/${appId}`)
+  .get(`/reviews/${appId}`)
   .then((response) => {
     const reviewsOfApp = response.data;
-    console.log('what i am responding', reviewsOfApp);
     return reviewsOfApp;
   })
   .catch((error) => {

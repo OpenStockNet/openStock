@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const signup = (username, password) => axios
-  .post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, { username, password })
+  .post('/auth/signup', { username, password })
   .then((response) => {
     const user = response.data;
     return user;
@@ -11,7 +11,7 @@ const signup = (username, password) => axios
   });
 
 const login = (username, password) => axios
-  .post(`${process.env.REACT_APP_API_URL}/api/auth/login`, { username, password })
+  .post('/auth/login', { username, password })
   .then((response) => {
     const loggedInUser = response.data;
     return loggedInUser;
@@ -21,14 +21,14 @@ const login = (username, password) => axios
   });
 
 const logout = () => axios
-  .delete(`${process.env.REACT_APP_API_URL}/api/auth/logout`)
+  .delete('/auth/logout')
   .then((response) => response.data)
   .catch((error) => {
     throw error.response.data;
   });
 
 const fetchLogInUser = () => axios
-  .get(`${process.env.REACT_APP_API_URL}/api/auth/loggedin`)
+  .get('/auth/loggedin')
   .then((response) => {
     const user = response.data;
     return user;

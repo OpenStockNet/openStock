@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const fetchAllApps = () => axios
-  .get(`${process.env.REACT_APP_API_URL}/api/apps`)
+  .get('/apps')
   .then((response) => {
     const apps = response.data;
     return apps;
@@ -10,9 +10,8 @@ const fetchAllApps = () => axios
     throw error.response.data;
   });
 
-// fetch one single app
 const fetchApp = (appId) => axios
-  .get(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
+  .get(`/apps/${appId}`)
   .then((response) => {
     const app = response.data;
     return app;
@@ -26,7 +25,7 @@ const createApp = (name, description, category, device, website, logo, creator) 
     name, description, category, device, website, logo, creator,
   };
   return axios
-    .post(`${process.env.REACT_APP_API_URL}/api/apps`, app)
+    .post('/apps', app)
     .then((response) => {
       const createdApp = response.data;
       return createdApp;
@@ -41,7 +40,7 @@ const editApp = (appId, name, description, category, device, website, logo, edit
     name, description, category, device, website, logo, editor,
   };
   return axios
-    .patch(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`, appToBeEdit)
+    .patch(`/apps/${appId}`, appToBeEdit)
     .then((response) => {
       // console.log('response from server', response.data);
       const editedApp = response.data;
@@ -53,7 +52,7 @@ const editApp = (appId, name, description, category, device, website, logo, edit
 };
 
 const deleteApp = (appId) => axios
-  .delete(`${process.env.REACT_APP_API_URL}/api/apps/${appId}`)
+  .delete(`/apps/${appId}`)
   .then((response) => {
     const messageObj = response.data;
     return messageObj;
@@ -63,7 +62,7 @@ const deleteApp = (appId) => axios
   });
 
 const addWishApp = (appId, userId) => axios
-  .post(`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, { appId, userId })
+  .post(`/apps/user/${userId}`, { appId, userId })
   .then((response) => {
     const wishAppAndUser = response.data;
     return wishAppAndUser;
@@ -73,7 +72,7 @@ const addWishApp = (appId, userId) => axios
   });
 
 const removeWishApp = (appId, userId) => axios
-  .patch(`${process.env.REACT_APP_API_URL}/api/apps/user/${userId}`, { appId, userId })
+  .patch(`/apps/user/${userId}`, { appId, userId })
   .then((response) => response)
   .catch((error) => {
     throw error.response.data;
