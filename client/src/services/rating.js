@@ -1,23 +1,9 @@
 import axios from 'axios';
 
 const getAverageRating = (appId) => axios
-  .get(`/ratings/average/${appId}`)
-  .then((response) => {
-    const averageRating = response.data;
-    return averageRating;
-  })
-  .catch((error) => {
-    throw error.response.data;
-  });
+  .get(`/ratings/average/${appId}`);
 
 const rateApp = (value, app) => axios
-  .post('/ratings', { value, app })
-  .then((response) => {
-    const rating = response.data;
-    return rating;
-  })
-  .catch((error) => {
-    throw error.response.data;
-  });
+  .post('/ratings', { value, app });
 
 export { getAverageRating, rateApp };
