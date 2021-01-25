@@ -54,8 +54,8 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
           Add app
         </Link>
         { user ? (
-          //Fragement to group children without adding extra nodes to the DOM
-          <> 
+          // Fragement to group children without adding extra nodes to the DOM
+          <>
             <Link to={`/apps/wishlist/${user._id}`} className="navbar-texts">
               Wish list
             </Link>

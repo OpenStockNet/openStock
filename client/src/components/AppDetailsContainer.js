@@ -20,9 +20,9 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './AppDetailsContainer.scss';
 
-function AppDetailContainer({ user, match, history }) {
+function AppDetailsContainer({ user, match, history }) {
   const [app, setApp] = useState(null);
-  const [avrRating, setAvrRating] = useState(0);
+  const [avrageRating, setAverageRating] = useState(0);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -33,15 +33,14 @@ function AppDetailContainer({ user, match, history }) {
   useEffect(() => {
     updateAppDetails();
 
-    // calls function getAverageRating() with appId param from rating.js
     getAverageRating(appId)
       .then((averageRating) => {
-        setAvrRating(averageRating);
+        setAverageRating(averageRating);
       })
       .catch((error) => {
         alert(error.message);
       });
-  }, [appId, avrRating]);
+  }, [appId, avrageRating]);
 
   const updateAppDetails = () => {
     fetchApp(appId)
@@ -57,7 +56,7 @@ function AppDetailContainer({ user, match, history }) {
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
     if (user) {
-      callbackFunc();
+      callbackFunc();// () => sendSubmitRatingRequest(event) or sendWishListRequest
     } else {
       openDialog(dialogMessage);
     }
@@ -77,8 +76,8 @@ function AppDetailContainer({ user, match, history }) {
   };
 
   const handleSubmitRating = (event) => {
-    // anonymous function (()=>{}), as need to pass a parameter which is a function
-    // ensureLogin desides whenever to call sendSubmitRatingRequest
+    // pass entire anonymous function as callback
+    // but not pass return value of 'sendSubmitRatingRequest(event)'
     ensureLogin(() => sendSubmitRatingRequest(event));
   };
 
@@ -94,8 +93,6 @@ function AppDetailContainer({ user, match, history }) {
   };
 
   const handleAddToWishList = () => {
-    // sendWishListRequest is callback passed to ensureLogin;
-    // ensureLogin call callback if is login user
     ensureLogin(sendWishListRequest);
   };
 
@@ -117,7 +114,7 @@ function AppDetailContainer({ user, match, history }) {
   const updateAvrRating = () => {
     getAverageRating(appId)
       .then((averageRating) => {
-        setAvrRating(averageRating);
+        setAverageRating(averageRating);
       })
       .catch((error) => {
         alert(error.message);
@@ -134,9 +131,6 @@ function AppDetailContainer({ user, match, history }) {
         alert(error.message);
       });
   };
-
-  // if there's a need to change only on frontend, you should not mutate an object in "state",
-  // instead: make a copy, modify copy, and replace original object with copy
 
   if (!app) return <Loader />;
 
@@ -162,36 +156,15 @@ function AppDetailContainer({ user, match, history }) {
         </button>
       </div>
     );
-  } else {
-    deleteBtn = <div />;
   }
 
-  let creatorUser;
+  let lastUpdateUser;
   if (app.creator && app.editors.length < 1) {
-    creatorUser = (
-      <div className="notes">
-        This page was added by
-        {' '}
-        {app.creator.username}
-        .
-      </div>
-    );
+    lastUpdateUser = app.creator.username;
+  } else if (app.editors.length > 1 && app.editors[app.editors.length - 1].username) {
+    lastUpdateUser = app.editors[app.editors.length - 1].username;
   } else {
-    creatorUser = null;
-  }
-
-  let lastEditUser;
-  if (app.editors.length < 1 || app.editors[app.editors.length - 1].username == null) {
-    lastEditUser = null;
-  } else {
-    lastEditUser = (
-      <div className="notes">
-        This page was last updated by
-        {' '}
-        {app.editors[app.editors.length - 1].username}
-        .
-      </div>
-    );
+    lastUpdateUser = 'OpenStock';
   }
 
   return (
@@ -212,7 +185,7 @@ function AppDetailContainer({ user, match, history }) {
         <div className="ratingApp">
           <h5>Rating</h5>
           <p>
-            {avrRating }
+            {avrageRating}
             {' '}
             <span>✦</span>
           </p>
@@ -241,17 +214,21 @@ function AppDetailContainer({ user, match, history }) {
         {deleteBtn}
       </div>
       <div>
-        {creatorUser}
-        {lastEditUser}
+        <div className="notes">
+          This page was last updated by
+          {' '}
+          {lastUpdateUser}
+          .
+        </div>
       </div>
     </main>
   );
 }
 
-AppDetailContainer.propTypes = {
+AppDetailsContainer.propTypes = {
   user: PropTypes.object,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
-export default AppDetailContainer;
+export default AppDetailsContainer;
