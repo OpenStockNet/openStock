@@ -21,7 +21,7 @@ router.get('/average/:appId', (req, res) => {
 router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   const appRating = req.body.value;
   const appId = req.body.app;
-  // console.log(req.body);
+  
   Rating.create({
     value: appRating,
     app: appId,

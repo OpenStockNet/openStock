@@ -21,13 +21,10 @@ function LoginContainer({ setUser, history }) {
 
     login(username, password)
       .then((user) => {
-        // successfully logged in
         setUser(user);
-        // redirect to the page '/'
         history.push('/');
       })
       .catch((error) => {
-        // alert(error.message);
         setErrorMsg(error.message);
       });
   }
