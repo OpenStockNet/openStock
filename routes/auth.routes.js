@@ -12,7 +12,6 @@ const ensureLogin = require('connect-ensure-login');
 router.post('/signup', (req, res) => {
   const { username } = req.body;
   const { password } = req.body;
-  // console.log(username);
 
   if (!password || password.length < 8) {
     return res

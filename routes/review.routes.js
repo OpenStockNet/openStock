@@ -5,8 +5,8 @@ const ensureLogin = require('connect-ensure-login');
 const Review = require('../models/Review.model');
 const App = require('../models/App.model');
 
+// always remember if creating new api route, register it in app.js
 // save a review to an app
-// Careful! if create a new api routes, need to register it in app.js
 router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   const appReview = req.body.value;
   const { appId } = req.body;
