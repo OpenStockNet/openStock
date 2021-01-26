@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
     .then((apps) => {
       res.status(200).json(apps);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -36,7 +36,9 @@ router.get('/:id', (req, res) => {
       res.status(200).json(app);
     })
     .catch((err) => {
-      res.json(err);
+      // eslint-disable-next-line no-console
+      // console.log('error ---->>>>', err);
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -47,8 +49,8 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((createdApp) => {
       res.status(200).json(createdApp);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -67,8 +69,8 @@ router.patch('/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((editedApp) => {
       res.status(200).json(editedApp);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -76,10 +78,10 @@ router.patch('/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
 router.delete('/:id', (req, res) => {
   App.findByIdAndDelete(req.params.id)
     .then(() => {
-      res.json({ message: 'App is deleted!' });
+      res.status(200).json({ message: 'App is deleted!' });
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -96,8 +98,8 @@ router.post('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((updatedWishApp) => {
       res.status(200).json(updatedWishApp);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
@@ -114,8 +116,8 @@ router.patch('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then(() => {
       res.json({ message: 'App is removed!' });
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 

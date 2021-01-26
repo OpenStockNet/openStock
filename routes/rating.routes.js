@@ -13,15 +13,15 @@ router.get('/average/:appId', (req, res) => {
       const averageRating = Number.parseInt((sum / ratings.length).toFixed(1), 10);
       res.status(200).json(averageRating);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
 router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   const appRating = req.body.value;
   const appId = req.body.app;
-  
+
   Rating.create({
     value: appRating,
     app: appId,
@@ -29,8 +29,8 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((addedRating) => {
       res.status(200).json(addedRating);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 

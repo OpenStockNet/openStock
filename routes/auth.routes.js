@@ -47,8 +47,8 @@ router.post('/signup', (req, res) => {
         },
       );
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
