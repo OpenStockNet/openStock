@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
+import NotFoundPage from './NotFoundPage';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
@@ -18,6 +19,7 @@ function NewAppContainer({ user, history }) {
   const [categories, setCategories] = useState([]);
   const [device, setDevice] = useState([]);
   const [logo, setLogo] = useState('');
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -29,7 +31,7 @@ function NewAppContainer({ user, history }) {
         setCategories(allCategories);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   }, []);
 
@@ -82,11 +84,12 @@ function NewAppContainer({ user, history }) {
           openSnackbar(`${app.name} is published. Thanks for your contribution!`);
         })
         .catch((error) => {
-          alert(error.message);
+          setErrorMsg(error.message);
         });
     } else (openDialog('Log in to continue.'));
   }
 
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
   if (!categories) return <Loader />;
   const categoryOptions = categories.map((selectedCategory) => (
     <option

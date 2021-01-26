@@ -6,7 +6,7 @@ import CredentialsForm from './CredentialsForm';
 function LoginContainer({ setUser, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState(null);
 
   function handleUsernameChange(event) {
     setUsername(event.target.value);

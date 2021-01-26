@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { addReview, fetchReviews } from '../services/review';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
+import NotFoundPage from './NotFoundPage';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
@@ -10,6 +11,7 @@ import SharedDialogContext from './SharedDialog.context';
 const CommentsContainer = ({ userId, app }) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const appId = app._id;
 
@@ -22,7 +24,7 @@ const CommentsContainer = ({ userId, app }) => {
         setReviews(reviewsOfApp);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -52,7 +54,7 @@ const CommentsContainer = ({ userId, app }) => {
         openSnackbar('Thanks for sharing your thoughts!');
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -60,6 +62,8 @@ const CommentsContainer = ({ userId, app }) => {
     event.preventDefault();
     ensureLogin(sendReviewRequest);
   };
+
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
 
   return (
     <div id="rateApp">

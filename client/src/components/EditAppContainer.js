@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
+import NotFoundPage from './NotFoundPage';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
@@ -18,6 +19,7 @@ function EditAppContainer({ user, match, history }) {
   const [categories, setCategories] = useState([]);
   const [device, setDevice] = useState([]);
   const [logo, setLogo] = useState('');
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -31,7 +33,7 @@ function EditAppContainer({ user, match, history }) {
         setCategories(allCategories);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
     fetchApp(appId)
       .then((app) => {
@@ -43,7 +45,7 @@ function EditAppContainer({ user, match, history }) {
         setLogo(app.logo);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   }, [appId]);
 
@@ -90,7 +92,7 @@ function EditAppContainer({ user, match, history }) {
         history.push(`/apps/${editedApp._id}`);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   }
 
@@ -102,7 +104,9 @@ function EditAppContainer({ user, match, history }) {
     else handleEditSubmit();
   };
 
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
   if (!categories) return <Loader />;
+
   const categoryOptions = categories.map((selectedCategory) => (
     <option
       key={selectedCategory._id}
@@ -111,10 +115,6 @@ function EditAppContainer({ user, match, history }) {
       {selectedCategory.name}
     </option>
   ));
-
-  // const returnToPage = () => {
-  //   history.push('./');
-  // };
 
   return (
     <main>

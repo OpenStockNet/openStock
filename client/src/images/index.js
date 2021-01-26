@@ -13,3 +13,4 @@ export const AllAppsIcon = require('./appsAll.svg');
 
 export const LoaderIcon = require('./shieldLoader.svg');
 export const SearchIcon = require('./searchMagnifier.svg');
+export const NotFoundIcon = require('./find.svg');

@@ -1,0 +1,39 @@
+@import '../Colors.scss';
+
+.box-wrapper {
+  // sticky footer: loader fill remaining space of the page
+  // calc: saas feature, entire screen 100vh, minus header, footer, and margin
+  height: calc(100vh - 104px - 47px - 48px );
+  //position: relative;
+}
+
+.box-center img {
+  width: 160px;
+  height: 160px;
+  align-self: center;
+}
+
+.box-center {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // inner content
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.box-center p {
+  margin: 16px 0  !important;
+  color: $lightGray;
+}
+
+.box-center .action-link {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 16px;
+  text-decoration: underline;
+}
+

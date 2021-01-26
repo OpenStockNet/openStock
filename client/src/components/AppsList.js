@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from './Loader';
 import AppCard from './AppCard';
+import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
 
@@ -17,12 +18,14 @@ function AppsList({ appsFiltered, text }) {
   ));
 
   return (
-    <section id="listContainer" className="fadeIn">
-      {apps || <Loader />}
+    <>
+      <section id="listContainer" className="fadeIn">
+        {apps || <Loader />}
+      </section>
       {appsFiltered.length === 0 && (
-      <p>{text}</p>
+        <NotFoundPage errorMsg="No apps found on your wish list." url="Start exploring" />
       )}
-    </section>
+    </>
   );
 }
 

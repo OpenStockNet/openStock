@@ -10,6 +10,7 @@ import CommentsContainer from './CommentsContainer';
 import RatingButtons from './RatingButtons';
 import IconButton from './IconButton';
 import Loader from './Loader';
+import NotFoundPage from './NotFoundPage';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
 import iconApproved from '../images/iconApproved.svg';
@@ -23,6 +24,7 @@ import './AppDetailsContainer.scss';
 function AppDetailsContainer({ user, match, history }) {
   const [app, setApp] = useState(null);
   const [avrageRating, setAverageRating] = useState(0);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -38,9 +40,9 @@ function AppDetailsContainer({ user, match, history }) {
         setAverageRating(averageRating);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
-  }, [appId, avrageRating]);
+  }, []);
 
   const updateAppDetails = () => {
     fetchApp(appId)
@@ -48,7 +50,7 @@ function AppDetailsContainer({ user, match, history }) {
         setApp(theApp);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -71,7 +73,7 @@ function AppDetailsContainer({ user, match, history }) {
         openSnackbar(`Thank you for rating ${app.name}!`);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -88,7 +90,7 @@ function AppDetailsContainer({ user, match, history }) {
         openSnackbar(`${app.name} is added to wish list!`);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -103,7 +105,7 @@ function AppDetailsContainer({ user, match, history }) {
         openSnackbar(`${app.name} is removed from wish list!`);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -117,7 +119,7 @@ function AppDetailsContainer({ user, match, history }) {
         setAverageRating(averageRating);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -128,10 +130,11 @@ function AppDetailsContainer({ user, match, history }) {
         history.push('/');
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   };
 
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
   if (!app) return <Loader />;
 
   const wishListBtns = (
@@ -161,7 +164,7 @@ function AppDetailsContainer({ user, match, history }) {
   let lastUpdateUser;
   if (app.creator && app.editors.length < 1) {
     lastUpdateUser = app.creator.username;
-  } else if (app.editors.length > 1 && app.editors[app.editors.length - 1].username) {
+  } else if (app.editors.length < 1 && app.editors[app.editors.length - 1].username) {
     lastUpdateUser = app.editors[app.editors.length - 1].username;
   } else {
     lastUpdateUser = 'OpenStock';
