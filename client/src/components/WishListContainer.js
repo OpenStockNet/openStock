@@ -46,7 +46,6 @@ function WishListContainer({ user, isUserLoading }) {
         && (
         <AppsList
           appsFiltered={wishedApps}
-          text={'You haven\'t created your wish list.'}
         />
         )}
     </main>

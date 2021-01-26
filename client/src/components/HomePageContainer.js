@@ -6,6 +6,7 @@ import Search from './Search';
 import Categories from './Categories';
 import AppsList from './AppsList';
 import Loader from './Loader';
+import NotFoundPage from './NotFoundPage';
 
 import { ALL_CATEGORIES } from '../constants';
 import './HomePageContainer.scss';
@@ -15,6 +16,7 @@ function HomePageContainer() {
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORIES);
   const [appsList, setAppsList] = useState([]);
   const [queries, setQueries] = useState('');
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
     fetchAllCategories()
@@ -22,7 +24,7 @@ function HomePageContainer() {
         setCategories(allCategories);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
 
     fetchAllApps()
@@ -30,7 +32,7 @@ function HomePageContainer() {
         setAppsList(apps);
       })
       .catch((error) => {
-        alert(error.message);
+        setErrorMsg(error.message);
       });
   }, []);
 
@@ -54,6 +56,7 @@ function HomePageContainer() {
       .filter((app) => app.category._id === selectedCategory);
   }
 
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
   if (!categories.length || !appsList.length) return <Loader />;
 
   return (

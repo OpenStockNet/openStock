@@ -7,6 +7,7 @@ import SignupContainer from './components/SignupContainer';
 import LoginContainer from './components/LoginContainer';
 import HomePageContainer from './components/HomePageContainer';
 import About from './components/About';
+import NotFoundPage from './components/NotFoundPage';
 
 import AppDetailsContainer from './components/AppDetailsContainer';
 import NewAppContainer from './components/NewAppContainer';
@@ -102,6 +103,7 @@ function App() {
               path="/about"
               component={About}
             />
+            <Route render={() => <NotFoundPage errorMsg="Ooops...page not found" />} />
           </Switch>
           <Footer />
         </SharedSnackbarProvider>

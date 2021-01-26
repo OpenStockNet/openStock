@@ -51,7 +51,7 @@ const SideDrawer = ({ user, show, click }) => {
         window.location = '/';
       })
       .catch((error) => {
-        alert(error.message);
+        console.log(error.message);
       });
   };
 
