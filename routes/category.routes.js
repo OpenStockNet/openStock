@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
     .then((categories) => {
       res.status(200).json(categories);
     })
-    .catch((err) => {
-      res.json(err);
+    .catch(() => {
+      res.status(404).json({ message: 'Page not found' });
     });
 });
 
