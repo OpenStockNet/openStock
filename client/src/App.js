@@ -25,16 +25,18 @@ import { SharedDialogProvider } from './components/SharedDialog.context';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isUserLoading, setIsUserLoading] = useState(true);
   const [sideDrawerOpen, setsideDrawerOpen] = useState(false);
 
   useEffect(() => {
     fetchLogInUser()
       .then((user) => {
         setUser(user);
-        console.log(user);
+        setIsUserLoading(false);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error.message); // 401 user not logged in
+        setIsUserLoading(false);
       });
   }, []);
 
@@ -93,7 +95,7 @@ function App() {
             <Route
               exact
               path="/apps/wishlist/:id"
-              render={() => <WishListContainer user={user} />}
+              render={() => <WishListContainer user={user} isUserLoading={isUserLoading} />}
             />
             <Route
               exact
