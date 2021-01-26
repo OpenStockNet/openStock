@@ -7,27 +7,37 @@ import AppsList from './AppsList';
 import SharedDialogContext from './SharedDialog.context';
 
 // fetch all apps, filter to wishUser_id includes props user id
-function WishListContainer({ user }) {
+function WishListContainer({ user, isUserLoading }) {
   const [wishedApps, setWishedApps] = useState(null);
+  const [appsLoading, setAppsLoading] = useState(true);
 
   const { openDialog } = useContext(SharedDialogContext);
 
   useEffect(() => {
-    if (!user) {
-      openDialog('Log in to continue.');
-    } else {
+    if (isUserLoading) {
+      return; // do nothing
+    }
+
+    if (user) {
       fetchAllApps()
         .then((apps) => {
-          const appsFiltered = apps.filter((app) => app.wishUser.includes(user._id));
-          setWishedApps(appsFiltered);
+          if (user) {
+            const appsFiltered = apps.filter((app) => app.wishUser.includes(user._id));
+            setWishedApps(appsFiltered);
+            setAppsLoading(false);
+          }
         })
         .catch((error) => {
+          setAppsLoading(false);
           alert(error.message);
         });
+    } else {
+      setAppsLoading(false);
+      openDialog('Log in to continue.');
     }
-  }, [setWishedApps]);
+  }, [isUserLoading]);
 
-  if (!wishedApps) return <Loader />;
+  if (isUserLoading || appsLoading) return <Loader />;
 
   return (
     <main>
@@ -36,7 +46,7 @@ function WishListContainer({ user }) {
         && (
         <AppsList
           appsFiltered={wishedApps}
-          text={'You haven\'t created your wish list.  Log in to add apps.'}
+          text={'You haven\'t created your wish list.'}
         />
         )}
     </main>
@@ -44,7 +54,8 @@ function WishListContainer({ user }) {
 }
 
 WishListContainer.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
+  isUserLoading: PropTypes.bool.isRequired,
 };
 
 export default WishListContainer;
