@@ -164,7 +164,7 @@ function AppDetailsContainer({ user, match, history }) {
   let lastUpdateUser;
   if (app.creator && app.editors.length < 1) {
     lastUpdateUser = app.creator.username;
-  } else if (app.editors.length < 1 && app.editors[app.editors.length - 1].username) {
+  } else if (app.editors.length > 0 && app.editors[app.editors.length - 1].username) {
     lastUpdateUser = app.editors[app.editors.length - 1].username;
   } else {
     lastUpdateUser = 'OpenStock';
