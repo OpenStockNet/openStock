@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
     .then((apps) => {
       res.status(200).json(apps);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -36,8 +37,7 @@ router.get('/:id', (req, res) => {
       res.status(200).json(app);
     })
     .catch((err) => {
-      // eslint-disable-next-line no-console
-      // console.log('error ---->>>>', err);
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -49,7 +49,8 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((createdApp) => {
       res.status(200).json(createdApp);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -69,7 +70,8 @@ router.patch('/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((editedApp) => {
       res.status(200).json(editedApp);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -80,7 +82,8 @@ router.delete('/:id', (req, res) => {
     .then(() => {
       res.status(200).json({ message: 'App is deleted!' });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -98,7 +101,8 @@ router.post('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((updatedWishApp) => {
       res.status(200).json(updatedWishApp);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -116,7 +120,8 @@ router.patch('/user/:userId', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then(() => {
       res.json({ message: 'App is removed!' });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });

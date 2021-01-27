@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     'no-underscore-dangle': 0,
+    'no-console': 0,
   },
   // ignore checking client folder
   ignorePatterns: [

@@ -25,7 +25,8 @@ router.post('/', ensureLogin.ensureLoggedIn(), (req, res) => {
     .then((app) => {
       res.status(200).json(app.reivews);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
@@ -46,7 +47,8 @@ router.get('/:id', (req, res) => {
     .then((app) => {
       res.status(200).json(app.reviews);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
