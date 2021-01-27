@@ -40,14 +40,15 @@ router.post('/signup', (req, res) => {
             if (err) {
               return res
                 .status(500)
-                .json({ message: 'Error while attempting to login' });
+                .json({ message: 'Error while attempting to login.' });
             }
             res.json(dbUser);
           });
         },
       );
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(404).json({ message: 'Page not found' });
     });
 });
