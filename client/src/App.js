@@ -16,7 +16,7 @@ import EditAppContainer from './components/EditAppContainer';
 
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
-import Popover from './components/Popover';
+// import Popover from './components/Popover';
 import Footer from './components/Footer';
 
 import './App.scss';
@@ -51,7 +51,7 @@ function App() {
 
   let backdrop;
   if (sideDrawerOpen) {
-    backdrop = <Backdrop click={handleBackdropClick} />;
+    backdrop = <Backdrop oncClick={handleBackdropClick} />;
   }
 
   return (
@@ -62,7 +62,7 @@ function App() {
           <header>
             <Navbar user={user} handleDrawerToggleClick={handleDrawerToggleClick} />
             {/* side drawer always open, add animation */}
-            <SideDrawer user={user} show={sideDrawerOpen} click={handleBackdropClick} />
+            <SideDrawer user={user} show={sideDrawerOpen} onClick={handleBackdropClick} />
             {backdrop}
           </header>
           {/* <Popover /> */}
@@ -71,12 +71,12 @@ function App() {
             <Route
               exact
               path="/signup"
-              render={(props) => <SignupContainer setUser={setUser} history={props.history} />}
+              render={(props) => <SignupContainer onSignup={setUser} history={props.history} />}
             />
             <Route
               exact
               path="/login"
-              render={(props) => <LoginContainer setUser={setUser} history={props.history} />}
+              render={(props) => <LoginContainer onLogin={setUser} history={props.history} />}
             />
             <Route
               exact

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { SearchIcon } from '../images';
 import './Search.scss';
 
-function Search({ onQueryChange, queries }) {
+function Search({ onSearchTermsChange, searchTerms }) {
   const inputRef = useRef();
 
   const handleInputChange = (event) => {
     const keyWords = event.target.value;
-    onQueryChange(keyWords);
+    onSearchTermsChange(keyWords);
   };
 
   const handleSubmit = (event) => {
@@ -21,7 +21,7 @@ function Search({ onQueryChange, queries }) {
     <form id="search" onSubmit={handleSubmit}>
       <input
         placeholder="Search app by name"
-        value={queries}
+        value={searchTerms}
         onChange={handleInputChange}
         ref={inputRef}
       />
@@ -33,8 +33,8 @@ function Search({ onQueryChange, queries }) {
 }
 
 Search.propTypes = {
-  onQueryChange: PropTypes.func.isRequired,
-  queries: PropTypes.string.isRequired,
+  onSearchTermsChange: PropTypes.func.isRequired,
+  searchTerms: PropTypes.string.isRequired,
 };
 
 export default Search;

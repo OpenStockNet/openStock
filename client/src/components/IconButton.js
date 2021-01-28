@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './IconButton.scss';
 
 const IconButton = ({
-  onHandleWishList, icon, title,
+  onClick, icon, title,
 }) => (
   <button
     type="button"
-    onClick={onHandleWishList}
+    onClick={onClick}
     id="small"
     title={title}
   >
@@ -16,7 +16,7 @@ const IconButton = ({
 );
 
 IconButton.propTypes = {
-  onHandleWishList: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
 };
 

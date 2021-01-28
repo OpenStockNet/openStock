@@ -17,7 +17,10 @@ function CommentCard({ review }) {
 }
 
 CommentCard.propTypes = {
-  review: PropTypes.object.isRequired,
+  review: PropTypes.shape({
+    user: PropTypes.object,
+    value: PropTypes.string,
+  }),
 };
 
 export default CommentCard;

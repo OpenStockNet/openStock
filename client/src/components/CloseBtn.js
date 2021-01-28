@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CloseBtn.scss';
 
-const closeBtn = ({ click }) => (
-  <div className="close-icon" onClick={click} />
+const closeBtn = ({ onClick }) => (
+  <div className="close-icon" onClick={onClick} />
 );
 
 closeBtn.propTypes = {
-  click: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default closeBtn;
