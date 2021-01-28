@@ -29,7 +29,7 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
   return (
     <nav>
       <div className="navbar-toggle-btn">
-        <DrawerToggleBtn click={handleDrawerToggleClick} />
+        <DrawerToggleBtn onClick={handleDrawerToggleClick} />
       </div>
 
       <div id="logoHome">

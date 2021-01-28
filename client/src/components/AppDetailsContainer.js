@@ -54,7 +54,6 @@ function AppDetailsContainer({ user, match, history }) {
       });
   };
 
-  // check on frontend if user logs in
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
     if (user) {
@@ -139,8 +138,8 @@ function AppDetailsContainer({ user, match, history }) {
 
   const wishListBtns = (
     app.wishUser.includes(userId)
-      ? <IconButton onHandleWishList={handleRemoveFromWishList} icon={iconApproved} title="added to wish list" />
-      : <IconButton onHandleWishList={handleAddToWishList} icon={iconPlusSign} title="add to wish list" />
+      ? <IconButton onClick={handleRemoveFromWishList} icon={iconApproved} title="added to wish list" />
+      : <IconButton onClick={handleAddToWishList} icon={iconPlusSign} title="add to wish list" />
   );
 
   const editLinkBtn = (

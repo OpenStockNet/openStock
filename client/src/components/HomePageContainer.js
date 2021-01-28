@@ -15,7 +15,7 @@ function HomePageContainer() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORIES);
   const [appsList, setAppsList] = useState([]);
-  const [queries, setQueries] = useState('');
+  const [searchTerms, setSearchTerms] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
@@ -36,13 +36,13 @@ function HomePageContainer() {
       });
   }, []);
 
-  const handleQuery = (newQueries) => {
-    setQueries(newQueries);
+  const handleSeachTerms = (newQueries) => {
+    setSearchTerms(newQueries);
     setSelectedCategory(ALL_CATEGORIES);
   };
 
   const handleCategory = (categoryId) => {
-    setQueries('');
+    setSearchTerms('');
     setSelectedCategory(categoryId);
   };
 
@@ -50,7 +50,7 @@ function HomePageContainer() {
   function filterApps() {
     if (selectedCategory === ALL_CATEGORIES) {
       return appsList
-        .filter((searchApp) => searchApp.name.toLowerCase().includes(queries.toLowerCase()));
+        .filter((searchApp) => searchApp.name.toLowerCase().includes(searchTerms.toLowerCase()));
     }
     return appsList
       .filter((app) => app.category._id === selectedCategory);
@@ -64,8 +64,8 @@ function HomePageContainer() {
       <h1 className="highlight">If you don't protect your privacy, who will?</h1>
       <h2 className="highlight">Find the right app to protect your privacy with OpenStock</h2>
       <Search
-        onQueryChange={handleQuery}
-        queries={queries}
+        onSearchTermsChange={handleSeachTerms}
+        searchTerms={searchTerms}
       />
       <Categories
         categories={categories}

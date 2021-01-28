@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { signup } from '../services/auth';
 import CredentialsForm from './CredentialsForm';
 
-function SignupContainer({ setUser, history }) {
+function SignupContainer({ onSignup, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
@@ -21,7 +21,7 @@ function SignupContainer({ setUser, history }) {
 
     signup(username, password)
       .then((user) => {
-        setUser(user);
+        onSignup(user);
         history.push('/');
       })
       .catch((error) => {

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { fetchAllApps } from '../services/app';
 import Loader from './Loader';
 import AppsList from './AppsList';
+import NotFoundPage from './NotFoundPage';
 
 import SharedDialogContext from './SharedDialog.context';
 
-// fetch all apps, filter to wishUser_id includes props user id
 function WishListContainer({ user, isUserLoading }) {
   const [wishedApps, setWishedApps] = useState(null);
   const [appsLoading, setAppsLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const { openDialog } = useContext(SharedDialogContext);
 
@@ -29,7 +30,7 @@ function WishListContainer({ user, isUserLoading }) {
         })
         .catch((error) => {
           setAppsLoading(false);
-          alert(error.message);
+          setErrorMsg(error.message);
         });
     } else {
       setAppsLoading(false);
@@ -37,6 +38,7 @@ function WishListContainer({ user, isUserLoading }) {
     }
   }, [isUserLoading]);
 
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
   if (isUserLoading || appsLoading) return <Loader />;
 
   return (

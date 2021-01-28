@@ -10,23 +10,19 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './SideDrawer.scss';
 
-const SideDrawer = ({ user, show, click }) => {
-  let drawerClasses = 'side-drawer';
-  if (show) {
-    drawerClasses = 'side-drawer open';
-  }
+const SideDrawer = ({ user, show, onClick }) => {
+  let drawerClasses;
+  show ? drawerClasses = 'side-drawer open' : drawerClasses = 'side-drawer';
 
   let backdrop;
-  if (show) {
-    backdrop = <Backdrop />;
-  }
+  show && (backdrop = <Backdrop />);
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
 
   const wishListAButton = (
     user ? (
-      <Link to={`/apps/wishlist/${user._id}`} onClick={click}>Wish list</Link>
+      <Link to={`/apps/wishlist/${user._id}`} onClick={onClick}>Wish list</Link>
     ) : (
       <button onClick={() => openDialog('Log in to create a wish list.')} className="sidebar-btn-link">
         Wish list
@@ -61,17 +57,17 @@ const SideDrawer = ({ user, show, click }) => {
     <div>
       <nav className={drawerClasses}>
         <div className="btn-container">
-          <CloseBtn click={click} />
+          <CloseBtn onClick={onClick} />
         </div>
         <ul>
           {welcomeMsg}
           <li>
-            <Link to="/" onClick={click}>
+            <Link to="/" onClick={onClick}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/apps/new" onClick={click}>
+            <Link to="/apps/new" onClick={onClick}>
               Add app
             </Link>
           </li>
@@ -79,7 +75,7 @@ const SideDrawer = ({ user, show, click }) => {
             {wishListAButton}
           </li>
           <li>
-            <Link to="/about" onClick={click}>
+            <Link to="/about" onClick={onClick}>
               About
             </Link>
           </li>
@@ -91,7 +87,7 @@ const SideDrawer = ({ user, show, click }) => {
             )
             : (
               <li>
-                <Link to="/signup" className="sidebar-a-btn" onClick={click}>
+                <Link to="/signup" className="sidebar-a-btn" onClick={onClick}>
                   Sign up
                 </Link>
               </li>
@@ -109,7 +105,7 @@ SideDrawer.propTypes = {
     PropTypes.string,
   ]),
   show: PropTypes.bool.isRequired,
-  click: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SideDrawer;
