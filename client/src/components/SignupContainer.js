@@ -49,7 +49,7 @@ function SignupContainer({ onSignup, history }) {
 }
 
 SignupContainer.propTypes = {
-  setUser: PropTypes.func.isRequired,
+  onSignup: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 

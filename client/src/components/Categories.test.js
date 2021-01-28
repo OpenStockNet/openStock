@@ -82,7 +82,7 @@ describe('filter categories', () => {
     );
 
     // carousel lib renders minimum 3 sections; and we have 1 ALL + 1 rest from cats
-    expect(queryAllByTestId('filter-button')).toHaveLength(6);
+    expect(queryAllByTestId('filter-button')).toHaveLength(2);
   });
 
   it('filter is called after click', () => {
