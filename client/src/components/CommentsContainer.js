@@ -8,12 +8,10 @@ import NotFoundPage from './NotFoundPage';
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
 
-const CommentsContainer = ({ userId, app }) => {
+const CommentsContainer = ({ userId, appId }) => {
   const [reviewInput, setReviewInput] = useState('');
   const [reviews, setReviews] = useState([]);
   const [errorMsg, setErrorMsg] = useState(null);
-
-  const appId = app._id;
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -82,7 +80,7 @@ const CommentsContainer = ({ userId, app }) => {
 
 CommentsContainer.propTypes = {
   userId: PropTypes.string,
-  app: PropTypes.object.isRequired,
+  appId: PropTypes.string.isRequired,
 };
 
 export default CommentsContainer;

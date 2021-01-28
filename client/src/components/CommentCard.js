@@ -18,7 +18,9 @@ function CommentCard({ review }) {
 
 CommentCard.propTypes = {
   review: PropTypes.shape({
-    user: PropTypes.object,
+    user: PropTypes.shape({
+      username: PropTypes.string,
+    }),
     value: PropTypes.string,
   }),
 };

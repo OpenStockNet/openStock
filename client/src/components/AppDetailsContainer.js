@@ -21,7 +21,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './AppDetailsContainer.scss';
 
-function AppDetailsContainer({ user, match, history }) {
+function AppDetailsContainer({ userId, match, history }) {
   const [app, setApp] = useState(null);
   const [avrageRating, setAverageRating] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -30,7 +30,6 @@ function AppDetailsContainer({ user, match, history }) {
   const { openDialog } = useContext(SharedDialogContext);
 
   const appId = match.params.id;
-  const userId = user ? user._id : null;
 
   useEffect(() => {
     updateAppDetails();
@@ -56,7 +55,7 @@ function AppDetailsContainer({ user, match, history }) {
 
   const ensureLogin = (callbackFunc) => {
     const dialogMessage = 'Log in to continue.';
-    if (user) {
+    if (userId) {
       callbackFunc();// () => sendSubmitRatingRequest(event) or sendWishListRequest
     } else {
       openDialog(dialogMessage);
@@ -211,7 +210,7 @@ function AppDetailsContainer({ user, match, history }) {
         />
         <CommentsContainer
           userId={userId}
-          app={app}
+          appId={app._id}
         />
         {deleteBtn}
       </div>

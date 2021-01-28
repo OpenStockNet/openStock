@@ -51,8 +51,10 @@ function App() {
 
   let backdrop;
   if (sideDrawerOpen) {
-    backdrop = <Backdrop oncClick={handleBackdropClick} />;
+    backdrop = <Backdrop onClick={handleBackdropClick} />;
   }
+
+  const userId = user ? user._id : null;
 
   return (
     <div className="App">
@@ -81,22 +83,22 @@ function App() {
             <Route
               exact
               path="/apps/new"
-              render={(props) => <NewAppContainer user={user} history={props.history} />}
+              render={(props) => <NewAppContainer userId={userId} history={props.history} />}
             />
             <Route
               exact
               path="/apps/:id"
-              render={(props) => <AppDetailsContainer user={user} match={props.match} history={props.history} />}
+              render={(props) => <AppDetailsContainer userId={userId} match={props.match} history={props.history} />}
             />
             <Route
               exact
               path="/apps/:id/edit"
-              render={(props) => <EditAppContainer user={user} match={props.match} history={props.history} />}
+              render={(props) => <EditAppContainer userId={userId} match={props.match} history={props.history} />}
             />
             <Route
               exact
               path="/apps/wishlist/:id"
-              render={() => <WishListContainer user={user} isUserLoading={isUserLoading} />}
+              render={() => <WishListContainer userId={userId} isUserLoading={isUserLoading} />}
             />
             <Route
               exact
