@@ -7,7 +7,7 @@ import NotFoundPage from './NotFoundPage';
 
 import SharedDialogContext from './SharedDialog.context';
 
-function WishListContainer({ user, isUserLoading }) {
+function WishListContainer({ userId, isUserLoading }) {
   const [wishedApps, setWishedApps] = useState(null);
   const [appsLoading, setAppsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -19,11 +19,11 @@ function WishListContainer({ user, isUserLoading }) {
       return; // do nothing
     }
 
-    if (user) {
+    if (userId) {
       fetchAllApps()
         .then((apps) => {
-          if (user) {
-            const appsFiltered = apps.filter((app) => app.wishUser.includes(user._id));
+          if (userId) {
+            const appsFiltered = apps.filter((app) => app.wishUser.includes(userId));
             setWishedApps(appsFiltered);
             setAppsLoading(false);
           }
@@ -44,7 +44,7 @@ function WishListContainer({ user, isUserLoading }) {
   return (
     <main>
       <h1>My wish list</h1>
-      { user
+      { userId
         && (
         <AppsList
           appsFiltered={wishedApps}
@@ -55,7 +55,7 @@ function WishListContainer({ user, isUserLoading }) {
 }
 
 WishListContainer.propTypes = {
-  user: PropTypes.object,
+  userId: PropTypes.string,
   isUserLoading: PropTypes.bool.isRequired,
 };
 

@@ -82,7 +82,7 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
 Navbar.propTypes = {
   user: PropTypes.shape({
     _id: PropTypes.string,
-    name: PropTypes.string,
+    username: PropTypes.string,
   }),
   handleDrawerToggleClick: PropTypes.func.isRequired,
 };

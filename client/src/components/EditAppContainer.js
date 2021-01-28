@@ -11,7 +11,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewAppContainer.scss';
 
-function EditAppContainer({ user, match, history }) {
+function EditAppContainer({ userId, match, history }) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -85,7 +85,7 @@ function EditAppContainer({ user, match, history }) {
   }
 
   function handleEditSubmit() {
-    const editor = user._id;
+    const editor = userId;
     editApp(appId, name, description, category, device, website, logo, editor)
       .then((editedApp) => {
         openSnackbar(`Your changes on ${editedApp.name} are published!`);
@@ -100,7 +100,7 @@ function EditAppContainer({ user, match, history }) {
     // prevent brwoser default sends http form request (only send from JS)
     event.preventDefault();
 
-    if (!user) openDialog('Log in to continue.');
+    if (!userId) openDialog('Log in to continue.');
     else handleEditSubmit();
   };
 
@@ -239,9 +239,9 @@ function EditAppContainer({ user, match, history }) {
 }
 
 EditAppContainer.propTypes = {
-  user: PropTypes.object.isRequired,
+  userId: PropTypes.string,
   match: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object,
 };
 
 export default EditAppContainer;

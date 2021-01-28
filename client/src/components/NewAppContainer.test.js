@@ -10,9 +10,7 @@ jest.mock('../services/category');
 // to resolve jsDom (testing browser) doesn't implement alert method
 jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-const dummyUser = {
-  _id: 'dummyUserId',
-};
+const dummyUserId = 'dummyUserId';
 
 // func is also an obj, mock.... is its property specify what it shall execute
 mockFetchAllCategories.mockResolvedValue([{
@@ -23,7 +21,7 @@ it('renders without errors', async () => {
   let renderResult;
   await act(async () => {
     renderResult = render(
-      <NewAppContainer />,
+      <NewAppContainer userId={dummyUserId} />,
     );
   });
 
@@ -44,7 +42,7 @@ describe('form input', () => {
     await act(async () => {
       renderResult = render(
         <NewAppContainer
-          user={dummyUser}
+          userId={dummyUserId}
         />,
       );
     });

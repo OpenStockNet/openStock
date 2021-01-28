@@ -11,7 +11,7 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewAppContainer.scss';
 
-function NewAppContainer({ user, history }) {
+function NewAppContainer({ userId, history }) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
@@ -75,8 +75,8 @@ function NewAppContainer({ user, history }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (user) {
-      const creator = user._id;
+    if (userId) {
+      const creator = userId;
 
       createApp(name, description, category, device, website, logo, creator)
         .then((app) => {
@@ -223,8 +223,8 @@ function NewAppContainer({ user, history }) {
 }
 
 NewAppContainer.propTypes = {
-  user: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  userId: PropTypes.string,
+  history: PropTypes.object,
 };
 
 export default NewAppContainer;

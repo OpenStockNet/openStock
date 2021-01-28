@@ -100,10 +100,10 @@ const SideDrawer = ({ user, show, onClick }) => {
 };
 
 SideDrawer.propTypes = {
-  user: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]),
+  user: PropTypes.shape({
+    _id: PropTypes.string,
+    username: PropTypes.string,
+  }),
   show: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
