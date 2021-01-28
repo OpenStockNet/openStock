@@ -49,7 +49,7 @@ function LoginContainer({ onLogin, history }) {
 }
 
 LoginContainer.propTypes = {
-  setUser: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 
