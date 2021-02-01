@@ -11,10 +11,10 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/User.model');
 const flash = require('connect-flash');
 // coockie session for log in
 const MongoStore = require('connect-mongo')(session);
+const User = require('./models/User.model');
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
@@ -25,9 +25,8 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-const app_name = require('./package.json').name;
-// debug is not in use atm
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+//  const appName = require('./package.json').name;
+//  const debug = require('debug')(`${appName}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
 
@@ -103,7 +102,7 @@ app.use('/api/ratings', require('./routes/rating.routes'));
 app.use('/api/reviews', require('./routes/review.routes'));
 
 // add production index.html (for deployment)
-app.use((req, res, next) => {
+app.use((req, res) => {
   // If no routes match, send them the React HTML.
   res.sendFile(`${__dirname}/client/build/index.html`);
 });
