@@ -11,11 +11,10 @@ import SharedDialogContext from './SharedDialog.context';
 import './SideDrawer.scss';
 
 const SideDrawer = ({ user, show, onClick }) => {
-  let drawerClasses;
-  show ? drawerClasses = 'side-drawer open' : drawerClasses = 'side-drawer';
-
   let backdrop;
-  show && (backdrop = <Backdrop />);
+  if (show) {
+    backdrop = <Backdrop />;
+  }
 
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
@@ -24,7 +23,7 @@ const SideDrawer = ({ user, show, onClick }) => {
     user ? (
       <Link to={`/apps/wishlist/${user._id}`} onClick={onClick}>Wish list</Link>
     ) : (
-      <button onClick={() => openDialog('Log in to create a wish list.')} className="sidebar-btn-link">
+      <button onClick={() => openDialog('Log in to create a wish list.')} className="sidebar-btn-link" type="button">
         Wish list
       </button>
     )
@@ -55,7 +54,7 @@ const SideDrawer = ({ user, show, onClick }) => {
   // react Link: nav internally in app
   return (
     <div>
-      <nav className={drawerClasses}>
+      <nav className={show ? 'side-drawer open' : 'side-drawer'}>
         <div className="btn-container">
           <CloseBtn onClick={onClick} />
         </div>
@@ -70,6 +69,7 @@ const SideDrawer = ({ user, show, onClick }) => {
             <Link to="/apps/new" onClick={onClick}>
               Add app
             </Link>
+
           </li>
           <li>
             {wishListAButton}
@@ -82,7 +82,7 @@ const SideDrawer = ({ user, show, onClick }) => {
           {user
             ? (
               <li>
-                <button onClick={handleLogOut}>Log out</button>
+                <button onClick={handleLogOut} type="button">Log out</button>
               </li>
             )
             : (
@@ -106,6 +106,10 @@ SideDrawer.propTypes = {
   }),
   show: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+};
+
+SideDrawer.defaultProps = {
+  user: {},
 };
 
 export default SideDrawer;

@@ -22,7 +22,12 @@ CommentCard.propTypes = {
       username: PropTypes.string,
     }),
     value: PropTypes.string,
+    updatedAt: PropTypes.string,
   }),
+};
+
+CommentCard.defaultProps = {
+  review: {},
 };
 
 export default CommentCard;

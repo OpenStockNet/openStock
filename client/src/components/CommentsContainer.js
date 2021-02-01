@@ -83,4 +83,8 @@ CommentsContainer.propTypes = {
   appId: PropTypes.string.isRequired,
 };
 
+CommentsContainer.defaultProps = {
+  userId: 'userId',
+};
+
 export default CommentsContainer;

@@ -21,7 +21,7 @@ const SharedDialog = () => (
             <a href="/login" className="dialog-btn">
               Log in
             </a>
-            <button onClick={closeDialog} className="dialog-btn">
+            <button onClick={closeDialog} className="dialog-btn" type="button">
               Not now
             </button>
           </div>,

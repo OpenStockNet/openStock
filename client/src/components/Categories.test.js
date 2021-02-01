@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
+// eslint-disable-next-line jest/no-mocks-import
 import { MockIcon } from '../images/__mocks__';
 
 // Manual mocks are defined by writing a module in a __mocks__/ subdirectory adjacent to the module
@@ -13,18 +14,6 @@ const cats = [
     _id: '5ec3f4b4acf2b8e9dd1a3388',
     name: 'Browser',
     icon: 'MockIcon',
-  },
-];
-const mockAppsList = [
-  {
-    category: {
-      _id: '5ec3f4b4acf2b8e9dd1a3388',
-    },
-  },
-  {
-    category: {
-      _id: '5ec3f4b4acf2b8e9dd1a4466',
-    },
   },
 ];
 

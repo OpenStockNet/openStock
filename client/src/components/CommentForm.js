@@ -24,4 +24,8 @@ CommentForm.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
+CommentForm.defaultProps = {
+  reviewInput: 'review',
+};
+
 export default CommentForm;

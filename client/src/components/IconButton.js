@@ -18,6 +18,7 @@ const IconButton = ({
 IconButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default IconButton;

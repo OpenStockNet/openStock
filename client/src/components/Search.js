@@ -25,7 +25,7 @@ function Search({ onSearchTermsChange, searchTerms }) {
         onChange={handleInputChange}
         ref={inputRef}
       />
-      <div className="search-icon-container" onClick={handleSubmit}>
+      <div className="search-icon-container" onClick={handleSubmit} role="presentation">
         <img src={SearchIcon} alt="search-icon" />
       </div>
     </form>

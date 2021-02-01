@@ -28,4 +28,8 @@ AppCard.propTypes = {
   appCategoryName: PropTypes.string.isRequired,
 };
 
+AppCard.defaultProps = {
+  src: 'url',
+};
+
 export default AppCard;

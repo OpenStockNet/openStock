@@ -240,8 +240,18 @@ function EditAppContainer({ userId, match, history }) {
 
 EditAppContainer.propTypes = {
   userId: PropTypes.string,
-  match: PropTypes.object.isRequired,
-  history: PropTypes.object,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+EditAppContainer.defaultProps = {
+  userId: 'userId',
 };
 
 export default EditAppContainer;

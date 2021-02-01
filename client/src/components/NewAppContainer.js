@@ -224,7 +224,13 @@ function NewAppContainer({ userId, history }) {
 
 NewAppContainer.propTypes = {
   userId: PropTypes.string,
-  history: PropTypes.object,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+NewAppContainer.defaultProps = {
+  userId: 'userId',
 };
 
 export default NewAppContainer;

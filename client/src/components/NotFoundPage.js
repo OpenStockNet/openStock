@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './NotFoundPage.scss';
 import { NotFoundIcon } from '../images';
 
@@ -11,7 +12,15 @@ const NotFoundPage = ({ errorMsg, url }) => (
       <Link to="/" className="action-link">{url}</Link>
     </div>
   </div>
-
 );
+
+NotFoundPage.propTypes = {
+  errorMsg: PropTypes.string.isRequired,
+  url: PropTypes.string,
+};
+
+NotFoundPage.defaultProps = {
+  url: 'url',
+};
 
 export default NotFoundPage;
