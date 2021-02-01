@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './CredentialsForm.scss';
 
 const CredentialsForm = ({
-  handleSubmit, errorMsg, title, username, password, handleUsernameChange, handPasswordChange, buttonText, text, url, urlName,
+  handleSubmit, errorMsg, title, username, password, handleUsernameChange,
+  handPasswordChange, buttonText, text, url, urlName,
 }) => (
 
   <form onSubmit={handleSubmit} id="login">
@@ -18,7 +19,6 @@ const CredentialsForm = ({
       value={username}
       onChange={handleUsernameChange}
       placeholder="Type username here"
-      autoFocus
       autoComplete="username"
     />
     <label htmlFor="password">Password </label>
@@ -29,7 +29,6 @@ const CredentialsForm = ({
       onChange={handPasswordChange}
       id="password"
       placeholder="Type password here"
-      autoFocus
       autoComplete="current-password"
     />
     <button type="submit">{buttonText}</button>
@@ -59,6 +58,10 @@ CredentialsForm.propTypes = {
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   urlName: PropTypes.string.isRequired,
+};
+
+CredentialsForm.defaultProps = {
+  errorMsg: 'error',
 };
 
 export default CredentialsForm;

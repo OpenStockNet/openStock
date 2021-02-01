@@ -31,8 +31,8 @@ function App() {
 
   useEffect(() => {
     fetchLogInUser()
-      .then((user) => {
-        setUser(user);
+      .then((loggedUser) => {
+        setUser(loggedUser);
         setIsUserLoading(false);
       })
       .catch((error) => {
@@ -88,12 +88,24 @@ function App() {
             <Route
               exact
               path="/apps/:id"
-              render={(props) => <AppDetailsContainer userId={userId} match={props.match} history={props.history} />}
+              render={(props) => (
+                <AppDetailsContainer
+                  userId={userId}
+                  match={props.match}
+                  history={props.history}
+                />
+              )}
             />
             <Route
               exact
               path="/apps/:id/edit"
-              render={(props) => <EditAppContainer userId={userId} match={props.match} history={props.history} />}
+              render={(props) => (
+                <EditAppContainer
+                  userId={userId}
+                  match={props.match}
+                  history={props.history}
+                />
+              )}
             />
             <Route
               exact

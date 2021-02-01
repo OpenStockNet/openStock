@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
+import PropTypes from 'prop-types';
 // icons contains map of key-value/name-image pairs in index.js
 import * as icons from '../images';
 import 'react-alice-carousel/lib/alice-carousel.css'; // ref https://github.com/maxmarinich/react-alice-carousel
 import { ALL_CATEGORIES } from '../constants';
-import PropTypes from 'prop-types';
 
 import './Categories.scss';
 
@@ -29,6 +29,7 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
 
   const allCategories = (
     <button
+      type="button"
       data-testid="filter-button"
       key={ALL_CATEGORIES}
       onClick={() => handleCategory(ALL_CATEGORIES)}
@@ -42,6 +43,7 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
   const appCategories = categories
     .map((cat) => (
       <button
+        type="button"
         data-testid="filter-button"
         key={cat._id}
         onClick={() => handleCategory(cat._id)}
@@ -75,7 +77,13 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
 }
 
 Categories.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      name: PropTypes.string,
+      icon: PropTypes.string,
+    }),
+  ).isRequired,
   selectedCategory: PropTypes.string.isRequired,
   onCategoryChange: PropTypes.func.isRequired,
 };

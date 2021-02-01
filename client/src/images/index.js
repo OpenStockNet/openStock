@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
+
 // to import multiple files in react:
 // create index.js and, import * (all listed files) in the component you need
+
 export const OpenStockLogoIcon = require('./logoOpenstock.svg');
 export const CloudStorageIcon = require('./cloudStorage.svg');
 export const BrowserIcon = require('./browser.svg');

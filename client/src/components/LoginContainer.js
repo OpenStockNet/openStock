@@ -50,7 +50,9 @@ function LoginContainer({ onLogin, history }) {
 
 LoginContainer.propTypes = {
   onLogin: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default LoginContainer;

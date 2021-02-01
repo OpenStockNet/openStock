@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './CloseBtn.scss';
 
 const closeBtn = ({ onClick }) => (
-  <div className="close-icon" onClick={onClick} />
+  <div className="close-icon" onClick={onClick} role="presentation" />
 );
 
 closeBtn.propTypes = {

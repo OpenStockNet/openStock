@@ -29,7 +29,7 @@ it('renders without errors', async () => {
 });
 
 describe('form input', () => {
-  // mock createApp function, test if it is called with right paratmeters. Need to use 'async' to use await
+  // mock createApp function, test if it is called with right paratmeters.
   it('submits content when button is clicked', async () => {
     // mock response value of createApp func
     mockCreateApp.mockResolvedValueOnce({

@@ -59,4 +59,8 @@ WishListContainer.propTypes = {
   isUserLoading: PropTypes.bool.isRequired,
 };
 
+WishListContainer.defaultProps = {
+  userId: 'userId',
+};
+
 export default WishListContainer;

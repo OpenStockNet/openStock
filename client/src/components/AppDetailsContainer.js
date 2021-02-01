@@ -203,7 +203,7 @@ function AppDetailsContainer({ userId, match, history }) {
         <p>{app.description}</p>
         <div>
           <h4>Available devices:</h4>
-          <ul>{app.device && app.device.map((device, index) => <li key={index}>{device}</li>)}</ul>
+          <ul>{app.device && app.device.map((device) => <li key={device}>{device}</li>)}</ul>
         </div>
         <RatingButtons
           onSubmitRating={handleSubmitRating}
@@ -227,9 +227,19 @@ function AppDetailsContainer({ userId, match, history }) {
 }
 
 AppDetailsContainer.propTypes = {
-  user: PropTypes.object,
-  match: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  userId: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+AppDetailsContainer.defaultProps = {
+  userId: 'userId',
 };
 
 export default AppDetailsContainer;

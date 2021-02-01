@@ -60,13 +60,13 @@ const Navbar = ({ user, handleDrawerToggleClick }) => {
             <Link to={`/apps/wishlist/${user._id}`} className="navbar-texts">
               Wish list
             </Link>
-            <button onClick={handleLogOut} className="navbar-btn">
+            <button type="button" onClick={handleLogOut} className="navbar-btn">
               Log out
             </button>
           </>
         ) : (
           <>
-            <button className="navbar-texts button-link" onClick={() => openDialog('Log in to create a wish list.')}>
+            <button type="button" className="navbar-texts button-link" onClick={() => openDialog('Log in to create a wish list.')}>
               Wish list
             </button>
             <Link to="/login" className="aButton navbar-texts">
@@ -85,6 +85,10 @@ Navbar.propTypes = {
     username: PropTypes.string,
   }),
   handleDrawerToggleClick: PropTypes.func.isRequired,
+};
+
+Navbar.defaultProps = {
+  user: {},
 };
 
 export default Navbar;

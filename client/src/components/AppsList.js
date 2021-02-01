@@ -6,7 +6,7 @@ import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
 
-function AppsList({ appsFiltered, text }) {
+function AppsList({ appsFiltered }) {
   const apps = appsFiltered.map((app) => (
     <AppCard
       key={app._id}
@@ -35,10 +35,11 @@ AppsList.propTypes = {
       _id: PropTypes.string,
       logo: PropTypes.string,
       name: PropTypes.string,
-      category: PropTypes.object,
+      category: PropTypes.shape({
+        name: PropTypes.string,
+      }),
     }),
   ).isRequired,
-  text: PropTypes.string,
 };
 
 export default AppsList;
