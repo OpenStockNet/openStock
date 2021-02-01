@@ -1,12 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
 
 const bcryptSalt = 10;
 const passport = require('passport');
-const ensureLogin = require('connect-ensure-login');
+
+const User = require('../models/User.model');
 
 // signup
 router.post('/signup', (req, res) => {
