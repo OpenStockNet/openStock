@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --no-eslintrc --config .eslintrc.js",
     "lint-all": "npm run lint .",
-    "lint-fix": "npm run lint --fix",
+    "lint-fix": "npm run lint -- --fix",
     "lint-fix-all": "npm run lint-fix .",
     "test": "react-scripts test --env=jsdom"
   },
