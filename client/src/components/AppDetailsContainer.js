@@ -26,6 +26,7 @@ function AppDetailsContainer({ userId, match, history }) {
   const [avrageRating, setAverageRating] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null);
 
+  // comsuming value from context
   const { openSnackbar } = useContext(SharedSnackbarContext);
   const { openDialog } = useContext(SharedDialogContext);
 

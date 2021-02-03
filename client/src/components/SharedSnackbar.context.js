@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
+import PropTypes from 'prop-types';
 import SharedSnackbar from './SharedSnackBar.component';
 import './SharedSnackbar.scss';
 
-const SharedSnackbarContext = React.createContext();
+const SharedSnackbarContext = createContext();
 
-export function SharedSnackbarProvider(props) {
+function SharedSnackbarProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -18,23 +19,28 @@ export function SharedSnackbarProvider(props) {
     setIsOpen(false);
   };
 
-  const { children } = props;
-
   return (
     <SharedSnackbarContext.Provider
       value={{
         openSnackbar: openSnackbar,
-        closeSnackbar: closeSnackbar,
-        snackbarIsOpen: isOpen,
-        message: message,
       }}
     >
-      {/* Render Snackbar presentation component here */}
-      <SharedSnackbar />
+      <SharedSnackbar
+        snackbarIsOpen={isOpen}
+        closeSnackbar={closeSnackbar}
+        message={message}
+      />
       {children}
     </SharedSnackbarContext.Provider>
   );
 }
 
-export const SharedSnackbarConsumer = SharedSnackbarContext.Consumer;
+SharedSnackbarProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array, // see App.js, can be array of elements
+  ]).isRequired,
+};
+
+export { SharedSnackbarProvider };
 export default SharedSnackbarContext;

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import SharedDialog from './SharedDialog.component';
+import React, { useState, createContext } from 'react';
+import PropTypes from 'prop-types';
 import './SharedDialog.scss';
+import SharedDialog from './SharedDialog.component';
 
-const SharedDialogContext = React.createContext();
+const SharedDialogContext = createContext(); // returns two components Provider and Consumer
 
-export function SharedDialogProvider(props) {
+function SharedDialogProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -18,23 +19,26 @@ export function SharedDialogProvider(props) {
     setIsOpen(false);
   };
 
-  const { children } = props;
-
   return (
     <SharedDialogContext.Provider
       value={{
         openDialog: openDialog,
-        closeDialog: closeDialog,
-        dialogIsOpen: isOpen,
-        dialogMessage: message,
       }}
     >
-      {/* Render Snackbar presentation component here */}
-      <SharedDialog />
+      <SharedDialog
+        dialogIsOpen={isOpen}
+        dialogMessage={message}
+        closeDialog={closeDialog}
+      />
+      {/* contains all react dom children elements of component */}
       {children}
     </SharedDialogContext.Provider>
   );
 }
 
-export const SharedDialogConsumer = SharedDialogContext.Consumer;
+SharedDialogProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export { SharedDialogProvider };
 export default SharedDialogContext;
