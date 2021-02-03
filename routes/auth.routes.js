@@ -14,12 +14,14 @@ router.post('/signup', (req, res) => {
   const { password } = req.body;
 
   if (!password || password.length < 8) {
-    return res
+    res
       .status(400)
       .json({ message: 'Password must be 8 char. minimum!' });
+    return;
   }
   if (!username) {
-    return res.status(400).json({ message: 'Username cannot be empty.' });
+    res.status(400).json({ message: 'Username cannot be empty.' });
+    return;
   }
 
   User.findOne({ username })
@@ -38,11 +40,12 @@ router.post('/signup', (req, res) => {
           // after sign up, the user is automatically logged-in
           req.login(dbUser, (err) => {
             if (err) {
-              return res
+              res
                 .status(500)
                 .json({ message: 'Error while attempting to login.' });
+            } else {
+              res.json(dbUser);
             }
-            res.json(dbUser);
           });
         },
       );
@@ -56,18 +59,21 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
   passport.authenticate('local', (err, user) => {
     if (err) {
-      return res.status(500).json({ message: 'Error while authenticating.' });
+      res.status(500).json({ message: 'Error while authenticating.' });
+      return;
     }
     if (!user) {
-      return res.status(400).json({ message: 'Wrong username and/or password!' });
+      res.status(400).json({ message: 'Wrong username and/or password!' });
+      return;
     }
     req.login(user, () => {
       if (err) {
-        return res
+        res
           .status(500)
           .json({ message: 'Error while attempting to login.' });
+      } else {
+        res.json(user);
       }
-      return res.json(user);
     });
   })(req, res);
 });
