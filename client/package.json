@@ -6,6 +6,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "axios": "^0.21.1",
+    "install": "^0.13.0",
+    "npm": "^7.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-alice-carousel": "^2.2.2",
@@ -41,10 +43,10 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/dom": "^7.24.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/dom": "^7.29.4",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.6.3",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
