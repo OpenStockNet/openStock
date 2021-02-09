@@ -8,17 +8,7 @@ function SignupContainer({ onSignup, history }) {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
 
-  function handleUsernameChange(event) {
-    setUsername(event.target.value);
-  }
-
-  function handPasswordChange(event) {
-    setPassword(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
+  function handleSubmit() {
     signup(username, password)
       .then((user) => {
         onSignup(user);
@@ -34,11 +24,11 @@ function SignupContainer({ onSignup, history }) {
       <CredentialsForm
         errorMsg={errorMsg}
         title="Sign up"
-        handleSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         username={username}
         password={password}
-        handleUsernameChange={handleUsernameChange}
-        handPasswordChange={handPasswordChange}
+        onUsernameChange={setUsername}
+        onPasswordChange={setPassword}
         buttonText="Sign up"
         text="Already have an account?"
         url="/login"
