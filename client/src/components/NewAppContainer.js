@@ -86,7 +86,9 @@ function NewAppContainer({ userId, history }) {
         .catch((error) => {
           setErrorMsg(error.message);
         });
-    } else (openDialog('Log in to continue.'));
+    } else {
+      openDialog('Log in to continue.');
+    }
   }
 
   if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;

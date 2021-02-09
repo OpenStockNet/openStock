@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { act, render, fireEvent } from '@testing-library/react';
+import {
+  act, render, fireEvent,
+} from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import NewAppContainer from './NewAppContainer';
+import { SharedSnackbarProvider } from './SharedSnackbar.context';
+import { SharedDialogProvider } from './SharedDialog.context';
 
 import { createApp as mockCreateApp } from '../services/app';
 import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
@@ -12,7 +17,6 @@ jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 const dummyUserId = 'dummyUserId';
 
-// func is also an obj, mock.... is its property specify what it shall execute
 mockFetchAllCategories.mockResolvedValue([{
   _id: 'dummyCategoryId',
 }]);
@@ -21,7 +25,13 @@ it('renders without errors', async () => {
   let renderResult;
   await act(async () => {
     renderResult = render(
-      <NewAppContainer userId={dummyUserId} />,
+      <BrowserRouter>
+        <SharedDialogProvider>
+          <SharedSnackbarProvider>
+            <NewAppContainer userId={dummyUserId} history={{ push: () => {} }} />
+          </SharedSnackbarProvider>
+        </SharedDialogProvider>
+      </BrowserRouter>,
     );
   });
 
@@ -41,9 +51,17 @@ describe('form input', () => {
     let renderResult;
     await act(async () => {
       renderResult = render(
-        <NewAppContainer
-          userId={dummyUserId}
-        />,
+        <BrowserRouter>
+          <SharedDialogProvider>
+            <SharedSnackbarProvider>
+              <NewAppContainer
+                userId={dummyUserId}
+                history={{ push: () => {} }}
+              />
+              ,
+            </SharedSnackbarProvider>
+          </SharedDialogProvider>
+        </BrowserRouter>,
       );
     });
 
@@ -59,7 +77,10 @@ describe('form input', () => {
     fireEvent.click(queryByLabelText('Desktop'));
     fireEvent.input(queryByLabelText('Official website'), { target: { value: 'testing website' } });
     fireEvent.input(queryByLabelText('Logo'), { target: { value: 'testing logo' } });
-    fireEvent.click(queryByRole('button'));
+
+    // wait for rerender to be done: openSnackbar, errormsg or dialog
+    // also valid: await waitFor(() => fireEvent.click(queryByRole('button')));
+    await act(async () => fireEvent.click(queryByRole('button')));
 
     expect(mockCreateApp).toHaveBeenCalled();
     expect(mockCreateApp).toHaveBeenCalledWith('testing app', 'testing description', 'dummyCategoryId', ['Desktop'], 'testing website', 'testing logo', 'dummyUserId');

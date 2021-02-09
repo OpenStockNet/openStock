@@ -74,7 +74,6 @@ function HomePageContainer() {
       />
       <AppsList
         appsFiltered={filterApps()}
-        text="Haven\'t found any matching app 😧. Try something different."
       />
     </main>
   );
