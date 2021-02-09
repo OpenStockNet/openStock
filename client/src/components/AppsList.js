@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loader from './Loader';
 import AppCard from './AppCard';
 import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
 
 function AppsList({ appsFiltered }) {
-  const apps = appsFiltered.map((app) => (
-    <AppCard
-      key={app._id}
-      appId={app._id}
-      src={app.logo}
-      appName={app.name}
-      appCategoryName={app.category.name}
-    />
-  ));
-
   return (
     <>
       <section id="listContainer" className="fadeIn">
-        {apps || <Loader />}
+        {appsFiltered.map((app) => (
+          <AppCard
+            key={app._id}
+            appId={app._id}
+            src={app.logo}
+            appName={app.name}
+            appCategoryName={app.category.name}
+          />
+        ))}
       </section>
       {appsFiltered.length === 0 && (
         <NotFoundPage errorMsg="No apps found on your wish list." url="Start exploring" />

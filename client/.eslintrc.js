@@ -36,6 +36,7 @@ module.exports = {
     'no-use-before-define': 1,
     'react/no-unescaped-entities': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/no-redundant-roles': 1,
   },
   ignorePatterns: [
     'build/*',

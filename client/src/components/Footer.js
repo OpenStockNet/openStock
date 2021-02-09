@@ -14,9 +14,10 @@ const Footer = () => (
     <p>
       Made with
       {' '}
-      <span role="img" aria-label="green-heart">💚</span>
+      <span testid="img" role="img" aria-label="green-heart">💚</span>
       {' '}
       by
+
       {' '}
       <a href="https://github.com/yung-ting" target="_blank" rel="noreferrer noopener">
         Yung-Ting

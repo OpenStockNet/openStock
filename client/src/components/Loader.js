@@ -5,7 +5,7 @@ import { LoaderIcon } from '../images';
 import './Loader.scss';
 
 const loader = () => (
-  <div className="wrapper">
+  <div className="wrapper" data-testid="loader">
     <Backdrop />
     <div className="loading">
       <img src={LoaderIcon} alt="loading" />
