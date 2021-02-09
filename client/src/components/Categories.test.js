@@ -83,7 +83,7 @@ describe('filter categories', () => {
         onCategoryChange={mockOnCategoryChange}
       />,
     );
-    // fireEvent of click
+
     fireEvent.click(queryAllByTestId('filter-button')[0]);
     expect(mockOnCategoryChange).toHaveBeenCalled();
   });

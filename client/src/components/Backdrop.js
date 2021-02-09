@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Backdrop.scss';
 
-const backdrop = ({ onClick }) => (
-  <div className="backdrop" onClick={onClick} role="presentation" />
+const Backdrop = ({ onClick }) => (
+  <div className="backdrop" onClick={onClick} role="presentation" data-testid="backdrop" />
 );
 
-backdrop.propTypes = {
+Backdrop.propTypes = {
   onClick: PropTypes.func,
 };
 
-export default backdrop;
+Backdrop.defaultProps = {
+  onClick: () => {},
+};
+
+export default Backdrop;

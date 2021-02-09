@@ -8,7 +8,7 @@ import './AppCard.scss';
 const AppCard = ({
   appId, src, appName, appCategoryName,
 }) => (
-  <div className="appCard">
+  <div className="appCard" data-testid="app-card">
     <Link to={`/apps/${appId}`}>
       <img src={src || appIconPlaceholder} alt="" />
     </Link>

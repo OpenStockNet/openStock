@@ -5,7 +5,7 @@ import './NotFoundPage.scss';
 import { NotFoundIcon } from '../images';
 
 const NotFoundPage = ({ errorMsg, url }) => (
-  <div className="box-wrapper">
+  <div className="box-wrapper" data-testid="not-found-page">
     <div className="box-center highlight">
       <img src={NotFoundIcon} alt="not_found_icon" />
       <p>{errorMsg}</p>
