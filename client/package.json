@@ -25,7 +25,7 @@
     "lint-all": "npm run lint .",
     "lint-fix": "npm run lint -- --fix",
     "lint-fix-all": "npm run lint-fix .",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,6 +55,7 @@
     "eslint-plugin-react": "^7.21.0",
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest": "^26.5.2",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-test-renderer": "^16.13.1"
   }
 }
