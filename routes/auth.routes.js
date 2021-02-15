@@ -72,7 +72,7 @@ router.post('/login', (req, res) => {
           .status(500)
           .json({ message: 'Error while attempting to login.' });
       } else {
-        res.json(user);
+        res.json(user);// response.data, extracted in index.js
       }
     });
   })(req, res);
