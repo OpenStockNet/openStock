@@ -18,7 +18,7 @@ function Search({ onSearchTermsChange, searchTerms }) {
   };
 
   return (
-    <form id="search" onSubmit={handleSubmit}>
+    <form id="search" onSubmit={handleSubmit} role="search">
       <input
         placeholder="Search app by name"
         value={searchTerms}

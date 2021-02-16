@@ -36,7 +36,7 @@ function HomePageContainer() {
       });
   }, []);
 
-  const handleSeachTerms = (newQueries) => {
+  const handleSearchTerms = (newQueries) => {
     setSearchTerms(newQueries);
     setSelectedCategory(ALL_CATEGORIES);
   };
@@ -64,7 +64,7 @@ function HomePageContainer() {
       <h1 className="highlight">If you don't protect your privacy, who will?</h1>
       <h2 className="highlight">Find the right app to protect your privacy with OpenStock</h2>
       <Search
-        onSearchTermsChange={handleSeachTerms}
+        onSearchTermsChange={handleSearchTerms}
         searchTerms={searchTerms}
       />
       <Categories

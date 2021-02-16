@@ -30,7 +30,7 @@ function Categories({ categories, selectedCategory, onCategoryChange }) {
   const allCategories = (
     <button
       type="button"
-      data-testid="filter-button"
+      data-testid="filter-all-button"
       key={ALL_CATEGORIES}
       onClick={() => handleCategory(ALL_CATEGORIES)}
       className={selectedCategory === ALL_CATEGORIES ? 'btnCategories selected' : 'btnCategories'}

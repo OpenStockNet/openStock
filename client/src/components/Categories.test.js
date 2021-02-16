@@ -70,8 +70,8 @@ describe('filter categories', () => {
       />,
     );
 
-    // carousel lib renders minimum 3 sections; and we have 1 ALL + 1 rest from cats
-    expect(queryAllByTestId('filter-button')).toHaveLength(2);
+    // carousel lib renders minimum 3 sections; and we have  1  from cats
+    expect(queryAllByTestId('filter-button')).toHaveLength(1);
   });
 
   it('filter is called after click', () => {
@@ -105,8 +105,8 @@ describe('filter categories', () => {
         },
       },
     ];
-    // pick 2nd item because 1st item ALL is hard coded
-    fireEvent.click(queryAllByTestId('filter-button')[1]);
+
+    fireEvent.click(queryAllByTestId('filter-button')[0]);
     expect(mockOnCategoryChange).toHaveBeenCalledWith(filteredAppsList[0].category._id);
   });
 });
