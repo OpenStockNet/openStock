@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 // eslint-disable-next-line jest/no-mocks-import
-import { MockIcon } from '../images/__mocks__';
+import { MockIcon } from '../images/__mocks__'; // required as we export icons from index
 
 // Manual mocks are defined by writing a module in a __mocks__/ subdirectory adjacent to the module
 // To require that module in tests, explicitly calling jest.mock('./moduleName') required
@@ -70,7 +70,7 @@ describe('filter categories', () => {
       />,
     );
 
-    // carousel lib renders minimum 3 sections; and we have  1  from cats
+    // carousel lib renders minimum 3 sections; and we have 1 from cats
     expect(queryAllByTestId('filter-button')).toHaveLength(1);
   });
 
