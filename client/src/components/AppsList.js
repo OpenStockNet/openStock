@@ -8,7 +8,7 @@ import './AppsList.scss';
 function AppsList({ appsFiltered }) {
   return (
     <>
-      <section id="listContainer" className="fadeIn">
+      <section id="listContainer" className="fadeIn" data-testid="app-list">
         {appsFiltered.map((app) => (
           <AppCard
             key={app._id}
@@ -20,7 +20,7 @@ function AppsList({ appsFiltered }) {
         ))}
       </section>
       {appsFiltered.length === 0 && (
-        <NotFoundPage errorMsg="No apps found on your wish list." url="Start exploring" />
+        <NotFoundPage errorMsg="No apps found on the list." url="Start exploring" />
       )}
     </>
   );
