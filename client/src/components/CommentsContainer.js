@@ -28,7 +28,7 @@ const CommentsContainer = ({ userId, appId }) => {
 
   useEffect(() => {
     updateReviewsList(appId);
-  }, [setReviews]);
+  }, []);
 
   function handleInputChange(event) {
     setReviewInput(event.target.value);

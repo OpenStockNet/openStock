@@ -62,7 +62,7 @@ describe('credentials input', () => {
     expect(lastPasswordInput.value).toBe('dummyPassWord');
   });
 
-  it('changes values when prop inpuy value changes', () => {
+  it('changes values when prop input value changes', () => {
     const handleUserNameChangeMock = jest.fn();
     const handlePasswordChangeMock = jest.fn();
 
