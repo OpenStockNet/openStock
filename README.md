@@ -52,8 +52,10 @@ MONGODB_URI=mongodb://localhost/openstock
 2. `npm run test`
 
 
-## Deployment to Heroku
+## Manual Deployment to Heroku
 
 1. `git checkout master`
 2. `git pull`
 3. `git push heroku master`
+
+By default whenever there are new commits on the master branch, the changes will be automatically deployed.
