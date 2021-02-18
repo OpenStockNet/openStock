@@ -17,7 +17,6 @@ https://openstock-berlin.herokuapp.com/
 
 ### Setup Backend
 
-0. Open new terminal window and go to openStock repo folder
 1. `npm install`
 2. Create a new file called `.env` and add the following content:
 ```
@@ -29,46 +28,32 @@ MONGODB_URI=mongodb://localhost/openstock
 
 ### Setup Frontend
 
-0. Open new terminal window and go to openStock repo folder
 1. `cd client`
 2. `npm install`
 
 
 ## Development
 
-### Start Backend
+### Run Backend
 
-0. Open new terminal window and go to openStock repo folder
 1. `npm run dev`
 
 
-### Start Frontend
+### Run Frontend
 
-0. Open new terminal window and go to openStock repo folder
 1. `cd client`
 2. `npm run start`
 3. Open http://localhost:3000 in your browser
 
 
-### Make Code Changes
+### Run Frontend Tests
 
-0. Open new terminal window and go to openStock repo folder
-1. `git checkout master`
-2. `git pull`
-3. `git checkout -b new-dev-branch`
-4. Make code changes
-5. `git add .`
-6. `git commit -m 'my message'`
-7. `git push`
-8. Open new pull request on GitHub
-9. Merge pull request
+1. `cd client`
+2. `npm run test`
 
 
 ## Deployment to Heroku
 
-0. Open new terminal window and go to openStock repo folder
 1. `git checkout master`
 2. `git pull`
 3. `git push heroku master`
-
-Before you make new code changes, start again with step 1 from the "Make Code Changes" section above.
