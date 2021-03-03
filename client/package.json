@@ -59,7 +59,7 @@
     "react-test-renderer": "^16.13.1"
   },
   "engines": {
-    "node": ">=15.10.0",
-    "npm": ">=7.5.3"
+    "node": "15.x",
+    "npm": "7.x"
   }
 }
