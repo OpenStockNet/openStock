@@ -5,9 +5,8 @@ import About from './About';
 
 // mainly Jest DOM library assertions
 it('renders without errors', () => {
-  const { container } = render(
-    <About />,
-  );
+  const { container } = render(<About />);
+
   expect(container).toBeInTheDocument();
 });
 
@@ -21,8 +20,8 @@ it('displays correct subject titles', () => {
 it('displays correct descriptions', () => {
   render(<About />);
 
-  const element = screen.getAllByRole('heading', { level: 2 });
-  expect(element[0]).toHaveTextContent('In software, free doesn\'t only mean \'free of charge\' but also means \'freedom\'. OpenStock is an opensource project, with a goal to help everyone find reliable apps that respect our privacy at ease.');
+  const elements = screen.getAllByRole('heading', { level: 2 });
+  expect(elements[0]).toHaveTextContent('In software, free doesn\'t only mean \'free of charge\' but also means \'freedom\'. OpenStock is an opensource project, with a goal to help everyone find reliable apps that respect our privacy at ease.');
 });
 
 describe('contact info sections', () => {

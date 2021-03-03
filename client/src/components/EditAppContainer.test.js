@@ -16,8 +16,7 @@ jest.mock('../services/category');
 const dummyUserId = 'dummyUserId';
 const dummyAppId = 'dummyAppId';
 
-// match.params.id from react router,
-// e.g. openstock.com/apps/edit?id=123&xxx=bbb
+// `match.params.id` from react router,
 const dummyMatch = {
   params: {
     id: dummyAppId,
@@ -28,12 +27,12 @@ const dummyApp = {
   name: 'dummyAppName',
   website: 'dummyWebsite',
   description: 'dummyDescription',
-  category: { _id: 'dummyCategoryId' }, // attention! has nested object
-  device: ['Desktop'], // !
+  category: { _id: 'dummyCategoryId' }, // has nested object
+  device: ['Desktop'],
   logo: 'dummyLogo',
 };
 
-// mock return value: whenever function is used and needs return value,
+// mock return value: whenever function is used and needs return value
 mockFetchAllCategories.mockResolvedValue([{
   _id: 'dummyCategoryId',
 }]);
@@ -96,7 +95,6 @@ describe('form input', () => {
 
     // wait for rerender to be done: openSnackbar, errormsg or dialog
     await waitFor(() => fireEvent.click(queryByRole('button')));
-    expect(mockEditApp).toHaveBeenCalled();
     expect(mockEditApp).toHaveBeenCalledWith(dummyAppId, 'testing app', 'testing description', 'dummyCategoryId', ['Desktop', 'Browser'], 'testing website', 'testing logo', dummyUserId);
   });
 });

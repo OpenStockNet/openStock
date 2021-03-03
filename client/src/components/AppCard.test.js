@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 
 import AppCard from './AppCard';
 
-// basic test of rendering a whole component
 it('renders without errors', () => {
   const { container } = render(
     <BrowserRouter>
@@ -73,7 +72,7 @@ it('has app id in link', () => {
   expect(elements[0].getAttribute('href')).toEqual(`/apps/${id}`);
 });
 
-it('display app logo', () => {
+it('displays app logo', () => {
   const imgSrc = 'app logo';
   const { getByRole } = render(
     <BrowserRouter>

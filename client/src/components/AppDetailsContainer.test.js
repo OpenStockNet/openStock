@@ -22,6 +22,7 @@ const dummyAppId = 'dummyAppId';
 const dummyAppName = 'dummyAppName';
 const dummyUserId = 'dummyUserId';
 const dummyUserName = 'dummyUserName';
+const dummyWishUserId = 'dummyWishUserId';
 
 const dummyApp = {
   _id: dummyAppId,
@@ -35,7 +36,7 @@ const dummyApp = {
   creator: { _id: 'dummyCreatorId', name: 'dummyCreatorName' },
   // not populated [objectId, objectId, objectId]
   wishUser: [
-    'dummyWishUserId',
+    dummyWishUserId,
   ],
   // populated
   editors: [{
@@ -74,23 +75,7 @@ mockGetAverageRating.mockResolvedValue(dummyAverageRating.value);
 mockFetchReviews.mockResolvedValue(dummyReviews);
 
 it('renders without errors', async () => {
-  let renderResult;
-  await act(async () => {
-    renderResult = render(
-      <BrowserRouter>
-        <SharedDialogProvider>
-          <SharedSnackbarProvider>
-            <AppDetailsContainer
-              userId={dummyUserId}
-              match={dummyMatch}
-              history={{ push: () => {} }}
-            />
-          </SharedSnackbarProvider>
-        </SharedDialogProvider>
-      </BrowserRouter>,
-    );
-  });
-
+  const renderResult = await init(); // wait for async func init() to return promise
   expect(renderResult.container).toBeInTheDocument();
 });
 
@@ -98,28 +83,13 @@ describe('user use features successfully', () => {
   it('user adds app to wishlist when clicking on button', async () => {
     mockAddWishApp.mockResolvedValue();
 
-    let renderResult;
-    await act(async () => {
-      renderResult = render(
-        <BrowserRouter>
-          <SharedDialogProvider>
-            <SharedSnackbarProvider>
-              <AppDetailsContainer
-                userId={dummyUserId}
-                match={dummyMatch}
-                history={{ push: () => {} }}
-              />
-            </SharedSnackbarProvider>
-          </SharedDialogProvider>
-        </BrowserRouter>,
-      );
-    });
-
-    const { findByText, getByTitle } = renderResult;
+    // const renderResult = await init();
+    // const { findByText, getByTitle } = renderResult;
+    const { findByText, getByTitle } = await init(); // declare properties to init() rendered result
 
     const buttonToAdd = getByTitle('add to wish list');
     await waitFor(() => fireEvent.click(buttonToAdd));
-    expect(mockAddWishApp).toHaveBeenCalled();
+    expect(mockAddWishApp).toHaveBeenCalledWith(dummyAppId, dummyUserId);
 
     // snackbar open showing the successful text
     const snackbar = await findByText('dummyAppName is added to wish list!');
@@ -136,7 +106,7 @@ describe('user use features successfully', () => {
           <SharedDialogProvider>
             <SharedSnackbarProvider>
               <AppDetailsContainer
-                userId="dummyWishUserId"
+                userId={dummyWishUserId}
                 match={dummyMatch}
                 history={{ push: () => {} }}
               />
@@ -149,9 +119,8 @@ describe('user use features successfully', () => {
     const { findByTitle, findByText } = renderResult;
 
     const buttonToRemove = await findByTitle('added to wish list');
-    expect(buttonToRemove).toBeInTheDocument();
     await waitFor(() => fireEvent.click(buttonToRemove));
-    expect(mockRemoveWishApp).toHaveBeenCalled();
+    expect(mockRemoveWishApp).toHaveBeenCalledWith(dummyAppId, dummyWishUserId);
 
     const snackbar = await findByText('dummyAppName is removed from wish list!');
     expect(snackbar).toBeInTheDocument();
@@ -185,33 +154,18 @@ describe('user use features successfully', () => {
     expect(editPageContent).toBeInTheDocument();
   });
 
-  it('display user name, comments and time stamp after clicking comment button', async () => {
+  it('displays user name, comments and time stamp after clicking comment button', async () => {
     mockAddReview.mockResolvedValue(dummyReviews); // no specific value to be resolved
+    // let renderResult = await init();
+    // const { getByText, findAllByRole, findByText } = renderResult;
 
-    let renderResult;
-    await act(async () => {
-      renderResult = render(
-        <BrowserRouter>
-          <SharedDialogProvider>
-            <SharedSnackbarProvider>
-              <AppDetailsContainer
-                userId={dummyUserId}
-                match={dummyMatch}
-                history={{ push: () => {} }}
-              />
-            </SharedSnackbarProvider>
-          </SharedDialogProvider>
-        </BrowserRouter>,
-      );
-    });
-
-    const { getByText, findAllByRole, findByText } = renderResult;
+    const { getByText, findAllByRole, findByText } = await init();
 
     const buttonToPost = getByText(/post/i);
     fireEvent.click(buttonToPost);
 
     const elements = await findAllByRole('heading', { level: 5 });
-    expect(elements[1]).toHaveTextContent('dummyUserName');
+    expect(elements[1]).toHaveTextContent(dummyUserName);
     expect(elements[2]).toHaveTextContent('12345'); // time stamp
 
     const reviewInput = await findByText('dummyReviewInput');
@@ -222,3 +176,24 @@ describe('user use features successfully', () => {
     expect(snackbar).toBeInTheDocument();
   });
 });
+
+async function init() {
+  let renderResult;
+  await act(async () => {
+    renderResult = render(
+      <BrowserRouter>
+        <SharedDialogProvider>
+          <SharedSnackbarProvider>
+            <AppDetailsContainer
+              userId={dummyUserId}
+              match={dummyMatch}
+              history={{ push: () => {} }}
+            />
+          </SharedSnackbarProvider>
+        </SharedDialogProvider>
+      </BrowserRouter>,
+    );
+  });
+
+  return renderResult;
+}

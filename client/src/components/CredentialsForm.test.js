@@ -5,7 +5,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import CredentialsForm from './CredentialsForm';
 import { login as mockLogin } from '../services/auth';
 
-// TODO: hoist helper functions to reuse between test cases
 jest.mock('../services/auth');
 
 mockLogin.mockResolvedValue([{
@@ -86,14 +85,10 @@ describe('credentials input', () => {
 
     const lastNameInput = screen.getByLabelText(/User name/i);
     fireEvent.change(lastNameInput, { target: { value: 'changeName' } });
-
-    expect(handleUserNameChangeMock).toHaveBeenCalled();
     expect(handleUserNameChangeMock).toHaveBeenCalledWith('changeName');
 
     const lastPasswordInput = screen.getByLabelText(/Password/i);
     fireEvent.change(lastPasswordInput, { target: { value: 'changePassword' } });
-
-    expect(handlePasswordChangeMock).toHaveBeenCalled();
     expect(handlePasswordChangeMock).toHaveBeenCalledWith('changePassword');
   });
 

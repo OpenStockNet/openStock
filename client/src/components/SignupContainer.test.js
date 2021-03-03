@@ -49,7 +49,6 @@ describe('allows user to sign up successfully', () => {
     });
 
     fireEvent.click(screen.getByRole('button'));
-    expect(mockSignup).toHaveBeenCalled();
     expect(mockSignup).toHaveBeenCalledWith('dummyUsername', 'dummyPassword');
   });
 
@@ -103,7 +102,6 @@ describe('allows user to sign up successfully', () => {
     fireEvent.click(screen.getByRole('button'));
 
     const element = await waitFor(() => screen.getByRole('alert'));
-    expect(element).toBeInTheDocument();
     expect(element).toHaveTextContent('dummyErrorMessage');
   });
 });

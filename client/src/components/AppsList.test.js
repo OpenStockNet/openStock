@@ -4,13 +4,15 @@ import { render, screen, waitFor } from '@testing-library/react';
 import AppsList from './AppsList';
 
 // mainly Jest DOM library assertions
+const dummyName = 'dummyName';
+const dummyCategoryName = 'dummyCategoryName';
 const dummyAppsFiltered = [
   {
     _id: 'dummyId',
     logo: 'dummyLogo',
-    name: 'dummyName',
+    name: dummyName,
     category: {
-      name: 'dummyCategoryName',
+      name: dummyCategoryName,
     },
   },
 ];
@@ -36,8 +38,8 @@ describe('when component is mounted', () => {
     await waitFor(() => screen.getAllByTestId('app-card'));
 
     expect(screen.getAllByTestId('app-card')).toHaveLength(1);// appCard component
-    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('dummyName');
-    expect(screen.getByRole('heading', { level: 6 })).toHaveTextContent('dummyCategoryName');
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(dummyName);
+    expect(screen.getByRole('heading', { level: 6 })).toHaveTextContent(dummyCategoryName);
   });
 
   it('displays NotFoundPage when there are no apps', () => {
