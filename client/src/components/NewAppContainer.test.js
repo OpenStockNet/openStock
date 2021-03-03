@@ -13,7 +13,7 @@ import { fetchAllCategories as mockFetchAllCategories } from '../services/catego
 jest.mock('../services/app');
 jest.mock('../services/category');
 // to resolve jsDom (testing browser) doesn't implement alert method
-jest.spyOn(window, 'alert').mockImplementation(() => {});
+// jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 const dummyUserId = 'dummyUserId';
 
@@ -39,14 +39,11 @@ it('renders without errors', async () => {
 });
 
 describe('form input', () => {
-  // mock createApp function, test if it is called with right paratmeters.
   it('submits content when button is clicked', async () => {
-    // mock response value of createApp func
     mockCreateApp.mockResolvedValueOnce({
       _id: 'dummyAppId',
     });
 
-    // to solve different renders of lifecycles
     // 'await' until run all the render cycles due to categories state
     let renderResult;
     await act(async () => {
@@ -68,7 +65,7 @@ describe('form input', () => {
     // declare functions as properties of renderResult obj
     const { queryByRole, queryByLabelText } = renderResult;
 
-    // tell FireEvent.input funcs which to trigger
+    // input field
     fireEvent.input(queryByLabelText('App name'), { target: { value: 'testing app' } });
     fireEvent.input(queryByLabelText('Description'), { target: { value: 'testing description' } });
     // dropdown
@@ -82,7 +79,6 @@ describe('form input', () => {
     // also valid: await waitFor(() => fireEvent.click(queryByRole('button')));
     await act(async () => fireEvent.click(queryByRole('button')));
 
-    expect(mockCreateApp).toHaveBeenCalled();
     expect(mockCreateApp).toHaveBeenCalledWith('testing app', 'testing description', 'dummyCategoryId', ['Desktop'], 'testing website', 'testing logo', 'dummyUserId');
   });
 });

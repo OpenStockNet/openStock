@@ -85,7 +85,7 @@ describe('allows user to login successfully', () => {
     expect(mockOnLogin).toHaveBeenCalledWith(dummyUser);
   });
   it('shows error message when entering invalid credentials', async () => {
-    // to not return promise
+    // make the mock function return a promise which is immediately rejected
     mockLogin.mockRejectedValue({
       message: 'dummyErrorMessage',
     });

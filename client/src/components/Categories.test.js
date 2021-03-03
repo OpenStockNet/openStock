@@ -38,10 +38,9 @@ it('displays category name', () => {
   );
 
   const elements = getAllByText(cats[0].name);
-  // carousel packeage renders minimum 3 sections
+  // carousel lib renders minimum 3 sections
   const element = elements[0];
 
-  expect(element).toBeInTheDocument();
   expect(element.tagName).toEqual('P');
 });
 
@@ -56,7 +55,6 @@ it('displays category icon', () => {
 
   const elements = getAllByRole('img');
   const element = elements[1]; // pick 2nd element, as 1st ALL isn't mapped
-  expect(element).toBeInTheDocument();
   expect(element.getAttribute('src')).toEqual(MockIcon);
 });
 
@@ -74,7 +72,7 @@ describe('filter categories', () => {
     expect(queryAllByTestId('filter-button')).toHaveLength(1);
   });
 
-  it('filter is called after click', () => {
+  it('calls filter function after click', () => {
     const mockOnCategoryChange = jest.fn();
     const { queryAllByTestId } = render(
       <Categories
@@ -88,7 +86,7 @@ describe('filter categories', () => {
     expect(mockOnCategoryChange).toHaveBeenCalled();
   });
 
-  it('filters apps', () => {
+  it('filters apps by category', () => {
     const mockOnCategoryChange = jest.fn();
     const { queryAllByTestId } = render(
       <Categories
