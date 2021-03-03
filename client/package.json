@@ -57,9 +57,5 @@
     "jest": "^26.5.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-test-renderer": "^16.13.1"
-  },
-  "engines": {
-    "node": "15.x",
-    "npm": "7.x"
   }
 }
