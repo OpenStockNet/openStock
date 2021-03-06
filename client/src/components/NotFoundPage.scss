@@ -3,13 +3,13 @@
 .box-wrapper {
   // sticky footer: loader fill remaining space of the page
   // calc: saas feature, entire screen 100vh, minus header, footer, and margin
-  height: calc(100vh - 104px - 47px - 48px );
-  //position: relative;
+  height: calc(100vh - 360px);
+  position: relative;
 }
 
 .box-center img {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   align-self: center;
 }
 
@@ -35,5 +35,15 @@
   font-weight: 300;
   font-size: 16px;
   text-decoration: underline;
+}
+
+@media (min-width: 601px) {
+  .box-wrapper {
+    height: calc(100vh - 500px);
+  }
+  .box-center img {
+    width: 160px;
+    height: 160px;
+  }
 }
 
