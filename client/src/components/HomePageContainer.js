@@ -74,6 +74,7 @@ function HomePageContainer() {
       />
       <AppsList
         appsFiltered={filterApps()}
+        errorMsg="No apps found with the key word. Try something else."
       />
     </main>
   );

@@ -5,7 +5,9 @@ import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
 
-function AppsList({ appsFiltered }) {
+function AppsList({
+  appsFiltered, errorMsg, urlText, url,
+}) {
   return (
     <>
       <section id="listContainer" className="fadeIn" data-testid="app-list">
@@ -20,7 +22,7 @@ function AppsList({ appsFiltered }) {
         ))}
       </section>
       {appsFiltered.length === 0 && (
-        <NotFoundPage errorMsg="No apps found on the list." url="Start exploring" />
+        <NotFoundPage errorMsg={errorMsg} urlText={urlText} url={url} />
       )}
     </>
   );
@@ -37,6 +39,15 @@ AppsList.propTypes = {
       }),
     }),
   ).isRequired,
+  errorMsg: PropTypes.string,
+  urlText: PropTypes.string,
+  url: PropTypes.string,
+};
+
+AppsList.defaultProps = {
+  errorMsg: 'error occurs',
+  urlText: '',
+  url: '',
 };
 
 export default AppsList;
