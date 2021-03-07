@@ -48,7 +48,7 @@ function WishListContainer({ userId, isUserLoading }) {
         && (
         <AppsList
           appsFiltered={wishedApps}
-          errorMsg="No wished apps added yet."
+          errorMsg="No apps added yet."
           urlText="Start exploring"
           url="/"
         />
