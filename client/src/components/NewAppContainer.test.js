@@ -17,9 +17,11 @@ jest.mock('../services/category');
 
 const dummyUserId = 'dummyUserId';
 
-mockFetchAllCategories.mockResolvedValue([{
-  _id: 'dummyCategoryId',
-}]);
+beforeEach(() => {
+  mockFetchAllCategories.mockResolvedValue([{
+    _id: 'dummyCategoryId',
+  }]);
+});
 
 it('renders without errors', async () => {
   let renderResult;

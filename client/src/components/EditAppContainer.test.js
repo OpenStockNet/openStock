@@ -32,13 +32,15 @@ const dummyApp = {
   logo: 'dummyLogo',
 };
 
-// mock return value: whenever function is used and needs return value
-mockFetchAllCategories.mockResolvedValue([{
-  _id: 'dummyCategoryId',
-}]);
+beforeEach(() => {
+  // mock return value: whenever function is used and needs return value
+  mockFetchAllCategories.mockResolvedValue([{
+    _id: 'dummyCategoryId',
+  }]);
 
-mockFetchApp.mockResolvedValue(dummyApp);
-mockEditApp.mockResolvedValue(dummyApp);
+  mockFetchApp.mockResolvedValue(dummyApp);
+  mockEditApp.mockResolvedValue(dummyApp);
+});
 
 it('renders without errors', async () => {
   let renderResult;
