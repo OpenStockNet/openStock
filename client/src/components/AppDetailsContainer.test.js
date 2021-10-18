@@ -70,9 +70,11 @@ const dummyReviews = [{
   updatedAt: '12345',
 }];
 
-mockFetchApp.mockResolvedValue(dummyApp);// returns resolved value xxx: averageRating.then(xxx)
-mockGetAverageRating.mockResolvedValue(dummyAverageRating.value);
-mockFetchReviews.mockResolvedValue(dummyReviews);
+beforeEach(() => {
+  mockFetchApp.mockResolvedValue(dummyApp);// returns res\olved value xxx: averageRating.then(xxx)
+  mockGetAverageRating.mockResolvedValue(dummyAverageRating.value);
+  mockFetchReviews.mockResolvedValue(dummyReviews);
+});
 
 it('renders without errors', async () => {
   const renderResult = await init(); // wait for async func init() to return promise

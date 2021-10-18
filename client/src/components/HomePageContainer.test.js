@@ -12,35 +12,37 @@ import { fetchAllApps as mockFetchAllApps } from '../services/app';
 jest.mock('../services/app');
 jest.mock('../services/category');
 
-// mock function to return a promise which gets immediately resolved
-// make sure mock all required data, e.g. cat id required for filtering
-mockFetchAllCategories.mockResolvedValue([{
-  _id: 'dummyCategoryId',
-  name: 'dummyCategoryName',
-},
-{
-  _id: 'secondCategoryId',
-  name: 'secondCategoryName',
-},
-]);
-
-mockFetchAllApps.mockResolvedValue([{
-  _id: 'dummyAppId',
-  name: 'dummyAppName',
-  category: {
-    name: 'dummyCategoryName',
+beforeEach(() => {
+  // mock function to return a promise which gets immediately resolved
+  // make sure mock all required data, e.g. cat id required for filtering
+  mockFetchAllCategories.mockResolvedValue([{
     _id: 'dummyCategoryId',
+    name: 'dummyCategoryName',
   },
-},
-{
-  _id: 'secondAppId',
-  name: 'secondAppName',
-  category: {
-    name: 'secondCategoryName',
+  {
     _id: 'secondCategoryId',
+    name: 'secondCategoryName',
   },
-},
-]);
+  ]);
+
+  mockFetchAllApps.mockResolvedValue([{
+    _id: 'dummyAppId',
+    name: 'dummyAppName',
+    category: {
+      name: 'dummyCategoryName',
+      _id: 'dummyCategoryId',
+    },
+  },
+  {
+    _id: 'secondAppId',
+    name: 'secondAppName',
+    category: {
+      name: 'secondCategoryName',
+      _id: 'secondCategoryId',
+    },
+  },
+  ]);
+});
 
 it('renders without errors', async () => {
   let renderResult;
