@@ -36,8 +36,8 @@ MONGODB_URI=mongodb://localhost/openstock
 
 ### Run Backend
 
+1. On Ubuntu, start database by running `sudo systemctl start mongod`
 1. `npm run dev`
-
 
 ### Run Frontend
 
