@@ -5,12 +5,12 @@ import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
 } from '../services/app';
 import { getAverageRating, rateApp } from '../services/rating';
-import appIconPlaceholder from '../images/logoPlaceholder.svg';
 import CommentsContainer from './CommentsContainer';
 import RatingButtons from './RatingButtons';
 import IconButton from './IconButton';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
+import SubjectBlock from './SubjectBlock';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
 import iconApproved from '../images/iconApproved.svg';
@@ -173,17 +173,12 @@ function AppDetailsContainer({ userId, match, history }) {
     <main id="appDetail">
 
       <div className="appIntro">
-        <div className="appInfo">
-          <img src={app.logo || appIconPlaceholder} alt="" />
-          <div>
-            <h2 className="highlight">{app.name}</h2>
-            <h4>{app.category.name}</h4>
-            <a target="_blank" rel="noreferrer" href={app.website ? `${app.website}` : '/'}>
-              <span>⎋</span>
-              Visit official website
-            </a>
-          </div>
-        </div>
+        <SubjectBlock
+          logo={app.logo}
+          name={app.name}
+          category={app.category.name}
+          website={app.website}
+        />
         <div className="ratingApp">
           <h5>Rating</h5>
           <p>

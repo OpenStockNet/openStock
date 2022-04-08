@@ -1,0 +1,51 @@
+@import '../Colors.scss';
+
+.appInfo {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  padding: 8px;
+}
+
+.appInfo img {
+  height: 96px;
+  margin-right: 24px;
+}
+
+.appInfo h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.appInfo h4 {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  color: $lightGray;
+  border: 1px solid $gray;
+  padding: 2px 6px;
+  margin: 6px 0 18px;
+}
+
+.appInfo a {
+  font-size: 16px;
+  display: block;
+}
+
+.appIntro a span {
+  color:$bodyGreen;
+  margin-right: 4px;
+}
+
+
+@media all and (max-width: 600px) {
+  .appInfo {
+    display: block;
+  }
+  .appInfo h2 {
+    font-size: 28px;
+  }
+}
+
