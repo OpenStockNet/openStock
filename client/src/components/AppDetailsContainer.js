@@ -11,6 +11,7 @@ import IconButton from './IconButton';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
 import SubjectBlock from './SubjectBlock';
+import Button from './Button';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
 import iconApproved from '../images/iconApproved.svg';
@@ -122,7 +123,7 @@ function AppDetailsContainer({ userId, match, history }) {
       });
   };
 
-  const deleteOneApp = () => {
+  const handleDeleteApp = () => {
     deleteApp(appId)
       .then(() => {
         openSnackbar(`${app.name} is deleted!`);
@@ -153,9 +154,7 @@ function AppDetailsContainer({ userId, match, history }) {
     deleteBtn = (
       <div id="rateApp">
         <h4>This app is not valid?</h4>
-        <button type="button" onClick={deleteOneApp}>
-          Delete
-        </button>
+        <Button onClick={handleDeleteApp}>Delete</Button>
       </div>
     );
   }
@@ -171,7 +170,6 @@ function AppDetailsContainer({ userId, match, history }) {
 
   return (
     <main id="appDetail">
-
       <div className="appIntro">
         <SubjectBlock
           logo={app.logo}

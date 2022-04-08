@@ -5,6 +5,7 @@ import { createApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
+import Button from './Button';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
@@ -218,7 +219,7 @@ function NewAppContainer({ userId, history }) {
             onChange={handleCheckbox}
           />
         </div>
-        <button type="submit">+ Add app</button>
+        <Button>+ Add app</Button>
       </form>
     </main>
   );

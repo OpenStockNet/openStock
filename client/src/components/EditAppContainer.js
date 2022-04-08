@@ -5,6 +5,7 @@ import { fetchApp, editApp } from '../services/app';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
+import Button from './Button';
 
 import SharedSnackbarContext from './SharedSnackbar.context';
 import SharedDialogContext from './SharedDialog.context';
@@ -232,7 +233,7 @@ function EditAppContainer({ userId, match, history }) {
             onChange={handleCheckbox}
           />
         </div>
-        <button type="submit">Update</button>
+        <Button>↺ Update</Button>
       </form>
     </main>
   );
