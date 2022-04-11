@@ -51,12 +51,8 @@ function AppDetailsContainer({ userId, match, history }) {
   };
 
   const updateAppDetails = async () => {
-    try {
-      const theApp = await fetchApp(appId);
-      setApp(theApp);
-    } catch (error) {
-      showError(error);
-    }
+    const theApp = await fetchApp(appId);
+    setApp(theApp);
   };
 
   const ensureLogin = (callbackFunc) => {
@@ -72,8 +68,8 @@ function AppDetailsContainer({ userId, match, history }) {
     const ratingValue = event.target.value;
     try {
       const sendNewRating = await rateApp(ratingValue, appId);
-      await updateAvrRating(sendNewRating); // TODO: remove catch error
-      await updateAppDetails(); // TODO: remove catch error
+      await updateAvrRating(sendNewRating);
+      await updateAppDetails();
       openSnackbar(`Thank you for rating ${app.name}!`);
     } catch (error) {
       showError(error);
@@ -115,12 +111,8 @@ function AppDetailsContainer({ userId, match, history }) {
   };
 
   const updateAvrRating = async () => {
-    try {
-      const averageRating = await getAverageRating(appId);
-      setAverageRating(averageRating);
-    } catch (error) {
-      showError(error);
-    }
+    const averageRating = await getAverageRating(appId);
+    setAverageRating(averageRating);
   };
 
   const handleDeleteApp = async () => {
