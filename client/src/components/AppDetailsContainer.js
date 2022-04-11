@@ -11,6 +11,7 @@ import IconButton from './IconButton';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
 import SubjectBlock from './SubjectBlock';
+import NotesBlock from './NotesBlock';
 import Button from './Button';
 
 import iconPlusSign from '../images/iconPlusSign.svg';
@@ -71,8 +72,8 @@ function AppDetailsContainer({ userId, match, history }) {
     const ratingValue = event.target.value;
     try {
       const sendNewRating = await rateApp(ratingValue, appId);
-      await updateAvrRating(sendNewRating);
-      await updateAppDetails();
+      await updateAvrRating(sendNewRating); // TODO: remove catch error
+      await updateAppDetails(); // TODO: remove catch error
       openSnackbar(`Thank you for rating ${app.name}!`);
     } catch (error) {
       showError(error);
@@ -184,12 +185,10 @@ function AppDetailsContainer({ userId, match, history }) {
           </p>
         </div>
       </div>
-
       <div className="icons-container">
         {wishListBtns}
         {editLinkBtn}
       </div>
-
       <div className="description">
         <h3>Description</h3>
         <p>{app.description}</p>
@@ -206,14 +205,9 @@ function AppDetailsContainer({ userId, match, history }) {
         />
         {deleteBtn}
       </div>
-      <div>
-        <div className="notes">
-          This page was last updated by
-          {' '}
-          {lastUpdateUser}
-          .
-        </div>
-      </div>
+      <NotesBlock
+        lastUpdateUser={lastUpdateUser}
+      />
     </main>
   );
 }
