@@ -34,25 +34,28 @@ function AppDetailsContainer({ userId, match, history }) {
   const appId = match.params.id;
 
   useEffect(() => {
-    updateAppDetails();
-
-    getAverageRating(appId)
-      .then((averageRating) => {
+    (async () => {
+      try {
+        updateAppDetails();
+        const averageRating = await getAverageRating(appId);
         setAverageRating(averageRating);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+      } catch (error) {
+        showError(error);
+      }
+    })();
   }, []);
 
-  const updateAppDetails = () => {
-    fetchApp(appId)
-      .then((theApp) => {
-        setApp(theApp);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+  const showError = (error) => {
+    setErrorMsg(error.message);
+  };
+
+  const updateAppDetails = async () => {
+    try {
+      const theApp = await fetchApp(appId);
+      setApp(theApp);
+    } catch (error) {
+      showError(error);
+    }
   };
 
   const ensureLogin = (callbackFunc) => {
@@ -64,74 +67,69 @@ function AppDetailsContainer({ userId, match, history }) {
     }
   };
 
-  const sendSubmitRatingRequest = (event) => {
+  const sendSubmitRatingRequest = async (event) => {
     const ratingValue = event.target.value;
-    rateApp(ratingValue, appId)
-      .then(() => {
-        updateAvrRating(appId);
-        updateAppDetails();
-        openSnackbar(`Thank you for rating ${app.name}!`);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+    try {
+      const sendNewRating = await rateApp(ratingValue, appId);
+      await updateAvrRating(sendNewRating);
+      await updateAppDetails();
+      openSnackbar(`Thank you for rating ${app.name}!`);
+    } catch (error) {
+      showError(error);
+    }
   };
 
+  // pass entire anonymous function as callback
+  // but not pass return value of 'sendSubmitRatingRequest(event)'
   const handleSubmitRating = (event) => {
-    // pass entire anonymous function as callback
-    // but not pass return value of 'sendSubmitRatingRequest(event)'
     ensureLogin(() => sendSubmitRatingRequest(event));
   };
 
-  const sendWishListRequest = () => {
-    addWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        openSnackbar(`${app.name} is added to wish list!`);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+  const sendWishListRequest = async () => {
+    try {
+      await addWishApp(appId, userId);
+      await updateAppDetails();
+      openSnackbar(`${app.name} is added to wish list!`);
+    } catch (error) {
+      showError(error);
+    }
   };
 
   const handleAddToWishList = () => {
     ensureLogin(sendWishListRequest);
   };
 
-  const sendRemoveRequest = () => {
-    removeWishApp(appId, userId)
-      .then(() => {
-        updateAppDetails();
-        openSnackbar(`${app.name} is removed from wish list!`);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
-  };
+  async function sendRemoveRequest() {
+    try {
+      await removeWishApp(appId, userId);
+      await updateAppDetails();
+      openSnackbar(`${app.name} is removed from wish list!`);
+    } catch (error) {
+      showError(error);
+    }
+  }
 
   const handleRemoveFromWishList = () => {
     ensureLogin(sendRemoveRequest);
   };
 
-  const updateAvrRating = () => {
-    getAverageRating(appId)
-      .then((averageRating) => {
-        setAverageRating(averageRating);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+  const updateAvrRating = async () => {
+    try {
+      const averageRating = await getAverageRating(appId);
+      setAverageRating(averageRating);
+    } catch (error) {
+      showError(error);
+    }
   };
 
-  const handleDeleteApp = () => {
-    deleteApp(appId)
-      .then(() => {
-        openSnackbar(`${app.name} is deleted!`);
-        history.push('/');
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
+  const handleDeleteApp = async () => {
+    try {
+      await deleteApp(appId);
+      openSnackbar(`${app.name} is deleted!`);
+      history.push('/'); // navigate back to homepage
+    } catch (error) {
+      showError(error);
+    }
   };
 
   if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
