@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
-import AppCard from './AppCard';
+import AppCard from './AppCard.tsx';
 
 it('renders without errors', () => {
   const { container } = render(

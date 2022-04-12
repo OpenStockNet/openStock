@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppCard from './AppCard';
+import AppCard from './AppCard.tsx';
 import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
