@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
-import AppsList from './AppsList';
+import AppsList from './AppsList.tsx';
 
 // mainly Jest DOM library assertions
 const dummyName = 'dummyName';

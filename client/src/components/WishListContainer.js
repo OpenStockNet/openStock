@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAllApps } from '../services/app';
 import Loader from './Loader';
-import AppsList from './AppsList';
+import AppsList from './AppsList.tsx';
 import NotFoundPage from './NotFoundPage';
 
 import SharedDialogContext from './SharedDialog.context';

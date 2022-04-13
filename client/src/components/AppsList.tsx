@@ -1,13 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppCard from './AppCard.tsx';
+import AppCard from './AppCard';
 import NotFoundPage from './NotFoundPage';
 
 import './AppsList.scss';
 
+interface App {
+  _id: string,
+  logo: string,
+  name: string,
+  category: {
+    name: string,
+  },
+}
+
+interface Props {
+  appsFiltered: App[],
+  errorMsg: string,
+  urlText: string,
+  url: string,
+}
+
 function AppsList({
   appsFiltered, errorMsg, urlText, url,
-}) {
+} : Props ) {
   return (
     <>
       <section id="listContainer" className="fadeIn" data-testid="app-list">
@@ -27,27 +42,5 @@ function AppsList({
     </>
   );
 }
-
-AppsList.propTypes = {
-  appsFiltered: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string,
-      logo: PropTypes.string,
-      name: PropTypes.string,
-      category: PropTypes.shape({
-        name: PropTypes.string,
-      }),
-    }),
-  ).isRequired,
-  errorMsg: PropTypes.string,
-  urlText: PropTypes.string,
-  url: PropTypes.string,
-};
-
-AppsList.defaultProps = {
-  errorMsg: 'error occurs',
-  urlText: '',
-  url: '',
-};
 
 export default AppsList;

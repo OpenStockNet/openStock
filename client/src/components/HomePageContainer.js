@@ -4,7 +4,7 @@ import { fetchAllApps } from '../services/app';
 
 import Search from './Search';
 import Categories from './Categories';
-import AppsList from './AppsList';
+import AppsList from './AppsList.tsx';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
 
