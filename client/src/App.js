@@ -11,7 +11,7 @@ import NotFoundPage from './components/NotFoundPage';
 
 import AppDetailsContainer from './components/AppDetailsContainer';
 import NewAppContainer from './components/NewAppContainer';
-import WishListContainer from './components/WishListContainer';
+import WishListContainer from './components/WishListContainer.tsx';
 import EditAppContainer from './components/EditAppContainer';
 
 import SideDrawer from './components/SideDrawer';

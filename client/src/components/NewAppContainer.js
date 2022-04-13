@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { createApp } from '../services/app';
+import { createApp } from '../services/appLegacy';
 import { fetchAllCategories } from '../services/category';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';

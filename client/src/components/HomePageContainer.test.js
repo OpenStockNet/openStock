@@ -4,12 +4,12 @@ import {
 } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import HomePageContainer from './HomePageContainer';
+import HomePageContainer from './HomePageContainer.tsx';
 
 import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
-import { fetchAllApps as mockFetchAllApps } from '../services/app';
+import { fetchAllApps as mockFetchAllApps } from '../services/appLegacy';
 
-jest.mock('../services/app');
+jest.mock('../services/appLegacy');
 jest.mock('../services/category');
 
 beforeEach(() => {

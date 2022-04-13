@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   fetchApp, deleteApp, addWishApp, removeWishApp,
-} from '../services/app';
+} from '../services/appLegacy';
 import { getAverageRating, rateApp } from '../services/rating';
 import CommentsContainer from './CommentsContainer';
 import RatingButtons from './RatingButtons';

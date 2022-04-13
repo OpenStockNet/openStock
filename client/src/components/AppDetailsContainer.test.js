@@ -10,11 +10,11 @@ import AppDetailsContainer from './AppDetailsContainer';
 
 import {
   fetchApp as mockFetchApp, addWishApp as mockAddWishApp, removeWishApp as mockRemoveWishApp,
-} from '../services/app';
+} from '../services/appLegacy';
 import { getAverageRating as mockGetAverageRating } from '../services/rating';
 import { fetchReviews as mockFetchReviews, addReview as mockAddReview } from '../services/review';
 
-jest.mock('../services/app');
+jest.mock('../services/appLegacy');
 jest.mock('../services/rating');
 jest.mock('../services/review');
 

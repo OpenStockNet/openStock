@@ -7,10 +7,10 @@ import NewAppContainer from './NewAppContainer';
 import { SharedSnackbarProvider } from './SharedSnackbar.context';
 import { SharedDialogProvider } from './SharedDialog.context';
 
-import { createApp as mockCreateApp } from '../services/app';
+import { createApp as mockCreateApp } from '../services/appLegacy';
 import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
 
-jest.mock('../services/app');
+jest.mock('../services/appLegacy');
 jest.mock('../services/category');
 // to resolve jsDom (testing browser) doesn't implement alert method
 // jest.spyOn(window, 'alert').mockImplementation(() => {});
