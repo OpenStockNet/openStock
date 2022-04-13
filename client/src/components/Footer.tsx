@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Footer.scss';
 
 const Footer = () => (
@@ -14,7 +12,7 @@ const Footer = () => (
     <p>
       Made with
       {' '}
-      <span testid="img" role="img" aria-label="green-heart">💚</span>
+      <span data-testid="img" role="img" aria-label="green-heart">💚</span>
       {' '}
       by
 

@@ -17,7 +17,7 @@ import EditAppContainer from './components/EditAppContainer';
 import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 // import Popover from './components/Popover';
-import Footer from './components/Footer';
+import Footer from './components/Footer.tsx';
 
 import './App.scss';
 
