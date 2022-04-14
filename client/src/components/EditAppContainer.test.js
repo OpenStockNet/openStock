@@ -8,7 +8,7 @@ import { SharedSnackbarProvider } from './SharedSnackbar.context';
 import { SharedDialogProvider } from './SharedDialog.context';
 
 import { fetchApp as mockFetchApp, editApp as mockEditApp } from '../services/appLegacy';
-import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
+import { fetchAllCategories as mockFetchAllCategories } from '../services/categoryLegacy';
 
 jest.mock('../services/appLegacy');
 jest.mock('../services/category');

@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import HomePageContainer from './HomePageContainer.tsx';
 
-import { fetchAllCategories as mockFetchAllCategories } from '../services/category';
+import { fetchAllCategories as mockFetchAllCategories } from '../services/categoryLegacy';
 import { fetchAllApps as mockFetchAllApps } from '../services/appLegacy';
 
 jest.mock('../services/appLegacy');

@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { fetchAllApps, App } from '../services/app';
+import { fetchAllApps, App } from '../services/app'; //app.ts
 import Loader from './Loader';
 import AppsList from './AppsList';
 import NotFoundPage from './NotFoundPage';
 
 import SharedDialogContext from './SharedDialog.context';
 
+// TODD: add a .d.ts for module declarations for interceptor
+
 interface Props {
-  userId: string,
+  userId: string, 
   isUserLoading: boolean,
 }
 
 function WishListContainer({ userId, isUserLoading } : Props ) {
-  const [wishedApps, setWishedApps] = useState<App[]>([]) // tell useState what type of parameter it should receive
+  const [wishedApps, setWishedApps] = useState<App[]>([]);
   const [appsLoading, setAppsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -20,7 +22,7 @@ function WishListContainer({ userId, isUserLoading } : Props ) {
 
   useEffect(() => {
     if (isUserLoading) {
-      return; // do nothing
+      return;
     }
 
     if (userId) {
@@ -28,7 +30,7 @@ function WishListContainer({ userId, isUserLoading } : Props ) {
         .then((apps) => {
           if (userId) {
             const appsFiltered = apps.filter((app) => app.wishUser.includes(userId));
-            setWishedApps(appsFiltered); // Error: Argument of type 'App[]' is not assignable to parameter of type 'SetStateAction<never[]>'.
+            setWishedApps(appsFiltered);
             setAppsLoading(false);
           }
         })
@@ -42,7 +44,7 @@ function WishListContainer({ userId, isUserLoading } : Props ) {
     }
   }, [isUserLoading]);
 
-  if (errorMsg) return <NotFoundPage errorMsg={errorMsg!} />; // Error: Type 'null' is not assignable to type 'string'
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg!} />;
 
   if (isUserLoading || appsLoading) return <Loader />;
 

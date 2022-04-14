@@ -5,7 +5,7 @@ import { fetchLogInUser } from './services/auth';
 import Navbar from './components/Navbar';
 import SignupContainer from './components/SignupContainer';
 import LoginContainer from './components/LoginContainer';
-import HomePageContainer from './components/HomePageContainer';
+import HomePageContainer from './components/HomePageContainer.tsx';
 import About from './components/About';
 import NotFoundPage from './components/NotFoundPage';
 

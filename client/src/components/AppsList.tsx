@@ -16,8 +16,8 @@ interface App {
 interface Props {
   appsFiltered: App[],
   errorMsg: string,
-  urlText: string,
-  url: string,
+  urlText?: string,
+  url?: string,
 }
 
 function AppsList({

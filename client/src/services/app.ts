@@ -1,9 +1,10 @@
-import { get, } from './http';
+import { get } from './http';
+// import axios from 'axios';
 
-
-interface Category {
+export interface Category {
   name: string,
   icon: string,
+  _id?: string,
 }
 
 interface User {
@@ -30,11 +31,19 @@ export interface App {
 
 export const fetchAllApps = async () : Promise<App[]> => await get('/apps') as App[];
 
+export const fetchAllCategories = async () : Promise<Category[]> => await get('/categories') as Category[];
+
 // export async function fetchAllApps() : Promise<App[]> {
 //   const response = await get('/apps');
 //   return response as App[]; // 'as' to sepecify response.data type to TS complier
 // }
 
-export async function fetchAllAppsIII() : Promise<App[]> {
-  return await get('/apps') as App[]; 
-}
+// async function fetchAllAppsIII() : Promise<App[]> {
+//   return await get('/apps') as App[]; 
+// }
+
+// Gerrit's 
+// export async function fetchAllApps() : Promise<App[]> {
+//   const response = await axios.get<unknown, App[]>('/apps');
+//   return response;
+// }
