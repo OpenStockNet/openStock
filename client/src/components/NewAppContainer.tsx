@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { createApp } from '../services/appLegacy';
-import { fetchAllCategories } from '../services/categoryLegacy';
+import React, { useState, useEffect, useContext, ChangeEvent, MouseEvent, FormEvent } from 'react';
+import { Link, } from 'react-router-dom';
+import { History } from 'history';
+import { fetchAllCategories, Category, createApp } from '../services/app';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
 import Button from './Button';
@@ -12,13 +11,18 @@ import SharedDialogContext from './SharedDialog.context';
 
 import './NewAppContainer.scss';
 
-function NewAppContainer({ userId, history }) {
+interface Props {
+  userId: string,
+  history: History, 
+}
+
+function NewAppContainer({ userId, history } : Props) {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [categories, setCategories] = useState([]);
-  const [device, setDevice] = useState([]);
+  const [category, setCategory] = useState<string>('');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [device, setDevice] = useState<string[]>([]);
   const [logo, setLogo] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -28,7 +32,7 @@ function NewAppContainer({ userId, history }) {
   useEffect(() => {
     fetchAllCategories()
       .then((allCategories) => {
-        setCategory(allCategories[0]._id);
+        setCategory(allCategories[0]._id); 
         setCategories(allCategories);
       })
       .catch((error) => {
@@ -36,50 +40,50 @@ function NewAppContainer({ userId, history }) {
       });
   }, []);
 
-  function handleNameChange(event) {
+  function handleNameChange(event: ChangeEvent<HTMLInputElement>) {
     setName(event.target.value);
   }
 
-  function handleWebsiteChange(event) {
+  function handleWebsiteChange(event: ChangeEvent<HTMLInputElement>) {
     setWebsite(event.target.value);
   }
 
-  function handleDescriptionChange(event) {
+  function handleDescriptionChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setDescription(event.target.value);
   }
 
-  function handleLogoChange(event) {
+  function handleLogoChange(event: ChangeEvent<HTMLInputElement>) {
     setLogo(event.target.value);
   }
 
-  function handleCategoryChange(event) {
+  function handleCategoryChange(event: ChangeEvent<HTMLSelectElement>) {
     setCategory(event.target.value);
   }
 
-  function handleCheckbox(event) {
+  function handleCheckbox(event: ChangeEvent<HTMLInputElement>) {
     const { id, checked } = event.target;
     // const deviceCopy = device.map((selectedDevice) => selectedDevice);
     const deviceCopy = [...device];
-
+    
     if (checked) {
       deviceCopy.push(id);
     } else {
-      const index = deviceCopy.indexOf(id);
-      if (index > -1) {
-        deviceCopy.splice(index, 1);
+      const index = deviceCopy.indexOf(id); 
+      if (index > -1) { // if exists
+        deviceCopy.splice(index, 1); // remove one element from this index
       }
     }
     setDevice(deviceCopy);
   }
 
   // can also be nested in ensureLogin as in EditApp
-  function handleSubmit(event) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (userId) {
       const creator = userId;
 
-      createApp(name, description, category, device, website, logo, creator)
+      createApp({name, description, category, device, website, logo, creator})
         .then((app) => {
           history.push(`/apps/${app._id}`);
           openSnackbar(`${app.name} is published. Thanks for your contribution!`);
@@ -92,8 +96,9 @@ function NewAppContainer({ userId, history }) {
     }
   }
 
-  if (errorMsg) return <NotFoundPage errorMsg={errorMsg} />;
+  if (errorMsg) return <NotFoundPage errorMsg={errorMsg!} />;
   if (!categories) return <Loader />;
+
   const categoryOptions = categories.map((selectedCategory) => (
     <option
       key={selectedCategory._id}
@@ -225,15 +230,5 @@ function NewAppContainer({ userId, history }) {
   );
 }
 
-NewAppContainer.propTypes = {
-  userId: PropTypes.string,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-};
-
-NewAppContainer.defaultProps = {
-  userId: 'userId',
-};
 
 export default NewAppContainer;

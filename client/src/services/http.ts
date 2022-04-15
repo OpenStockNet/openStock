@@ -11,3 +11,8 @@ export async function get(url : string) : Promise<unknown> {
     const response = await instance.get(url)
     return response.data as unknown;
 }
+
+export async function post(url: string, body: unknown) : Promise<unknown> {
+    const response = await instance.post(url, body)
+    return response.data as unknown;
+}

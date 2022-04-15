@@ -10,7 +10,7 @@ import About from './components/About';
 import NotFoundPage from './components/NotFoundPage';
 
 import AppDetailsContainer from './components/AppDetailsContainer';
-import NewAppContainer from './components/NewAppContainer';
+import NewAppContainer from './components/NewAppContainer.tsx';
 import WishListContainer from './components/WishListContainer.tsx';
 import EditAppContainer from './components/EditAppContainer';
 

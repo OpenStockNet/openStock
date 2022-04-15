@@ -1,10 +1,13 @@
-import { get } from './http';
-// import axios from 'axios';
+import { get, post } from './http';
 
-export interface Category {
+interface IObjectKeys {
+  [key: string]: string | number;
+}
+
+export interface Category extends IObjectKeys{
   name: string,
   icon: string,
-  _id?: string,
+  _id: string,
 }
 
 interface User {
@@ -29,7 +32,19 @@ export interface App {
   _id: string,
 }
 
+export interface AppRequestBody {
+  logo: string,
+  name: string,
+  description: string,
+  category: string,//
+  website: string,
+  device: string[],
+  creator: string,//
+}
+
 export const fetchAllApps = async () : Promise<App[]> => await get('/apps') as App[];
+
+export const createApp = async ( appBody: AppRequestBody ) : Promise<App> => await post('/apps', appBody ) as App;
 
 export const fetchAllCategories = async () : Promise<Category[]> => await get('/categories') as Category[];
 

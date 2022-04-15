@@ -3,7 +3,7 @@ import {
   act, render, fireEvent,
 } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import NewAppContainer from './NewAppContainer';
+import NewAppContainer from './NewAppContainer.tsx';
 import { SharedSnackbarProvider } from './SharedSnackbar.context';
 import { SharedDialogProvider } from './SharedDialog.context';
 

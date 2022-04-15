@@ -12,7 +12,7 @@ function Button({ children, onClick, value }) {
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   value: PropTypes.number,
 };
 Button.defaultProps = {
